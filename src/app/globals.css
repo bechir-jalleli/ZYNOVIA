@@ -1,0 +1,73 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* brand palette – synced with logo */
+  --color-primary: #0091e6; /* primary blue */
+  --color-secondary: #e6f9fd; /* soft cyan surface */
+  --color-lightgrey: #5b728f; /* cool grey for body text */
+  --color-darkmode: #02051a; /* deep navy background */
+  --color-darklight: #030927; /* slightly lighter dark surfaces */
+  --color-darkblue: #0a004b; /* primary text on light, logo navy */
+  --color-lightdarkblue: #04112f; /* cards on dark mode */
+
+  /* brand gradients */
+  --gradient-brand: linear-gradient(135deg, #00c3d9, #0091e6, #0067e0);
+  --gradient-brand-soft: linear-gradient(
+    135deg,
+    rgba(0, 195, 217, 0.08),
+    rgba(0, 145, 230, 0.08),
+    rgba(0, 103, 224, 0.12)
+  );
+
+  /* spacing */
+  --spacing-45: 45%;
+
+  /* breakpoint */
+  --breakpoint-xs: 420px;
+}
+
+@layer utilities {
+  .container {
+    @apply max-w-7xl mx-auto w-full px-4;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  section {
+    @apply py-14;
+  }
+
+  h1 {
+    @apply text-darkblue dark:text-white  md:text-6xl text-5xl font-bold xl:leading-tight leading-tight;
+  }
+
+  h2 {
+    @apply text-darkblue dark:text-white  md:text-5xl text-4xl font-bold;
+  }
+
+  h3 {
+    @apply text-white  text-3xl font-normal
+  }
+
+  h4 {
+    @apply text-darkblue dark:text-white  text-2xl font-medium;
+  }
+
+  h5 {
+    @apply text-darkblue dark:text-white  text-xl font-medium;
+  }
+
+  h6 {
+    @apply text-darkblue dark:text-white  text-lg font-medium;
+  }
+
+  p {
+    @apply text-lightgrey  text-base;
+  }
+}
