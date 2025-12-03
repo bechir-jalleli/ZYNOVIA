@@ -5,6 +5,14 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
+const fadeInUp = {
+  initial: { opacity: 0, y: 32 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.25 },
+  transition: { duration: 0.6, ease: 'easeOut' },
+}
+
 
 const Hero = () => {
   const settings = {
@@ -53,6 +61,21 @@ const Hero = () => {
                 </h1>
 
 
+                <motion.p
+                {...fadeInUp}
+                transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
+                className='lg:text-start text-center text-lg sm:text-xl lg:text-2xl font-semibold text-primary dark:text-cyan-300'>
+                Former une génération prête à affronter l&apos;avenir avec l&apos;IA
+              </motion.p>
+
+              {/* Description */}
+              <motion.p
+                {...fadeInUp}
+                transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
+                className='lg:text-start text-center max-w-2xl -mt-10 text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed'>
+                INOTEQIA Academy prépare les jeunes aux compétences essentielles du futur : IA, pensée
+                algorithmique, robotique, créativité et culture numérique.
+              </motion.p>
 
                 <div className='flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 w-full max-w-md'>
                   <Link href={'/#project'}>

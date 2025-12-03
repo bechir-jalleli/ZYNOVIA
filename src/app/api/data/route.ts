@@ -27,24 +27,32 @@ const HeroData: HeroType[] = [
 
 const NavLinkData: NavLinkType[] = [
   {
-    label: 'Notre Vision',
-    href: '/#vision',
+    label: 'Accueil',
+    href: '/',
   },
   {
-    label: 'Projects',
-    href: '/#project',
+    label: 'Programmes',
+    href: '/programmes',
   },
   {
-    label: 'Expertise',
-    href: '/#expertise',
+    label: 'Vision',
+    href: '/vision',
   },
   {
-    label: 'Pricing',
-    href: '/#pricing',
+    label: 'Parents',
+    href: '/parents',
   },
   {
-    label: 'Categories',
-    href: '/#categories',
+    label: 'Partenariats',
+    href: '/partenariats',
+  },
+  {
+    label: 'Ressources',
+    href: '/ressources',
+  },
+  {
+    label: 'Contact',
+    href: '/contact',
   },
 ]
 
@@ -210,37 +218,59 @@ const CategoryData: CategoryType[] = [
 
 const FooterLinkData: FooterLinkType[] = [
   {
-    section: 'Company',
+    section: 'Programmes',
     links: [
       {
-        label: 'Notre Vision',
-        href: '/#vision',
+        label: 'Tous les programmes',
+        href: '/programmes',
       },
       {
-        label: 'Projects',
-        href: '/#project',
+        label: 'Collégiens & lycéens',
+        href: '/programmes',
       },
       {
-        label: 'Expertise',
-        href: '/#expertise',
-      },
-      {
-        label: 'Pricing',
-        href: '/#pricing',
-      },
-      {
-        label: 'Categories',
-        href: '/#categories',
+        label: 'Stages & ateliers',
+        href: '/programmes',
       },
     ],
   },
   {
-    section: 'Support',
+    section: 'Vision & pédagogie',
     links: [
-      { label: 'Help center', href: '/' },
-      { label: 'Terms of service', href: '/' },
-      { label: 'Legal', href: '/' },
-      { label: 'Privacy Policy', href: '/' },
+      {
+        label: 'Notre vision',
+        href: '/vision',
+      },
+      {
+        label: 'Parents & orientation',
+        href: '/parents',
+      },
+      {
+        label: 'Ressources',
+        href: '/ressources',
+      },
+    ],
+  },
+  {
+    section: 'Partenariats',
+    links: [
+      {
+        label: 'Écoles & établissements',
+        href: '/partenariats',
+      },
+      {
+        label: 'Entreprises',
+        href: '/partenariats',
+      },
+    ],
+  },
+  {
+    section: 'Contact',
+    links: [
+      {
+        label: 'Prendre rendez-vous',
+        href: '/contact',
+      },
     ],
   },
 ]

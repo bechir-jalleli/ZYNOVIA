@@ -130,8 +130,8 @@ const Header: React.FC = () => {
             />
           </button>
           <Link
-            href='/#contact'
-            className='hidden xl:block px-4 py-2 bg-primary text-white rounded-lg outline-none hover:bg-transparent hover:text-primary border border-primary duration-500 text-base font-semibold'>
+            href='/contact'
+            className='hidden xl:block px-6 py-2.5 bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white rounded-full outline-none hover:shadow-lg hover:shadow-primary/30 hover:scale-105 border border-transparent hover:border-primary/20 duration-300 text-sm font-semibold tracking-wide transition-all'>
             Rendez-vous
           </Link>
           <button
@@ -193,8 +193,8 @@ const Header: React.FC = () => {
               />
             </div>
             <Link
-              href='/#contact'
-              className='px-4 py-2 bg-primary text-white rounded-lg outline-none hover:bg-transparent hover:text-primary border border-primary duration-500 text-base font-semibold'
+              href='/contact'
+              className='px-6 py-2.5 bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white rounded-full outline-none hover:shadow-lg hover:shadow-primary/30 hover:scale-105 border border-transparent hover:border-primary/20 duration-300 text-sm font-semibold tracking-wide transition-all text-center'
               onClick={() => {
                 setNavbarOpen(false)
               }}>

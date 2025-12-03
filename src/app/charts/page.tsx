@@ -1,3 +1,5 @@
+'use client'
+
 import RadialProgressChart from '../components/Charts/RadialProgressChart'
 import SmoothLineChart from '../components/Charts/SmoothLineChart'
 import RoundedBarChart from '../components/Charts/RoundedBarChart'
