@@ -95,23 +95,6 @@ const Header: React.FC = () => {
           </ul>
         </nav>
         <div className='flex items-center gap-4'>
-          <div>
-            <div className='relative hidden xl:block'>
-              <input
-                type='text'
-                placeholder='Search'
-                className='border rounded-lg pl-4 pr-8 py-2 border-primary/50 focus:border-primary outline-0 placeholder:text-primary/30'
-              />
-              <button>
-                <Icon
-                  icon={'solar:magnifer-linear'}
-                  width={17}
-                  height={17}
-                  className='text-primary text-bold absolute top-3 right-3'
-                />
-              </button>
-            </div>
-          </div>
           <button
             aria-label='Toggle theme'
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -131,7 +114,7 @@ const Header: React.FC = () => {
           </button>
           <Link
             href='/contact'
-            className='hidden xl:block px-6 py-2.5 bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white rounded-full outline-none hover:shadow-lg hover:shadow-primary/30 hover:scale-105 border border-transparent hover:border-primary/20 duration-300 text-sm font-semibold tracking-wide transition-all'>
+            className='hidden xl:block px-6 py-2 bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white rounded-[10px] outline-none hover:shadow-lg hover:shadow-primary/30 hover:scale-105 border border-transparent hover:border-primary/20 duration-300 text-sm font-semibold tracking-wide transition-all'>
             Rendez-vous
           </Link>
           <button
@@ -179,22 +162,10 @@ const Header: React.FC = () => {
             <MobileHeaderLink key={index} item={item} />
           ))}
           <div className='mt-4 flex flex-col gap-4 w-full'>
-            <div className='relative w-full'>
-              <input
-                type='text'
-                placeholder='Search'
-                className='border rounded-lg pl-4 pr-8 py-2 border-primary/50 focus:border-primary outline-0 placeholder:text-primary/20 w-full'
-              />
-              <Icon
-                icon={'solar:magnifer-linear'}
-                width={17}
-                height={17}
-                className='text-primary text-bold absolute top-3 right-3'
-              />
-            </div>
+
             <Link
               href='/contact'
-              className='px-6 py-2.5 bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white rounded-full outline-none hover:shadow-lg hover:shadow-primary/30 hover:scale-105 border border-transparent hover:border-primary/20 duration-300 text-sm font-semibold tracking-wide transition-all text-center'
+              className='px-6 py-6 bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white rounded-[10px] outline-none hover:shadow-lg hover:shadow-primary/30 hover:scale-105 border border-transparent hover:border-primary/20 duration-300 text-sm font-semibold tracking-wide transition-all text-center'
               onClick={() => {
                 setNavbarOpen(false)
               }}>

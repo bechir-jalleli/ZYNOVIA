@@ -17,6 +17,7 @@ import {
   GraduationCap,
   FolderKanban,
 } from 'lucide-react'
+import AnimatedNumber from '@/app/components/AnimatedNumber'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 28 },
@@ -102,7 +103,7 @@ export default function ProgrammesContent() {
                     <Building2 className='h-7 w-7' />
                   </div>
                   <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
-                    6
+                    <AnimatedNumber value={6} duration={1500} />
                   </h3>
                   <p className='text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-200 mb-1'>
                     établissements partenaires
@@ -127,7 +128,7 @@ export default function ProgrammesContent() {
                     <Users className='h-7 w-7' />
                   </div>
                   <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
-                    +2000
+                    <AnimatedNumber value='+2000' duration={2000} />
                   </h3>
                   <p className='text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-200 mb-1'>
                     collégiens et lycéens formés
@@ -149,7 +150,7 @@ export default function ProgrammesContent() {
                     <Clock className='h-7 w-7' />
                   </div>
                   <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
-                    70
+                    <AnimatedNumber value={70} duration={1500} />
                   </h3>
                   <p className='text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-200 mb-1'>
                     heures chaque semaine
@@ -171,7 +172,7 @@ export default function ProgrammesContent() {
                     <Calendar className='h-7 w-7' />
                   </div>
                   <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
-                    281
+                    <AnimatedNumber value={281} duration={1800} />
                   </h3>
                   <p className='text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-200 mb-1'>
                     heures assurées par mois
@@ -193,7 +194,7 @@ export default function ProgrammesContent() {
                     <GraduationCap className='h-7 w-7' />
                   </div>
                   <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
-                    1960
+                    <AnimatedNumber value={1960} duration={2200} />
                   </h3>
                   <p className='text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-200 mb-1'>
                     heures enseignées
@@ -218,7 +219,7 @@ export default function ProgrammesContent() {
                     <FolderKanban className='h-7 w-7' />
                   </div>
                   <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
-                    +50
+                    <AnimatedNumber value='+50' duration={1500} />
                   </h3>
                   <p className='text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-200 mb-1'>
                     mini-projets réalisés

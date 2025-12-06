@@ -860,7 +860,7 @@ export default function NotreVisionPage() {
             </motion.div>
           </div>
 
-          <div className='grid gap-6 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1.1fr)] md:items-center'>
+          <div className='mt-16 grid gap-6 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1.1fr)] md:items-center'>
             <motion.div
               {...fadeInUp}
               transition={{ duration: 0.6, ease: 'easeOut' }}
