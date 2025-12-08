@@ -28,11 +28,11 @@ const Pricing = () => {
 
   //
   const [selectedCategory, setSelectedCategory] = useState<
-    'monthly' | 'yearly'
-  >('monthly')
+    'etablissement' | 'entreprise'
+  >('etablissement')
 
   const handleCategoryChange = (
-    category: SetStateAction<'monthly' | 'yearly'>
+    category: SetStateAction<'etablissement' | 'entreprise'>
   ) => {
     setSelectedCategory(category)
   }
@@ -48,27 +48,27 @@ const Pricing = () => {
           </p>
         </div>
         {/* toggle button */}
-        {/* Yearly/Monthly Toggle Buttons */}
+        {/* Établissement scolaire/Entreprise Toggle Buttons */}
         <div className='mb-8'>
           <div className='flex justify-center'>
             <div className='bg-secondary dark:bg-darklight flex p-2 rounded-lg'>
               <button
-                className={`text-xl font-medium cursor-pointer py-2 px-8 sm:py-4 sm:px-16 ${
-                  selectedCategory === 'monthly'
+                className={`text-base sm:text-lg font-medium cursor-pointer py-2 px-4 sm:py-4 sm:px-8 whitespace-nowrap ${
+                  selectedCategory === 'etablissement'
                     ? 'text-primary bg-white dark:bg-darkmode rounded-lg shadow dark:shadow-neutral-50/20'
                     : 'text-black dark:text-white'
                 }`}
-                onClick={() => handleCategoryChange('monthly')}>
-                Monthly
+                onClick={() => handleCategoryChange('etablissement')}>
+                Établissement scolaire
               </button>
               <button
-                className={`text-xl font-medium cursor-pointer py-2 px-8 sm:py-4 sm:px-16 ${
-                  selectedCategory === 'yearly'
-                    ? 'text-primary bg-white dark:bg-darkmode dark rounded-lg shadow dark:shadow-neutral-50/20'
+                className={`text-base sm:text-lg font-medium cursor-pointer py-2 px-4 sm:py-4 sm:px-8 whitespace-nowrap ${
+                  selectedCategory === 'entreprise'
+                    ? 'text-primary bg-white dark:bg-darkmode rounded-lg shadow dark:shadow-neutral-50/20'
                     : 'text-black dark:text-white'
                 }`}
-                onClick={() => handleCategoryChange('yearly')}>
-                Yearly
+                onClick={() => handleCategoryChange('entreprise')}>
+                Entreprise
               </button>
             </div>
           </div>
@@ -80,8 +80,8 @@ const Pricing = () => {
             <div className='flex lg:flex-col sm:flex-row flex-col justify-between w-full h-full'>
               <div className='pl-8 pr-2.5 pt-14'>
                 <h3 className='lg:max-w-xs leading-10'>
-                  Choosing yearly plan gives you{' '}
-                  <span className='font-bold'> big 35% discount </span>
+                  Choisir le plan entreprise vous donne{' '}
+                  <span className='font-bold'> une réduction de 35% </span>
                 </h3>
               </div>
               <div>
@@ -106,11 +106,11 @@ const Pricing = () => {
                       <p className='text-2xl font-bold'>{item.type}</p>
                       <p className='text-5xl font-bold text-lightdarkblue dark:text-white'>
                         $
-                        {selectedCategory === 'monthly'
+                        {selectedCategory === 'etablissement'
                           ? item.price.monthly
                           : item.price.yearly}
                         <span className='text-base font-normal text-lightgrey lowercase'>
-                          /{selectedCategory === 'monthly' ? 'month' : 'year'}
+                          /{selectedCategory === 'etablissement' ? 'month' : 'year'}
                         </span>{' '}
                       </p>
                       <p className='text-base font-normal'>{item.desc}</p>

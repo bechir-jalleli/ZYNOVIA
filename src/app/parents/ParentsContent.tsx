@@ -82,10 +82,10 @@ const ParentsContent = () => {
             <div className='space-y-5 text-center md:text-left'>
               <p className='inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-primary shadow-sm ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/80 dark:text-cyan-300 dark:ring-white/10'>
                 <span className='h-2 w-2 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
-                Page Parents
+                Parents
               </p>
               <h1 className='text-3xl font-bold leading-tight text-[#0A004B] sm:text-4xl lg:text-5xl dark:text-white'>
-                Page Parents
+                Parents
               </h1>
               <p className='text-lg font-medium text-primary/90 dark:text-cyan-300'>
                 Parce que l’avenir de votre enfant mérite une préparation exceptionnelle
@@ -468,6 +468,8 @@ const ParentsContent = () => {
 }
 
 export default ParentsContent
+
+
 
 
 

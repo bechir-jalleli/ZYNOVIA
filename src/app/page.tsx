@@ -16,8 +16,8 @@ export default function Home() {
       {/* Hero – keep short and focused on main value prop & CTAs */}
       <Hero />
 
-      {/* Animated Partners Banner */}
-      <PartnersBanner />
+      {/* IA & futur - Why learn AI section with statistics */}
+      <Records />
 
       {/* Vision preview – links to full /vision page */}
       <section
@@ -51,11 +51,13 @@ export default function Home() {
 
       {/* Programme highlights & social proof sections (existing components) */}
       <Project />
-      <Records />
       <Review />
       <Specialize />
       <Pricing />
       <Category />
+
+      {/* Partners Banner - moved to end of page */}
+      <PartnersBanner />
 
       {/* Final CTA band leading to /contact (reuses existing contact form anchor) */}
       <ContactForm />

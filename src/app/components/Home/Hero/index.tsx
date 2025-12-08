@@ -79,14 +79,13 @@ const Hero = () => {
 
                 <div className='flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 w-full max-w-md'>
                   <Link href={'/#project'}>
-                    <button className='w-full sm:w-auto px-8 sm:px-10 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-white border rounded-full border-primary bg-primary hover:bg-transparent hover:text-primary hover:cursor-pointer duration-300 shadow-md'>
-                      Explore
+                    <button className='w-full sm:w-auto px-8 sm:px-10 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-white border rounded-[10px] border-transparent bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-md whitespace-nowrap'>
+                    Je suis une entreprise
                     </button>
                   </Link>
                   <Link href={'/#categories'}>
-                    <button className='w-full sm:w-auto px-8 sm:px-10 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-primary border rounded-full border-primary bg-white dark:bg-transparent hover:bg-primary hover:text-white hover:cursor-pointer duration-300 shadow-sm'>
-                      Rendez-vous
-                    </button>
+                    <button className='w-full sm:w-auto px-8 sm:px-10 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-primary border rounded-[10px] border-primary bg-white dark:bg-transparent hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-sm whitespace-nowrap'>
+                    Je suis un établissement scolaire                    </button>
                   </Link>
                 </div>
               </div>

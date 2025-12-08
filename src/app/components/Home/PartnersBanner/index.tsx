@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 const partners = [
   { name: 'Charlemagne', image: '/images/partenaire/harlemagne.png' },
@@ -11,71 +12,53 @@ const partners = [
   { name: 'École Canadienne de Tunis', image: '/images/partenaire/ECT.png' },
 ]
 
-// Duplicate the array multiple times for seamless infinite scroll
-const duplicatedPartners = [...partners, ...partners, ...partners]
-
 const PartnersBanner = () => {
   return (
-    <section className='py-12 bg-gradient-to-b from-white via-slate-50/50 to-white dark:from-slate-950 dark:via-slate-900/50 dark:to-slate-950 overflow-hidden'>
-      <div className='container mx-auto max-w-7xl px-4'>
-        <div className='text-center mb-8'>
-          <p className='text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-primary dark:text-cyan-300 mb-2'>
+    <section className='py-16 sm:py-20 bg-secondary/30 dark:bg-darklight/50 overflow-hidden'>
+      <div className='container mx-auto max-w-7xl px-4 sm:px-6'>
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className='text-center mb-12 sm:mb-16'>
+          <p className='text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-primary dark:text-cyan-300 mb-3'>
             Nos partenaires
           </p>
-          <h3 className='text-lg sm:text-xl font-semibold text-[#0A004B] dark:text-white'>
+          <h3 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-darkblue dark:text-white'>
             Établissements qui nous font confiance
           </h3>
-        </div>
+        </motion.div>
 
-        {/* Animated scrolling banner */}
-        <div className='relative'>
-          <div className='overflow-hidden'>
-            <div className='flex gap-8 md:gap-12 animate-scroll'>
-              {duplicatedPartners.map((partner, index) => (
-                <div
-                  key={`${partner.name}-${index}`}
-                  className='flex-shrink-0 flex items-center justify-center'
-                  style={{ width: '200px' }}
-                >
-                  <div className='relative w-full h-20 sm:h-24 flex items-center justify-center px-4'>
-                    <Image
-                      src={partner.image}
-                      alt={`Logo ${partner.name}`}
-                      width={180}
-                      height={80}
-                      className='object-contain max-h-full w-auto opacity-90 hover:opacity-100 transition-opacity duration-300'
-                      style={{ maxWidth: '100%', height: 'auto' }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Gradient overlays for fade effect */}
-          <div className='absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white via-white/80 to-transparent dark:from-slate-950 dark:via-slate-950/80 pointer-events-none z-10' />
-          <div className='absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white via-white/80 to-transparent dark:from-slate-950 dark:via-slate-950/80 pointer-events-none z-10' />
+        {/* Logos Grid */}
+        <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 lg:gap-10'>
+          {partners.map((partner, index) => (
+            <motion.div
+              key={partner.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className='flex items-center justify-center p-4 sm:p-6 bg-white dark:bg-lightdarkblue rounded-xl sm:rounded-2xl shadow-sm hover:shadow-lg hover:shadow-primary/10 dark:hover:shadow-primary/20 transition-all duration-300 hover:scale-105 group'>
+              <div className='relative w-full h-16 sm:h-20 lg:h-24 flex items-center justify-center'>
+                <Image
+                  src={partner.image}
+                  alt={`Logo ${partner.name}`}
+                  width={160}
+                  height={80}
+                  className='object-contain w-full h-full opacity-70 group-hover:opacity-100 transition-opacity duration-300'
+                  style={{ 
+                    maxWidth: '100%', 
+                    maxHeight: '100%',
+                    filter: 'grayscale(20%)',
+                  }}
+                />
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(calc(-200px * ${partners.length} - 2rem * ${partners.length}));
-          }
-        }
-
-        .animate-scroll {
-          animation: scroll 30s linear infinite;
-        }
-
-        .animate-scroll:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
     </section>
   )
 }

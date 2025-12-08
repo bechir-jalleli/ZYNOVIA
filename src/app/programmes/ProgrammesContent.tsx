@@ -322,9 +322,166 @@ export default function ProgrammesContent() {
               ))}
             </motion.div>
           </motion.div>
+        </div>
+      </section>
 
+      {/* FULL-SCREEN SECTION 1 – OBJECTIFS PÉDAGOGIQUES */}
+      <section className='min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-secondary/10 via-secondary/5 to-transparent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-24 lg:py-32'>
+        <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 w-full'>
+          <motion.div
+            variants={staggerContainer}
+            initial='initial'
+            whileInView='whileInView'
+            viewport={{ once: true, amount: 0.25 }}
+            className='w-full'
+          >
+            {/* Header */}
+            <motion.div
+              {...fadeInUp}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              className='text-center mb-12 lg:mb-16'
+            >
+              <div className='inline-flex items-center justify-center mb-6'>
+                <div className='flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-lg shadow-[#0091E6]/40'>
+                  <Brain className='h-8 w-8 sm:h-10 sm:w-10' />
+                </div>
+              </div>
+              <h2 className='text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-[#0A004B] dark:text-white mb-4'>
+                Objectifs pédagogiques
+              </h2>
+              <p className='text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto'>
+                Des objectifs clairs pour une formation complète et structurée
+              </p>
+            </motion.div>
+
+            {/* Objectives Grid */}
+            <motion.div
+              variants={staggerContainer}
+              initial='initial'
+              whileInView='whileInView'
+              viewport={{ once: true, amount: 0.25 }}
+              className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6'
+            >
+              {[
+                'Comprendre les concepts fondamentaux de l\'IA et du machine learning.',
+                'Développer la pensée algorithmique et la logique mathématique.',
+                'Travailler sur des mini-projets liés au programme scolaire.',
+                'Présenter un projet final devant un jury.',
+                'Améliorer la communication et la collaboration.',
+                'Renforcer les résultats STEM grâce à l\'apprentissage par projet.',
+              ].map((item, index) => (
+                <motion.div
+                  key={item}
+                  variants={cardVariant}
+                  className='relative overflow-hidden rounded-3xl bg-white/95 p-6 sm:p-8 shadow-[0_18px_45px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/95 dark:ring-slate-700/70 transition-all duration-300 hover:shadow-[0_24px_60px_rgba(15,23,42,0.18)] hover:-translate-y-1'
+                >
+                  <div
+                    aria-hidden='true'
+                    className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
+                  />
+                  <div className='relative flex items-start gap-4'>
+                    <div className='flex h-12 w-12 sm:h-14 sm:w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-[#0091E6]/40'>
+                      <span className='text-lg sm:text-xl font-bold'>{index + 1}</span>
+                    </div>
+                    <p className='text-sm sm:text-base lg:text-lg text-slate-700 dark:text-slate-200 leading-relaxed pt-1'>
+                      {item}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FULL-SCREEN SECTION 2 – CE QUI REND CE PROGRAMME UNIQUE */}
+      <section className='min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-transparent via-secondary/5 to-secondary/10 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-24 lg:py-32'>
+        <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 w-full'>
+          <motion.div
+            variants={staggerContainer}
+            initial='initial'
+            whileInView='whileInView'
+            viewport={{ once: true, amount: 0.25 }}
+            className='w-full'
+          >
+            {/* Header */}
+            <motion.div
+              {...fadeInUp}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              className='text-center mb-12 lg:mb-16'
+            >
+              <div className='inline-flex items-center justify-center mb-6'>
+                <div className='flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-emerald-400 via-cyan-400 to-blue-500 text-white shadow-lg shadow-emerald-500/40'>
+                  <Sparkles className='h-8 w-8 sm:h-10 sm:w-10' />
+                </div>
+              </div>
+              <h2 className='text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-[#0A004B] dark:text-white mb-4'>
+                Ce qui rend ce programme unique
+              </h2>
+              <p className='text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto'>
+                Des avantages exclusifs qui font la différence
+              </p>
+            </motion.div>
+
+            {/* Unique Features Grid */}
+            <motion.div
+              variants={staggerContainer}
+              initial='initial'
+              whileInView='whileInView'
+              viewport={{ once: true, amount: 0.25 }}
+              className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6'
+            >
+              {[
+                {
+                  icon: Cpu,
+                  text: 'Programme clé en main pour les établissements.',
+                },
+                {
+                  icon: CircuitBoard,
+                  text: 'Encadrement par experts IA + pédagogues.',
+                },
+                {
+                  icon: BarChart3,
+                  text: 'Suivi mensuel et rapports d\'évolution.',
+                },
+                {
+                  icon: CheckCircle2,
+                  text: 'Intégration fluide dans l\'emploi du temps.',
+                },
+                {
+                  icon: Bot,
+                  text: 'Certification officielle INOTEQIA Academy.',
+                },
+              ].map(({ icon: Icon, text }) => (
+                <motion.div
+                  key={text}
+                  variants={cardVariant}
+                  className='relative overflow-hidden rounded-3xl bg-white/95 p-6 sm:p-8 shadow-[0_18px_45px_rgba(15,23,42,0.14)] ring-1 ring-primary/10 backdrop-blur dark:bg-slate-950/95 dark:ring-cyan-400/30 transition-all duration-300 hover:shadow-[0_24px_60px_rgba(15,23,42,0.20)] hover:-translate-y-1'
+                >
+                  <div
+                    aria-hidden='true'
+                    className='pointer-events-none absolute inset-y-0 right-0 w-40 bg-gradient-to-t from-[#00C3D9]/15 via-[#0091E6]/20 to-[#0067E0]/15 blur-2xl'
+                  />
+                  <div className='relative flex flex-col items-start gap-4'>
+                    <div className='flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00C3D9]/15 via-[#0091E6]/20 to-[#0067E0]/15 text-primary dark:text-cyan-300 ring-1 ring-primary/20 dark:ring-cyan-400/30'>
+                      <Icon className='h-6 w-6 sm:h-7 sm:w-7' />
+                    </div>
+                    <p className='text-sm sm:text-base lg:text-lg text-slate-700 dark:text-slate-200 leading-relaxed'>
+                      {text}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 1 CONTINUATION – Content grid */}
+      <section className='py-24 lg:py-32'>
+        <div className='container mx-auto max-w-6xl sm:px-6 lg:px-8'>
           {/* Content grid */}
-          <div className='mt-12 grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1.1fr)] lg:items-start'>
+          <div className='grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1.1fr)] lg:items-start'>
             {/* Feature groups */}
             <motion.div
               variants={staggerContainer}
