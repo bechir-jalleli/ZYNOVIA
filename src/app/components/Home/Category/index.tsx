@@ -28,16 +28,12 @@ const Category = () => {
 
   return (
     <section id='categories' className='scroll-mt-12'>
-      <div className='container'>
-        <div className='text-center'>
-          <h2>Discover What We Can Do</h2>
-          <p className='text-lg font-normal max-w-md mx-auto my-6'>
-            Dive into our categories to find tailored services that drive
-            results.
-          </p>
+<div className='container gap-2'>
+<div className='text-center '>
+          <h2>Nos Infrastructure</h2>
         </div>
         {/* grid layout */}
-        <div>
+        <div className='mt-12'>
           <div className='grid lg:grid-cols-4 grid-cols-2 gap-6'>
             {loading
               ? Array.from({ length: 4 }).map((_, i) => (

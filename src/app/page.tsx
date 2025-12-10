@@ -34,15 +34,15 @@ export default function Home() {
             INOTEQIA Academy construit un pont entre l&apos;école, la technologie et le monde
             professionnel pour aider chaque élève à trouver sa place dans les métiers de demain.
           </p>
-          <div className='mt-6 flex flex-wrap gap-4'>
+          <div className='mt-6 flex flex-wrap gap-3 sm:gap-5'>
             <Link
               href='/vision'
-              className='rounded-xl bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/40 transition hover:bg-primary/90'>
+              className='w-full sm:w-auto px-8 sm:px-10 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-white border rounded-[10px] border-transparent bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-md whitespace-nowrap'>
               Découvrir notre vision
             </Link>
             <Link
               href='/programmes'
-              className='text-sm font-semibold text-primary underline-offset-4 hover:underline'>
+              className='w-full sm:w-auto px-8 sm:px-10 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-primary border rounded-[10px] border-primary bg-white dark:bg-transparent hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-sm whitespace-nowrap'>
               Voir nos programmes
             </Link>
           </div>
@@ -50,9 +50,9 @@ export default function Home() {
       </section>
 
       {/* Programme highlights & social proof sections (existing components) */}
+      <Specialize />
       <Project />
       <Review />
-      <Specialize />
       <Pricing />
       <Category />
 

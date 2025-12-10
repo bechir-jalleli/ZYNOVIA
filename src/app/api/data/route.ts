@@ -162,12 +162,11 @@ const SpecializeData: SpecializeType[] = [
 
 const PlanData: PlanType[] = [
   {
-    type: 'Basic',
+    type: 'Programme une heure par semaine',
     price: {
       monthly: 9,
       yearly: 95,
     },
-    desc: 'Ideal for freelancers and startups.',
     option: [
       'Consultation with strategy session',
       'Basic design and development',
@@ -177,12 +176,11 @@ const PlanData: PlanType[] = [
     ],
   },
   {
-    type: 'Pro',
+    type: 'Bootcamp AI',
     price: {
       monthly: 19,
       yearly: 185,
     },
-    desc: 'Perfect for small growing teams.',
     option: [
       'Advanced project planning support',
       'Premium design and development',

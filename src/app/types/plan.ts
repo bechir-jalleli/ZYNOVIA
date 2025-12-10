@@ -4,6 +4,6 @@ export type PlanType = {
     monthly: number
     yearly: number
   }
-  desc: string
+  desc?: string
   option: string[]
 }

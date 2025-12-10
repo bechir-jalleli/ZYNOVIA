@@ -99,47 +99,56 @@ const Pricing = () => {
             ? Array.from({ length: 2 }).map((_, i) => (
                 <PricingSkeleton key={i} />
               ))
-            : plan.map((item, i) => (
-                <div key={i}>
-                  <div className='bg-white dark:bg-darkmode rounded-lg shadow-lg dark:shadow-neutral-50/10 border border-black/10 dark:border-white/10 px-7 py-10 h-full'>
-                    <div className='flex flex-col gap-6 border-b border-black/10 dark:border-white/10 pb-6'>
-                      <p className='text-2xl font-bold'>{item.type}</p>
-                      <p className='text-5xl font-bold text-lightdarkblue dark:text-white'>
-                        $
-                        {selectedCategory === 'etablissement'
-                          ? item.price.monthly
-                          : item.price.yearly}
-                        <span className='text-base font-normal text-lightgrey lowercase'>
-                          /{selectedCategory === 'etablissement' ? 'month' : 'year'}
-                        </span>{' '}
-                      </p>
-                      <p className='text-base font-normal'>{item.desc}</p>
+            : plan
+                .filter((item) => {
+                  // For entreprise, filter out "Bootcamp AI" (Pro) plan
+                  if (selectedCategory === 'entreprise' && item.type === 'Bootcamp AI') {
+                    return false
+                  }
+                  return true
+                })
+                .map((item, i) => {
+                  // Change "Programme une heure par semaine" to "Bootcamp AI" for entreprise
+                  const displayType =
+                    selectedCategory === 'entreprise' && item.type === 'Programme une heure par semaine'
+                      ? 'Bootcamp AI'
+                      : item.type
+
+                  return (
+                    <div key={i}>
+                      <div className='bg-white dark:bg-darkmode rounded-lg shadow-lg dark:shadow-neutral-50/10 border border-black/10 dark:border-white/10 px-7 py-10 h-full'>
+                        <div className='flex flex-col gap-6 border-b border-black/10 dark:border-white/10 pb-6'>
+                          <p className='text-lg font-bold whitespace-nowrap'>{displayType}</p>
+                          {item.desc && (
+                            <p className='text-base font-normal'>{item.desc}</p>
+                          )}
+                        </div>
+                        {/* options */}
+                        <div>
+                          <ul className='flex flex-col gap-6 my-6'>
+                            {item.option.map((feat, i) => (
+                              <li key={i}>
+                                <div className='flex items-center gap-3'>
+                                  <div className='p-1 rounded-full bg-primary/10 text-primary'>
+                                    <Icon
+                                      icon={'material-symbols:check-rounded'}
+                                      width={19}
+                                      height={19}
+                                    />
+                                  </div>
+                                  <p className='text-base font-normal'>{feat}</p>
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <button className='bg-primary border border-primary py-3 w-full rounded-lg text-white hover:bg-transparent hover:text-primary hover:cursor-pointer duration-300'>
+                          Buy Now
+                        </button>
+                      </div>
                     </div>
-                    {/* options */}
-                    <div>
-                      <ul className='flex flex-col gap-6 my-6'>
-                        {item.option.map((feat, i) => (
-                          <li key={i}>
-                            <div className='flex items-center gap-3'>
-                              <div className='p-1 rounded-full bg-primary/10 text-primary'>
-                                <Icon
-                                  icon={'material-symbols:check-rounded'}
-                                  width={19}
-                                  height={19}
-                                />
-                              </div>
-                              <p className='text-base font-normal'>{feat}</p>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <button className='bg-primary border border-primary py-3 w-full rounded-lg text-white hover:bg-transparent hover:text-primary hover:cursor-pointer duration-300'>
-                      Buy Now
-                    </button>
-                  </div>
-                </div>
-              ))}
+                  )
+                })}
         </div>
       </div>
     </section>

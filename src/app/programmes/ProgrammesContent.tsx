@@ -42,42 +42,83 @@ const cardVariant = {
 export default function ProgrammesContent() {
   return (
     <main className='bg-gradient-to-b from-secondary/10 via-secondary/5 to-transparent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
-      {/* SECTION 1 – PROGRAMME ANNUEL */}
-      <section className='py-24 lg:py-32'>
-        <div className='container mx-auto max-w-6xl  sm:px-6 lg:px-8'>
-          {/* Header */}
-          <motion.div
-            {...fadeInUp}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-          >
-            <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#0A004B] dark:text-white'>
-              Programme Annuel — Intégration IA dans le cursus scolaire
-            </h1>
-            <motion.p
-              {...fadeInUp}
-              transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
-              className='mt-6 text-lg sm:text-xl lg:text-2xl font-semibold text-primary dark:text-cyan-300'>
-              Un programme innovant intégré directement dans l’année scolaire pour moderniser
-              l’apprentissage, renforcer les matières STEM et préparer les élèves aux compétences
-              technologiques du futur.
-            </motion.p>
-            <motion.p
-              {...fadeInUp}
-              transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
-              className='mt-6 max-w-3xl text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed'>
-              INOTEQIA Academy prépare les jeunes aux compétences essentielles du futur : IA, pensée
-              algorithmique, robotique, créativité et culture numérique.
-            </motion.p>
-          </motion.div>
+      {/* HERO SECTION – PROGRAMME ANNUEL */}
+      <section className='relative min-h-screen flex items-center overflow-hidden bg-gradient-to-b from-secondary/60 via-secondary/30 to-transparent dark:from-slate-950 dark:via-slate-900/80 dark:to-slate-950'>
+        {/* Decorative background glow */}
+        <div
+          aria-hidden='true'
+          className='pointer-events-none absolute inset-x-0 top-0 -z-10 h-96 bg-[radial-gradient(circle_at_center,_rgba(0,195,217,0.25),transparent_60%)] dark:bg-[radial-gradient(circle_at_center,_rgba(0,195,217,0.35),transparent_60%)]'
+        />
 
-          {/* Statistics Section - INOTEQIA ACADEMY EN CHIFFRES */}
+        {/* Animated curved shapes */}
+        <div className='pointer-events-none absolute inset-0 -z-10 overflow-hidden'>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 0.15, scale: 1 }}
+            transition={{ duration: 2, ease: 'easeOut' }}
+            className='absolute -top-20 -right-20 h-96 w-96 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] blur-3xl'
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 0.1, scale: 1 }}
+            transition={{ duration: 2.5, ease: 'easeOut', delay: 0.3 }}
+            className='absolute bottom-0 left-0 h-80 w-80 rounded-full bg-gradient-to-tr from-[#0067E0] via-[#0091E6] to-[#00C3D9] blur-3xl'
+          />
+        </div>
+
+        <div className='container relative z-20 pt-20 lg:pt-24 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 w-full'>
+          <div className='relative z-20'>
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className='inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.25em] text-primary shadow-sm ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/80 dark:text-cyan-300 dark:ring-white/10 mb-6'
+            >
+              <span className='h-2 w-2 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] animate-pulse' />
+              Programme Annuel
+            </motion.div>
+
+            {/* Header */}
+            <motion.div
+              {...fadeInUp}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+              className='max-w-4xl'
+            >
+              <h1 className='text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-[#0A004B] dark:text-white mb-6'>
+                Programme Annuel — Intégration IA dans le cursus scolaire
+              </h1>
+              <motion.p
+                {...fadeInUp}
+                transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
+                className='text-lg sm:text-xl lg:text-2xl font-semibold text-primary dark:text-cyan-300 mb-6'>
+                Un programme innovant intégré directement dans l&apos;année scolaire pour moderniser
+                l&apos;apprentissage, renforcer les matières STEM et préparer les élèves aux compétences
+                technologiques du futur.
+              </motion.p>
+              <motion.p
+                {...fadeInUp}
+                transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
+                className='text-base sm:text-lg lg:text-xl text-slate-700 dark:text-slate-300 leading-relaxed max-w-3xl'>
+                INOTEQIA Academy prépare les jeunes aux compétences essentielles du futur : IA, pensée
+                algorithmique, robotique, créativité et culture numérique.
+              </motion.p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Statistics Section - INOTEQIA ACADEMY EN CHIFFRES */}
+      <section className='py-24 lg:py-32'>
+        <div className='container mx-auto max-w-6xl sm:px-6 lg:px-8'>
           <motion.div
             {...fadeInUp}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
-            className='mt-16 mb-12'
+            className='mb-16'
           >
             <div className='text-center mb-6'>
-              <h2 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A004B] dark:text-white'>
+              <h2 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A004B] dark:text-white mb-12'>
                 INOTEQIA ACADEMY EN CHIFFRES
               </h2>
             </div>
@@ -230,54 +271,17 @@ export default function ProgrammesContent() {
                 </div>
               </motion.div>
             </motion.div>
-
-            {/* Additional info section */}
-            <motion.div
-              variants={staggerContainer}
-              initial='initial'
-              whileInView='whileInView'
-              viewport={{ once: true, amount: 0.25 }}
-              className='mt-12 grid gap-6 sm:grid-cols-2'
-            >
-              <motion.div
-                variants={cardVariant}
-                className='relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#00C3D9]/10 via-[#0091E6]/10 to-[#0067E0]/10 p-6 ring-1 ring-primary/20 dark:ring-cyan-400/20'
-              >
-                <div className='flex items-center gap-3'>
-                  <div className='flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white'>
-                    <Sparkles className='h-5 w-5' />
-                  </div>
-                  <div>
-                    <h4 className='text-sm font-semibold text-[#0A004B] dark:text-white'>
-                      Une présence pédagogique forte
-                    </h4>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                variants={cardVariant}
-                className='relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-400/10 via-cyan-400/10 to-blue-500/10 p-6 ring-1 ring-emerald-400/20 dark:ring-cyan-400/20'
-              >
-                <div className='flex items-center gap-3'>
-                  <div className='flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 via-cyan-400 to-blue-500 text-white'>
-                    <BarChart3 className='h-5 w-5' />
-                  </div>
-                  <div>
-                    <h4 className='text-sm font-semibold text-[#0A004B] dark:text-white'>
-                      Un écosystème éducatif solide et en croissance
-                    </h4>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
           </motion.div>
+        </div>
+      </section>
 
-          {/* Partners Logos Section */}
+      {/* Partners Logos Section */}
+      <section className='py-24 lg:py-32'>
+        <div className='container mx-auto max-w-6xl sm:px-6 lg:px-8'>
           <motion.div
             {...fadeInUp}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.5 }}
-            className='mt-16 mb-12'
+            className='mb-12'
           >
             <div className='text-center mb-8'>
               <h3 className='text-xl sm:text-2xl font-semibold text-[#0A004B] dark:text-white'>

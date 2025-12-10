@@ -29,11 +29,11 @@ const RadarChartSkills: React.FC = () => {
           <p className='text-xs font-semibold uppercase tracking-[0.18em] text-primary'>
             Compétences clés
           </p>
-          <h3 className='text-lg font-semibold text-[#0A004B]'>
-            Compétences développées chez l’élève
+          <h3 className='text-lg font-semibold text-[#0A004B] dark:text-white'>
+            Compétences développées chez l'élève
           </h3>
         </div>
-        <p className='text-xs text-slate-500'>
+        <p className='text-xs text-slate-500 dark:text-slate-300'>
           Un profil équilibré mêlant excellence scientifique et soft skills.
         </p>
       </div>
