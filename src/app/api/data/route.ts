@@ -31,24 +31,34 @@ const NavLinkData: NavLinkType[] = [
     href: '/',
   },
   {
-    label: 'Programmes',
-    href: '/programmes',
-  },
-  {
     label: 'Vision',
     href: '/vision',
   },
   {
-    label: 'Parents',
-    href: '/parents',
+    label: 'Programmes',
+    href: '/programmes',
   },
+
   {
-    label: 'Partenariats',
-    href: '/partenariats',
+    label: 'Formateurs',
+    href: '/nos-formateurs',
   },
+  
+  // {
+  //   label: 'Parents',
+  //   href: '/parents',
+  // },
+  // {
+  //   label: 'Partenariats',
+  //   href: '/partenariats',
+  // },
+  // {
+  //   label: 'Ressources',
+  //   href: '/ressources',
+  // },
   {
-    label: 'Ressources',
-    href: '/ressources',
+    label: 'Infrastructures',
+    href: '/nos-infrastructures',
   },
   {
     label: 'Contact',
@@ -182,11 +192,11 @@ const PlanData: PlanType[] = [
       yearly: 185,
     },
     option: [
-      'Advanced project planning support',
-      'Premium design and development',
-      'Three revisions per project',
-      'Fully responsive and optimized',
-      'Priority email and chat support',
+      'Consultation with strategy session',
+      'Basic design and development',
+      'One revision per project',
+      'Responsive on all devices',
+      'Email support included only',
     ],
   },
 ]

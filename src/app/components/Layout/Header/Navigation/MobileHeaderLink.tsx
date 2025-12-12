@@ -3,19 +3,31 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { NavLinkType } from '@/app/types/navlink'
 
-const MobileHeaderLink: React.FC<{ item: NavLinkType }> = ({ item }) => {
+const MobileHeaderLink: React.FC<{ item: NavLinkType; onItemClick: () => void }> = ({ item, onItemClick }) => {
   const [submenuOpen, setSubmenuOpen] = useState(false)
 
-  const handleToggle = () => {
+  const handleToggle = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
     setSubmenuOpen(!submenuOpen)
   }
+
+  const handleItemClick = () => {
+    if (!item.submenu) {
+      onItemClick()
+    }
+  }
+
+  const handleSubItemClick = () => {
+    onItemClick()
+  }
+
   const path = usePathname()
 
   return (
     <div className='relative w-full'>
       <Link
         href={item.href}
-        onClick={item.submenu ? handleToggle : undefined}
+        onClick={item.submenu ? handleToggle : handleItemClick}
         className={`flex items-center justify-between w-full py-2 text-darkblue dark:text-white focus:outline-none hover:text-primary dark:hover:text-primary hover:cursor-pointer ${
           item.href === path ? '!text-primary dark:!text-primary' : null
         } `}>
@@ -43,6 +55,7 @@ const MobileHeaderLink: React.FC<{ item: NavLinkType }> = ({ item }) => {
             <Link
               key={index}
               href={subItem.href}
+              onClick={handleSubItemClick}
               className='block py-2 text-darkblue dark:text-white hover:bg-neutral-50 dark:hover:bg-darkmode/10 hover:text-primary dark:hover:text-primary'>
               {subItem.label}
             </Link>
