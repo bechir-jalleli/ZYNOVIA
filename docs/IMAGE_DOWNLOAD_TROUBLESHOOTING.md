@@ -167,3 +167,5 @@ The script is now working correctly with proper URL encoding. The 404 errors ind
 
 The good news: 8 images were successfully downloaded and the script is ready to download any images that exist at the correct paths.
 
+
+

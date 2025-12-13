@@ -140,33 +140,33 @@ const ReviewData: ReviewType[] = [
 const SpecializeData: SpecializeType[] = [
   {
     imgSrc: '/images/specialization/webdesign.svg',
-    title: 'Web Design',
-    desc: 'Modern, responsive websites built to engage users and convert leads.',
+    title: 'Développement Web',
+    desc: 'Apprenez à créer des sites web modernes et responsives qui engagent les utilisateurs et génèrent des résultats.',
   },
   {
     imgSrc: '/images/specialization/logodesign.svg',
-    title: 'Logo Design',
-    desc: 'Distinct, memorable logos crafted to define and elevate your brand.',
+    title: 'Design de Logo',
+    desc: 'Maîtrisez la création de logos distinctifs et mémorables pour définir et valoriser une marque.',
   },
   {
     imgSrc: '/images/specialization/mobileapp.svg',
-    title: 'Mobile App Development',
-    desc: 'Custom iOS and Android apps with seamless flow and functionality.',
+    title: 'Développement d\'Applications Mobiles',
+    desc: 'Créez des applications iOS et Android personnalisées avec des flux fluides et des fonctionnalités avancées.',
   },
   {
     imgSrc: '/images/specialization/contentwrite.svg',
-    title: 'Content Writing',
-    desc: 'SEO-driven content designed to educate, engage, and boost visibility.',
+    title: 'Rédaction de Contenu',
+    desc: 'Apprenez à rédiger du contenu optimisé SEO pour éduquer, engager et améliorer la visibilité.',
   },
   {
     imgSrc: '/images/specialization/seooptimize.svg',
-    title: 'SEO Optimization',
-    desc: 'Proven SEO strategies that increase rankings, traffic, and brand reach.',
+    title: 'Optimisation SEO',
+    desc: 'Maîtrisez les stratégies SEO éprouvées pour améliorer le classement, le trafic et la portée de la marque.',
   },
   {
     imgSrc: '/images/specialization/digitalmarketing.svg',
-    title: 'Digital Marketing',
-    desc: 'Targeted digital campaigns to build awareness and grow your audience.',
+    title: 'Marketing Digital',
+    desc: 'Développez des campagnes digitales ciblées pour accroître la notoriété et développer votre audience.',
   },
 ]
 
@@ -203,23 +203,23 @@ const PlanData: PlanType[] = [
 
 const CategoryData: CategoryType[] = [
   {
-    imgSrc: '/images/category/webdev.webp',
-    title: 'Web Design',
+    imgSrc: '/images/infrastructures/SalleReunion/file-2-20240115143823.jpg',
+    title: 'Un espace conçu pour apprendre dans un environnement professionnel',
   },
   {
-    imgSrc: '/images/category/logods.webp',
+    imgSrc: '/images/infrastructures/gallery/gallery-05.jpg',
     title: 'Logo Design',
   },
   {
-    imgSrc: '/images/category/mobileapp.webp',
+    imgSrc: '/images/infrastructures/gallery/gallery-04.jpg',
     title: 'Mobile App Development',
   },
   {
-    imgSrc: '/images/category/contentwrite.webp',
+    imgSrc: '/images/infrastructures/Coworkingspace/file-1-20240115154556.jpg',
     title: 'Content Writing',
   },
   {
-    imgSrc: '/images/category/digitalmarket.webp',
+    imgSrc: '/images/infrastructures/SalleReunion2/file-0-20240115144742.jpg',
     title: 'Digital Marketing',
   },
 ]

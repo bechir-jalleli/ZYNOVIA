@@ -28,13 +28,13 @@ const Category = () => {
 
   return (
     <section id='categories' className='scroll-mt-12'>
-<div className='container gap-2'>
-<div className='text-center '>
-          <h2>Nos Infrastructure</h2>
+      <div className='container gap-2'>
+        <div className='text-center '>
+          <h2>Nos Infrastructures</h2>
         </div>
         {/* grid layout */}
         <div className='mt-12'>
-          <div className='grid lg:grid-cols-4 grid-cols-2 gap-6'>
+          <div className='grid lg:grid-cols-4 grid-cols-2 gap-6 auto-rows-fr'>
             {loading
               ? Array.from({ length: 4 }).map((_, i) => (
                   <CategorySkeleton key={i} />
@@ -45,15 +45,15 @@ const Category = () => {
                     className={`${
                       i === 0
                         ? 'col-span-2 row-span-2'
-                        : 'sm:col-span-1 col-span-2 row-span-1'
-                    }`}>
-                    <div className='relative group overflow-hidden w-full rounded-lg'>
+                        : 'sm:col-span-1 col-span-2 row-span-1 min-h-[250px]'
+                    } h-full`}>
+                    <div className='relative group overflow-hidden w-full h-full rounded-lg'>
                       <Image
                         src={item.imgSrc}
                         alt={item.title}
                         width={570}
                         height={394}
-                        className='w-full rounded-lg'
+                        className='w-full h-full object-cover rounded-lg'
                       />
                       <Link href='/' target='_blank'>
                         <div className='absolute inset-0 bg-gradient-to-b from-darklight/0 from-60% to-darklight/80 lg:translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out rounded-lg flex items-end'>

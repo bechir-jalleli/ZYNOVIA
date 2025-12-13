@@ -370,3 +370,5 @@ import { VALOTECH_IMAGES } from '@/constants/images'
 - Some URLs might be unavailable - the script will continue with others
 - Check the console output for specific error messages
 
+
+

@@ -32,15 +32,6 @@
   .container {
     @apply max-w-7xl mx-auto w-full px-4;
   }
-
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
 }
 
 @layer base {
