@@ -122,9 +122,8 @@ export const spaceCategories: SpaceCategory[] = [
     title: 'Espaces partagés (open space)',
     description: 'Un espace de travail partagé professionnel où les étudiants apprennent dans un environnement similaire aux vraies entreprises.',
     images: [
-      '/images/infrastructures/Coworkingspace/file-1-20240115154556.jpg',
-      '/images/infrastructures/Coworkingspace/file-2-20240115154556.jpg',
-      '/images/infrastructures/Coworkingspace/image.png',
+      '/images/infrastructures/gallery/gallery-05.jpg',
+      '/images/infrastructures/gallery/gallery-04.jpg',
     ],
   },
   {
@@ -150,16 +149,18 @@ export const spaceCategories: SpaceCategory[] = [
     title: 'Cuisine & espace détente',
     description: 'Espace convivial pour les pauses, les échanges informels et les moments de détente entre les sessions.',
     images: [
-      '/images/infrastructures/reception/file-10-20240115142736.jpg',
+      '/images/infrastructures/Coworkingspace/image.png',
+      '/images/infrastructures/Coworkingspace/file-1-20240115154556.jpg',
+      '/images/infrastructures/gallery/gallery-03.jpg',
     ],
   },
 ]
 
 export const galleryItems: GalleryItem[] = [
   {
-    title: 'Open space',
+    title: 'Espaces partagés (open space)',
     description: 'Espace de travail partagé professionnel pour apprendre dans un environnement réel.',
-    image: '/images/infrastructures/gallery/gallery-00.jpg',
+    image: '/images/infrastructures/gallery/gallery-05.jpg',
   },
   {
     title: 'Salle de formation',
@@ -176,20 +177,20 @@ export const galleryItems: GalleryItem[] = [
     description: 'Salle de réunion professionnelle équipée pour les présentations et réunions.',
     image: '/images/infrastructures/gallery/gallery-03.jpg',
   },
-  {
-    title: 'Cuisine & détente',
-    description: 'Espace cuisine et détente pour les pauses et les échanges entre les sessions.',
-    image: '/images/infrastructures/gallery/gallery-04.jpg',
-  },
-  {
-    title: 'Espace professionnel',
-    description: 'Vue d\'ensemble de notre espace de coworking professionnel.',
-    image: '/images/infrastructures/gallery/gallery-05.jpg',
-  },
 ]
 
-// Collect all room images from space categories for the gallery
+// Collect all room images in the specified order for the gallery
 export const getAllRoomImages = (): string[] => {
-  return spaceCategories.flatMap((category) => category.images)
+  return [
+    '/images/infrastructures/reception/file-10-20240115142736.jpg',
+    '/images/infrastructures/gallery/gallery-05.jpg',
+    '/images/infrastructures/gallery/gallery-04.jpg',
+    '/images/infrastructures/SalleReunion/file-0-20240115143823.jpg',
+    '/images/infrastructures/SalleReunion/file-3-20240115143823.jpg',
+    '/images/infrastructures/Coworkingspace/file-2-20240115154556.jpg',
+    '/images/infrastructures/Coworkingspace/file-1-20240115154556.jpg',
+    '/images/infrastructures/Coworkingspace/image.png',
+    '/images/infrastructures/gallery/gallery-03.jpg',
+  ]
 }
 

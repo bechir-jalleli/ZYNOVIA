@@ -1,66 +1,74 @@
-import Link from 'next/link'
-
-import ContactForm from './components/ContactForm'
-import Category from './components/Home/Category'
+import type { Metadata } from 'next'
 import Hero from './components/Home/Hero'
-import PartnersBanner from './components/Home/PartnersBanner'
-import Pricing from './components/Home/Pricing'
-import Project from './components/Home/Project'
 import Records from './components/Home/Records'
-import Review from './components/Home/Review'
 import Specialize from './components/Home/Specialize'
+import PourQui from './components/Home/PourQui'
+import PartnersBanner from './components/Home/PartnersBanner'
+import FinalCTA from './components/Home/FinalCTA'
+
+export const metadata: Metadata = {
+  title: 'INOTEQIA Academy – Académie Tunisienne de l\'IA et des Technologies du Futur',
+  description:
+    'Formez votre enfant à l\'intelligence artificielle, la robotique et les technologies du futur. Programmes annuels et bootcamps pour collégiens et lycéens à Tunis.',
+  keywords: [
+    'IA Tunisie',
+    'intelligence artificielle enfants',
+    'formation IA collégiens',
+    'formation IA lycéens',
+    'robotique Tunisie',
+    'programmation enfants',
+    'académie IA Tunisie',
+    'INOTEQIA Academy',
+  ],
+  openGraph: {
+    title: 'INOTEQIA Academy – Académie Tunisienne de l\'IA et des Technologies du Futur',
+    description:
+      'Formez votre enfant à l\'intelligence artificielle, la robotique et les technologies du futur. Programmes annuels et bootcamps pour collégiens et lycéens.',
+    url: 'https://inoteqia.com',
+    siteName: 'INOTEQIA Academy',
+    images: [
+      {
+        url: '/images/banner/image.png',
+        width: 1200,
+        height: 630,
+        alt: 'INOTEQIA Academy - Formation IA pour jeunes',
+      },
+    ],
+    locale: 'fr_FR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'INOTEQIA Academy – Académie Tunisienne de l\'IA',
+    description:
+      'Formez votre enfant à l\'intelligence artificielle, la robotique et les technologies du futur.',
+    images: ['/images/banner/image.png'],
+  },
+  alternates: {
+    canonical: 'https://inoteqia.com',
+  },
+}
 
 export default function Home() {
   return (
     <main>
-      {/* Hero – keep short and focused on main value prop & CTAs */}
+      {/* 1️⃣ HERO - Avec 3 CTAs clairs */}
       <Hero />
 
-      {/* IA & futur - Why learn AI section with statistics */}
+      {/* 2️⃣ POURQUOI APPRENDRE L'IA ? - Version courte avec 3 chiffres + bouton */}
       <Records />
 
-      {/* Vision preview – links to full /vision page */}
-      <section
-        id='vision'
-        className='bg-secondary/10 py-16 dark:bg-slate-900/60'>
-        <div className='container mx-auto max-w-5xl px-4'>
-          <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
-            Notre vision
-          </p>
-          <h2 className='mt-2 text-2xl font-semibold text-darkblue dark:text-white'>
-            Préparer les collégiens et lycéens à un avenir transformé par l&apos;IA
-          </h2>
-          <p className='mt-3 max-w-3xl text-sm sm:text-base text-slate-600 dark:text-slate-300'>
-            INOTEQIA Academy construit un pont entre l&apos;école, la technologie et le monde
-            professionnel pour aider chaque élève à trouver sa place dans les métiers de demain.
-          </p>
-          <div className='mt-6 flex flex-wrap gap-3 sm:gap-5'>
-            <Link
-              href='/vision'
-              className='w-full sm:w-auto px-8 sm:px-10 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-white border rounded-[10px] border-transparent bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-md whitespace-nowrap'>
-              Découvrir notre vision
-            </Link>
-            <Link
-              href='/programmes'
-              className='w-full sm:w-auto px-8 sm:px-10 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-primary border rounded-[10px] border-primary bg-white dark:bg-transparent hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-sm whitespace-nowrap'>
-              Voir nos programmes
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Programme highlights & social proof sections (existing components) */}
+      {/* 3️⃣ NOTRE VALEUR AJOUTÉE - 4 cartes */}
       <Specialize />
-      <Project />
-      <Review />
-      <Pricing />
-      <Category />
 
-      {/* Partners Banner - moved to end of page */}
+      {/* 4️⃣ POUR QUI ? - Section stratégique avec 3 cartes */}
+      <PourQui />
+
+      {/* 5️⃣ PREUVE SOCIALE - Logos partenaires + chiffre clé + témoignage */}
       <PartnersBanner />
 
-      {/* Final CTA band leading to /contact (reuses existing contact form anchor) */}
-      <ContactForm />
+      {/* 6️⃣ CTA FINAL - Texte inspirant + 2 boutons */}
+      <FinalCTA />
     </main>
   )
 }

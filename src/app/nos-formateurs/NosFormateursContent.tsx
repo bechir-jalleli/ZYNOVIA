@@ -130,13 +130,17 @@ export default function NosFormateursContent() {
                 variants={cardVariant}
                 className='relative overflow-hidden rounded-2xl bg-white/90 p-5 shadow-[0_16px_40px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/90 dark:ring-slate-700/70'>
                 <div className='flex items-center gap-4'>
-                  <div className='relative h-16 w-16 overflow-hidden rounded-full ring-2 ring-primary/40'>
+                  <div className='relative h-16 w-16 overflow-hidden rounded-full ring-2 ring-primary/40 bg-slate-200 dark:bg-slate-700'>
                     <Image
-                      src={trainer.photo}
+                      src={trainer.photo || '/images/default-avatar.png'}
                       alt={trainer.name}
                       fill
                       sizes='64px'
                       className='object-cover'
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement
+                        target.src = '/images/default-avatar.png'
+                      }}
                     />
                   </div>
                   <div>

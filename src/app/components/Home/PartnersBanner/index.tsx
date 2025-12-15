@@ -24,11 +24,16 @@ const PartnersBanner = () => {
           transition={{ duration: 0.6 }}
           className='text-center mb-12 sm:mb-16'>
           <p className='text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-primary dark:text-cyan-300 mb-3'>
-            Nos partenaires
+            Preuve sociale
           </p>
-          <h3 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-darkblue dark:text-white'>
+          <h3 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-darkblue dark:text-white mb-4'>
             Établissements qui nous font confiance
           </h3>
+          <div className='mt-6 mb-8'>
+            <p className='text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary to-indigo-500 bg-clip-text text-transparent'>
+              +200 élèves formés
+            </p>
+          </div>
         </motion.div>
 
         {/* Logos Grid */}
@@ -58,6 +63,24 @@ const PartnersBanner = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Optional Testimonial */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className='mt-12 sm:mt-16 max-w-3xl mx-auto text-center'
+        >
+          <div className='bg-white/80 dark:bg-slate-900/80 rounded-2xl p-6 sm:p-8 shadow-lg border border-slate-200/50 dark:border-slate-700/50'>
+            <p className='text-base sm:text-lg text-slate-700 dark:text-slate-300 italic leading-relaxed mb-4'>
+              &quot;INOTEQIA Academy a transformé notre approche de l&apos;enseignement de l&apos;IA. Nos élèves sont maintenant mieux préparés aux défis de demain.&quot;
+            </p>
+            <p className='text-sm sm:text-base font-semibold text-slate-800 dark:text-slate-200'>
+              — Directeur d&apos;établissement partenaire
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

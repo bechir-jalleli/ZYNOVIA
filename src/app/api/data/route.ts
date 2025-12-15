@@ -207,11 +207,11 @@ const CategoryData: CategoryType[] = [
     title: 'Un espace conçu pour apprendre dans un environnement professionnel',
   },
   {
-    imgSrc: '/images/infrastructures/gallery/gallery-05.jpg',
+    imgSrc: '/images/infrastructures/gallery/gallery-01.jpg',
     title: 'Logo Design',
   },
   {
-    imgSrc: '/images/infrastructures/gallery/gallery-04.jpg',
+    imgSrc: '/images/infrastructures/gallery/gallery-02.jpg',
     title: 'Mobile App Development',
   },
   {

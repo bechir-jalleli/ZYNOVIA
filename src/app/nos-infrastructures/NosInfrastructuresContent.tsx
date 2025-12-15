@@ -1,11 +1,13 @@
 'use client'
 
+import { useState, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { accessibility, equipmentCategories, galleryItems, getAllRoomImages, infrastructureIntro, spaceCategories, spaceSections } from '@/data/infrastructure'
 import { Building2, Cpu, MapPin, ShieldCheck, Sparkles } from 'lucide-react'
 import RoomGallery from '@/app/components/Infrastructure/RoomGallery'
+import ImageLightbox from '@/app/components/Infrastructure/ImageLightbox'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 24 },
@@ -30,6 +32,49 @@ const cardVariant = {
 const sectionIcons = [Building2, Cpu, MapPin]
 
 export default function NosInfrastructuresContent() {
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [lightboxIndex, setLightboxIndex] = useState(0)
+
+  // Collect all images from different sections
+  const allImages = useMemo(() => {
+    const images: string[] = []
+    
+    // Add RoomGallery images
+    images.push(...getAllRoomImages())
+    
+    // Add equipment section image
+    images.push('/images/infrastructures/gallery/gallery-04.jpg')
+    
+    // Add space category images
+    spaceCategories.forEach((category) => {
+      images.push(...category.images)
+    })
+    
+    // Add gallery items images
+    galleryItems.forEach((item) => {
+      images.push(item.image)
+    })
+    
+    return images
+  }, [])
+
+  const openLightbox = (index: number) => {
+    if (index >= 0 && index < allImages.length) {
+      setLightboxIndex(index)
+      setLightboxOpen(true)
+    }
+  }
+
+  const closeLightbox = () => {
+    setLightboxOpen(false)
+  }
+
+  // Helper function to find image index in allImages array
+  const findImageIndex = (imagePath: string): number => {
+    const index = allImages.findIndex((img) => img === imagePath)
+    return index >= 0 ? index : 0 // Default to 0 if not found
+  }
+
   return (
     <main className='bg-gradient-to-b from-secondary/20 via-secondary/5 to-transparent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
       {/* HERO */}
@@ -206,13 +251,15 @@ export default function NosInfrastructuresContent() {
                 aria-hidden='true'
                 className='pointer-events-none absolute -right-10 -top-8 h-40 w-40 rounded-full bg-gradient-to-br from-[#00C3D9]/35 via-[#0091E6]/30 to-[#0067E0]/25 blur-3xl'
               />
-              <div className='relative overflow-hidden rounded-3xl bg-white/80 shadow-[0_18px_55px_rgba(15,23,42,0.18)] ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/85 dark:ring-white/10'>
+              <div 
+                className='relative overflow-hidden rounded-3xl bg-white/80 shadow-[0_18px_55px_rgba(15,23,42,0.18)] ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/85 dark:ring-white/10 cursor-pointer group'
+                onClick={() => openLightbox(findImageIndex('/images/infrastructures/gallery/gallery-04.jpg'))}>
                 <Image
-                  src='/images/infrastructures/gallery/gallery-01.jpg'
+                  src='/images/infrastructures/gallery/gallery-04.jpg'
                   alt='Salle de formation équipée'
                   width={1100}
                   height={820}
-                  className='h-full w-full object-cover'
+                  className='h-full w-full object-cover transition duration-500 group-hover:scale-105'
                 />
               </div>
             </motion.div>
@@ -271,7 +318,8 @@ export default function NosInfrastructuresContent() {
                     <motion.div
                       key={index}
                       variants={cardVariant}
-                      className='group relative overflow-hidden rounded-2xl bg-white/80 shadow-[0_14px_36px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/70 backdrop-blur dark:bg-slate-900/85 dark:ring-slate-700/70'>
+                      className='group relative overflow-hidden rounded-2xl bg-white/80 shadow-[0_14px_36px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/70 backdrop-blur dark:bg-slate-900/85 dark:ring-slate-700/70 cursor-pointer'
+                      onClick={() => openLightbox(findImageIndex(image))}>
                       <div className='relative aspect-[4/3] w-full overflow-hidden'>
                         <Image
                           src={image}
@@ -416,7 +464,8 @@ export default function NosInfrastructuresContent() {
               <motion.div
                 key={item.title}
                 variants={cardVariant}
-                className='group relative overflow-hidden rounded-2xl bg-white/80 shadow-[0_14px_36px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/70 backdrop-blur dark:bg-slate-900/85 dark:ring-slate-700/70'>
+                className='group relative overflow-hidden rounded-2xl bg-white/80 shadow-[0_14px_36px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/70 backdrop-blur dark:bg-slate-900/85 dark:ring-slate-700/70 cursor-pointer'
+                onClick={() => openLightbox(findImageIndex(item.image))}>
                 <div className='relative h-64 w-full overflow-hidden'>
                   <Image
                     src={item.image}
@@ -437,6 +486,15 @@ export default function NosInfrastructuresContent() {
           </motion.div>
         </div>
       </section>
+
+      {/* Image Lightbox */}
+      <ImageLightbox
+        images={allImages}
+        currentIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={closeLightbox}
+        title="Galerie d'infrastructures INOTEQIA Academy"
+      />
     </main>
   )
 }

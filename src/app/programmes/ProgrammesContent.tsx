@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 import {
   Cpu,
   Brain,
@@ -642,12 +643,12 @@ export default function ProgrammesContent() {
                       Devenir établissement partenaire
                     </p>
                   </div>
-                  <button
-                    type='button'
+                  <Link
+                    href='/contact?type=etablissement'
                     className='inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/40 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
                   >
                     Devenir établissement partenaire
-                  </button>
+                  </Link>
                 </div>
               </motion.div>
             </motion.div>
@@ -739,12 +740,12 @@ export default function ProgrammesContent() {
                       </p>
                     </div>
                   </div>
-                  <button
-                    type='button'
+                  <Link
+                    href='/contact?type=parent'
                     className='inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/40 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
                   >
-                    S’inscrire au prochain bootcamp
-                  </button>
+                    S'inscrire au prochain bootcamp
+                  </Link>
                 </div>
               </motion.div>
             </motion.div>

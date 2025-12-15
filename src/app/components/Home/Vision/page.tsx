@@ -167,6 +167,8 @@ const FaqAccordion: React.FC<{ items: FaqItem[] }> = ({ items }) => {
 }
 
 const SourcesSection: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  
   const sources = [
     {
       stat: "40% des emplois transformés par l'IA d'ici 2030",
@@ -201,82 +203,100 @@ const SourcesSection: React.FC = () => {
     <motion.section
       {...fadeInUp}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className='rounded-3xl bg-white/95 p-6 text-slate-900 shadow-xl shadow-slate-900/5 ring-1 ring-slate-200/80 backdrop-blur-sm dark:bg-slate-950/95 dark:text-slate-100 dark:shadow-2xl dark:shadow-cyan-500/10 dark:ring-cyan-400/30'>
-      {/* Header */}
-      <div className='mb-6 flex items-center gap-3 border-b border-slate-700 pb-4'>
-        <Icon
-          icon='solar:book-bookmark-bold-duotone'
-          className='h-7 w-7 text-cyan-300'
-        />
-        <div>
-          <h3 className='text-sm font-semibold uppercase tracking-[0.22em] text-primary dark:text-cyan-300'>
-            Sources et références
-          </h3>
-          <p className='mt-1 text-xs text-slate-500 dark:text-slate-400'>
-            Toutes nos statistiques proviennent d&apos;organismes internationaux reconnus
-          </p>
+      aria-label='Sources et références'
+      className='rounded-3xl bg-white/95 p-5 sm:p-6 text-slate-900 shadow-xl shadow-slate-900/5 ring-1 ring-slate-200/80 backdrop-blur-sm dark:bg-slate-950/95 dark:text-slate-100 dark:shadow-2xl dark:shadow-cyan-500/10 dark:ring-cyan-400/30'>
+      {/* Header with toggle */}
+      <button
+        type='button'
+        onClick={() => setIsOpen(!isOpen)}
+        className='w-full flex items-center justify-between gap-3 pb-4 border-b border-slate-200 dark:border-slate-700'>
+        <div className='flex items-center gap-3'>
+          <Icon
+            icon='solar:book-bookmark-bold-duotone'
+            className='h-6 w-6 sm:h-7 sm:w-7 text-cyan-300'
+          />
+          <div className='text-left'>
+            <h3 className='text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-primary dark:text-cyan-300'>
+              Sources et références
+            </h3>
+            <p className='mt-1 text-xs text-slate-500 dark:text-slate-400'>
+              Toutes nos statistiques proviennent d&apos;organismes internationaux reconnus
+            </p>
+          </div>
         </div>
-      </div>
+        <Icon
+          icon={isOpen ? 'solar:alt-arrow-up-bold-duotone' : 'solar:alt-arrow-down-bold-duotone'}
+          className='h-5 w-5 text-primary dark:text-cyan-300 flex-shrink-0'
+        />
+      </button>
 
-      {/* Sources List */}
-      <div className='space-y-5'>
-        {sources.map((source, index) => (
-          <motion.div
-            key={index}
+      {/* Sources List - Collapsible */}
+      <motion.div
+        initial={false}
+        animate={{
+          height: isOpen ? 'auto' : 0,
+          opacity: isOpen ? 1 : 0,
+        }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        className='overflow-hidden'>
+        {isOpen && (
+          <div className='space-y-5 pt-4'>
+            {sources.map((source, index) => (
+              <motion.div
+                key={index}
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
             viewport={{ once: true }}
-            className='group rounded-2xl bg-slate-50 p-4 transition hover:bg-slate-100 dark:bg-slate-800/50 dark:hover:bg-slate-800/70'>
-            {/* Stat highlight */}
-            <div className='mb-3 flex items-start gap-3'>
-              <div className='mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500/10 to-blue-600/10 dark:from-cyan-500/20 dark:to-blue-600/20'>
-                <Icon icon={source.icon} className='h-4 w-4 text-cyan-600 dark:text-cyan-300' />
-              </div>
-              <div className='flex-1'>
-                <p className='text-sm font-semibold text-slate-900 dark:text-white'>{source.stat}</p>
-                <span className='mt-1 inline-block rounded-full bg-cyan-500/5 px-2 py-0.5 text-[10px] font-medium text-cyan-700 dark:bg-cyan-500/10 dark:text-cyan-300'>
-                  {source.type}
-                </span>
-              </div>
-            </div>
+                className='group rounded-2xl bg-slate-50 p-4 transition hover:bg-slate-100 dark:bg-slate-800/50 dark:hover:bg-slate-800/70'>
+                {/* Stat highlight */}
+                <div className='mb-3 flex items-start gap-3'>
+                  <div className='mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500/10 to-blue-600/10 dark:from-cyan-500/20 dark:to-blue-600/20'>
+                    <Icon icon={source.icon} className='h-4 w-4 text-cyan-600 dark:text-cyan-300' />
+                  </div>
+                  <div className='flex-1'>
+                    <p className='text-sm font-semibold text-slate-900 dark:text-white'>{source.stat}</p>
+                    <span className='mt-1 inline-block rounded-full bg-cyan-500/5 px-2 py-0.5 text-[10px] font-medium text-cyan-700 dark:bg-cyan-500/10 dark:text-cyan-300'>
+                      {source.type}
+                    </span>
+                  </div>
+                </div>
 
-            {/* Source details */}
-            <div className='ml-11 space-y-1.5 text-xs'>
-              <div className='flex items-center gap-2'>
-                <Icon icon='mdi:domain' className='h-3.5 w-3.5 text-slate-400' />
-                <span className='text-slate-600 dark:text-slate-300'>
-                  <strong className='text-slate-900 dark:text-white'>{source.organization}</strong>
-                </span>
-              </div>
-              <div className='flex items-center gap-2'>
-                <Icon icon='mdi:calendar' className='h-3.5 w-3.5 text-slate-400' />
-                <span className='text-slate-500 dark:text-slate-400'>{source.date}</span>
-              </div>
-              <div className='flex items-center gap-2'>
-                <Icon
-                  icon='mdi:file-document-outline'
-                  className='h-3.5 w-3.5 text-slate-400'
-                />
-                <span className='text-slate-600 dark:text-slate-400'>{source.title}</span>
-              </div>
-            </div>
+                {/* Source details */}
+                <div className='ml-11 space-y-1.5 text-xs'>
+                  <div className='flex items-center gap-2'>
+                    <Icon icon='mdi:domain' className='h-3.5 w-3.5 text-slate-400' />
+                    <span className='text-slate-600 dark:text-slate-300'>
+                      <strong className='text-slate-900 dark:text-white'>{source.organization}</strong>
+                    </span>
+                  </div>
+                  <div className='flex items-center gap-2'>
+                    <Icon icon='mdi:calendar' className='h-3.5 w-3.5 text-slate-400' />
+                    <span className='text-slate-500 dark:text-slate-400'>{source.date}</span>
+                  </div>
+                  <div className='flex items-center gap-2'>
+                    <Icon
+                      icon='mdi:file-document-outline'
+                      className='h-3.5 w-3.5 text-slate-400'
+                    />
+                    <span className='text-slate-600 dark:text-slate-400'>{source.title}</span>
+                  </div>
+                </div>
 
-            {/* Link button */}
-            <a
-              href={source.url}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='ml-11 mt-3 inline-flex items-center gap-2 rounded-lg bg-cyan-500/5 px-3 py-1.5 text-xs font-medium text-cyan-700 transition hover:bg-cyan-500/10 hover:text-cyan-800 group-hover:gap-3 dark:bg-cyan-500/10 dark:text-cyan-300 dark:hover:bg-cyan-500/20 dark:hover:text-cyan-200'>
-              Consulter le rapport complet
-              <Icon icon='mdi:arrow-right' className='h-4 w-4' />
-            </a>
-          </motion.div>
-        ))}
-      </div>
+                {/* Link button */}
+                <a
+                  href={source.url}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='ml-11 mt-3 inline-flex items-center gap-2 rounded-lg bg-cyan-500/5 px-3 py-1.5 text-xs font-medium text-cyan-700 transition hover:bg-cyan-500/10 hover:text-cyan-800 group-hover:gap-3 dark:bg-cyan-500/10 dark:text-cyan-300 dark:hover:bg-cyan-500/20 dark:hover:text-cyan-200'>
+                  Consulter le rapport complet
+                  <Icon icon='mdi:arrow-right' className='h-4 w-4' />
+                </a>
+              </motion.div>
+            ))}
 
-      {/* Additional Resources */}
-      <div className='mt-6 rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800/30'>
+            {/* Additional Resources */}
+            <div className='mt-6 rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800/30'>
         <div className='mb-3 flex items-center gap-2'>
           <Icon icon='mdi:information' className='h-5 w-5 text-cyan-400' />
           <h4 className='text-xs font-semibold uppercase tracking-wider text-cyan-300'>
@@ -314,18 +334,21 @@ const SourcesSection: React.FC = () => {
               PwC - Global AI Study
             </a>
           </li>
-        </ul>
-      </div>
+              </ul>
+            </div>
 
-      {/* Footer note */}
-      <div className='mt-5 flex items-start gap-2 border-t border-slate-200 pt-4 text-xs text-slate-500 dark:border-slate-700'>
-        <Icon icon='mdi:shield-check' className='mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-400' />
-        <p>
-          <strong className='text-slate-400'>Vérification régulière :</strong> Nos statistiques sont
-          mises à jour chaque trimestre pour refléter les dernières tendances du marché mondial de
-          l&apos;IA. Dernière mise à jour : Décembre 2024.
-        </p>
-      </div>
+            {/* Footer note */}
+            <div className='mt-5 flex items-start gap-2 border-t border-slate-200 pt-4 text-xs text-slate-500 dark:border-slate-700'>
+              <Icon icon='mdi:shield-check' className='mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-400' />
+              <p>
+                <strong className='text-slate-400'>Vérification régulière :</strong> Nos statistiques sont
+                mises à jour chaque trimestre pour refléter les dernières tendances du marché mondial de
+                l&apos;IA. Dernière mise à jour : Décembre 2024.
+              </p>
+            </div>
+          </div>
+        )}
+      </motion.div>
     </motion.section>
   )
 }
@@ -333,25 +356,19 @@ const SourcesSection: React.FC = () => {
 export default function NotreVisionPage() {
   const faqItems: FaqItem[] = [
     {
-      question: 'À qui s’adresse INOTEQIA Academy ?',
+      question: "À qui s'adresse INOTEQIA Academy ?",
       answer:
-        'Aux collégiens et lycéens curieux, motivés et prêts à explorer l’intelligence artificielle, quel que soit leur niveau de départ.',
+        "INOTEQIA s'adresse aux collégiens et lycéens (12-18 ans) curieux et motivés, quel que soit leur niveau initial en programmation. Nos parcours s'adaptent à chaque profil : débutant, intermédiaire ou avancé. L'essentiel ? La motivation et l'envie d'explorer l'intelligence artificielle.",
     },
     {
-      question: 'Faut‑il déjà savoir programmer pour rejoindre un programme ?',
+      question: 'Faut‑il déjà savoir programmer pour commencer ?',
       answer:
-        'Non. Nos parcours sont conçus par niveau : introduction, initiation puis approfondissement, avec un accompagnement continu.',
+        "Non, pas du tout. Nos parcours sont conçus pour accueillir les débutants. Nous proposons trois niveaux progressifs : introduction (découverte de l'IA), initiation (premiers projets) et approfondissement (projets complexes). Un accompagnement continu garantit que chaque élève progresse à son rythme, quel que soit son point de départ.",
     },
     {
-      question:
-        'Comment INOTEQIA prépare‑t‑elle concrètement aux études supérieures ?',
+      question: 'Comment INOTEQIA prépare‑t‑elle concrètement aux études supérieures et au monde professionnel ?',
       answer:
-        'Projets, défis, concours blancs, simulations d’oraux et construction d’un portfolio de projets IA valorisable dans les dossiers.',
-    },
-    {
-      question: 'Quel est le niveau d’engagement demandé aux parents ?',
-      answer:
-        'Nous impliquons les parents par des bilans réguliers, des démos de projets et des temps d’échange autour de l’orientation.',
+        "Par une approche pratique et progressive : projets concrets, défis collaboratifs, simulations de concours, construction d'un portfolio de projets IA valorisable dans les dossiers d'admission. Nous développons aussi les soft skills (communication, leadership, esprit critique) recherchés par les grandes écoles et les entreprises. Résultat : une longueur d'avance pour les concours, les filières STEM et les carrières technologiques.",
     },
   ]
 
@@ -389,8 +406,12 @@ export default function NotreVisionPage() {
               </h2>
               <div className='mx-auto max-w-3xl space-y-3 text-sm sm:text-base text-slate-700 dark:text-slate-300'>
                 <p>
-                  INOTEQIA Academy se donne pour mission de devenir la référence tunisienne en
-                  matière de formation IA pour les jeunes.
+                  Nous préparons les collégiens et lycéens aux compétences essentielles de demain : 
+                  <strong className='text-[#0A004B] dark:text-white'> intelligence artificielle, pensée algorithmique, créativité et culture numérique</strong>.
+                </p>
+                <p className='text-sm text-slate-600 dark:text-slate-400'>
+                  Notre objectif : devenir la référence tunisienne en formation IA pour les jeunes, 
+                  en créant un pont entre l&apos;école, la technologie et le monde professionnel.
                 </p>
               </div>
 
@@ -401,29 +422,29 @@ export default function NotreVisionPage() {
                 viewport={{ once: true, amount: 0.3 }}
                 className='mt-6 rounded-2xl border border-primary/10 bg-white/80 p-4 shadow-[0_18px_45px_rgba(15,23,42,0.12)] backdrop-blur-sm dark:border-white/5 dark:bg-slate-900/70'>
                 <p className='mb-4 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-primary/80 dark:text-cyan-300'>
-                  Nous construisons un pont solide entre
+                  Notre mission : relier 4 univers essentiels
                 </p>
 
                 <div className='grid grid-cols-1 gap-3 sm:grid-cols-2'>
                   <FeatureCard
                     icon={GraduationCap}
                     title='Le système scolaire'
-                    description='Le système scolaire et ses limites actuelles'
+                    description='Aligner nos programmes avec les attendus académiques, tout en dépassant leurs limites.'
                   />
                   <FeatureCard
                     icon={Cpu}
                     title='Les innovations technologiques'
-                    description='Les innovations technologiques qui redéfinissent les compétences'
+                    description="Maîtriser l'IA, les algorithmes et les outils qui redéfinissent les compétences de demain."
                   />
                   <FeatureCard
                     icon={Briefcase}
-                    title="Les besoins du marché de l'emploi"
-                    description="Les besoins réels et évolutifs du marché de l'emploi"
+                    title="Le marché de l'emploi"
+                    description="Développer les compétences recherchées aujourd'hui et demain par les entreprises."
                   />
                   <FeatureCard
                     icon={Users}
-                    title='Les attentes des parents & entreprises'
-                    description='Les attentes concrètes des parents et des entreprises'
+                    title='Parents & entreprises'
+                    description='Rassurer les familles et répondre aux attentes des partenaires professionnels.'
                   />
                 </div>
               </motion.div>
@@ -431,18 +452,18 @@ export default function NotreVisionPage() {
               <div className='mt-6 flex flex-wrap items-center justify-center gap-4 md:justify-start'>
                 <Link
                   href='/#contact'
-                  className='inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/30 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'>
-                  Découvrir nos programmes
+                  className='inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/30 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'>
+                  Réserver une session découverte
                 </Link>
-                <button
-                  type='button'
-                  className='inline-flex items-center gap-2 rounded-xl border border-primary/30 bg-white/70 px-5 py-2.5 text-sm font-semibold text-[#0A004B] shadow-sm backdrop-blur hover:border-primary hover:text-primary dark:bg-slate-900/70 dark:text-white'>
+                <Link
+                  href='/programmes'
+                  className='inline-flex items-center gap-2 rounded-xl border border-primary/30 bg-white/70 px-5 py-3 text-sm font-semibold text-[#0A004B] shadow-sm backdrop-blur hover:border-primary hover:text-primary dark:bg-slate-900/70 dark:text-white'>
                   <Icon
                     icon='mdi:school'
                     className='h-5 w-5 text-primary'
                   />
-                  Voir un exemple de parcours
-                </button>
+                  Découvrir les parcours
+                </Link>
               </div>
 
               <div className='mt-4 flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500 md:justify-start dark:text-slate-300'>
@@ -472,7 +493,8 @@ export default function NotreVisionPage() {
                 Le pont INOTEQIA
               </p>
               <p className='mt-1 text-sm text-slate-600 dark:text-slate-200'>
-                Un parcours structuré qui relie l&apos;école, la technologie et le monde professionnel.
+                Un parcours progressif de la découverte à la maîtrise, 
+                qui connecte l&apos;école aux réalités technologiques et professionnelles.
               </p>
               <div className='mt-6 grid grid-cols-2 gap-6 sm:grid-cols-4'>
                 <BridgeStep
@@ -517,12 +539,11 @@ export default function NotreVisionPage() {
               Tendances du marché
             </p>
             <h2 className='text-xl font-semibold text-[#0A004B] sm:text-2xl dark:text-white'>
-              Un monde où l’IA transforme profondément les métiers
+              L&apos;IA transforme le monde du travail : préparez-vous dès maintenant
             </h2>
             <p className='text-sm sm:text-base text-slate-700 dark:text-slate-200'>
-              La part des emplois transformés par l’IA augmente chaque année et redessine en profondeur les
-              attentes du marché. Le graphique ci‑dessous illustre cette évolution et montre pourquoi il est
-              essentiel de préparer dès aujourd’hui les élèves à ce futur.
+              Les chiffres parlent d&apos;eux-mêmes. L&apos;intelligence artificielle redéfinit les métiers 
+              à une vitesse inédite. <strong>Préparer les jeunes aujourd&apos;hui, c&apos;est leur garantir un avenir professionnel solide.</strong>
             </p>
           </motion.div>
 
@@ -619,9 +640,24 @@ export default function NotreVisionPage() {
               </div>
             </div>
 
-            <p className='pt-2 text-[11px] text-slate-500 dark:text-slate-400'>
-              Source: FMI, WEF, McKinsey (2024).
-            </p>
+            <div className='pt-2 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400'>
+              <p>Source: FMI, WEF, McKinsey (2024)</p>
+              <button
+                type='button'
+                onClick={() => {
+                  const sourcesSection = document.querySelector('section[aria-label="Sources et références"]')
+                  if (sourcesSection) {
+                    sourcesSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+                    setTimeout(() => {
+                      const button = sourcesSection.querySelector('button[type="button"]') as HTMLButtonElement
+                      if (button && button.textContent?.includes('Sources')) button.click()
+                    }, 500)
+                  }
+                }}
+                className='text-primary hover:underline dark:text-cyan-300 font-medium'>
+                Voir toutes les sources
+              </button>
+            </div>
           </motion.div>
         </motion.section>
 
@@ -635,18 +671,28 @@ export default function NotreVisionPage() {
               Métiers de demain
             </p>
             <h2 className='text-xl font-semibold text-[#0A004B] sm:text-2xl dark:text-white'>
-              Préparer les élèves à un monde en constante invention
+              Un monde où 85% des métiers de demain n&apos;existent pas encore
             </h2>
-            <p>Dans un monde où :</p>
-            <ul className='space-y-1'>
-              <li>• 40&nbsp;% des emplois mondiaux seront transformés par l’IA d’ici 2030,</li>
-              <li>• 85&nbsp;% des métiers de demain n’existent pas encore,</li>
-              <li>• les entreprises recherchent des profils créatifs capables de collaborer avec l’IA,</li>
+            <p className='text-sm sm:text-base text-slate-700 dark:text-slate-200 mb-3'>
+              La transformation est déjà en cours. <strong>Les métiers d&apos;aujourd&apos;hui évoluent, ceux de demain restent à inventer.</strong>
+            </p>
+            <ul className='space-y-2 text-sm sm:text-base text-slate-700 dark:text-slate-200 mb-4'>
+              <li className='flex items-start gap-2'>
+                <span className='mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                <span><strong>40% des emplois</strong> seront transformés par l&apos;IA d&apos;ici 2030</span>
+              </li>
+              <li className='flex items-start gap-2'>
+                <span className='mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                <span><strong>85% des métiers de demain</strong> n&apos;existent pas encore</span>
+              </li>
+              <li className='flex items-start gap-2'>
+                <span className='mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                <span>Les entreprises recherchent des <strong>profils créatifs capables de collaborer avec l&apos;IA</strong></span>
+              </li>
             </ul>
-            <p>
-              nous préparons les élèves à devenir des innovateurs, des créateurs de solutions, des esprits
-              critiques et autonomes. Le schéma ci‑dessous met en lumière ce déséquilibre croissant entre les
-              métiers actuels et ceux qui restent à inventer.
+            <p className='text-sm sm:text-base text-slate-700 dark:text-slate-200'>
+              <strong>Notre réponse :</strong> former des innovateurs, des créateurs de solutions, des esprits critiques et autonomes. 
+              Des jeunes qui sauront inventer leur métier plutôt que de le subir.
             </p>
             <div
               aria-label='Répartition entre métiers actuels et métiers de demain'
@@ -661,42 +707,43 @@ export default function NotreVisionPage() {
             transition={{ duration: 0.7, ease: 'easeOut', delay: 0.05 }}
             className='relative rounded-3xl bg-white/90 p-5 text-slate-900 shadow-xl shadow-slate-900/5 ring-1 ring-slate-200/80 backdrop-blur-sm dark:bg-slate-950/95 dark:text-slate-100 dark:ring-cyan-400/40 dark:shadow-cyan-500/20'>
             <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary dark:text-cyan-300'>
-              Parcours élève ⟶ professionnel
+              Le parcours INOTEQIA
             </p>
             <p className='mt-2 text-sm text-slate-600 dark:text-slate-200'>
-              Une trajectoire progressive, de la découverte à la maîtrise, jalonnée de projets concrets.
+              <strong>Une trajectoire progressive</strong>, de la découverte à la maîtrise, 
+              jalonnée de projets concrets qui construisent le portfolio de l&apos;élève.
             </p>
             <ol className='mt-5 space-y-4'>
               {[
                 {
-                  title: 'Découverte & curiosité',
-                  desc: 'Comprendre ce qu’est l’IA, ses usages et ses limites. Développer une première culture numérique.',
+                  title: '1. Découverte & curiosité',
+                  desc: "Comprendre l'IA, ses usages et ses limites. Développer une première culture numérique solide.",
                 },
                 {
-                  title: 'Pratique & expérimentation',
-                  desc: 'Créer des mini‑projets, manipuler des modèles, explorer des cas d’usage proches de leur quotidien.',
+                  title: '2. Pratique & expérimentation',
+                  desc: "Créer des mini‑projets, manipuler des modèles, explorer des cas d'usage concrets et proches de leur quotidien.",
                 },
                 {
-                  title: 'Projets d’impact',
-                  desc: 'Imaginer et prototyper des solutions IA pour l’éducation, la santé, le sport, l’environnement…',
+                  title: "3. Projets d'impact",
+                  desc: "Imaginer et prototyper des solutions IA pour l'éducation, la santé, le sport, l'environnement… Des projets qui ont du sens.",
                 },
                 {
-                  title: 'Orientation & projection',
-                  desc: 'Construire un portfolio, préparer concours et dossiers, se projeter dans les études et métiers de demain.',
+                  title: '4. Orientation & projection',
+                  desc: 'Construire un portfolio valorisable, préparer concours et dossiers, se projeter dans les études et métiers de demain.',
                 },
               ].map((step, index) => (
                 <li key={step.title} className='relative flex gap-3'>
                   <div className='mt-1 flex flex-col items-center'>
-                    <div className='flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-[#00C3D9] to-[#0067E0] text-[11px] font-semibold text-white'>
+                    <div className='flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-[#00C3D9] to-[#0067E0] text-xs font-semibold text-white shadow-md'>
                       {index + 1}
                     </div>
                     {index < 3 && (
-                      <div className='mt-1 h-8 w-px bg-gradient-to-b from-cyan-400/70 to-cyan-500/10' />
+                      <div className='mt-1.5 h-10 w-px bg-gradient-to-b from-cyan-400/70 to-cyan-500/10' />
                     )}
                   </div>
-                  <div className='space-y-1 text-xs sm:text-sm'>
+                  <div className='space-y-1.5 text-xs sm:text-sm flex-1'>
                     <p className='font-semibold text-slate-900 dark:text-white'>{step.title}</p>
-                    <p className='text-slate-600 dark:text-slate-300'>{step.desc}</p>
+                    <p className='text-slate-600 dark:text-slate-300 leading-relaxed'>{step.desc}</p>
                   </div>
                 </li>
               ))}
@@ -714,11 +761,11 @@ export default function NotreVisionPage() {
               Compétences clés
             </p>
             <h2 className='text-xl font-semibold text-[#0A004B] sm:text-2xl dark:text-white'>
-              Allier excellence scientifique et soft skills humains
+              L&apos;excellence technique + l&apos;intelligence humaine
             </h2>
-            <p>
-              Nous développons chez chaque élève un équilibre entre compétences techniques de haut niveau et
-              qualités humaines essentielles pour collaborer avec l’IA et les équipes.
+            <p className='text-sm sm:text-base text-slate-700 dark:text-slate-200'>
+              L&apos;IA ne remplace pas l&apos;humain. Elle l&apos;amplifie. Nous développons chez chaque élève 
+              <strong className='text-[#0A004B] dark:text-white'> l&apos;équilibre parfait entre compétences techniques de haut niveau et qualités humaines essentielles.</strong>
             </p>
 
             <div className='grid gap-4 md:grid-cols-2'>
@@ -733,10 +780,19 @@ export default function NotreVisionPage() {
                     Compétences scientifiques avancées
                   </h3>
                 </div>
-                <ul className='mt-2 space-y-1 text-xs sm:text-sm'>
-                  <li>• IA, modèles d’apprentissage, algorithmes</li>
-                  <li>• Pensée logique et abstraction</li>
-                  <li>• Culture numérique profonde</li>
+                <ul className='mt-2 space-y-1.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300'>
+                  <li className='flex items-start gap-2'>
+                    <span className='mt-1.5 h-1 w-1 rounded-full bg-[#0091E6]' />
+                    <span>IA, modèles d&apos;apprentissage, algorithmes</span>
+                  </li>
+                  <li className='flex items-start gap-2'>
+                    <span className='mt-1.5 h-1 w-1 rounded-full bg-[#0091E6]' />
+                    <span>Pensée logique et abstraction</span>
+                  </li>
+                  <li className='flex items-start gap-2'>
+                    <span className='mt-1.5 h-1 w-1 rounded-full bg-[#0091E6]' />
+                    <span>Culture numérique profonde</span>
+                  </li>
                 </ul>
               </div>
 
@@ -751,23 +807,38 @@ export default function NotreVisionPage() {
                     Compétences humaines &amp; soft skills
                   </h3>
                 </div>
-                <ul className='mt-2 space-y-1 text-xs sm:text-sm'>
-                  <li>• Collaboration</li>
-                  <li>• Communication</li>
-                  <li>• Leadership</li>
-                  <li>• Esprit critique</li>
-                  <li>• Créativité</li>
+                <ul className='mt-2 space-y-1.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300'>
+                  <li className='flex items-start gap-2'>
+                    <span className='mt-1.5 h-1 w-1 rounded-full bg-emerald-500' />
+                    <span>Collaboration et travail d&apos;équipe</span>
+                  </li>
+                  <li className='flex items-start gap-2'>
+                    <span className='mt-1.5 h-1 w-1 rounded-full bg-emerald-500' />
+                    <span>Communication efficace</span>
+                  </li>
+                  <li className='flex items-start gap-2'>
+                    <span className='mt-1.5 h-1 w-1 rounded-full bg-emerald-500' />
+                    <span>Leadership et prise d&apos;initiative</span>
+                  </li>
+                  <li className='flex items-start gap-2'>
+                    <span className='mt-1.5 h-1 w-1 rounded-full bg-emerald-500' />
+                    <span>Esprit critique et analyse</span>
+                  </li>
+                  <li className='flex items-start gap-2'>
+                    <span className='mt-1.5 h-1 w-1 rounded-full bg-emerald-500' />
+                    <span>Créativité et innovation</span>
+                  </li>
                 </ul>
               </div>
             </div>
 
-            <div className='mt-3 rounded-2xl border border-dashed border-primary/30 bg-primary/5 px-4 py-3 text-xs text-slate-700 dark:border-cyan-400/40 dark:bg-cyan-500/5 dark:text-slate-200'>
-              <p className='font-semibold text-[#0A004B] dark:text-white'>
-                Notre conviction&nbsp;:
+            <div className='mt-3 rounded-2xl border border-dashed border-primary/30 bg-primary/5 px-4 py-3 text-sm text-slate-700 dark:border-cyan-400/40 dark:bg-cyan-500/5 dark:text-slate-200'>
+              <p className='font-semibold text-[#0A004B] dark:text-white mb-1'>
+                Notre conviction
               </p>
-              <p>
-                un élève qui comprend l’IA aujourd’hui, dans toutes ses dimensions, devient un adulte
-                indispensable demain.
+              <p className='text-xs sm:text-sm'>
+                Un élève qui maîtrise l&apos;IA aujourd&apos;hui devient <strong>un adulte indispensable demain</strong>. 
+                Dans toutes ses dimensions : technique, éthique et humaine.
               </p>
             </div>
           </div>
@@ -802,12 +873,12 @@ export default function NotreVisionPage() {
                 Opportunités &amp; débouchés
               </p>
               <h2 className='text-xl font-semibold text-[#0A004B] sm:text-2xl dark:text-white'>
-                Une longueur d’avance pour les études supérieures et le monde professionnel
+                Une longueur d&apos;avance pour les études et la carrière
               </h2>
-              <p>
-                INOTEQIA donne un avantage stratégique déterminant pour les concours, les parcours STEM, les
-                écoles d’ingénieurs, les carrières technologiques et toutes les entreprises en recherche de
-                talents IA.
+              <p className='text-sm sm:text-base text-slate-700 dark:text-slate-200'>
+                <strong>INOTEQIA donne un avantage stratégique déterminant</strong> pour réussir les concours exigeants, 
+                intégrer les meilleures filières STEM, accéder aux grandes écoles d&apos;ingénieurs, 
+                et se démarquer dans les carrières technologiques.
               </p>
               <ul className='mt-3 grid gap-2 text-xs sm:grid-cols-2 sm:text-sm'>
                 <li className='flex items-start gap-2'>
@@ -868,12 +939,14 @@ export default function NotreVisionPage() {
               <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary dark:text-cyan-300'>
                 Témoignages &amp; indicateurs de confiance
               </p>
-              <p className='text-sm text-slate-700 dark:text-slate-100'>
-                « Depuis qu’il suit le programme INOTEQIA, notre fils a gagné en assurance, en curiosité
-                scientifique et en capacité à travailler en équipe. Il se projette enfin dans des études qui
-                lui ressemblent. »
+              <p className='text-sm sm:text-base text-slate-700 dark:text-slate-100 italic'>
+                « Depuis qu&apos;il suit INOTEQIA, notre fils a gagné en assurance et en curiosité scientifique. 
+                Il travaille mieux en équipe et se projette enfin dans des études qui lui correspondent vraiment. 
+                <strong> Une transformation positive qui nous rassure pour son avenir.</strong> »
               </p>
-              <p className='text-xs text-slate-500 dark:text-slate-300'>— Parent d’élève, niveau lycée</p>
+              <p className='text-xs sm:text-sm text-slate-500 dark:text-slate-300 mt-2'>
+                — Parent d&apos;élève, niveau lycée
+              </p>
               <div className='mt-3 grid gap-4 sm:grid-cols-3'>
                 <div className='space-y-1'>
                   <p className='text-2xl font-semibold text-slate-900 dark:text-white'>
@@ -906,18 +979,26 @@ export default function NotreVisionPage() {
               {...fadeInUp}
               transition={{ duration: 0.6, ease: 'easeOut', delay: 0.05 }}
               className='space-y-4 rounded-3xl bg-white/80 p-5 shadow-md shadow-black/5 ring-1 ring-white/70 backdrop-blur-2xl dark:bg-slate-900/80 dark:ring-white/10'>
-              <h3 className='text-sm font-semibold text-[#0A004B] dark:text-white'>
-                Une décision qui construit l’avenir dès aujourd’hui
+              <h3 className='text-sm sm:text-base font-semibold text-[#0A004B] dark:text-white mb-2'>
+                Une décision qui construit l&apos;avenir dès aujourd&apos;hui
               </h3>
-              <p className='text-xs sm:text-sm text-slate-600 dark:text-slate-200'>
-                Choisir INOTEQIA, c’est offrir aux élèves un terrain d’expérimentation sécurisé, exigeant et
-                enthousiasmant, où l’IA devient un levier de créativité et non une source de crainte.
+              <p className='text-xs sm:text-sm text-slate-600 dark:text-slate-200 mb-4'>
+                Choisir INOTEQIA, c&apos;est offrir à votre enfant un <strong>terrain d&apos;expérimentation sécurisé, exigeant et enthousiasmant</strong>, 
+                où l&apos;IA devient un levier de créativité, pas une source de crainte.
               </p>
-              <Link
-                href='/#contact'
-                className='inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/30 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'>
-                Réserver une session découverte
-              </Link>
+              <div className='space-y-3'>
+                <Link
+                  href='/#contact'
+                  className='inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/30 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'>
+                  Réserver une session découverte
+                </Link>
+                <Link
+                  href='/programmes'
+                  className='inline-flex w-full items-center justify-center gap-2 rounded-xl border border-primary/30 bg-white/70 px-5 py-2.5 text-sm font-semibold text-[#0A004B] shadow-sm backdrop-blur hover:border-primary hover:text-primary dark:bg-slate-900/70 dark:text-white'>
+                  <Icon icon='mdi:school' className='h-4 w-4' />
+                  Découvrir les parcours élèves
+                </Link>
+              </div>
             </motion.div>
           </div>
         </motion.section>
@@ -936,14 +1017,60 @@ export default function NotreVisionPage() {
               Questions fréquentes
             </p>
             <h2 className='text-xl font-semibold text-[#0A004B] sm:text-2xl dark:text-white'>
-              Tout ce que vous souhaitez savoir avant d’inscrire votre enfant
+              Questions fréquentes
             </h2>
             <p className='mx-auto max-w-3xl text-xs sm:text-sm text-slate-600 dark:text-slate-300'>
-              Nous accompagnons les familles à chaque étape : choix du parcours, suivi des progrès et
-              préparation des prochaines étapes académiques.
+              Les réponses aux questions que vous vous posez le plus souvent. 
+              Nous accompagnons les familles à chaque étape : choix du parcours, suivi des progrès et préparation de l&apos;orientation.
             </p>
           </div>
           <FaqAccordion items={faqItems} />
+        </motion.section>
+
+        {/* Final CTA Section */}
+        <motion.section
+          {...fadeInUp}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className='relative rounded-3xl bg-gradient-to-br from-[#00C3D9]/10 via-[#0091E6]/10 to-[#0067E0]/10 p-8 sm:p-10 text-center ring-1 ring-primary/20 backdrop-blur-sm dark:from-cyan-500/5 dark:via-blue-600/5 dark:to-blue-700/5 dark:ring-cyan-400/30'>
+          <div className='mx-auto max-w-3xl space-y-6'>
+            <div className='space-y-3'>
+              <h2 className='text-2xl sm:text-3xl font-bold text-[#0A004B] dark:text-white'>
+                Prêt à préparer l&apos;avenir de votre enfant ?
+              </h2>
+              <p className='text-base sm:text-lg text-slate-700 dark:text-slate-300'>
+                Rejoignez INOTEQIA Academy et offrez-lui les compétences essentielles pour réussir dans un monde transformé par l&apos;IA.
+              </p>
+            </div>
+            
+            <div className='flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4'>
+              <Link
+                href='/#contact'
+                className='inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-[#0091E6]/30 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'>
+                Réserver une session découverte
+              </Link>
+              <Link
+                href='/programmes'
+                className='inline-flex items-center justify-center gap-2 rounded-xl border-2 border-primary/30 bg-white/90 px-7 py-3.5 text-base font-semibold text-[#0A004B] shadow-sm backdrop-blur hover:border-primary hover:bg-white transition dark:bg-slate-900/90 dark:text-white dark:hover:bg-slate-900'>
+                <Icon icon='mdi:school' className='h-5 w-5' />
+                Découvrir les parcours élèves
+              </Link>
+            </div>
+
+            <div className='pt-4 flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm text-slate-600 dark:text-slate-400'>
+              <div className='inline-flex items-center gap-2'>
+                <Icon icon='solar:shield-check-bold-duotone' className='h-4 w-4 text-emerald-500' />
+                <span>+200 élèves accompagnés</span>
+              </div>
+              <div className='inline-flex items-center gap-2'>
+                <Icon icon='solar:hand-stars-bold-duotone' className='h-4 w-4 text-primary' />
+                <span>95% de satisfaction parents</span>
+              </div>
+              <div className='inline-flex items-center gap-2'>
+                <Icon icon='solar:users-group-rounded-bold-duotone' className='h-4 w-4 text-primary' />
+                <span>Partenariats établissements & entreprises</span>
+              </div>
+            </div>
+          </div>
         </motion.section>
       </div>
     </section>
