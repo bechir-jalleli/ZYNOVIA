@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { RecordType } from '@/app/types/record'
 import Image from 'next/image'
+import Link from 'next/link'
 import RecordSkeleton from '../../Skeleton/Record'
 
 type AnimatedDigitProps = {
@@ -57,17 +58,23 @@ const Records = () => {
   const [record, setRecord] = useState<RecordType[]>([])
   const [Loading, setLoading] = useState(true)
   const [visible, setVisible] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const sectionRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setError(null)
         const res = await fetch('/api/data')
-        if (!res.ok) throw new Error('Failed to fetch')
+        if (!res.ok) throw new Error('Échec du chargement des données')
         const data = await res.json()
+        if (!data.RecordData || data.RecordData.length === 0) {
+          throw new Error('Aucune donnée disponible')
+        }
         setRecord(data.RecordData)
       } catch (error) {
         console.error('Error fetching service', error)
+        setError('Impossible de charger les données. Veuillez réessayer plus tard.')
       } finally {
         setLoading(false)
       }
@@ -110,18 +117,34 @@ const Records = () => {
             </span>
           </h2>
           <p className='mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl mx-auto'>
-            Ces chiffres montrent à quel point l&apos;intelligence artificielle
-            transforme déjà nos études, nos métiers et les entreprises. C&apos;est
-            maintenant qu&apos;il faut se préparer.
+            L&apos;intelligence artificielle transforme déjà nos études, nos métiers et les entreprises. C&apos;est maintenant qu&apos;il faut se préparer.
           </p>
         </div>
 
         <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 items-stretch gap-6'>
-          {Loading
-            ? Array.from({ length: 3 }).map((_, i) => (
-                <RecordSkeleton key={i} />
-              ))
-            : record.map((item, i) => (
+          {Loading ? (
+            Array.from({ length: 3 }).map((_, i) => <RecordSkeleton key={i} />)
+          ) : error ? (
+            <div className='col-span-full'>
+              <div className='text-center p-8 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 rounded-lg border border-red-200 dark:border-red-800'>
+                <p className='font-semibold mb-2'>Erreur de chargement</p>
+                <p className='text-sm'>{error}</p>
+                <button
+                  onClick={() => window.location.reload()}
+                  className='mt-4 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-semibold transition-colors'
+                >
+                  Réessayer
+                </button>
+              </div>
+            </div>
+          ) : record.length === 0 ? (
+            <div className='col-span-full'>
+              <div className='text-center p-8 bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-400 rounded-lg border border-yellow-200 dark:border-yellow-800'>
+                <p className='font-semibold'>Aucune donnée disponible</p>
+              </div>
+            </div>
+          ) : (
+            record.map((item, i) => (
                 <div
                   key={i}
                   className={`h-full transition-all duration-700 ease-out ${
@@ -149,7 +172,17 @@ const Records = () => {
                     </p>
                   </div>
                 </div>
-              ))}
+              ))
+          )}
+        </div>
+        
+        {/* CTA Button */}
+        <div className='mt-10 text-center'>
+          <Link
+            href='/vision'
+            className='inline-block px-8 sm:px-10 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-white border rounded-[10px] border-transparent bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-md whitespace-nowrap'>
+            👉 Découvrir notre vision
+          </Link>
         </div>
       </div>
     </section>

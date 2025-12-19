@@ -20,7 +20,7 @@ const ContactForm = () => {
     )
     setIsFormValid(isValid)
   }, [formData])
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prevData) => ({
       ...prevData,

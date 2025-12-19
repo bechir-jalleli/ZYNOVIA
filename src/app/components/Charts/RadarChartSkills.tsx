@@ -30,7 +30,7 @@ const RadarChartSkills: React.FC = () => {
             Compétences clés
           </p>
           <h3 className='text-lg font-semibold text-[#0A004B] dark:text-white'>
-            Compétences développées chez l'élève
+            Compétences développées chez l&apos;élève
           </h3>
         </div>
         <p className='text-xs text-slate-500 dark:text-slate-300'>

@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
+import Link from 'next/link'
 import {
   Cpu,
   Brain,
@@ -18,6 +18,7 @@ import {
   FolderKanban,
 } from 'lucide-react'
 import AnimatedNumber from '@/app/components/AnimatedNumber'
+import PartnersBanner from '@/app/components/Home/PartnersBanner'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 28 },
@@ -275,59 +276,8 @@ export default function ProgrammesContent() {
         </div>
       </section>
 
-      {/* Partners Logos Section */}
-      <section className='py-24 lg:py-32'>
-        <div className='container mx-auto max-w-6xl sm:px-6 lg:px-8'>
-          <motion.div
-            {...fadeInUp}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.5 }}
-            className='mb-12'
-          >
-            <div className='text-center mb-8'>
-              <h3 className='text-xl sm:text-2xl font-semibold text-[#0A004B] dark:text-white'>
-                Nos établissements partenaires
-              </h3>
-              <p className='mt-2 text-sm text-slate-600 dark:text-slate-400'>
-                Des établissements qui nous font confiance pour former leurs élèves
-              </p>
-            </div>
-
-            <motion.div
-              variants={staggerContainer}
-              initial='initial'
-              whileInView='whileInView'
-              viewport={{ once: true, amount: 0.25 }}
-              className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 items-center'
-            >
-              {[
-                { name: 'Charlemagne', image: '/images/partenaire/harlemagne.png' },
-                { name: 'Louis Pasteur', image: '/images/partenaire/louisPasteur.png' },
-                { name: 'Salim', image: '/images/partenaire/salim.png' },
-                { name: 'Essor', image: '/images/partenaire/essor.png' },
-                { name: 'Bouebdelli', image: '/images/partenaire/bouebdelli.png' },
-                { name: 'École Canadienne de Tunis', image: '/images/partenaire/ECT.png' },
-              ].map((partner) => (
-                <motion.div
-                  key={partner.name}
-                  variants={cardVariant}
-                  className='relative overflow-hidden rounded-2xl bg-white/90 p-4 sm:p-6 shadow-[0_8px_24px_rgba(15,23,42,0.08)] ring-1 ring-slate-200/60 backdrop-blur dark:bg-slate-900/90 dark:ring-slate-700/50 transition-all duration-300 hover:shadow-[0_12px_32px_rgba(15,23,42,0.12)] hover:-translate-y-1'
-                >
-                  <div className='relative flex items-center justify-center h-20 sm:h-24 w-full'>
-                    <Image
-                      src={partner.image}
-                      alt={`Logo ${partner.name}`}
-                      width={200}
-                      height={80}
-                      className='object-contain max-h-full w-auto filter grayscale hover:grayscale-0 transition-all duration-300'
-                      style={{ maxWidth: '100%', height: 'auto' }}
-                    />
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Partners Logos / Preuve sociale Section */}
+      <PartnersBanner />
 
       {/* FULL-SCREEN SECTION 1 – OBJECTIFS PÉDAGOGIQUES */}
       <section className='min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-secondary/10 via-secondary/5 to-transparent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-24 lg:py-32'>
@@ -642,12 +592,12 @@ export default function ProgrammesContent() {
                       Devenir établissement partenaire
                     </p>
                   </div>
-                  <button
-                    type='button'
+                  <Link
+                    href='/contact?type=etablissement#contact-form'
                     className='inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/40 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
                   >
                     Devenir établissement partenaire
-                  </button>
+                  </Link>
                 </div>
               </motion.div>
             </motion.div>
@@ -739,12 +689,12 @@ export default function ProgrammesContent() {
                       </p>
                     </div>
                   </div>
-                  <button
-                    type='button'
+                  <Link
+                    href='/contact?type=parent'
                     className='inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/40 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
                   >
-                    S’inscrire au prochain bootcamp
-                  </button>
+                    S&apos;inscrire au prochain bootcamp
+                  </Link>
                 </div>
               </motion.div>
             </motion.div>

@@ -13,8 +13,6 @@ const donutDataAI = [
 ]
 
 const DonutChartFutureJobs: React.FC = () => {
-  const total = donutDataAI.reduce((sum, item) => sum + item.value, 0)
-
   return (
     <div className='rounded-2xl bg-white shadow-sm p-6 dark:bg-slate-900'>
       <div className='mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between'>
@@ -26,11 +24,11 @@ const DonutChartFutureJobs: React.FC = () => {
             </p>
           </div>
           <h3 className='text-lg font-semibold text-[#0A004B] dark:text-white'>
-            Projection mondiale des métiers impactés par l'intelligence artificielle
+            Projection mondiale des métiers impactés par l&apos;intelligence artificielle
           </h3>
         </div>
         <p className='text-xs text-slate-500 dark:text-slate-400'>
-          40% des emplois mondiaux seront affectés par l'IA d'ici 2030.
+          40% des emplois mondiaux seront affectés par l&apos;IA d&apos;ici 2030.
         </p>
       </div>
 
@@ -54,7 +52,7 @@ const DonutChartFutureJobs: React.FC = () => {
                   color: '#E5E7EB',
                 }}
                 labelStyle={{ fontSize: 12, color: '#CBD5F5' }}
-                formatter={(value: number, name: string, props: any) => [
+                formatter={(value: number, name: string, props: { payload: { number: string } }) => [
                   `${value}% • ${props.payload.number}`,
                   name
                 ]}
@@ -72,7 +70,7 @@ const DonutChartFutureJobs: React.FC = () => {
                 startAngle={90}
                 endAngle={-270}
               >
-                {donutDataAI.map((entry, index) => (
+                {donutDataAI.map((entry) => (
                   <Cell
                     key={entry.label}
                     fill={
@@ -110,7 +108,7 @@ const DonutChartFutureJobs: React.FC = () => {
                 dominantBaseline='hanging'
                 className='text-xs fill-slate-500 dark:fill-slate-300'
               >
-                impactés par l'IA
+                impactés par l&apos;IA
               </text>
               <text
                 x='50%'
@@ -154,7 +152,7 @@ const DonutChartFutureJobs: React.FC = () => {
                 </div>
                 <div className='pl-5'>
                   <span className='text-[10px] text-slate-500 dark:text-slate-400'>
-                    {segment.number} d'emplois
+                    {segment.number} d&apos;emplois
                   </span>
                 </div>
               </div>

@@ -32,6 +32,16 @@
   .container {
     @apply max-w-7xl mx-auto w-full px-4;
   }
+
+  .scrollbar-hide {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
 }
 
 @layer base {
@@ -70,4 +80,139 @@
   p {
     @apply text-lightgrey  text-base;
   }
+
+  /* Enhanced Date and Time Input Styling */
+  input[type='date'],
+  input[type='time'],
+  input[type='datetime-local'] {
+    @apply cursor-pointer;
+    color-scheme: light dark;
+    position: relative;
+  }
+
+  /* Hide default calendar icon and make entire input clickable */
+  input[type='date']::-webkit-calendar-picker-indicator,
+  input[type='time']::-webkit-calendar-picker-indicator,
+  input[type='datetime-local']::-webkit-calendar-picker-indicator {
+    @apply cursor-pointer opacity-0 absolute right-0 top-0 w-full h-full;
+    background: transparent;
+    z-index: 1;
+  }
+
+  /* Enhanced hover states */
+  input[type='date']:hover,
+  input[type='time']:hover,
+  input[type='datetime-local']:hover {
+    @apply border-primary/50 shadow-md;
+    transform: translateY(-1px);
+  }
+
+  /* Enhanced focus states */
+  input[type='date']:focus,
+  input[type='time']:focus,
+  input[type='datetime-local']:focus {
+    @apply border-primary ring-2 ring-primary/30;
+    box-shadow: 0 0 0 3px rgba(0, 145, 230, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+  }
+
+  /* Dark mode date/time inputs */
+  .dark input[type='date'],
+  .dark input[type='time'],
+  .dark input[type='datetime-local'] {
+    color-scheme: dark;
+  }
+
+  .dark input[type='date']:hover,
+  .dark input[type='time']:hover,
+  .dark input[type='datetime-local']:hover {
+    @apply border-cyan-300/50 shadow-lg;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  }
+
+  .dark input[type='date']:focus,
+  .dark input[type='time']:focus,
+  .dark input[type='datetime-local']:focus {
+    @apply border-cyan-300 ring-2 ring-cyan-300/40;
+    box-shadow: 0 0 0 3px rgba(0, 195, 217, 0.2), 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Style the calendar popup (browser native) */
+  input[type='date']::-webkit-datetime-edit-text,
+  input[type='date']::-webkit-datetime-edit-month-field,
+  input[type='date']::-webkit-datetime-edit-day-field,
+  input[type='date']::-webkit-datetime-edit-year-field {
+    @apply text-slate-900 dark:text-slate-100;
+    padding: 0.125rem;
+  }
+
+  input[type='date']::-webkit-datetime-edit-text:focus,
+  input[type='date']::-webkit-datetime-edit-month-field:focus,
+  input[type='date']::-webkit-datetime-edit-day-field:focus,
+  input[type='date']::-webkit-datetime-edit-year-field:focus {
+    @apply bg-primary/10 rounded;
+  }
+
+  /* Time input styling */
+  input[type='time']::-webkit-datetime-edit-text,
+  input[type='time']::-webkit-datetime-edit-hour-field,
+  input[type='time']::-webkit-datetime-edit-minute-field,
+  input[type='time']::-webkit-datetime-edit-ampm-field {
+    @apply text-slate-900 dark:text-slate-100;
+    padding: 0.125rem;
+  }
+
+  input[type='time']::-webkit-datetime-edit-text:focus,
+  input[type='time']::-webkit-datetime-edit-hour-field:focus,
+  input[type='time']::-webkit-datetime-edit-minute-field:focus,
+  input[type='time']::-webkit-datetime-edit-ampm-field:focus {
+    @apply bg-primary/10 rounded;
+  }
+}
+
+/* Custom animations for Pricing component */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes gentle-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-gentle-pulse {
+  animation: gentle-pulse 4s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 3s linear infinite;
 }

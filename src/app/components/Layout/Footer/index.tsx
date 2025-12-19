@@ -61,7 +61,7 @@ const Footer = () => {
           {/* MIDDLE COLUMN - Contact Information */}
           <div className='flex flex-col gap-5'>
             <h3 className='text-sm font-semibold uppercase tracking-[0.16em] text-darkblue dark:text-white mb-2'>
-              Contact
+              Nos coordonnées
             </h3>
             <Link
               href='/contact'
@@ -108,6 +108,22 @@ const Footer = () => {
                   academy@inoteqia.com
                 </p>
               </Link>
+            </div>
+            <div className='flex items-start gap-2'>
+              <Icon
+                icon={'tabler:clock'}
+                width={22}
+                height={22}
+                className='text-lightgrey flex-shrink-0 mt-0.5'
+              />
+              <div>
+                <p className='text-sm font-semibold text-darkblue dark:text-white mb-1'>
+                  Horaires
+                </p>
+                <p className='text-sm font-normal text-darkblue/60 dark:text-white/60'>
+                  Lundi – Vendredi, 8h–17h
+                </p>
+              </div>
             </div>
           </div>
 

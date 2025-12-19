@@ -38,29 +38,29 @@ const Header: React.FC = () => {
     setSticky(window.scrollY >= 80)
   }
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      signInRef.current &&
-      !signInRef.current.contains(event.target as Node)
-    ) {
-      setIsSignInOpen(false)
-    }
-    if (
-      signUpRef.current &&
-      !signUpRef.current.contains(event.target as Node)
-    ) {
-      setIsSignUpOpen(false)
-    }
-    if (
-      mobileMenuRef.current &&
-      !mobileMenuRef.current.contains(event.target as Node) &&
-      navbarOpen
-    ) {
-      setNavbarOpen(false)
-    }
-  }
-
   useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        signInRef.current &&
+        !signInRef.current.contains(event.target as Node)
+      ) {
+        setIsSignInOpen(false)
+      }
+      if (
+        signUpRef.current &&
+        !signUpRef.current.contains(event.target as Node)
+      ) {
+        setIsSignUpOpen(false)
+      }
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target as Node) &&
+        navbarOpen
+      ) {
+        setNavbarOpen(false)
+      }
+    }
+
     window.addEventListener('scroll', handleScroll)
     document.addEventListener('mousedown', handleClickOutside)
     return () => {
@@ -113,7 +113,7 @@ const Header: React.FC = () => {
             />
           </button>
           <Link
-            href='/contact'
+            href='/contact#appointment-form'
             className='hidden xl:block px-6 py-2 bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white rounded-[10px] outline-none hover:shadow-lg hover:shadow-primary/30 hover:scale-105 border border-transparent hover:border-primary/20 duration-300 text-sm font-semibold tracking-wide transition-all'>
             Rendez-vous
           </Link>
@@ -164,7 +164,7 @@ const Header: React.FC = () => {
           <div className='mt-4 flex flex-col gap-4 w-full'>
 
             <Link
-              href='/contact'
+              href='/contact#appointment-form'
               className='px-6 py-6 bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white rounded-[10px] outline-none hover:shadow-lg hover:shadow-primary/30 hover:scale-105 border border-transparent hover:border-primary/20 duration-300 text-sm font-semibold tracking-wide transition-all text-center'
               onClick={() => {
                 setNavbarOpen(false)
