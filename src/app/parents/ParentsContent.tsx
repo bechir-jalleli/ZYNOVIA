@@ -11,6 +11,12 @@ import {
   LineChart,
   Brain,
   Lightbulb,
+  User,
+  Mail,
+  Phone,
+  CalendarDays,
+  Clock,
+  Video,
 } from 'lucide-react'
 import Link from 'next/link'
 
@@ -65,6 +71,81 @@ const faqItems: FaqItem[] = [
 const ParentsContent = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0)
 
+  // Appointment form states
+  const [appointmentName, setAppointmentName] = useState('')
+  const [appointmentEmail, setAppointmentEmail] = useState('')
+  const [appointmentPhone, setAppointmentPhone] = useState('')
+  const [appointmentDate, setAppointmentDate] = useState('')
+  const [appointmentTime, setAppointmentTime] = useState('')
+  const [appointmentType, setAppointmentType] = useState<'visio' | 'onsite' | ''>('')
+  const [appointmentMessage, setAppointmentMessage] = useState('')
+  const [isSubmittingAppointment, setIsSubmittingAppointment] = useState(false)
+  const [appointmentSubmitted, setAppointmentSubmitted] = useState(false)
+  const [appointmentError, setAppointmentError] = useState<string | null>(null)
+
+  const isValidEmail = (value: string) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())
+
+  // Appointment form validation
+  const isAppointmentFormValid =
+    appointmentName.trim().length > 0 &&
+    isValidEmail(appointmentEmail) &&
+    appointmentDate !== '' &&
+    appointmentTime !== '' &&
+    appointmentType !== ''
+
+  // Handle appointment form submission
+  const handleAppointmentSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!isAppointmentFormValid) return
+    setIsSubmittingAppointment(true)
+    setAppointmentError(null)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: appointmentName,
+          email: appointmentEmail,
+          phone: appointmentPhone,
+          role: `Rendez-vous - ${appointmentType === 'visio' ? 'Visio' : 'Sur site'}`,
+          message: `Demande de rendez-vous\n\nDate souhaitée: ${appointmentDate}\nHeure souhaitée: ${appointmentTime}\nType: ${appointmentType === 'visio' ? 'Visioconférence' : 'Sur site'}\n\nMessage: ${appointmentMessage || 'Aucun message supplémentaire'}`,
+          website: '', // Honeypot field (should be empty)
+        }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || "Échec de l'envoi de la demande de rendez-vous")
+      }
+
+      setAppointmentSubmitted(true)
+      setAppointmentName('')
+      setAppointmentEmail('')
+      setAppointmentPhone('')
+      setAppointmentDate('')
+      setAppointmentTime('')
+      setAppointmentType('')
+      setAppointmentMessage('')
+      setTimeout(() => setAppointmentSubmitted(false), 5000)
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : "Une erreur est survenue. Veuillez réessayer."
+      setAppointmentError(errorMessage)
+      console.error('Appointment form error:', err)
+    } finally {
+      setIsSubmittingAppointment(false)
+    }
+  }
+
+  // Get minimum date (today)
+  const getMinDate = () => {
+    const today = new Date()
+    return today.toISOString().split('T')[0]
+  }
+
   return (
     <main className='bg-gradient-to-b from-secondary/20 via-secondary/5 to-transparent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
       {/* HERO */}
@@ -79,7 +160,7 @@ const ParentsContent = () => {
             transition={{ duration: 0.7, ease: 'easeOut' }}
             className='grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1.1fr)] lg:items-center'
           >
-            <div className='space-y-5 text-center md:text-left'>
+            <div className='space-y-5 md:text-left'>
               <p className='inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-primary shadow-sm ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/80 dark:text-cyan-300 dark:ring-white/10'>
                 <span className='h-2 w-2 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
                 Parents
@@ -97,7 +178,7 @@ const ParentsContent = () => {
 
               <div className='mt-6 flex flex-wrap items-center justify-center gap-4 md:justify-start'>
                 <Link
-                  href='/contact'
+                  href='#appointment-form'
                   className='inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/30 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
                 >
                   Réserver une session découverte
@@ -177,7 +258,7 @@ const ParentsContent = () => {
           <motion.div
             {...fadeInUp}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className='mx-auto max-w-3xl text-center md:text-left'
+            className='md:text-left'
           >
             <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
               Pourquoi les parents choisissent INOTEQIA ?
@@ -238,7 +319,7 @@ const ParentsContent = () => {
           <motion.div
             {...fadeInUp}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className='mx-auto max-w-3xl text-center md:text-left'
+            className='md:text-left'
           >
             <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
               Ce que votre enfant saura faire
@@ -282,12 +363,12 @@ const ParentsContent = () => {
       </section>
 
       {/* SECTION – Bénéfices parents */}
-      <section className='py-24 lg:py-32'>
+      <section >
         <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
           <motion.div
             {...fadeInUp}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className='mx-auto max-w-3xl text-center md:text-left'
+            className='md:text-left'
           >
             <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
               Bénéfices parents
@@ -323,12 +404,12 @@ const ParentsContent = () => {
       </section>
 
       {/* SECTION – Notre engagement */}
-      <section className='py-24 lg:py-32'>
+      <section >
         <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
           <motion.div
             {...fadeInUp}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className='mx-auto max-w-3xl text-center md:text-left'
+            className='md:text-left'
           >
             <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
               Notre engagement
@@ -377,7 +458,7 @@ const ParentsContent = () => {
           <motion.div
             {...fadeInUp}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className='space-y-2 text-center md:text-left'
+            className='space-y-2 md:text-left'
           >
             <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
               FAQ

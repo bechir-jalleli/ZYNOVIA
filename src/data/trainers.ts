@@ -1,4 +1,5 @@
 export type Trainer = {
+  id: string
   name: string
   title: string
   bio: string
@@ -15,7 +16,8 @@ export type TrainerTestimonial = {
 
 export const trainers: Trainer[] = [
   {
-    name: 'Nesrine Ferchichi',
+    id: 'trainer-1',
+    name: 'mohamed',
     title: 'Lead Formatrice IA & Data',
     bio: 'Ingénieure data avec 10 ans en machine learning appliqué, passionnée par la pédagogie project-based.',
     expertise: ['Python', 'Machine Learning', 'MLOps', 'DataViz'],
@@ -23,15 +25,17 @@ export const trainers: Trainer[] = [
     linkedin: 'https://www.linkedin.com/company/inoteqia-academy/about/',
   },
   {
-    name: 'Youssef Ben Salem',
+    id: 'trainer-2',
+    name: 'mohamed',
     title: 'Senior Formateur Développement & Cloud',
-    bio: 'Architecte cloud, expert en intégration CI/CD et en conception d’API modernes.',
+    bio: 'Architecte cloud, expert en intégration CI/CD et en conception d\'API modernes.',
     expertise: ['Node.js', 'DevOps', 'CI/CD', 'Cloud'],
     photo: '/images/review/marcus.webp',
     linkedin: 'https://www.linkedin.com/company/inoteqia-academy/about/',
   },
   {
-    name: 'Meriem Haddad',
+    id: 'trainer-3',
+    name: 'mohamed',
     title: 'Coach Robotique & IoT',
     bio: 'Spécialiste robotique éducative, accompagne les jeunes sur le prototypage rapide.',
     expertise: ['Robotique', 'IoT', 'Prototypage', 'Design Thinking'],
@@ -39,7 +43,8 @@ export const trainers: Trainer[] = [
     linkedin: 'https://www.linkedin.com/company/inoteqia-academy/about/',
   },
   {
-    name: 'Adam Trabelsi',
+    id: 'trainer-4',
+    name: 'mohamed',
     title: 'Data Storytelling & Produit',
     bio: 'Consultant produit, aide les élèves à transformer leurs projets IA en solutions concrètes.',
     expertise: ['Product', 'Data Storytelling', 'UX', 'IA appliquée'],

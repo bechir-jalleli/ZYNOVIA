@@ -52,7 +52,7 @@ export default function EntrepriseContent() {
             <motion.div
               {...fadeInUp}
               transition={{ duration: 0.7, ease: 'easeOut' }}
-              className='space-y-6 text-center md:text-left'
+              className='space-y-6 md:text-left'
             >
               <p className='inline-flex items-center gap-2 rounded-full bg-white/85 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-primary shadow-sm ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/85 dark:text-cyan-300 dark:ring-white/10'>
                 <span className='h-2 w-2 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] animate-pulse' />
@@ -143,10 +143,10 @@ export default function EntrepriseContent() {
           <motion.div
             {...fadeInUp}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className='mx-auto max-w-3xl text-center md:text-left'
+            className='md:text-left'
           >
             <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
-              Pourquoi proposer l’IA aux enfants de vos salariés ?
+              Pourquoi proposer l&apos;IA aux enfants de vos salariés ?
             </p>
             <h2 className='mt-3 text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A004B] dark:text-white'>
               Préparer la prochaine génération, tout en renforçant votre stratégie RH
@@ -280,7 +280,7 @@ export default function EntrepriseContent() {
           <motion.div
             {...fadeInUp}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className='mx-auto max-w-3xl text-center md:text-left'
+            className='md:text-left'
           >
             <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
               Un programme clé-en-main, flexible et adapté à votre entreprise
@@ -429,10 +429,10 @@ export default function EntrepriseContent() {
           <motion.div
             {...fadeInUp}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className='mx-auto max-w-3xl text-center md:text-left'
+            className='md:text-left'
           >
             <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
-              Les points forts pour l’entreprise
+              Les points forts pour l&apos;entreprise
             </p>
             <h2 className='mt-3 text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A004B] dark:text-white'>
               Un programme innovant, concret et valorisant pour votre stratégie RH
@@ -526,6 +526,116 @@ export default function EntrepriseContent() {
                     Découvrir nos autres partenariats
                   </Link>
                 </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 5 – Bénéfices parents, Notre engagement, FAQ */}
+      <section className='py-12 lg:py-16'>
+        <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-6 lg:space-y-8'>
+          {/* Bénéfices parents */}
+          <motion.div
+            {...fadeInUp}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className='md:text-left'
+          >
+            <h2 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A004B] dark:text-white'>
+              Bénéfices parents
+            </h2>
+            <motion.div
+              variants={staggerContainer}
+              initial='initial'
+              whileInView='whileInView'
+              viewport={{ once: true, amount: 0.2 }}
+              className='mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4'
+            >
+              {[
+                { stat: '+60 %', label: "d'amélioration STEM" },
+                { stat: '95 %', label: 'des parents voient un gain de confiance' },
+                { stat: '90 %', label: 'des élèves poursuivent dans la tech' },
+                { stat: '4/5', label: 'satisfaction globale' },
+              ].map(({ stat, label }) => (
+                <motion.div
+                  key={label}
+                  variants={cardVariant}
+                  className='rounded-2xl bg-white/95 p-5 shadow-[0_12px_35px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/95 dark:ring-slate-700/80'
+                >
+                  <p className='text-2xl sm:text-3xl font-bold text-primary dark:text-cyan-300'>
+                    {stat}
+                  </p>
+                  <p className='mt-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300'>
+                    {label}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* Notre engagement */}
+          <motion.div
+            {...fadeInUp}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+            className='md:text-left'
+          >
+            <h2 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A004B] dark:text-white'>
+              Notre engagement
+            </h2>
+            <motion.div
+              variants={staggerContainer}
+              initial='initial'
+              whileInView='whileInView'
+              viewport={{ once: true, amount: 0.2 }}
+              className='mt-6 grid grid-cols-1 gap-4 md:grid-cols-3'
+            >
+              {[
+                {
+                  title: 'Transparence',
+                  description: 'Rapports réguliers et suivi des progrès',
+                },
+                {
+                  title: 'Sécurité',
+                  description: 'Un cadre bienveillant et responsable',
+                },
+                {
+                  title: 'Orientation',
+                  description: 'Conseils pour STEM, concours et études supérieures',
+                },
+              ].map(({ title, description }) => (
+                <motion.div
+                  key={title}
+                  variants={cardVariant}
+                  className='rounded-2xl bg-white/95 p-5 shadow-[0_12px_35px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/95 dark:ring-slate-700/80'
+                >
+                  <p className='text-base sm:text-lg font-semibold text-[#0A004B] dark:text-white'>
+                    {title}
+                  </p>
+                  <p className='mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300'>
+                    {description}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* FAQ */}
+          <motion.div
+            {...fadeInUp}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+            className='md:text-left'
+          >
+            <h2 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A004B] dark:text-white'>
+              FAQ
+            </h2>
+            <div className='mt-6 space-y-4'>
+              <div className='rounded-2xl border border-slate-200/70 bg-white/60 p-5 shadow-sm backdrop-blur-xl dark:border-slate-700/60 dark:bg-slate-900/70'>
+                <p className='text-sm font-semibold text-[#0A004B] dark:text-white'>
+                  Questions fréquentes
+                </p>
+                <p className='mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300'>
+                  Pour toute question supplémentaire, n&apos;hésitez pas à nous contacter.
+                </p>
               </div>
             </div>
           </motion.div>

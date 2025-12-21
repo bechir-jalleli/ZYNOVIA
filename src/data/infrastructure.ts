@@ -165,17 +165,17 @@ export const galleryItems: GalleryItem[] = [
   {
     title: 'Salle de formation',
     description: 'Salle équipée avec vidéo projecteur et tableau d\'écriture pour les formations pratiques.',
-    image: '/images/infrastructures/gallery/gallery-01.jpg',
+    image: '/images/infrastructures/SalleReunion/file-0-20240115143823.jpg',
   },
   {
     title: 'Salle confort',
     description: 'Espace avec canapés pour les échanges informels et les moments de détente.',
-    image: '/images/infrastructures/gallery/gallery-02.jpg',
+    image: '/images/infrastructures/Coworkingspace/file-2-20240115154556.jpg',
   },
   {
     title: 'Salle de réunion',
     description: 'Salle de réunion professionnelle équipée pour les présentations et réunions.',
-    image: '/images/infrastructures/gallery/gallery-03.jpg',
+    image: '/images/infrastructures/SalleReunion2/file-0-20240115144742.jpg',
   },
 ]
 

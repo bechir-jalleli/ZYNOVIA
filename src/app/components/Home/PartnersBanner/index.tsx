@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import AnimatedNumber from '../../AnimatedNumber'
 
@@ -35,15 +36,17 @@ const PartnersBanner = () => {
           <h3 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-darkblue dark:text-white mb-4'>
             Établissements qui nous font confiance
           </h3>
-          <div className='mt-6 mb-8 flex flex-col items-center gap-2'>
-            <div className='inline-flex items-baseline gap-2 rounded-full bg-white/70 px-5 py-2 text-sm font-medium text-slate-700 shadow-sm backdrop-blur dark:bg-slate-900/70 dark:text-slate-200'>
-              <span className='inline-flex h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_0_6px_rgba(16,185,129,0.35)]' />
-              <span>Impact réel sur le terrain</span>
-            </div>
+          <div className='mt-6 mb-8 flex flex-col items-center gap-4'>
             <p className='text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary to-indigo-500 bg-clip-text text-transparent'>
               <AnimatedNumber value='+200' className='mr-2 inline-block' />
               élèves formés
             </p>
+            <Link
+              href='/parents#appointment-form'
+              className='inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/30 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
+            >
+              Réserver une session découverte
+            </Link>
           </div>
         </motion.div>
 
