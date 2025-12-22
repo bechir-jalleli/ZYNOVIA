@@ -17,8 +17,8 @@ export type TrainerTestimonial = {
 export const trainers: Trainer[] = [
   {
     id: 'trainer-1',
-    name: 'mohamed',
-    title: 'Lead Formatrice IA & Data',
+    name: 'Ghofran',
+    title: 'Formatrice IA ',
     bio: 'Ingénieure data avec 10 ans en machine learning appliqué, passionnée par la pédagogie project-based.',
     expertise: ['Python', 'Machine Learning', 'MLOps', 'DataViz'],
     photo: '/images/review/sophia.webp',
@@ -26,29 +26,21 @@ export const trainers: Trainer[] = [
   },
   {
     id: 'trainer-2',
-    name: 'mohamed',
-    title: 'Senior Formateur Développement & Cloud',
+    name: 'Aziz',
+    title: ' Formateur AI',
     bio: 'Architecte cloud, expert en intégration CI/CD et en conception d\'API modernes.',
-    expertise: ['Node.js', 'DevOps', 'CI/CD', 'Cloud'],
+    expertise: ['Python', 'Machine Learning', 'MLOps', 'DataViz'],
     photo: '/images/review/marcus.webp',
     linkedin: 'https://www.linkedin.com/company/inoteqia-academy/about/',
   },
   {
     id: 'trainer-3',
     name: 'mohamed',
-    title: 'Coach Robotique & IoT',
+    title: 'Formatrice IA ',
     bio: 'Spécialiste robotique éducative, accompagne les jeunes sur le prototypage rapide.',
-    expertise: ['Robotique', 'IoT', 'Prototypage', 'Design Thinking'],
+    expertise: ['Python', 'Machine Learning', 'MLOps', 'DataViz'],
     photo: '/images/review/daniel.webp',
     linkedin: 'https://www.linkedin.com/company/inoteqia-academy/about/',
-  },
-  {
-    id: 'trainer-4',
-    name: 'mohamed',
-    title: 'Data Storytelling & Produit',
-    bio: 'Consultant produit, aide les élèves à transformer leurs projets IA en solutions concrètes.',
-    expertise: ['Product', 'Data Storytelling', 'UX', 'IA appliquée'],
-    photo: '/images/project/studiova.webp',
   },
 ]
 

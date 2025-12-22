@@ -271,21 +271,7 @@ const FormationsBootcamps = () => {
                       {/* Price & CTA */}
                       <div className='mt-auto pt-5 border-t border-slate-200/60 dark:border-slate-700/60'>
                         <div className='flex items-center justify-between mb-4'>
-                          {formation.price && (
-                            <div>
-                              <span className='text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium'>
-                                À partir de
-                              </span>
-                              <div>
-                                <span className='text-2xl sm:text-3xl font-bold text-[#0A004B] dark:text-white'>
-                                  {formation.price}
-                                </span>
-                                <span className='text-base sm:text-lg text-slate-600 dark:text-slate-400 ml-1'>
-                                  TND
-                                </span>
-                              </div>
-                            </div>
-                          )}
+                         
                         </div>
                         <Link
                           href={formation.href}

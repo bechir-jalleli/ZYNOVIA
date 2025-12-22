@@ -201,29 +201,29 @@ const PlanData: PlanType[] = [
     ],
   },
 ]
-
 const CategoryData: CategoryType[] = [
   {
-    imgSrc: '/images/infrastructures/SalleReunion/file-2-20240115143823.jpg',
-    title: 'Un espace conçu pour apprendre dans un environnement professionnel',
+    imgSrc: '/images/infrastructures/gallery/gallery-05.jpg',
+    title: 'Espace de Travail Moderne',
   },
   {
-    imgSrc: '/images/infrastructures/gallery/gallery-01.jpg',
-    title: 'Logo Design',
+    imgSrc: '/images/infrastructures/SalleReunion/file-0-20240115143823.jpg',
+    title: 'Salle de Réunion Professionnelle',
   },
   {
-    imgSrc: '/images/infrastructures/gallery/gallery-02.jpg',
-    title: 'Mobile App Development',
+    imgSrc: '/images/infrastructures/Coworkingspace/file-2-20240115154556.jpg',
+    title: 'salle Privé (1 à 2 personnes)',
   },
   {
-    imgSrc: '/images/infrastructures/Coworkingspace/file-1-20240115154556.jpg',
-    title: 'Content Writing',
+    imgSrc: '/images/infrastructures/Coworkingspace/image.png',
+    title: 'Espace de Détente',
   },
   {
-    imgSrc: '/images/infrastructures/SalleReunion2/file-0-20240115144742.jpg',
-    title: 'Digital Marketing',
-  },
-]
+    imgSrc: '/images/infrastructures/gallery/gallery-03.jpg',
+    title: 'Cuisine Équipée',
+  }
+];
+
 
 const FooterLinkData: FooterLinkType[] = [
   {

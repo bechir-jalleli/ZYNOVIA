@@ -471,7 +471,7 @@ const PartenariatsContent = () => {
             className='mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4'
           >
             {[
-              '+200 élèves formés',
+              '+2000 élèves formés',
               '4.7/5 satisfaction',
               '+58% progression STEM',
               'Partenariats publics & privés',

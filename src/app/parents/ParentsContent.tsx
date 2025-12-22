@@ -11,12 +11,6 @@ import {
   LineChart,
   Brain,
   Lightbulb,
-  User,
-  Mail,
-  Phone,
-  CalendarDays,
-  Clock,
-  Video,
 } from 'lucide-react'
 import Link from 'next/link'
 
@@ -70,81 +64,6 @@ const faqItems: FaqItem[] = [
 
 const ParentsContent = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0)
-
-  // Appointment form states
-  const [appointmentName, setAppointmentName] = useState('')
-  const [appointmentEmail, setAppointmentEmail] = useState('')
-  const [appointmentPhone, setAppointmentPhone] = useState('')
-  const [appointmentDate, setAppointmentDate] = useState('')
-  const [appointmentTime, setAppointmentTime] = useState('')
-  const [appointmentType, setAppointmentType] = useState<'visio' | 'onsite' | ''>('')
-  const [appointmentMessage, setAppointmentMessage] = useState('')
-  const [isSubmittingAppointment, setIsSubmittingAppointment] = useState(false)
-  const [appointmentSubmitted, setAppointmentSubmitted] = useState(false)
-  const [appointmentError, setAppointmentError] = useState<string | null>(null)
-
-  const isValidEmail = (value: string) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())
-
-  // Appointment form validation
-  const isAppointmentFormValid =
-    appointmentName.trim().length > 0 &&
-    isValidEmail(appointmentEmail) &&
-    appointmentDate !== '' &&
-    appointmentTime !== '' &&
-    appointmentType !== ''
-
-  // Handle appointment form submission
-  const handleAppointmentSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!isAppointmentFormValid) return
-    setIsSubmittingAppointment(true)
-    setAppointmentError(null)
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: appointmentName,
-          email: appointmentEmail,
-          phone: appointmentPhone,
-          role: `Rendez-vous - ${appointmentType === 'visio' ? 'Visio' : 'Sur site'}`,
-          message: `Demande de rendez-vous\n\nDate souhaitée: ${appointmentDate}\nHeure souhaitée: ${appointmentTime}\nType: ${appointmentType === 'visio' ? 'Visioconférence' : 'Sur site'}\n\nMessage: ${appointmentMessage || 'Aucun message supplémentaire'}`,
-          website: '', // Honeypot field (should be empty)
-        }),
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(data.error || "Échec de l'envoi de la demande de rendez-vous")
-      }
-
-      setAppointmentSubmitted(true)
-      setAppointmentName('')
-      setAppointmentEmail('')
-      setAppointmentPhone('')
-      setAppointmentDate('')
-      setAppointmentTime('')
-      setAppointmentType('')
-      setAppointmentMessage('')
-      setTimeout(() => setAppointmentSubmitted(false), 5000)
-    } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : "Une erreur est survenue. Veuillez réessayer."
-      setAppointmentError(errorMessage)
-      console.error('Appointment form error:', err)
-    } finally {
-      setIsSubmittingAppointment(false)
-    }
-  }
-
-  // Get minimum date (today)
-  const getMinDate = () => {
-    const today = new Date()
-    return today.toISOString().split('T')[0]
-  }
 
   return (
     <main className='bg-gradient-to-b from-secondary/20 via-secondary/5 to-transparent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
