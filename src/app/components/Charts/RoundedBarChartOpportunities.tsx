@@ -21,7 +21,8 @@ const barDataOpportunities = [
 
 const RoundedBarChartOpportunities: React.FC = () => {
   return (
-    <ResponsiveContainer width='100%' height='100%'>
+    <div style={{ width: '100%', height: 300, minWidth: 0 }}>
+      <ResponsiveContainer width='100%' height='100%'>
       <BarChart
         data={barDataOpportunities}
         barCategoryGap={28}
@@ -70,6 +71,7 @@ const RoundedBarChartOpportunities: React.FC = () => {
         />
       </BarChart>
     </ResponsiveContainer>
+    </div>
   )
 }
 

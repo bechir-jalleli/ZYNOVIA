@@ -38,7 +38,7 @@ const RadarChartSkills: React.FC = () => {
         </p>
       </div>
 
-      <div className='h-72 w-full sm:h-80'>
+      <div style={{ width: '100%', height: 400, minWidth: 0 }}>
         <ResponsiveContainer width='100%' height='100%'>
           <RadarChart
             data={radarDataSkills}

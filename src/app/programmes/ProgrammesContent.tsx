@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   Cpu,
   Brain,
@@ -40,6 +41,112 @@ const cardVariant = {
   whileInView: { opacity: 1, y: 0 },
 }
 
+const planningPhases = [
+  {
+    icon: Brain,
+    title: "Compréhension des concepts fondamentaux de l'intelligence artificielle",
+    bullets: [
+      "Introduction à l'IA : histoire, définitions et impact.",
+      "Domaines d'application de l'IA dans la vie quotidienne et à l'école.",
+    ],
+    weeksLabel: 'Semaine 1–4',
+    weeksSummary: "Découverte des bases de l'IA et de son impact dans notre quotidien.",
+    },
+  {
+    icon: Cpu,
+    title: "Apprentissage des algorithmes & cas d'utilisation",
+    bullets: [
+      'Concepts de base : Machine Learning, Deep Learning.',
+      'Algorithmes de base et mise en pratique sur des cas concrets.',
+      'Études de cas : analyse de projets réels utilisant ces algorithmes.',
+      'Introduction à des outils et frameworks (Python, TensorFlow, PyTorch).',
+    ],
+    weeksLabel: 'Semaine 5–8',
+    weeksSummary: "Plongée dans les algorithmes d'IA et premiers pas en programmation.",
+   },
+  {
+    icon: BarChart3,
+    title: 'Préparation des données & techniques de traitement',
+    bullets: [
+      'Collecte et nettoyage des données : sources, formats, qualité.',
+      'Manipulation et structuration des données.',
+      'Normalisation, réduction ou augmentation de dimensions, etc.',
+    ],
+    weeksLabel: 'Semaine 9–12',
+    weeksSummary: 'Maîtrise des techniques essentielles pour préparer et traiter les données.',
+    },
+  {
+    icon: Users,
+    title: 'Application des connaissances apprises',
+    bullets: [
+      "Travaux dirigés et mini-projets tout au long de l'année.",
+      'Travail en équipe : collaboration sur des projets de groupe.',
+      'Conception et développement de projets réels.',
+      'Présentation des projets et feedback personnalisé.',
+    ],
+    weeksLabel: 'Semaine 13–15',
+    weeksSummary: 'Mise en pratique concrète à travers des projets collaboratifs et des présentations.',
+    },
+  {
+    icon: Sparkles,
+    title: 'Ateliers spécialisés',
+    bullets: [
+      "Sessions thématiques autour de l'IA et des STEM.",
+      "Découverte approfondie de cas d'usage par secteur.",
+      "Développement de projets d'approfondissement pour les plus motivés.",
+    ],
+    weeksLabel: 'Semaine 16–30',
+    weeksSummary: "Approfondissement thématique et développement de projets personnalisés pour aller plus loin.",
+    },
+]
+
+const bootcampsSchedule = [
+  {
+    label: 'Bootcamp 1',
+    dates: 'Du 22/12/2025 au 26/12/2025',
+    title: 'Du problème réel à la solution IA',
+    theme: 'Déclic & créativité',
+    bullets: [
+      'Identification de problèmes concrets du quotidien ou de la vie scolaire.',
+      'Brainstorming guidé pour imaginer des solutions innovantes appuyées par l’IA.',
+      'Orientation vers les modèles et techniques de traitement adaptés aux idées des élèves.',
+    ],
+  },
+  {
+    label: 'Bootcamp 2',
+    dates: 'Du 29/12/2025 au 02/01/2026',
+    title: 'Découverte de la programmation & introduction aux LLMs',
+    theme: 'Premiers pas en code',
+    bullets: [
+      'Découverte des bases de la programmation, adaptée aux collégiens et lycéens.',
+      'Exercices ludiques pour développer la logique et la pensée algorithmique.',
+      'Introduction aux LLMs et à leurs principales applications dans la vie réelle.',
+    ],
+  },
+  {
+    label: 'Bootcamps 3 & 4',
+    dates: 'Du 02/02/2026 au 06/02/2026',
+    title: 'Vision par ordinateur & projets visuels',
+    theme: 'IA & images',
+    bullets: [
+      "Introduction à la vision par ordinateur (ex. reconnaissance d'objets).",
+      'Manipulation d’images et création de premiers prototypes visuels.',
+      'Mise en pratique sur des cas d’usage proches de leur quotidien.',
+    ],
+  },
+  {
+    label: 'Bootcamp 5',
+    dates: 'Du 23/03/2026 au 27/03/2026',
+    title: 'Restitution & valorisation des projets',
+    theme: 'Pitch & confiance en soi',
+    bullets: [
+      'Présentation des projets devant un jury (parents, enseignants, encadrants).',
+      'Remise de certificats et trophées pour valoriser les réalisations des élèves.',
+      'Mise en avant des compétences acquises pour la suite de leur parcours.',
+    ],
+  },
+] as const
+
 export default function ProgrammesContent() {
   return (
     <main className='bg-gradient-to-b from-secondary/10 via-secondary/5 to-transparent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
@@ -67,45 +174,75 @@ export default function ProgrammesContent() {
           />
         </div>
 
-        <div className='container relative z-20 pt-20 lg:pt-24 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 w-full'>
-          <div className='relative z-20'>
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className='inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.25em] text-primary shadow-sm ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/80 dark:text-cyan-300 dark:ring-white/10 mb-6'
-            >
-              <span className='h-2 w-2 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] animate-pulse' />
-              Programme Annuel
-            </motion.div>
+        <div className='w-full overflow-hidden'>
+          <div className='container relative z-20 pt-20 lg:pt-24 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
+            <div className='relative z-20 grid lg:grid-cols-12 grid-cols-1 lg:items-start items-center lg:justify-items-normal justify-items-center gap-10 lg:gap-20 pb-10'>
+              {/* Colonne texte – même logique que le Hero de l'accueil */}
+              <div className='lg:col-span-7 col-span-1'>
+                <div className='flex flex-col lg:items-start items-center gap-6 lg:gap-8'>
+                  
+                  <div className='flex flex-col lg:items-start items-center gap-4 lg:gap-5'>
+                    <h1 className='lg:text-start text-center w-full max-w-3xl text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-[#0A004B] dark:text-white'>
+                      Programme Annuel IA 
+                    </h1>
+                    <p className='lg:text-start text-center text-sm sm:text-base font-semibold text-primary/80 dark:text-cyan-200'>
+                      Un programme intégré au cœur du cursus scolaire
+                    </p>
 
-            {/* Header */}
-            <motion.div
-              {...fadeInUp}
-              transition={{ duration: 0.7, ease: 'easeOut' }}
-              className='max-w-4xl'
-            >
-              <h1 className='text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-[#0A004B] dark:text-white mb-6'>
-                Programme Annuel — Intégration IA dans le cursus scolaire
-              </h1>
-              <motion.p
-                {...fadeInUp}
-                transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
-                className='text-lg sm:text-xl lg:text-2xl font-semibold text-primary dark:text-cyan-300 mb-6'>
-                Un programme innovant intégré directement dans l&apos;année scolaire pour moderniser
-                l&apos;apprentissage, renforcer les matières STEM et préparer les élèves aux compétences
-                technologiques du futur.
-              </motion.p>
-              <motion.p
-                {...fadeInUp}
-                transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
-                className='text-base sm:text-lg lg:text-xl text-slate-700 dark:text-slate-300 leading-relaxed max-w-3xl'>
-                INOTEQIA Academy prépare les jeunes aux compétences essentielles du futur : IA, pensée
-                algorithmique, robotique, créativité et culture numérique.
-              </motion.p>
-            </motion.div>
+                    <motion.p
+                      {...fadeInUp}
+                      transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
+                      className='lg:text-start text-center text-lg sm:text-xl lg:text-2xl font-semibold text-primary dark:text-cyan-300'
+                    >
+                      
+                    </motion.p>
+
+                    <motion.p
+                      {...fadeInUp}
+                      transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
+                      className='lg:text-start text-center max-w-3xl text-base sm:text-lg lg:text-xl text-slate-700 dark:text-slate-300 leading-relaxed'
+                    >
+                      INOTEQIA Academy propose un programme innovant, conçu en collaboration avec les équipes pédagogiques, pour moderniser l&apos;apprentissage, renforcer les matières STEM et préparer les élèves aux compétences technologiques de demain.
+                    </motion.p>
+                  </div>
+
+                  {/* CTA buttons – calquées sur celles de l'accueil */}
+                  <div className='flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 w-full max-w-2xl'>
+                    <Link href='/parents'>
+                      <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-white border rounded-[10px] border-transparent bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-md whitespace-nowrap'>
+                        👨‍👩‍👧 Je suis parent
+                      </button>
+                    </Link>
+                    <Link href='/contact?type=etablissement#contact-form'>
+                      <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-primary border rounded-[10px] border-primary bg-white dark:bg-transparent hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-sm whitespace-nowrap'>
+                        🏫 Je représente un établissement scolaire
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* Colonne image – même place que le slider de la home, avec ton visuel de programme annuel */}
+              <div className='lg:col-span-5 col-span-1 lg:w-full sm:w-[80%] w-full mt-6 lg:mt-0'>
+                <motion.div
+                  {...fadeInUp}
+                  transition={{ duration: 0.8, ease: 'easeOut', delay: 0.25 }}
+                >
+                  <div className='relative'>
+                    <div className='absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#00C3D9]/25 via-[#0091E6]/20 to-[#0067E0]/25 blur-2xl' />
+                    <div className='relative overflow-hidden rounded-3xl shadow-[0_24px_60px_rgba(15,23,42,0.35)] ring-1 ring-white/60 dark:ring-slate-700/80'>
+                      <Image
+                        src='/images/image.png'
+                        alt="Élève découvrant l'intelligence artificielle avec INOTEQIA Academy"
+                        width={600}
+                        height={420}
+                        className='w-full object-cover'
+                      />
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -119,9 +256,14 @@ export default function ProgrammesContent() {
             className='mb-16'
           >
             <div className='text-center mb-6'>
-              <h2 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A004B] dark:text-white mb-12'>
+              <h2 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
                 INOTEQIA ACADEMY EN CHIFFRES
               </h2>
+              <p className='text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl mx-auto'>
+                Des résultats concrets qui témoignent de l&apos;impact du programme auprès des établissements,
+                des élèves et de leurs familles. Les compteurs ci-dessous sont animés et démarrent à 0 au
+                chargement de la page pour rendre ces chiffres encore plus parlants.
+              </p>
             </div>
 
             <motion.div
@@ -151,7 +293,7 @@ export default function ProgrammesContent() {
                     établissements partenaires
                   </p>
                   <p className='text-xs text-slate-500 dark:text-slate-400'>
-                    sur l&apos;année scolaire 2025/2026
+                    engagés sur l&apos;année scolaire 2025/2026
                   </p>
                 </div>
               </motion.div>
@@ -173,7 +315,7 @@ export default function ProgrammesContent() {
                     <AnimatedNumber value='+2000' duration={2000} />
                   </h3>
                   <p className='text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-200 mb-1'>
-                    collégiens et lycéens formés
+                    collégiens et lycéens déjà formés
                   </p>
                 </div>
               </motion.div>
@@ -195,7 +337,7 @@ export default function ProgrammesContent() {
                     <AnimatedNumber value={70} duration={1500} />
                   </h3>
                   <p className='text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-200 mb-1'>
-                    heures chaque semaine
+                    heures d&apos;enseignement animées chaque semaine
                   </p>
                 </div>
               </motion.div>
@@ -217,7 +359,7 @@ export default function ProgrammesContent() {
                     <AnimatedNumber value={281} duration={1800} />
                   </h3>
                   <p className='text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-200 mb-1'>
-                    heures assurées par mois
+                    heures d&apos;accompagnement assurées par mois
                   </p>
                 </div>
               </motion.div>
@@ -239,10 +381,10 @@ export default function ProgrammesContent() {
                     <AnimatedNumber value={1960} duration={2200} />
                   </h3>
                   <p className='text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-200 mb-1'>
-                    heures enseignées
+                    heures d&apos;enseignement dispensées
                   </p>
                   <p className='text-xs text-slate-500 dark:text-slate-400'>
-                    pour l&apos;année scolaire 2025/2026
+                    sur l&apos;année scolaire 2025/2026
                   </p>
                 </div>
               </motion.div>
@@ -267,10 +409,139 @@ export default function ProgrammesContent() {
                     mini-projets réalisés
                   </p>
                   <p className='text-xs text-slate-500 dark:text-slate-400'>
-                    par les enfants
+                    conçus et présentés par les élèves
                   </p>
                 </div>
               </motion.div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* PLANNING – PROGRAMME IA (1H / SEMAINE) */}
+      <section className='py-24 lg:py-28 bg-gradient-to-b from-secondary/5 via-white to-secondary/5 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
+        <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
+          <motion.div
+            {...fadeInUp}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className='mb-12 lg:mb-16 text-center'
+          >
+            <p className='inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-primary shadow-sm ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/80 dark:text-cyan-300 dark:ring-white/10'>
+              <span className='h-2 w-2 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+              INOTEQIA • NOTRE OFFRE
+            </p>
+            <h2 className='mt-5 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#0A004B] dark:text-white'>
+              Notre offre : cursus scolaire &amp; clubs IA
+            </h2>
+            <p className='mt-4 text-sm sm:text-base text-slate-700 dark:text-slate-300 max-w-2xl mx-auto'>
+              Un programme IA de <span className='font-semibold'>1 heure par semaine</span>, intégré dans l&apos;année scolaire
+              ou en club périscolaire, structuré en cycles clairs et progressifs pour accompagner les élèves
+              du premier déclic jusqu&apos;à la réalisation de projets concrets.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial='initial'
+            whileInView='whileInView'
+            viewport={{ once: true, amount: 0.25 }}
+            className='grid gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] lg:items-start'
+          >
+            {/* Colonne gauche : grands blocs de contenu */}
+            <motion.div
+              variants={staggerContainer}
+              className='space-y-6'
+            >
+              {planningPhases.map(({ icon: Icon, title, bullets }) => (
+                <motion.div
+                  key={title}
+                  variants={cardVariant}
+                  className='relative overflow-hidden rounded-3xl bg-white/95 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/95 dark:ring-slate-700/70'
+                >
+                  <div
+                    aria-hidden='true'
+                    className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
+                  />
+                  <div className='relative flex items-start gap-3'>
+                    <div className='flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-[#0091E6]/40'>
+                      <Icon className='h-5 w-5' />
+                    </div>
+                    <div>
+                      <h3 className='text-sm font-semibold text-[#0A004B] dark:text-white'>
+                        {title}
+                      </h3>
+                      <ul className='mt-3 space-y-1.5 text-xs sm:text-sm text-slate-700 dark:text-slate-200'>
+                        {bullets.map((bullet: string) => (
+                          <li key={bullet} className='flex gap-2'>
+                            <span className='mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Colonne droite : timeline des semaines (light & dark mode) */}
+            <motion.div
+              variants={cardVariant}
+              className='relative rounded-3xl bg-white/95 text-slate-900 p-6 sm:p-7 shadow-[0_22px_55px_rgba(15,23,42,0.20)] ring-1 ring-slate-200/80 overflow-hidden dark:bg-slate-950 dark:text-white dark:shadow-[0_22px_55px_rgba(15,23,42,0.45)] dark:ring-slate-800/80'
+            >
+              <div
+                aria-hidden='true'
+                className='pointer-events-none absolute -right-10 top-0 h-48 w-48 rounded-full bg-gradient-to-br from-[#00C3D9]/25 via-[#0091E6]/30 to-[#0067E0]/25 blur-2xl opacity-90 dark:from-[#00C3D9]/35 dark:via-[#0091E6]/40 dark:to-[#0067E0]/35'
+              />
+              <div className='relative'>
+                <p className='text-[11px] font-semibold uppercase tracking-[0.24em] text-primary dark:text-cyan-300'>
+                  Déroulé du programme par semaines
+                </p>
+                <p className='mt-2 text-sm font-semibold text-slate-900 dark:text-white'>
+                  Une progression continue, pensée pour garder les élèves motivés toute l&apos;année.
+                </p>
+
+                <div className='mt-6 relative'>
+                  <div className='pointer-events-none absolute left-[10px] top-0 bottom-0 w-px bg-gradient-to-b from-primary/60 via-primary/30 to-transparent dark:from-cyan-300/70 dark:via-cyan-400/40 dark:to-transparent' />
+                  <div className='space-y-4'>
+                    {planningPhases.map(({ weeksLabel, title, weeksSummary }, index) => (
+                      <div
+                        key={weeksLabel}
+                        className='relative flex gap-4'
+                      >
+                        <div className='mt-1.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-white ring-2 ring-primary/70 shadow-md shadow-primary/30 dark:bg-slate-900 dark:ring-cyan-300/80 dark:shadow-cyan-500/40'>
+                          <span className='h-2.5 w-2.5 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                        </div>
+                        <div className='flex-1'>
+                          <div className='inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold text-primary ring-1 ring-primary/20 dark:bg-slate-900/80 dark:text-cyan-200 dark:ring-cyan-400/40'>
+                            <span>{weeksLabel}</span>
+                            <span className='hidden sm:inline text-slate-400 dark:text-slate-400'>•</span>
+                            <span className='hidden sm:inline text-slate-600 dark:text-slate-100/80'>
+                              Étape {index + 1}
+                            </span>
+                          </div>
+                          <p className='mt-2 text-xs sm:text-sm font-semibold text-slate-900 dark:text-white'>
+                            {title}
+                          </p>
+                          <p className='mt-1 text-[11px] sm:text-xs text-slate-600 dark:text-slate-300'>
+                            {weeksSummary}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className='mt-6 flex flex-wrap items-center gap-2 text-[11px] text-slate-600 dark:text-slate-200/90'>
+                  <div className='inline-flex items-center gap-2 rounded-full bg-slate-900 text-white px-3 py-1 font-semibold shadow-lg shadow-slate-900/40 dark:bg-white dark:text-slate-900'>
+                    <Clock className='h-3.5 w-3.5' />
+                    <span>Programme IA — 1 heure par semaine</span>
+                  </div>
+                  <span className='text-slate-500 dark:text-slate-400'>
+                    Intégrable dans l&apos;emploi du temps ou en clubs périscolaires.
+                  </span>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         </div>
@@ -296,15 +567,14 @@ export default function ProgrammesContent() {
               className='text-center mb-12 lg:mb-16'
             >
               <div className='inline-flex items-center justify-center mb-6'>
-                <div className='flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-lg shadow-[#0091E6]/40'>
-                  <Brain className='h-8 w-8 sm:h-10 sm:w-10' />
-                </div>
+              
               </div>
               <h2 className='text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-[#0A004B] dark:text-white mb-4'>
                 Objectifs pédagogiques
               </h2>
               <p className='text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto'>
-                Des objectifs clairs pour une formation complète et structurée
+                Une feuille de route pédagogique claire pour développer à la fois les compétences techniques
+                et les soft skills indispensables dans le monde de demain.
               </p>
             </motion.div>
 
@@ -318,11 +588,11 @@ export default function ProgrammesContent() {
             >
               {[
                 'Comprendre les concepts fondamentaux de l\'IA et du machine learning.',
-                'Développer la pensée algorithmique et la logique mathématique.',
-                'Travailler sur des mini-projets liés au programme scolaire.',
-                'Présenter un projet final devant un jury.',
-                'Améliorer la communication et la collaboration.',
-                'Renforcer les résultats STEM grâce à l\'apprentissage par projet.',
+                'Développer une vraie pensée algorithmique et une logique mathématique appliquée.',
+                'Apprendre en réalisant des mini-projets connectés aux notions vues en classe.',
+                'Concevoir et présenter un projet final devant un jury bienveillant.',
+                'Gagner en aisance à l\'oral, en communication et en travail d\'équipe.',
+                'Ancrer les connaissances STEM grâce à l\'apprentissage par projet et par l\'expérience.',
               ].map((item, index) => (
                 <motion.div
                   key={item}
@@ -365,15 +635,14 @@ export default function ProgrammesContent() {
               className='text-center mb-12 lg:mb-16'
             >
               <div className='inline-flex items-center justify-center mb-6'>
-                <div className='flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-emerald-400 via-cyan-400 to-blue-500 text-white shadow-lg shadow-emerald-500/40'>
-                  <Sparkles className='h-8 w-8 sm:h-10 sm:w-10' />
-                </div>
+                
               </div>
               <h2 className='text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-[#0A004B] dark:text-white mb-4'>
                 Ce qui rend ce programme unique
               </h2>
               <p className='text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto'>
-                Des avantages exclusifs qui font la différence
+                Un dispositif structuré, clé en main, qui facilite la mise en place pour les établissements
+                tout en offrant une expérience d&apos;apprentissage mémorable aux élèves.
               </p>
             </motion.div>
 
@@ -388,23 +657,23 @@ export default function ProgrammesContent() {
               {[
                 {
                   icon: Cpu,
-                  text: 'Programme clé en main pour les établissements.',
+                  text: 'Programme clé en main, sans charge supplémentaire pour les équipes pédagogiques.',
                 },
                 {
                   icon: CircuitBoard,
-                  text: 'Encadrement par experts IA + pédagogues.',
+                  text: 'Encadrement par des experts IA formés à la pédagogie jeunesse.',
                 },
                 {
                   icon: BarChart3,
-                  text: 'Suivi mensuel et rapports d\'évolution.',
+                  text: 'Suivi mensuel et rapports d\'évolution partagés avec l\'établissement.',
                 },
                 {
                   icon: CheckCircle2,
-                  text: 'Intégration fluide dans l\'emploi du temps.',
+                  text: 'Intégration fluide dans l\'emploi du temps ou en clubs existants.',
                 },
                 {
                   icon: Bot,
-                  text: 'Certification officielle INOTEQIA Academy.',
+                  text: 'Certification officielle INOTEQIA Academy pour valoriser le parcours des élèves.',
                 },
               ].map(({ icon: Icon, text }) => (
                 <motion.div
@@ -459,18 +728,18 @@ export default function ProgrammesContent() {
                   </div>
                   <div>
                     <h3 className='text-sm font-semibold text-[#0A004B] dark:text-white'>
-                      Objectifs pédagogiques
+                      Compétences développées chez les élèves
                     </h3>
                   </div>
                 </div>
                 <ul className='relative mt-5 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 text-xs sm:text-sm text-slate-700 dark:text-slate-200'>
                   {[
-                    'Comprendre les concepts fondamentaux de l’IA et du machine learning.',
-                    'Développer la pensée algorithmique et la logique mathématique.',
-                    'Travailler sur des mini-projets liés au programme scolaire.',
-                    'Présenter un projet final devant un jury.',
-                    'Améliorer la communication et la collaboration.',
-                    'Renforcer les résultats STEM grâce à l’apprentissage par projet.',
+                    'Décoder le fonctionnement des IA et des modèles de machine learning.',
+                    'Structurer une démarche de résolution de problème de façon logique et rigoureuse.',
+                    'Mobiliser les notions vues en mathématiques, sciences et technologies dans des projets concrets.',
+                    'S\'entraîner à présenter, argumenter et défendre un projet devant un public.',
+                    'Développer coopération, leadership et esprit critique.',
+                    'Renforcer les résultats scolaires grâce à une approche active et motivante des STEM.',
                   ].map((item, index) => (
                     <li
                       key={item}
@@ -500,7 +769,7 @@ export default function ProgrammesContent() {
                   </div>
                   <div>
                     <h3 className='text-sm font-semibold text-[#0A004B] dark:text-white'>
-                      Ce qui rend ce programme unique
+                      Pourquoi les établissements nous choisissent
                     </h3>
                   </div>
                 </div>
@@ -508,23 +777,23 @@ export default function ProgrammesContent() {
                   {[
                     {
                       icon: Cpu,
-                      text: 'Programme clé en main pour les établissements.',
+                      text: 'Une solution prête à l\'emploi, alignée avec les attentes des directions et des équipes pédagogiques.',
                     },
                     {
                       icon: CircuitBoard,
-                      text: 'Encadrement par experts IA + pédagogues.',
+                      text: 'Des intervenants spécialisés, capables de vulgariser des notions complexes pour les collégiens et lycéens.',
                     },
                     {
                       icon: BarChart3,
-                      text: 'Suivi mensuel et rapports d’évolution.',
+                      text: 'Des indicateurs de progression clairs, partagés avec l\'établissement et les familles.',
                     },
                     {
                       icon: CheckCircle2,
-                      text: 'Intégration fluide dans l’emploi du temps.',
+                      text: 'Une organisation souple, compatible avec différents formats (cursus, options, clubs).',
                     },
                     {
                       icon: Bot,
-                      text: 'Certification officielle INOTEQIA Academy.',
+                      text: 'Une certification INOTEQIA Academy qui valorise le parcours des élèves et l\'image de l\'établissement.',
                     },
                   ].map(({ icon: Icon, text }) => (
                     <div
@@ -556,15 +825,15 @@ export default function ProgrammesContent() {
                 />
                 <div className='relative'>
                   <h3 className='text-sm font-semibold uppercase tracking-[0.22em] text-primary dark:text-cyan-300'>
-                    Exemples de projets réalisés
+                    Exemples de projets réalisés par les élèves
                   </h3>
                   <ul className='mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 text-xs sm:text-sm'>
                     {[
-                      'Assistant intelligent pour réviser les cours.',
-                      'Mini-système de classification d’images.',
-                      'Chatbot pour l’établissement.',
-                      'Application anti-harcèlement scolaire.',
-                      'Outil interactif STEM.',
+                      'Assistant intelligent pour réviser les cours et mieux retenir les notions clés.',
+                      'Mini-système de classification d’images pour reconnaître des objets ou des personnages.',
+                      'Chatbot dédié à l’établissement pour répondre aux questions fréquentes.',
+                      'Application de prévention et de signalement contre le harcèlement scolaire.',
+                      'Outils interactifs pour rendre les matières STEM plus ludiques et accessibles.',
                     ].map((item) => (
                       <li
                         key={item}
@@ -586,10 +855,10 @@ export default function ProgrammesContent() {
                 <div className='flex flex-col items-start gap-4 rounded-[22px] bg-white/95 px-5 py-5 text-left sm:flex-row sm:items-center sm:justify-between dark:bg-slate-950/95'>
                   <div>
                     <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary dark:text-cyan-300'>
-                      Pour les établissements
+                      Pour les établissements scolaires
                     </p>
                     <p className='mt-1 text-sm font-semibold text-[#0A004B] dark:text-white'>
-                      Devenir établissement partenaire
+                      Devenir établissement partenaire d&apos;INOTEQIA
                     </p>
                   </div>
                   <Link
@@ -606,7 +875,7 @@ export default function ProgrammesContent() {
       </section>
 
       {/* SECTION 2 – BOOTCAMPS IA (VACANCES) */}
-      <section >
+      <section>
         <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
           {/* Header */}
           <motion.div
@@ -622,8 +891,88 @@ export default function ProgrammesContent() {
             </h2>
             <p className='mt-4 text-sm sm:text-base text-slate-700 dark:text-slate-300'>
               Des immersions courtes, dynamiques et transformantes pour les élèves curieux,
-              passionnés ou motivés par la technologie.
+              passionnés ou simplement désireux de mieux comprendre l&apos;IA et les technologies
+              qui les entourent au quotidien.
             </p>
+          </motion.div>
+
+          {/* Planning détaillé des bootcamps */}
+          <motion.div
+            variants={staggerContainer}
+            initial='initial'
+            whileInView='whileInView'
+            viewport={{ once: true, amount: 0.3 }}
+            className='mt-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6'
+          >
+            {bootcampsSchedule.map(({ label, dates, title, theme, bullets }, index) => (
+              <motion.div
+                key={label}
+                variants={cardVariant}
+                className='relative overflow-hidden rounded-3xl bg-white/95 p-5 shadow-[0_20px_45px_rgba(15,23,42,0.18)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/95 dark:ring-slate-700/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_26px_60px_rgba(15,23,42,0.32)]'
+              >
+                <div
+                  aria-hidden='true'
+                  className='pointer-events-none absolute inset-x-6 -top-12 h-24 rounded-full bg-gradient-to-r from-[#00C3D9]/25 via-[#0091E6]/30 to-[#0067E0]/25 blur-3xl opacity-80 dark:from-[#00C3D9]/30 dark:via-[#0091E6]/35 dark:to-[#0067E0]/30'
+                />
+                <div className='relative flex flex-col gap-3'>
+                  {/* En-tête du bootcamp */}
+                  <div className='flex items-start justify-between gap-2'>
+                    <div className='flex flex-col gap-1'>
+                      <span className='inline-flex items-center gap-1 rounded-full bg-slate-100 text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-900 px-3 py-1 shadow-sm shadow-slate-200/80 dark:bg-slate-900 dark:text-white dark:shadow-slate-900/40'>
+                        <span className='h-1.5 w-1.5 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                        {label}
+                      </span>
+                      <p className='text-[11px] font-medium text-slate-600 dark:text-slate-300 mt-1'>
+                        {dates}
+                      </p>
+                    </div>
+                    <div
+                      className={`inline-flex items-center rounded-full px-3 py-1 text-[10px] font-semibold ring-1 ${
+                        index === 0
+                          ? 'bg-amber-50 text-amber-700 ring-amber-200 dark:bg-amber-500/10 dark:text-amber-200 dark:ring-amber-500/40'
+                          : index === 1
+                          ? 'bg-emerald-50 text-emerald-700 ring-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-200 dark:ring-emerald-500/40'
+                          : index === 2
+                          ? 'bg-fuchsia-50 text-fuchsia-700 ring-fuchsia-200 dark:bg-fuchsia-500/10 dark:text-fuchsia-200 dark:ring-fuchsia-500/40'
+                          : 'bg-sky-50 text-sky-700 ring-sky-200 dark:bg-sky-500/10 dark:text-sky-200 dark:ring-sky-500/40'
+                      }`}
+                    >
+                      {theme}
+                    </div>
+                  </div>
+
+                  {/* Titre & résumé */}
+                  <p className='text-sm font-semibold text-[#0A004B] dark:text-white'>
+                    {title}
+                  </p>
+
+                  {/* Contenu détaillé */}
+                  <ul className='mt-1 space-y-1.5 text-[11px] sm:text-xs text-slate-700 dark:text-slate-200'>
+                    {bullets.map((bullet: string) => (
+                      <li
+                        key={bullet}
+                        className='flex gap-2'
+                      >
+                        <span className='mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Footer infos pratiques */}
+                  <div className='mt-3 flex flex-wrap items-center gap-2 text-[10px] text-slate-500 dark:text-slate-400'>
+                    <span className='inline-flex items-center gap-1 rounded-full bg-slate-50 px-2.5 py-1 ring-1 ring-slate-200 dark:bg-slate-900/70 dark:ring-slate-700'>
+                      <Clock className='h-3 w-3' />
+                      5 jours intensifs
+                    </span>
+                    <span className='inline-flex items-center gap-1 rounded-full bg-slate-50 px-2.5 py-1 ring-1 ring-slate-200 dark:bg-slate-900/70 dark:ring-slate-700'>
+                      <GraduationCap className='h-3 w-3' />
+                      Collégiens & lycéens
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
 
           <div className='mt-12 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1.2fr)] lg:items-start'>
@@ -649,18 +998,18 @@ export default function ProgrammesContent() {
                   </div>
                   <div>
                     <h3 className='text-sm font-semibold text-[#0A004B] dark:text-white'>
-                      Objectifs éducatifs
+                      Objectifs éducatifs des bootcamps
                     </h3>
                   </div>
                 </div>
                 <ul className='relative mt-5 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 text-xs sm:text-sm text-slate-700 dark:text-slate-200'>
                   {[
-                    'Identifier un problème réel.',
-                    'Concevoir une solution originale.',
-                    'Construire un premier prototype.',
-                    'Intégrer l’IA dans leur projet.',
-                    'Créer un mini-produit technologique.',
-                    'Pitcher devant un jury.',
+                    'Identifier un problème réel qui les touche ou les inspire.',
+                    'Imaginer et concevoir une solution originale en petit groupe.',
+                    'Construire un premier prototype fonctionnel, même simple.',
+                    'Intégrer de l’IA ou de l’automatisation dans leur projet.',
+                    'Transformer une idée en mini-produit technologique concret.',
+                    'Pitcher leur projet devant un jury dans un cadre bienveillant.',
                   ].map((item) => (
                     <li
                       key={item}
@@ -712,7 +1061,7 @@ export default function ProgrammesContent() {
                 />
                 <div className='relative'>
                   <h3 className='text-sm font-semibold uppercase tracking-[0.22em] text-primary dark:text-cyan-300'>
-                    Exemples de projets
+                    Exemples de projets développés en bootcamps
                   </h3>
 
                   <div className='mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2'>

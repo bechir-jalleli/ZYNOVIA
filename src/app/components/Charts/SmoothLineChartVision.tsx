@@ -50,7 +50,7 @@ const SmoothLineChartVision: React.FC = () => {
       </div>
 
       {/* Chart */}
-      <div className='relative h-64 w-full overflow-hidden rounded-2xl bg-slate-50 sm:h-72 dark:bg-slate-900/40'>
+      <div className='relative overflow-hidden rounded-2xl bg-slate-50 dark:bg-slate-900/40' style={{ width: '100%', height: 300, minWidth: 0 }}>
         <div className='pointer-events-none absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-cyan-500/10 to-transparent dark:from-cyan-500/15' />
         <ResponsiveContainer width='100%' height='100%'>
           <LineChart data={lineDataVision} margin={{ top: 10, right: 12, left: 4, bottom: 0 }}>

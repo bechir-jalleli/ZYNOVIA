@@ -25,7 +25,7 @@ const SmoothLineChart: React.FC<SmoothLineChartProps> = ({
       <h3 className='mb-4 text-sm font-medium uppercase tracking-[0.15em] text-lightgrey'>
         {title}
       </h3>
-      <div className='h-56'>
+      <div style={{ width: '100%', height: 300, minWidth: 0 }}>
         <ResponsiveContainer width='100%' height='100%'>
           <LineChart data={data}>
             <defs>

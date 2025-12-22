@@ -61,7 +61,7 @@ const Pricing = () => {
           'Encadrement par formateurs INOTEQIA',
           'Évaluation pédagogique et suivi',
         ],
-        cta: 'Intégrer l’IA dans mon établissement',
+        cta: 'Découvrir le programme',
       },
       'Bootcamp AI': {
         title: 'Bootcamp IA — Vacances scolaires',
@@ -74,7 +74,7 @@ const Pricing = () => {
           'Challenge final et présentation orale',
           'Certificat INOTEQIA Academy',
         ],
-        cta: 'Inscrire des élèves au bootcamp',
+        cta: ' Découvrir les bootcamps',
       },
     },
     entreprise: {

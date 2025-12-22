@@ -555,7 +555,7 @@ export default function EntrepriseContent() {
                 { stat: '+60 %', label: "d'amélioration STEM" },
                 { stat: '95 %', label: 'des parents voient un gain de confiance' },
                 { stat: '90 %', label: 'des élèves poursuivent dans la tech' },
-                { stat: '4/5', label: 'satisfaction globale' },
+                { stat: '99%', label: 'satisfaction globale' },
               ].map(({ stat, label }) => (
                 <motion.div
                   key={label}

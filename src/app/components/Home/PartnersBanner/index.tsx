@@ -38,7 +38,7 @@ const PartnersBanner = () => {
           </h3>
           <div className='mt-6 mb-8 flex flex-col items-center gap-4'>
             <p className='text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary to-indigo-500 bg-clip-text text-transparent'>
-              <AnimatedNumber value='+200' className='mr-2 inline-block' />
+              <AnimatedNumber value='+2000' className='mr-2 inline-block' />
               élèves formés
             </p>
             <Link

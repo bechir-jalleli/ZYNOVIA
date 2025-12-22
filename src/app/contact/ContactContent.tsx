@@ -285,7 +285,7 @@ const ContactContent = () => {
             {...fadeInUp}
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className='mx-auto max-w-3xl text-center md:text-left mb-12'>
-            <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
+            <p className='text-base sm:text-lg font-semibold uppercase tracking-[0.22em] text-primary'>
               Comment pouvons-nous vous aider ?
             </p>
           </motion.div>
@@ -336,7 +336,7 @@ const ContactContent = () => {
             {...fadeInUp}
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className='mx-auto max-w-3xl text-center md:text-left mb-12'>
-            <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
+            <p className='text-base sm:text-lg font-semibold uppercase tracking-[0.22em] text-primary'>
               Nos coordonnées
             </p>
           </motion.div>
@@ -417,7 +417,7 @@ const ContactContent = () => {
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className='mx-auto max-w-3xl text-center md:text-left mb-12'
           >
-            <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
+            <p className='text-base sm:text-lg font-semibold uppercase tracking-[0.22em] text-primary'>
               Formulaire de contact
             </p>
           </motion.div>
@@ -578,7 +578,7 @@ const ContactContent = () => {
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className='mx-auto max-w-3xl text-center md:text-left mb-12'
           >
-            <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
+            <p className='text-base sm:text-lg font-semibold uppercase tracking-[0.22em] text-primary'>
               Réservez un rendez-vous
             </p>
           </motion.div>
@@ -783,7 +783,7 @@ const ContactContent = () => {
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className='mx-auto max-w-3xl text-center md:text-left mb-12'
           >
-            <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
+            <p className='text-base sm:text-lg font-semibold uppercase tracking-[0.22em] text-primary'>
               Réseaux &amp; communauté
             </p>
           </motion.div>

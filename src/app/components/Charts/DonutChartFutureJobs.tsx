@@ -33,7 +33,7 @@ const DonutChartFutureJobs: React.FC = () => {
       </div>
 
       <div className='grid gap-6 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:items-center'>
-        <div className='h-80 w-full sm:h-96 md:h-[420px]'>
+        <div style={{ width: '100%', height: 420, minWidth: 0 }}>
           <ResponsiveContainer width='100%' height='100%'>  
             <PieChart>
               <defs>

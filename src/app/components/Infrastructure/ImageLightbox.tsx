@@ -75,13 +75,13 @@ export default function ImageLightbox({
           {/* Close Button */}
           <button
             onClick={onClose}
-            className='absolute top-4 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur transition-all hover:bg-white/20 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white'
+            className='absolute top-2 right-2 sm:top-4 sm:right-4 z-50 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur transition-all hover:bg-white/20 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white'
             aria-label='Fermer'>
-            <X className='h-6 w-6' />
+            <X className='h-5 w-5 sm:h-6 sm:w-6' />
           </button>
 
           {/* Lightbox Image */}
-          <div className='relative max-w-7xl max-h-[90vh] w-full mx-4' onClick={(e) => e.stopPropagation()}>
+          <div className='relative max-w-7xl max-h-[90vh] w-full mx-2 sm:mx-4' onClick={(e) => e.stopPropagation()}>
             <AnimatePresence mode='wait'>
               <motion.div
                 key={lightboxIndex}
@@ -109,25 +109,25 @@ export default function ImageLightbox({
                     e.stopPropagation()
                     setLightboxIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1))
                   }}
-                  className='absolute left-4 top-1/2 -translate-y-1/2 z-10 flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur transition-all hover:bg-white/20 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white'
+                  className='absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur transition-all hover:bg-white/20 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white'
                   aria-label='Image précédente'>
-                  <ChevronLeft className='h-7 w-7' />
+                  <ChevronLeft className='h-5 w-5 sm:h-7 sm:w-7' />
                 </button>
                 <button
                   onClick={(e) => {
                     e.stopPropagation()
                     setLightboxIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1))
                   }}
-                  className='absolute right-4 top-1/2 -translate-y-1/2 z-10 flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur transition-all hover:bg-white/20 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white'
+                  className='absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur transition-all hover:bg-white/20 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white'
                   aria-label='Image suivante'>
-                  <ChevronRight className='h-7 w-7' />
+                  <ChevronRight className='h-5 w-5 sm:h-7 sm:w-7' />
                 </button>
               </>
             )}
 
             {/* Lightbox Counter */}
             {images.length > 1 && (
-              <div className='absolute bottom-4 left-1/2 -translate-x-1/2 z-10 rounded-full bg-black/50 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur'>
+              <div className='absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 z-10 rounded-full bg-black/50 px-3 py-1 sm:px-4 sm:py-1.5 text-[10px] sm:text-xs font-semibold text-white backdrop-blur'>
                 {lightboxIndex + 1} / {images.length}
               </div>
             )}
