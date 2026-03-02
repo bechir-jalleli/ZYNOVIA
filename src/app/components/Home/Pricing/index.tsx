@@ -114,20 +114,18 @@ const Pricing = () => {
           <div className='flex justify-center'>
             <div className='inline-flex bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm p-1.5 rounded-2xl shadow-[0_8px_30px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 dark:ring-slate-700/70 gap-2'>
               <button
-                className={`text-sm sm:text-base font-semibold cursor-pointer py-2.5 px-4 sm:py-3 sm:px-7 whitespace-nowrap rounded-xl transition-all duration-300 ${
-                  selectedCategory === 'etablissement'
+                className={`text-sm sm:text-base font-semibold cursor-pointer py-2.5 px-4 sm:py-3 sm:px-7 whitespace-nowrap rounded-xl transition-all duration-300 ${selectedCategory === 'etablissement'
                     ? 'bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-[#0091E6]/40 scale-105'
                     : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100/80 dark:hover:bg-slate-700/60'
-                }`}
+                  }`}
                 onClick={() => handleCategoryChange('etablissement')}>
                 Établissements scolaires
               </button>
               <button
-                className={`text-sm sm:text-base font-semibold cursor-pointer py-2.5 px-4 sm:py-3 sm:px-7 whitespace-nowrap rounded-xl transition-all duration-300 ${
-                  selectedCategory === 'entreprise'
+                className={`text-sm sm:text-base font-semibold cursor-pointer py-2.5 px-4 sm:py-3 sm:px-7 whitespace-nowrap rounded-xl transition-all duration-300 ${selectedCategory === 'entreprise'
                     ? 'bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-[#0091E6]/40 scale-105'
                     : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100/80 dark:hover:bg-slate-700/60'
-                }`}
+                  }`}
                 onClick={() => handleCategoryChange('entreprise')}>
                 Entreprises
               </button>
@@ -158,7 +156,6 @@ const Pricing = () => {
                     width={320}
                     height={360}
                     className='h-auto w-full object-contain transition-transform duration-300 hover:scale-105'
-                    priority
                   />
                 </div>
               </div>
@@ -168,60 +165,60 @@ const Pricing = () => {
           {/* plans card */}
           {loading
             ? Array.from({ length: 2 }).map((_, i) => (
-                <PricingSkeleton key={i} />
-              ))
+              <PricingSkeleton key={i} />
+            ))
             : plan
-                .filter((item) => {
-                  // For entreprise, filter out "Bootcamp AI" (Pro) plan
-                  if (selectedCategory === 'entreprise' && item.type === 'Bootcamp AI') {
-                    return false
+              .filter((item) => {
+                // For entreprise, filter out "Bootcamp AI" (Pro) plan
+                if (selectedCategory === 'entreprise' && item.type === 'Bootcamp AI') {
+                  return false
+                }
+                return true
+              })
+              .map((item, i) => {
+                const config =
+                  contentConfig[selectedCategory][item.type] ?? {
+                    title: item.type,
+                    desc: item.desc,
+                    options: item.option,
+                    cta: 'Réserver maintenant',
                   }
-                  return true
-                })
-                .map((item, i) => {
-                  const config =
-                    contentConfig[selectedCategory][item.type] ?? {
-                      title: item.type,
-                      desc: item.desc,
-                      options: item.option,
-                      cta: 'Réserver maintenant',
-                    }
-                  const features = config.options ?? item.option
-                  return (
-                    <div key={i}>
-                      <div className='flex h-full flex-col rounded-3xl border border-black/10 bg-white px-7 py-10 shadow-lg dark:border-white/10 dark:bg-darkmode dark:shadow-neutral-50/10'>
-                        <div className='flex flex-col gap-6 border-b border-black/10 dark:border-white/10 pb-6'>
-                          <p className='text-lg font-bold whitespace-nowrap'>{config.title}</p>
-                          {config.desc && (
-                            <p className='text-base font-normal'>{config.desc}</p>
-                          )}
-                        </div>
-                        {/* options */}
-                        <div className='flex-1 flex flex-col'>
-                          <ul className='flex flex-col gap-6 my-6'>
-                            {features.map((feat, i) => (
-                              <li key={i}>
-                                <div className='flex items-center gap-3'>
-                                  <div className='p-1 rounded-full bg-primary/10 text-primary'>
-                                    <Icon
-                                      icon={'material-symbols:check-rounded'}
-                                      width={19}
-                                      height={19}
-                                    />
-                                  </div>
-                                  <p className='text-base font-normal'>{feat}</p>
+                const features = config.options ?? item.option
+                return (
+                  <div key={i}>
+                    <div className='flex h-full flex-col rounded-3xl border border-black/10 bg-white px-7 py-10 shadow-lg dark:border-white/10 dark:bg-darkmode dark:shadow-neutral-50/10'>
+                      <div className='flex flex-col gap-6 border-b border-black/10 dark:border-white/10 pb-6'>
+                        <p className='text-lg font-bold whitespace-nowrap'>{config.title}</p>
+                        {config.desc && (
+                          <p className='text-base font-normal'>{config.desc}</p>
+                        )}
+                      </div>
+                      {/* options */}
+                      <div className='flex-1 flex flex-col'>
+                        <ul className='flex flex-col gap-6 my-6'>
+                          {features.map((feat, i) => (
+                            <li key={i}>
+                              <div className='flex items-center gap-3'>
+                                <div className='p-1 rounded-full bg-primary/10 text-primary'>
+                                  <Icon
+                                    icon={'material-symbols:check-rounded'}
+                                    width={19}
+                                    height={19}
+                                  />
                                 </div>
-                              </li>
-                            ))}
-                          </ul>
-                          <button className='mt-auto w-full rounded-xl border border-transparent bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] py-3 text-sm font-semibold text-white shadow-md shadow-[#0091E6]/40 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:cursor-pointer'>
-                            {config.cta}
-                          </button>
-                        </div>
+                                <p className='text-base font-normal'>{feat}</p>
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                        <button className='mt-auto w-full rounded-xl border border-transparent bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] py-3 text-sm font-semibold text-white shadow-md shadow-[#0091E6]/40 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:cursor-pointer'>
+                          {config.cta}
+                        </button>
                       </div>
                     </div>
-                  )
-                })}
+                  </div>
+                )
+              })}
         </div>
       </div>
     </section>

@@ -36,7 +36,7 @@ const FormationsBootcamps = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('/api/data')
+        const res = await fetch('/api/data', { cache: 'no-store' })
         if (!res.ok) throw new Error('Failed to fetch')
         const data = await res.json()
         setFormations(data.FormationData || [])
@@ -61,88 +61,56 @@ const FormationsBootcamps = () => {
           variants={staggerContainer}
           initial='initial'
           whileInView='whileInView'
-          viewport={{ once: true, amount: 0.25 }}
-          className='w-full'
+          viewport={{ once: true }}
+          className='flex flex-col items-center'
         >
-          {/* Header */}
-          <motion.div
-            {...fadeInUp}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className='text-center mb-12 lg:mb-16'
-          >
-            <p className='text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-primary/80 mb-3'>
-              Formations & Bootcamps
-            </p>
-            <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#0A004B] dark:text-white mb-4'>
-              Nos Formations Actuelles
+          <motion.div variants={fadeInUp} className='text-center mb-16 max-w-3xl'>
+            <h2 className='text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0A004B] dark:text-white mb-6 tracking-tight'>
+              Nos <span className='text-primary'>Formations</span> Actuelles
             </h2>
-            <p className='text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed'>
+            <p className='text-lg text-slate-600 dark:text-lightgrey font-medium leading-relaxed'>
               Découvrez nos programmes de formation en Intelligence Artificielle et technologies du futur
             </p>
           </motion.div>
 
-          {/* Filter Buttons */}
+          {/* Filter Tabs */}
           <motion.div
-            {...fadeInUp}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
-            className='flex justify-center mb-12 lg:mb-16'
+            variants={fadeInUp}
+            className='flex p-1.5 bg-slate-100 dark:bg-white/5 rounded-2xl mb-16 backdrop-blur-md shadow-inner'
           >
-            <div className='inline-flex bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm p-1.5 rounded-2xl shadow-[0_8px_30px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 dark:ring-slate-700/70 gap-2'>
-              {(['all', 'formation', 'bootcamp'] as const).map((filter) => (
-                <button
-                  key={filter}
-                  onClick={() => setSelectedFilter(filter)}
-                  className={`relative px-5 sm:px-7 py-2.5 sm:py-3 text-sm sm:text-base font-semibold rounded-xl transition-all duration-300 whitespace-nowrap ${
-                    selectedFilter === filter
-                      ? 'bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-primary/30 scale-105'
-                      : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100/80 dark:hover:bg-slate-700/50 hover:text-slate-800 dark:hover:text-slate-200'
+            {[
+              { id: 'all', label: 'Tous', icon: 'solar:Users-group-rounded-bold' },
+              { id: 'formation', label: 'Formations', icon: 'solar:book-bookmark-bold' },
+              { id: 'bootcamp', label: 'Bootcamps', icon: 'solar:rocket-bold' },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setSelectedFilter(tab.id as any)}
+                className={`flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 ${selectedFilter === tab.id
+                  ? 'bg-white dark:bg-primary text-primary dark:text-white shadow-lg'
+                  : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-white'
                   }`}
-                >
-                  {filter === 'all'
-                    ? 'Tous'
-                    : filter === 'formation'
-                      ? 'Formations'
-                      : 'Bootcamps'}
-                </button>
-              ))}
-            </div>
+              >
+                <Icon icon={tab.icon} className='w-4 h-4' />
+                {tab.label}
+              </button>
+            ))}
           </motion.div>
 
-          {/* Cards Grid */}
-          {loading ? (
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8'>
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div
-                  key={i}
-                  className='h-[600px] bg-slate-200/50 dark:bg-slate-800/50 rounded-3xl animate-pulse'
-                />
-              ))}
-            </div>
-          ) : filteredFormations.length === 0 ? (
-            <motion.div
-              {...fadeInUp}
-              className='text-center py-20'
-            >
-              <div className='inline-flex items-center justify-center w-20 h-20 rounded-full bg-slate-100 dark:bg-slate-800 mb-6'>
-                <Icon icon='material-symbols:search-off' className='w-10 h-10 text-slate-400' />
-              </div>
-              <p className='text-lg sm:text-xl font-medium text-slate-600 dark:text-slate-400'>
-                Aucune formation disponible pour le moment.
-              </p>
-            </motion.div>
-          ) : (
+          {/* Grid Layout */}
+          <div className='w-full'>
             <AnimatePresence mode='wait'>
               <motion.div
                 key={selectedFilter}
-                variants={staggerContainer}
-                initial='initial'
-                animate='whileInView'
-                exit='initial'
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.4 }}
                 className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8'
               >
-                {filteredFormations.map((formation) => (
+                {filteredFormations.map((formation: any) => (
                   <motion.div
-                    key={formation.id}
+                    key={formation.id || formation._id}
                     variants={cardVariant}
                     viewport={{ once: false, amount: 0.2 }}
                     className='group relative overflow-hidden rounded-3xl bg-white/95 dark:bg-slate-900/95 shadow-[0_18px_45px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 dark:ring-slate-700/70 backdrop-blur transition-all duration-500 hover:shadow-[0_24px_60px_rgba(15,23,42,0.18)] hover:-translate-y-2 flex flex-col h-full'
@@ -176,15 +144,14 @@ const FormationsBootcamps = () => {
                         sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                       />
                       <div className='absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent' />
-                      
+
                       {/* Type Badge on Image */}
                       <div className='absolute bottom-4 left-4 right-4'>
                         <span
-                          className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold backdrop-blur-md shadow-lg ${
-                            formation.type === 'bootcamp'
-                              ? 'bg-gradient-to-r from-orange-500/95 to-orange-600/95 text-white'
-                              : 'bg-gradient-to-r from-blue-500/95 to-blue-600/95 text-white'
-                          }`}
+                          className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold backdrop-blur-md shadow-lg ${formation.type === 'bootcamp'
+                            ? 'bg-gradient-to-r from-orange-500/95 to-orange-600/95 text-white'
+                            : 'bg-gradient-to-r from-blue-500/95 to-blue-600/95 text-white'
+                            }`}
                         >
                           {formation.type === 'bootcamp' ? (
                             <>
@@ -246,7 +213,7 @@ const FormationsBootcamps = () => {
                       {/* Features */}
                       {formation.features && formation.features.length > 0 && (
                         <div className='mb-6 space-y-2.5'>
-                          {formation.features.slice(0, 3).map((feature, index) => (
+                          {formation.features.slice(0, 3).map((feature: string, index: number) => (
                             <motion.div
                               key={index}
                               initial={{ opacity: 0, x: -10 }}
@@ -270,11 +237,10 @@ const FormationsBootcamps = () => {
 
                       {/* Price & CTA */}
                       <div className='mt-auto pt-5 border-t border-slate-200/60 dark:border-slate-700/60'>
-                        <div className='flex items-center justify-between mb-4'>
-                         
+                        <div className='flex items-center justify-between'>
                         </div>
                         <Link
-                          href={formation.href}
+                          href={formation.href || '/programmes'}
                           className='group/btn block w-full px-6 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-center text-white border rounded-xl border-transparent bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] hover:shadow-xl hover:shadow-primary/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-md relative overflow-hidden'
                         >
                           <span className='relative z-10 flex items-center justify-center gap-2'>
@@ -292,7 +258,7 @@ const FormationsBootcamps = () => {
                 ))}
               </motion.div>
             </AnimatePresence>
-          )}
+          </div>
         </motion.div>
       </div>
     </section>
@@ -300,4 +266,3 @@ const FormationsBootcamps = () => {
 }
 
 export default FormationsBootcamps
-

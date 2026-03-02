@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server'
 
+export const dynamic = 'force-dynamic';
+
 import { NavLinkType } from '@/app/types/navlink'
 import { ProjectType } from '@/app/types/project'
 import { RecordType } from '@/app/types/record'
@@ -44,7 +46,7 @@ const NavLinkData: NavLinkType[] = [
     label: 'Formateurs',
     href: '/nos-formateurs',
   },
-  
+
   // {
   //   label: 'Parents',
   //   href: '/parents',
@@ -426,17 +428,42 @@ const FormationData: FormationType[] = [
   },
 ]
 
-export const GET = () => {
-  return NextResponse.json({
-    HeroData,
-    NavLinkData,
-    ProjectData,
-    RecordData,
-    ReviewData,
-    SpecializeData,
-    PlanData,
-    CategoryData,
-    FooterLinkData,
-    FormationData,
-  })
+import connectToDatabase from '@/lib/mongodb'
+import StudentProject from '@/models/Project'
+import Review from '@/models/Review'
+import Formation from '@/models/Formation'
+
+export const GET = async () => {
+  try {
+    await connectToDatabase();
+
+    const projects = await StudentProject.find();
+    let reviews = await Review.find();
+    const formations = await Formation.find();
+
+    // Auto-populate reviews if empty (save old comments)
+    if (reviews.length === 0 && ReviewData.length > 0) {
+      await Review.insertMany(ReviewData);
+      reviews = await Review.find();
+    }
+
+    // Use DB data if available, otherwise fallback to static (initial)
+    return NextResponse.json({
+      HeroData,
+      NavLinkData,
+      ProjectData: projects.length > 0 ? projects : ProjectData,
+      RecordData,
+      ReviewData: reviews.length > 0 ? reviews : ReviewData,
+      SpecializeData,
+      PlanData,
+      CategoryData,
+      FooterLinkData,
+      FormationData: formations.length > 0 ? formations : FormationData,
+    })
+  } catch (error) {
+    console.error('API Data fetch error', error);
+    return NextResponse.json({
+      HeroData, NavLinkData, ProjectData, RecordData, ReviewData, SpecializeData, PlanData, CategoryData, FooterLinkData, FormationData
+    });
+  }
 }

@@ -5,6 +5,7 @@ import Header from './components/Layout/Header'
 import { ThemeProvider } from 'next-themes'
 import Footer from './components/Layout/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import { AuthProvider } from '@/context/AuthContext'
 
 const DMSans = DM_Sans({
   variable: '--font-DM-Sans',
@@ -100,10 +101,12 @@ export default function RootLayout({
           attribute='class'
           enableSystem={false}
           defaultTheme='light'>
-          <Header />
-          {children}
-          <Footer />
-          <ScrollToTop />
+          <AuthProvider>
+            <Header />
+            {children}
+            <Footer />
+            <ScrollToTop />
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

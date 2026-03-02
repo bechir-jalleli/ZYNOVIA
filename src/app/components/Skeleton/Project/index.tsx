@@ -1,22 +1,21 @@
 const ProjectSkeleton = () => {
   return (
     <>
-      <div>
-        <div
-          role='status'
-          className='max-w-md animate-pulse overflow-hidden text-center backdrop-blur-md p-5 bg-white dark:bg-lightdarkblue m-3 rounded-lg'>
-          <svg
-            className='w-30 h-30 mx-auto text-gray-200 my-5'
-            aria-hidden='true'
-            xmlns='http://www.w3.org/2000/svg'
-            fill='currentColor'
-            viewBox='0 0 20 18'>
-            <path d='M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z' />
-          </svg>
-          <div className='mt-10'>
-            <div className='h-2 w-48 mx-auto bg-gray-200 rounded-full max-w-[330px] mb-2.5'></div>
-            <div className='h-2 w-36 mx-auto bg-gray-200 rounded-full max-w-[300px] mb-2.5'></div>
-            <span className='sr-only'>Loading...</span>
+      <div className="px-4 py-8">
+        <div className='animate-pulse rounded-[2.5rem] bg-white dark:bg-slate-900/95 p-5 shadow-lg ring-1 ring-slate-200/50 dark:ring-slate-800/50 backdrop-blur-xl h-full'>
+          <div className='mb-6 w-full h-56 rounded-[2rem] bg-slate-200 dark:bg-slate-800' />
+          <div className='px-1 space-y-3'>
+            <div className='h-4 bg-slate-200 dark:bg-slate-800 rounded-full w-3/4' />
+            <div className='h-3 bg-slate-100 dark:bg-slate-800/50 rounded-full w-full' />
+            <div className='h-3 bg-slate-100 dark:bg-slate-800/50 rounded-full w-5/6' />
+          </div>
+          <div className='flex items-center gap-3.5 border-t border-slate-100 dark:border-white/5 pt-5 mt-8'>
+            <div className='w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-800' />
+            <div className='flex-1 space-y-2'>
+              <div className='h-2 bg-slate-100 dark:bg-slate-800/50 rounded-full w-12' />
+              <div className='h-3 bg-slate-200 dark:bg-slate-800 rounded-full w-24' />
+              <div className='h-2 bg-slate-100 dark:bg-slate-800/50 rounded-full w-20' />
+            </div>
           </div>
         </div>
       </div>

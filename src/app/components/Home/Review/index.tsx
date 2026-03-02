@@ -16,7 +16,7 @@ const Review = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('/api/data')
+        const res = await fetch('/api/data', { cache: 'no-store' })
         if (!res.ok) throw new Error('Failed to fetch')
         const data = await res.json()
         setReview(data.ReviewData)
@@ -107,42 +107,42 @@ const Review = () => {
         <Slider {...settings}>
           {loading
             ? Array.from({ length: 3 }).map((_, i) => <ReviewSkeleton key={i} />)
-            : review.map((item, i) => (
-                <div key={i}>
-                  <div className='m-3 rounded-3xl bg-white/95 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.10)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/95 dark:ring-slate-700/70 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(15,23,42,0.18)]'>
-                    <div className='mb-5 flex items-center gap-4'>
-                      <div className='relative'>
+            : review.map((item: any, i) => (
+              <div key={item._id || i}>
+                <div className='m-3 rounded-3xl bg-white/95 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.10)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/95 dark:ring-slate-700/70 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(15,23,42,0.18)]'>
+                  <div className='mb-5 flex items-center gap-4'>
+                    <div className='relative'>
+                      <Image
+                        src={item.imgSrc}
+                        alt={item.name}
+                        width={48}
+                        height={48}
+                        className='h-12 w-12 rounded-full object-cover'
+                      />
+                      <div className='absolute bottom-0 right-0'>
                         <Image
-                          src={item.imgSrc}
-                          alt={item.name}
-                          width={48}
-                          height={48}
-                          className='h-12 w-12 rounded-full object-cover'
+                          src={'/images/banner/greentick.svg'}
+                          alt='tick'
+                          width={15}
+                          height={15}
                         />
-                        <div className='absolute bottom-0 right-0'>
-                          <Image
-                            src={'/images/banner/greentick.svg'}
-                            alt='tick'
-                            width={15}
-                            height={15}
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <h6 className='text-base font-semibold text-slate-900 dark:text-slate-50'>
-                          {item.name}
-                        </h6>
-                        <div>{renderStars(item.rating)}</div>
                       </div>
                     </div>
                     <div>
-                      <p className='text-sm font-normal leading-relaxed text-slate-700 sm:text-base dark:text-slate-200'>
-                        {item.desc}
-                      </p>
+                      <h6 className='text-base font-semibold text-slate-900 dark:text-slate-50'>
+                        {item.name}
+                      </h6>
+                      <div>{renderStars(item.rating)}</div>
                     </div>
                   </div>
+                  <div>
+                    <p className='text-sm font-normal leading-relaxed text-slate-700 sm:text-base dark:text-slate-200'>
+                      {item.desc}
+                    </p>
+                  </div>
                 </div>
-              ))}
+              </div>
+            ))}
         </Slider>
       </div>
     </section>

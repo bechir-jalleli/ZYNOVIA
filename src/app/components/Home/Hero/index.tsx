@@ -52,7 +52,7 @@ const Hero = () => {
     <section className='relative min-h-screen flex items-center'>
       <div className='w-full overflow-hidden'>
         <div className='container relative z-20 pt-20 lg:pt-24'>
-        <div className='relative z-20 grid lg:grid-cols-12 grid-cols-1 lg:items-start items-center lg:justify-items-normal justify-items-center gap-10 lg:gap-20 pb-10'>
+          <div className='relative z-20 grid lg:grid-cols-12 grid-cols-1 lg:items-start items-center lg:justify-items-normal justify-items-center gap-10 lg:gap-20 pb-10'>
             <div className='lg:col-span-7 col-span-1'>
               <div className='flex flex-col lg:items-start items-center gap-8 lg:gap-12'>
                 <h1 className='lg:text-start text-center w-full max-w-2xl text-3xl sm:text-4xl lg:text-5xl'>
@@ -62,20 +62,20 @@ const Hero = () => {
 
 
                 <motion.p
-                {...fadeInUp}
-                transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
-                className='lg:text-start text-center text-lg sm:text-xl lg:text-2xl font-semibold text-primary dark:text-cyan-300'>
-                Former une génération prête à affronter l&apos;avenir avec l&apos;IA
-              </motion.p>
+                  {...fadeInUp}
+                  transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
+                  className='lg:text-start text-center text-lg sm:text-xl lg:text-2xl font-semibold text-primary dark:text-cyan-300'>
+                  Former une génération prête à affronter l&apos;avenir avec l&apos;IA
+                </motion.p>
 
-              {/* Description */}
-              <motion.p
-                {...fadeInUp}
-                transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
-                className='lg:text-start text-center max-w-2xl -mt-10 text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed'>
-                INOTEQIA Academy prépare les jeunes aux compétences essentielles du futur : IA, pensée
-                algorithmique, robotique, créativité et culture numérique.
-              </motion.p>
+                {/* Description */}
+                <motion.p
+                  {...fadeInUp}
+                  transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
+                  className='lg:text-start text-center max-w-2xl -mt-10 text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed'>
+                  INOTEQIA Academy prépare les jeunes aux compétences essentielles du futur : IA, pensée
+                  algorithmique, robotique, créativité et culture numérique.
+                </motion.p>
 
                 <div className='flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 w-full max-w-2xl'>
                   <Link href={'/parents'}>
@@ -108,6 +108,8 @@ const Hero = () => {
                         width={600}
                         height={420}
                         className='rounded-lg w-full object-cover'
+                        loading={i === 0 ? 'eager' : 'lazy'}
+                        priority={i === 0}
                       />
                     </div>
                   ))}
