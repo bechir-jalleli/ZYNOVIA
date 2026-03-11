@@ -1,6 +1,8 @@
 'use client'
+
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import Logo from './Logo'
 import HeaderLink from './Navigation/HeaderLink'
 import MobileHeaderLink from './Navigation/MobileHeaderLink'
@@ -10,7 +12,11 @@ import { useTheme } from 'next-themes'
 import { useAuth } from '@/context/AuthContext'
 
 const Header: React.FC = () => {
+  const pathname = usePathname()
   const { user, logout } = useAuth()
+
+  if (pathname?.startsWith('/admin')) return null
+
   const [navlink, setNavlink] = useState<NavLinkType[]>([])
   const { theme, setTheme } = useTheme()
   const [navbarOpen, setNavbarOpen] = useState(false)

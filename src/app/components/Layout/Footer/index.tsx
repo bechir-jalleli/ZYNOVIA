@@ -3,8 +3,11 @@
 import Link from 'next/link'
 import Logo from '../Header/Logo'
 import { Icon } from '@iconify/react'
+import { usePathname } from 'next/navigation'
 
 const Footer = () => {
+  const pathname = usePathname()
+  if (pathname?.startsWith('/admin')) return null
   return (
     <footer>
       <div className='container py-14'>

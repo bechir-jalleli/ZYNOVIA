@@ -17,8 +17,8 @@ export default function AdminSidebar() {
     const pathname = usePathname();
 
     return (
-        <aside className="w-64 bg-white dark:bg-darklight border-r border-slate-200 dark:border-white/5 min-h-screen fixed left-0 top-0 pt-20 hidden xl:block transition-colors duration-300">
-            <nav className="p-4 space-y-2">
+        <aside className="w-64 bg-white dark:bg-darklight border-r border-slate-200 dark:border-white/5 min-h-screen fixed left-0 top-0 pt-20 hidden xl:flex flex-col transition-colors duration-300">
+            <nav className="p-4 space-y-2 flex-grow overflow-y-auto">
                 {menuItems.map((item) => {
                     const isActive = pathname === item.href;
                     return (
@@ -37,7 +37,7 @@ export default function AdminSidebar() {
                 })}
             </nav>
 
-            <div className="absolute bottom-8 left-0 w-full px-4">
+            <div className="p-6 border-t border-slate-200 dark:border-white/5 space-y-4">
                 <Link
                     href="/"
                     className="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-lightgrey hover:text-primary dark:hover:text-white transition-all w-full font-semibold"
@@ -45,6 +45,22 @@ export default function AdminSidebar() {
                     <Icon icon="solar:home-2-bold" width="22" />
                     <span className="font-medium">Retour au site</span>
                 </Link>
+
+                <div className="flex justify-center gap-4 px-4">
+                    <Link href="https://facebook.com" target="_blank" className="text-slate-400 hover:text-primary transition-colors">
+                        <Icon icon="tabler:brand-facebook" width="20" />
+                    </Link>
+                    <Link href="https://linkedin.com" target="_blank" className="text-slate-400 hover:text-primary transition-colors">
+                        <Icon icon="tabler:brand-linkedin" width="20" />
+                    </Link>
+                    <Link href="https://instagram.com" target="_blank" className="text-slate-400 hover:text-primary transition-colors">
+                        <Icon icon="tabler:brand-instagram" width="20" />
+                    </Link>
+                </div>
+
+                <div className="px-4 text-[10px] text-slate-400 dark:text-lightgrey/40 text-center leading-relaxed font-medium">
+                    © 2025 INOTEQIA ACADEMY.<br />All rights reserved.
+                </div>
             </div>
         </aside>
     );
