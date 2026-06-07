@@ -9,7 +9,7 @@ interface RoomGalleryProps {
   title?: string
 }
 
-export default function RoomGallery({ images, title = 'Salle immersive d\'INOTEQIA Academy' }: RoomGalleryProps) {
+export default function RoomGallery({ images, title = 'Salle immersive d\'ZYNOVIA Academy' }: RoomGalleryProps) {
   // Start with the first image
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isLightboxOpen, setIsLightboxOpen] = useState(false)

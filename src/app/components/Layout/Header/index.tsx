@@ -87,12 +87,12 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 py-1 z-50 w-full bg-transparent transition-all ${sticky ? 'shadow-lg dark:shadow-neutral-50/5 bg-white dark:bg-darklight' : 'shadow-none'
+      className={`fixed top-0 py-0 z-50 w-full bg-transparent transition-all ${sticky ? 'shadow-lg dark:shadow-neutral-50/5 bg-white dark:bg-darklight' : 'shadow-none'
         }`}>
       <div
-        className={`container flex items-center justify-between gap-10 duration-300  ${sticky ? 'py-3' : 'py-4'
+        className={`container flex items-center justify-between gap-10 duration-300  ${sticky ? 'py-1.5' : 'py-2.5'
           }`}>
-        <Logo />
+        <Logo variant='header' />
         <nav>
           <ul className='hidden xl:flex flex-grow items-center justify-start gap-10 '>
             {navlink.map((item, index) => (
@@ -118,15 +118,15 @@ const Header: React.FC = () => {
               className='dark:hidden block'
             />
           </button>
-          <Link
-            href='/contact#appointment-form'
-            className='hidden xl:block px-6 py-2 bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white rounded-[10px] outline-none hover:shadow-lg hover:shadow-primary/30 hover:scale-105 border border-transparent hover:border-primary/20 duration-300 text-sm font-semibold tracking-wide transition-all'>
-            Rendez-vous
-          </Link>
-
+<Link
+  href="/contact#appointment-form"
+  className="hidden xl:block px-6 py-2 btn-primary btn-hover rounded-[10px] text-sm font-semibold tracking-wide transition-all"
+>
+  Rendez-vous
+</Link>
           {user ? (
             <div className='relative group hidden xl:block'>
-              <button className='flex items-center gap-2 px-5 py-2 bg-neutral-100 dark:bg-white/10 text-darkblue dark:text-white rounded-xl font-bold text-sm transition-all group-hover:bg-primary group-hover:text-white'>
+              <button className='flex items-center gap-2 px-5 py-2 bg-neutral-100 dark:bg-white/10 text-darkblue dark:text-white rounded-xl font-bold text-sm transition-all group-hover:bg-gradient-brand group-hover:text-white'>
                 <Icon icon="solar:user-circle-bold" width="22" />
                 Compte
                 <Icon icon="solar:alt-arrow-down-bold" width="14" className="transition-transform group-hover:rotate-180" />
@@ -137,7 +137,7 @@ const Header: React.FC = () => {
                   {user.role === 'admin' && (
                     <Link
                       href='/admin'
-                      className='flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 rounded-xl transition-all'
+                      className='flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-gradient-hover rounded-xl transition-all'
                     >
                       <Icon icon="solar:widget-bold" width="20" />
                       Tableau de bord
@@ -156,10 +156,11 @@ const Header: React.FC = () => {
           ) : (
             <Link
               href='/auth/login'
-              className='hidden xl:flex items-center gap-2 px-6 py-2 bg-neutral-50 dark:bg-white/5 border border-neutral-200 dark:border-white/10 text-darkblue dark:text-white rounded-xl font-semibold text-sm hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-300'
+              className='connexion-btn hidden xl:flex items-center gap-2 px-5 py-2 rounded-xl font-semibold text-sm transition-all duration-300 relative overflow-hidden'
             >
-              <Icon icon="solar:user-bold" width="18" />
-              Connexion
+              <span className='connexion-btn__shimmer' aria-hidden='true' />
+              <Icon icon="solar:user-bold" width="18" className='relative z-10' />
+              <span className='relative z-10'>Connexion</span>
             </Link>
           )}
           <button
@@ -180,7 +181,7 @@ const Header: React.FC = () => {
         className={`xl:hidden fixed top-0 right-0 h-full w-full bg-white dark:bg-darklight shadow-lg transform transition-transform duration-300 max-w-xs ${navbarOpen ? 'translate-x-0' : 'translate-x-full'
           } z-50`}>
         <div className='flex items-center justify-between p-4'>
-          <Logo />
+          <Logo variant='header' />
           <button
             onClick={() => setNavbarOpen(false)}
             aria-label='Close mobile menu'>
@@ -210,7 +211,7 @@ const Header: React.FC = () => {
             {user?.role === 'admin' && (
               <Link
                 href='/admin'
-                className='flex items-center justify-center gap-2 px-6 py-4 bg-primary/10 text-primary border border-primary/20 rounded-xl font-semibold text-sm text-center w-full'
+                className='flex items-center justify-center gap-2 px-6 py-4 bg-gradient-soft border border-[#3FA9DF]/20 text-[#27397F] dark:text-[#3FA9DF] rounded-xl font-semibold text-sm text-center w-full'
                 onClick={() => setNavbarOpen(false)}
               >
                 <Icon icon="solar:widget-bold" width="20" />
@@ -220,7 +221,7 @@ const Header: React.FC = () => {
 
             <Link
               href='/contact#appointment-form'
-              className='flex items-center justify-center gap-2 px-6 py-4 bg-primary text-white rounded-xl font-semibold text-sm text-center w-full shadow-lg shadow-primary/20 transition-all active:scale-95'
+              className='flex items-center justify-center gap-2 px-6 py-4 btn-primary btn-hover rounded-xl font-semibold text-sm text-center w-full shadow-lg shadow-primary/20 transition-all active:scale-95'
               onClick={() => {
                 setNavbarOpen(false)
               }}>
@@ -242,11 +243,12 @@ const Header: React.FC = () => {
             ) : (
               <Link
                 href='/auth/login'
-                className='flex items-center justify-center gap-2 px-6 py-4 bg-neutral-50 dark:bg-white/5 border border-neutral-200 dark:border-white/10 text-darkblue dark:text-white rounded-xl font-semibold text-sm text-center w-full'
+                className='connexion-btn connexion-btn--mobile flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold text-sm text-center w-full transition-all duration-300 relative overflow-hidden'
                 onClick={() => setNavbarOpen(false)}
               >
-                <Icon icon="solar:user-bold" width="20" />
-                Connexion
+                <span className='connexion-btn__shimmer' aria-hidden='true' />
+                <Icon icon="solar:user-bold" width="20" className='relative z-10' />
+                <span className='relative z-10'>Connexion</span>
               </Link>
             )}
           </div>

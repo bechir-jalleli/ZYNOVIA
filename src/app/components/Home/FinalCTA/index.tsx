@@ -11,7 +11,7 @@ const fadeInUp = {
 
 const FinalCTA = () => {
   return (
-    <section className='py-24 lg:py-32 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent dark:from-slate-900 dark:via-slate-950 dark:to-slate-900'>
+    <section className='py-24 lg:py-32 bg-gradient-soft'>
       <div className='container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8'>
         <motion.div
           {...fadeInUp}
@@ -22,19 +22,19 @@ const FinalCTA = () => {
             Prêt à préparer l&apos;avenir avec l&apos;IA ?
           </h2>
           <p className='text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed'>
-            Rejoignez INOTEQIA Academy et offrez à votre enfant ou à vos élèves les compétences essentielles pour réussir dans un monde transformé par l&apos;intelligence artificielle.
+            Rejoignez ZYNOVIA Academy et offrez à votre enfant ou à vos élèves les compétences essentielles pour réussir dans un monde transformé par l&apos;intelligence artificielle.
           </p>
           
           <div className='flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6'>
             <Link
               href='/programmes'
-              className='w-full sm:w-auto px-8 sm:px-10 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-white border rounded-[10px] border-transparent bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-md whitespace-nowrap text-center'
+              className='w-full sm:w-auto px-8 sm:px-10 py-3.5 text-sm sm:text-base font-semibold tracking-wide btn-primary btn-hover rounded-[10px] shadow-md whitespace-nowrap text-center'
             >
               Découvrir nos programmes
             </Link>
             <Link
               href='/contact'
-              className='w-full sm:w-auto px-8 sm:px-10 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-primary border rounded-[10px] border-primary bg-white dark:bg-transparent hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-sm whitespace-nowrap text-center'
+              className='w-full sm:w-auto px-8 sm:px-10 py-3.5 text-sm sm:text-base btn-outline btn-hover rounded-[10px] font-semibold shadow-sm whitespace-nowrap text-center'
             >
               Parler à un conseiller
             </Link>

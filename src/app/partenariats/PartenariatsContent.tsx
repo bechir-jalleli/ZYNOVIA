@@ -43,10 +43,10 @@ const faqItems: FaqItem[] = [
   {
     question: 'Quels types de partenariats proposez-vous ?',
     answer:
-      'INOTEQIA Academy propose des partenariats avec les établissements scolaires, les entreprises et les institutions autour de programmes annuels, d’ateliers, de bootcamps, d’événements et de projets co-construits.',
+      'ZYNOVIA Academy propose des partenariats avec les établissements scolaires, les entreprises et les institutions autour de programmes annuels, d’ateliers, de bootcamps, d’événements et de projets co-construits.',
   },
   {
-    question: 'Comment intégrer INOTEQIA dans un établissement ?',
+    question: 'Comment intégrer ZYNOVIA dans un établissement ?',
     answer:
       'Nous analysons d’abord le contexte de votre établissement, puis nous proposons un dispositif adapté (programme annuel, ateliers, classe IA, événements ponctuels) avec un calendrier et un suivi précis.',
   },
@@ -85,13 +85,13 @@ const PartenariatsContent = () => {
                 Partenariats
               </p>
               <h1 className='text-3xl font-bold leading-tight text-[#0A004B] sm:text-4xl lg:text-5xl dark:text-white'>
-                Partenariats INOTEQIA
+                Partenariats ZYNOVIA
               </h1>
               <p className='text-lg font-medium text-primary/90 dark:text-cyan-300'>
                 Construisons ensemble la future génération de talents IA en Tunisie
               </p>
               <p className='max-w-2xl text-sm sm:text-base text-slate-700 dark:text-slate-300'>
-                INOTEQIA Academy collabore avec les établissements scolaires, les entreprises et les
+                ZYNOVIA Academy collabore avec les établissements scolaires, les entreprises et les
                 institutions pour développer des parcours innovants, certifiants et tournés vers les
                 compétences du futur.
               </p>
@@ -129,7 +129,7 @@ const PartenariatsContent = () => {
                   </p>
                 </div>
                 <p>
-                  Les partenariats INOTEQIA créent des passerelles concrètes entre le monde éducatif,
+                  Les partenariats ZYNOVIA créent des passerelles concrètes entre le monde éducatif,
                   les entreprises et les institutions, autour de projets IA à fort impact pédagogique
                   et social.
                 </p>
@@ -276,7 +276,7 @@ const PartenariatsContent = () => {
                 Bénéfices pour votre établissement
               </h3>
               <p>
-                Intégrer INOTEQIA, c’est offrir à vos élèves des parcours alignés sur les enjeux
+                Intégrer ZYNOVIA, c’est offrir à vos élèves des parcours alignés sur les enjeux
                 STEM, renforcer l’attractivité de votre établissement et proposer aux familles une
                 réponse concrète aux questions liées à l’orientation et à l’avenir des métiers.
               </p>
@@ -338,7 +338,7 @@ const PartenariatsContent = () => {
                 Bénéfices pour votre entreprise
               </h3>
               <p className='text-xs sm:text-sm'>
-                Les partenariats avec INOTEQIA permettent de donner du sens à vos actions RSE, de
+                Les partenariats avec ZYNOVIA permettent de donner du sens à vos actions RSE, de
                 renforcer votre marque employeur et de vous positionner comme acteur engagé dans le
                 développement des compétences IA des jeunes générations.
               </p>
@@ -393,7 +393,7 @@ const PartenariatsContent = () => {
         </div>
       </section>
 
-      {/* SECTION – Engagements INOTEQIA */}
+      {/* SECTION – Engagements ZYNOVIA */}
       <section className='py-24 lg:py-32'>
         <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
           <motion.div
@@ -402,7 +402,7 @@ const PartenariatsContent = () => {
             className='mx-auto max-w-3xl text-center md:text-left'
           >
             <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
-              Engagements INOTEQIA
+              Engagements ZYNOVIA
             </p>
           </motion.div>
 

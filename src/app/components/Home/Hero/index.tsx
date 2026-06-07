@@ -64,7 +64,7 @@ const Hero = () => {
                 <motion.p
                   {...fadeInUp}
                   transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
-                  className='lg:text-start text-center text-lg sm:text-xl lg:text-2xl font-semibold text-primary dark:text-cyan-300'>
+                  className='lg:text-start text-center text-lg sm:text-xl lg:text-2xl font-bold text-gradient'>
                   Former une génération prête à affronter l&apos;avenir avec l&apos;IA
                 </motion.p>
 
@@ -73,23 +73,23 @@ const Hero = () => {
                   {...fadeInUp}
                   transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
                   className='lg:text-start text-center max-w-2xl -mt-10 text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed'>
-                  INOTEQIA Academy prépare les jeunes aux compétences essentielles du futur : IA, pensée
+                  ZYNOVIA Academy prépre les jeunes aux compétences essentielles du futur : IA, pensée
                   algorithmique, robotique, créativité et culture numérique.
                 </motion.p>
 
                 <div className='flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 w-full max-w-2xl'>
                   <Link href={'/parents'}>
-                    <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-white border rounded-[10px] border-transparent bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-md whitespace-nowrap'>
+                    <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base btn-primary btn-hover rounded-[10px] shadow-md whitespace-nowrap'>
                       👨‍👩‍👧 Je suis parent
                     </button>
                   </Link>
                   <Link href={'/programmes'}>
-                    <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-primary border rounded-[10px] border-primary bg-white dark:bg-transparent hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-sm whitespace-nowrap'>
+                    <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base btn-outline btn-hover rounded-[10px] font-semibold shadow-sm whitespace-nowrap'>
                       🏫 Je suis un établissement scolaire
                     </button>
                   </Link>
                   <Link href={'/entreprise'}>
-                    <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-primary border rounded-[10px] border-primary bg-white dark:bg-transparent hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-sm whitespace-nowrap'>
+                    <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base btn-outline btn-hover rounded-[10px] font-semibold shadow-sm whitespace-nowrap'>
                       🏢 Je suis une entreprise
                     </button>
                   </Link>

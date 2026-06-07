@@ -3,47 +3,363 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* brand palette – synced with logo */
-  --color-primary: #0091e6; /* primary blue */
-  --color-secondary: #e6f9fd; /* soft cyan surface */
-  --color-lightgrey: #5b728f; /* cool grey for body text */
-  --color-darkmode: #02051a; /* deep navy background */
-  --color-darklight: #030927; /* slightly lighter dark surfaces */
-  --color-darkblue: #0a004b; /* primary text on light, logo navy */
-  --color-lightdarkblue: #04112f; /* cards on dark mode */
+  /* =========================
+     BRAND PALETTE
+  ========================= */
+  --color-primary: #0091e6;
+  --color-secondary: #e6f9fd;
+  --color-lightgrey: #5b728f;
+  --color-darkmode: #02051a;
+  --color-darklight: #030927;
+  --color-darkblue: #0a004b;
+  --color-lightdarkblue: #04112f;
 
-  /* brand gradients */
-  --gradient-brand: linear-gradient(135deg, #00c3d9, #0091e6, #0067e0);
+  /* =========================
+     BRAND GRADIENTS (UPDATED)
+  ========================= */
+  --gradient-brand: linear-gradient(to right, #27397F, #3FA9DF);
+
   --gradient-brand-soft: linear-gradient(
-    135deg,
-    rgba(0, 195, 217, 0.08),
-    rgba(0, 145, 230, 0.08),
-    rgba(0, 103, 224, 0.12)
+    to right,
+    rgba(39, 57, 127, 0.08),
+    rgba(63, 169, 223, 0.08)
   );
 
-  /* spacing */
+  /* =========================
+     SPACING
+  ========================= */
   --spacing-45: 45%;
 
-  /* breakpoint */
+  /* =========================
+     BREAKPOINT
+  ========================= */
   --breakpoint-xs: 420px;
 }
 
+/* =========================
+   UTILITIES
+========================= */
 @layer utilities {
+
   .container {
     @apply max-w-7xl mx-auto w-full px-4;
   }
 
   .scrollbar-hide {
-    /* Hide scrollbar for Chrome, Safari and Opera */
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   .scrollbar-hide::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
+    display: none;
+  }
+
+  /* =========================
+     TEXT GRADIENT SYSTEM
+  ========================= */
+  .text-gradient {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-hover {
+    transition: all 0.3s ease;
+  }
+
+  .text-gradient-hover:hover {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* =========================
+     BUTTON GRADIENT SYSTEM
+  ========================= */
+  .btn-primary {
+    background: var(--gradient-brand);
+    color: white;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-gradient {
+    background: var(--gradient-brand);
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .btn-gradient:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+  }
+  /* ICON GRADIENT FOR CIRCLES */
+  .icon-gradient {
+    background: linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF);
+  }
+
+  .btn-outline {
+    position: relative;
+    background-image: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    border: 2px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-outline::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: var(--gradient-brand);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+  }
+
+  .btn-outline:hover {
+    background-image: var(--gradient-brand);
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    color: white;
+    -webkit-text-fill-color: white;
+  }
+
+  .btn-outline:hover::before {
+    opacity: 0;
+  }
+
+  .btn-gradient-outline {
+    position: relative;
+    background-image: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    border: 2px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-gradient-outline::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: var(--gradient-brand);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+  }
+
+  .btn-gradient-outline:hover {
+    background-image: var(--gradient-brand);
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    color: white;
+    -webkit-text-fill-color: white;
+  }
+
+  .btn-gradient-outline:hover::before {
+    opacity: 0;
+  }
+
+  .btn-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -10px rgba(39, 57, 127, 0.4);
+    filter: brightness(1.1);
+  }
+
+  /* =========================
+     BACKGROUNDS
+  ========================= */
+  .bg-gradient-brand {
+    background: var(--gradient-brand);
+  }
+
+  .bg-gradient-brand-soft {
+    background: var(--gradient-brand-soft);
+  }
+
+  .bg-gradient-soft {
+    background: var(--gradient-brand-soft);
+  }
+
+
+  /* =========================
+     CONNEXION BUTTON
+  ========================= */
+
+  /* ── Desktop: gradient-border outline ── */
+  .connexion-btn {
+    background: transparent;
+    color: #27397F;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+
+  /* Gradient border via pseudo-element */
+  .connexion-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: var(--gradient-brand);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+                  linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Gradient text */
+  .connexion-btn span.relative {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Icon inherits gradient via filter workaround */
+  .connexion-btn svg {
+    color: #27397F;
+  }
+
+  /* Shimmer sweep */
+  .connexion-btn__shimmer {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      100deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.18) 50%,
+      transparent 80%
+    );
+    background-size: 200% 100%;
+    background-position: -100% 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Hover: fill with solid gradient, white text, shimmer in */
+  .connexion-btn:hover {
+    background: var(--gradient-brand);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -6px rgba(39, 57, 127, 0.45);
+  }
+
+  .connexion-btn:hover::before {
+    opacity: 0;
+  }
+
+  .connexion-btn:hover span.relative {
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: white;
+    color: white;
+  }
+
+  .connexion-btn:hover svg {
+    color: white;
+  }
+
+  .connexion-btn:hover .connexion-btn__shimmer {
+    opacity: 1;
+    animation: connexion-shimmer 0.65s ease forwards;
+  }
+
+  /* Active press */
+  .connexion-btn:active {
+    transform: translateY(0) scale(0.97);
+    box-shadow: 0 4px 12px -4px rgba(39, 57, 127, 0.35);
+  }
+
+  /* Dark mode */
+  .dark .connexion-btn {
+    color: #3FA9DF;
+  }
+
+  .dark .connexion-btn span.relative {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .dark .connexion-btn svg {
+    color: #3FA9DF;
+  }
+
+  .dark .connexion-btn:hover {
+    box-shadow: 0 8px 24px -6px rgba(63, 169, 223, 0.40);
+  }
+
+  /* ── Mobile: solid fill variant ── */
+  .connexion-btn--mobile {
+    background: var(--gradient-brand);
+    border: none;
+    color: white;
+    box-shadow: 0 6px 20px -4px rgba(39, 57, 127, 0.40);
+  }
+
+  .connexion-btn--mobile::before {
+    display: none;
+  }
+
+  .connexion-btn--mobile span.relative {
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: white;
+    color: white;
+  }
+
+  .connexion-btn--mobile svg {
+    color: white;
+  }
+
+  .connexion-btn--mobile:hover {
+    background: var(--gradient-brand);
+    filter: brightness(1.12);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px -6px rgba(39, 57, 127, 0.50);
+  }
+
+  .connexion-btn--mobile:hover span.relative {
+    -webkit-text-fill-color: white;
   }
 }
 
+@keyframes connexion-shimmer {
+  0%   { background-position: -100% 0; opacity: 1; }
+  100% { background-position: 200% 0;  opacity: 0; }
+}
+
+/* =========================
+   BASE STYLES
+========================= */
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -54,34 +370,36 @@
   }
 
   h1 {
-    @apply text-darkblue dark:text-white  md:text-6xl text-5xl font-bold xl:leading-tight leading-tight;
+    @apply text-darkblue dark:text-white md:text-6xl text-5xl font-bold xl:leading-tight leading-tight;
   }
 
   h2 {
-    @apply text-darkblue dark:text-white  md:text-5xl text-4xl font-bold;
+    @apply text-darkblue dark:text-white md:text-5xl text-4xl font-bold;
   }
 
   h3 {
-    @apply text-white  text-3xl font-normal
+    @apply text-white text-3xl font-normal;
   }
 
   h4 {
-    @apply text-darkblue dark:text-white  text-2xl font-medium;
+    @apply text-darkblue dark:text-white text-2xl font-medium;
   }
 
   h5 {
-    @apply text-darkblue dark:text-white  text-xl font-medium;
+    @apply text-darkblue dark:text-white text-xl font-medium;
   }
 
   h6 {
-    @apply text-darkblue dark:text-white  text-lg font-medium;
+    @apply text-darkblue dark:text-white text-lg font-medium;
   }
 
   p {
-    @apply text-lightgrey  text-base;
+    @apply text-lightgrey text-base;
   }
 
-  /* Enhanced Date and Time Input Styling */
+  /* =========================
+     INPUT ENHANCEMENTS
+  ========================= */
   input[type='date'],
   input[type='time'],
   input[type='datetime-local'] {
@@ -90,16 +408,12 @@
     position: relative;
   }
 
-  /* Hide default calendar icon and make entire input clickable */
   input[type='date']::-webkit-calendar-picker-indicator,
   input[type='time']::-webkit-calendar-picker-indicator,
   input[type='datetime-local']::-webkit-calendar-picker-indicator {
     @apply cursor-pointer opacity-0 absolute right-0 top-0 w-full h-full;
-    background: transparent;
-    z-index: 1;
   }
 
-  /* Enhanced hover states */
   input[type='date']:hover,
   input[type='time']:hover,
   input[type='datetime-local']:hover {
@@ -107,95 +421,37 @@
     transform: translateY(-1px);
   }
 
-  /* Enhanced focus states */
   input[type='date']:focus,
   input[type='time']:focus,
   input[type='datetime-local']:focus {
     @apply border-primary ring-2 ring-primary/30;
-    box-shadow: 0 0 0 3px rgba(0, 145, 230, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 3px rgba(0, 145, 230, 0.1);
     transform: translateY(-1px);
   }
 
-  /* Dark mode date/time inputs */
   .dark input[type='date'],
   .dark input[type='time'],
   .dark input[type='datetime-local'] {
     color-scheme: dark;
   }
-
-  .dark input[type='date']:hover,
-  .dark input[type='time']:hover,
-  .dark input[type='datetime-local']:hover {
-    @apply border-cyan-300/50 shadow-lg;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-  }
-
-  .dark input[type='date']:focus,
-  .dark input[type='time']:focus,
-  .dark input[type='datetime-local']:focus {
-    @apply border-cyan-300 ring-2 ring-cyan-300/40;
-    box-shadow: 0 0 0 3px rgba(0, 195, 217, 0.2), 0 4px 6px -1px rgba(0, 0, 0, 0.4);
-  }
-
-  /* Style the calendar popup (browser native) */
-  input[type='date']::-webkit-datetime-edit-text,
-  input[type='date']::-webkit-datetime-edit-month-field,
-  input[type='date']::-webkit-datetime-edit-day-field,
-  input[type='date']::-webkit-datetime-edit-year-field {
-    @apply text-slate-900 dark:text-slate-100;
-    padding: 0.125rem;
-  }
-
-  input[type='date']::-webkit-datetime-edit-text:focus,
-  input[type='date']::-webkit-datetime-edit-month-field:focus,
-  input[type='date']::-webkit-datetime-edit-day-field:focus,
-  input[type='date']::-webkit-datetime-edit-year-field:focus {
-    @apply bg-primary/10 rounded;
-  }
-
-  /* Time input styling */
-  input[type='time']::-webkit-datetime-edit-text,
-  input[type='time']::-webkit-datetime-edit-hour-field,
-  input[type='time']::-webkit-datetime-edit-minute-field,
-  input[type='time']::-webkit-datetime-edit-ampm-field {
-    @apply text-slate-900 dark:text-slate-100;
-    padding: 0.125rem;
-  }
-
-  input[type='time']::-webkit-datetime-edit-text:focus,
-  input[type='time']::-webkit-datetime-edit-hour-field:focus,
-  input[type='time']::-webkit-datetime-edit-minute-field:focus,
-  input[type='time']::-webkit-datetime-edit-ampm-field:focus {
-    @apply bg-primary/10 rounded;
-  }
 }
 
-/* Custom animations for Pricing component */
+/* =========================
+   ANIMATIONS
+========================= */
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
 }
 
 @keyframes gentle-pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.95;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.95; }
 }
 
 @keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
 }
 
 .animate-float {
@@ -209,9 +465,9 @@
 .animate-shimmer {
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0) 100%
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(255,255,255,0) 100%
   );
   background-size: 1000px 100%;
   animation: shimmer 3s linear infinite;

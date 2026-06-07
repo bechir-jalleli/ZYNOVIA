@@ -81,7 +81,7 @@ const Project = () => {
 
         <div className='relative mb-16 text-center max-w-3xl mx-auto'>
           <h2 className='mb-6 text-3xl font-extrabold leading-tight text-[#0A004B] sm:text-4xl lg:text-5xl dark:text-white'>
-            Projets de nos <span className="text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-cyan-400">Élèves</span>
+            Projets de nos <span className="text-gradient">Élèves</span>
           </h2>
           <p className='text-base font-medium text-slate-600 sm:text-lg lg:text-xl dark:text-slate-300 leading-relaxed'>
             Découvrez les projets concrets réalisés par nos élèves en Intelligence Artificielle. Des applications innovantes qui démontrent leur maîtrise des technologies du futur.
@@ -111,7 +111,7 @@ const Project = () => {
 
                     {/* Project Info */}
                     <div className='px-1 flex-grow'>
-                      <h3 className='text-lg font-extrabold text-[#0A004B] dark:text-white mb-3 tracking-tight group-hover:text-primary transition-colors'>
+                      <h3 className='text-lg font-extrabold text-[#0A004B] dark:text-white mb-3 tracking-tight group-hover:text-[#3FA9DF] transition-colors'>
                         {item.name}
                       </h3>
                       {item.description && (
@@ -124,7 +124,7 @@ const Project = () => {
                     {/* Creator Section */}
                     <div className='flex items-center gap-3.5 border-t border-slate-100 dark:border-white/5 pt-5 mt-auto'>
                       <div className='relative group-hover:scale-110 transition-transform duration-300'>
-                        <div className='flex-shrink-0 w-12 h-12 rounded-full overflow-hidden border-2 border-primary/30 bg-slate-50 dark:bg-white/5 flex items-center justify-center shadow-inner'>
+                        <div className='flex-shrink-0 w-12 h-12 rounded-full overflow-hidden border-2 border-[#3FA9DF]/30 bg-slate-50 dark:bg-white/5 flex items-center justify-center shadow-inner'>
                           {item.creator?.picture ? (
                             <img
                               src={item.creator.picture}
@@ -132,7 +132,7 @@ const Project = () => {
                               className='h-full w-full object-cover'
                             />
                           ) : (
-                            <div className='text-primary/40'>
+                            <div className='text-[#3FA9DF]/40'>
                               <svg className='w-6 h-6' fill='currentColor' viewBox='0 0 24 24'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z' /></svg>
                             </div>
                           )}
@@ -147,8 +147,8 @@ const Project = () => {
                         <p className='text-[13px] font-extrabold text-slate-900 dark:text-slate-100 truncate'>
                           {item.creator?.firstName || 'Élève'} {item.creator?.lastName || ''}
                         </p>
-                        <p className='text-[9px] font-bold text-primary uppercase tracking-tighter truncate'>
-                          {item.creator?.school || 'Académie INOTEQIA'}
+                        <p className='text-[9px] font-bold text-[#3FA9DF] uppercase tracking-tighter truncate'>
+                          {item.creator?.school || 'Académie ZYNOVIA'}
                         </p>
                       </div>
                     </div>
@@ -169,12 +169,12 @@ const Project = () => {
                     bottom: -40px;
                 }
                 .project-slider .slick-dots li button:before {
-                    color: #0091E6;
+                    color: #3FA9DF;
                     font-size: 10px;
                     opacity: 0.2;
                 }
                 .project-slider .slick-dots li.slick-active button:before {
-                    color: #0091E6;
+                    color: #27397F;
                     opacity: 1;
                 }
             `}</style>

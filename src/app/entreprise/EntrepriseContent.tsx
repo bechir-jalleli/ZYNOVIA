@@ -69,7 +69,7 @@ export default function EntrepriseContent() {
               </p>
 
               <p className='max-w-2xl mx-auto md:mx-0 text-sm sm:text-base text-slate-700 dark:text-slate-300'>
-                INOTEQIA Academy conçoit des expériences IA inspirantes pour les enfants de vos
+                ZYNOVIA Academy conçoit des expériences IA inspirantes pour les enfants de vos
                 collaborateurs : projets concrets, ateliers encadrés et bootcamps pendant les
                 vacances scolaires, au cœur d’un environnement professionnel.
               </p>
@@ -157,7 +157,7 @@ export default function EntrepriseContent() {
               compétences du futur.
             </p>
             <p className='mt-3 text-sm sm:text-base text-slate-700 dark:text-slate-300'>
-              INOTEQIA Academy offre aux entreprises une opportunité unique : donner aux enfants de
+              ZYNOVIA Academy offre aux entreprises une opportunité unique : donner aux enfants de
               vos collaborateurs les compétences technologiques qui feront leur succès, à travers
               des projets inspirés de votre réalité métier.
             </p>
@@ -438,7 +438,7 @@ export default function EntrepriseContent() {
               Un programme innovant, concret et valorisant pour votre stratégie RH
             </h2>
             <p className='mt-4 text-sm sm:text-base text-slate-700 dark:text-slate-300'>
-              Au-delà d’un simple atelier, le programme INOTEQIA pour les enfants de vos salariés
+              Au-delà d’un simple atelier, le programme ZYNOVIA pour les enfants de vos salariés
               devient un véritable levier de marque employeur, de fidélisation et d’engagement.
             </p>
           </motion.div>

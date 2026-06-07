@@ -67,10 +67,10 @@ const Specialize = () => {
               >
                 <div
                   aria-hidden='true'
-                  className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
+                  className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#27397F]/30 to-[#3FA9DF]/30 blur-3xl opacity-70 dark:opacity-80'
                 />
                 <div className='relative flex flex-col items-center gap-6 text-center'>
-                  <div className='flex h-20 w-20 sm:h-24 sm:w-24 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-[#0091E6]/40'>
+                  <div className='flex h-20 w-20 sm:h-24 sm:w-24 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-brand text-white shadow-md shadow-[#27397F]/40'>
                     <span className='text-3xl sm:text-4xl font-bold'>
                       {String(index + 1).padStart(2, '0')}
                     </span>

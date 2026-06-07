@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import ProgrammesContent from './ProgrammesContent'
 
 export const metadata: Metadata = {
-  title: 'Programmes – INOTEQIA Academy',
+  title: 'Programmes – ZYNOVIA Academy',
   description:
-    "Découvrez les programmes d'INOTEQIA Academy : programme annuel d'intégration IA et bootcamps IA pendant les vacances scolaires. Formation complète pour collégiens et lycéens.",
+    "Découvrez les programmes de ZYNOVIA Academy : programme annuel d'intégration IA et bootcamps IA pendant les vacances scolaires. Formation complète pour collégiens et lycéens.",
   keywords: [
     'programme IA annuel',
     'bootcamp IA vacances',
@@ -14,17 +14,17 @@ export const metadata: Metadata = {
     'intégration IA établissement',
   ],
   openGraph: {
-    title: 'Programmes – INOTEQIA Academy',
+    title: 'Programmes – ZYNOVIA Academy',
     description:
-      "Découvrez les programmes d'INOTEQIA Academy : programme annuel d'intégration IA et bootcamps IA pendant les vacances scolaires.",
+      "Découvrez les programmes de ZYNOVIA Academy : programme annuel d'intégration IA et bootcamps IA pendant les vacances scolaires.",
     url: 'https://inoteqia.com/programmes',
-    siteName: 'INOTEQIA Academy',
+    siteName: 'ZYNOVIA Academy',
     images: [
       {
         url: '/images/banner/image.png',
         width: 1200,
         height: 630,
-        alt: 'Programmes INOTEQIA Academy',
+        alt: 'Programmes ZYNOVIA Academy',
       },
     ],
     locale: 'fr_FR',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Programmes – INOTEQIA Academy',
+    title: 'Programmes – ZYNOVIA Academy',
     description: 'Découvrez nos programmes de formation IA pour collégiens et lycéens.',
     images: ['/images/banner/image.png'],
   },

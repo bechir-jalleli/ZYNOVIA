@@ -1,22 +1,33 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-const Logo = () => {
+type LogoProps = {
+  variant?: 'header' | 'footer'
+}
+
+const Logo = ({ variant = 'footer' }: LogoProps) => {
+  const sizeClass =
+    variant === 'header'
+      ? 'h-12 md:h-16 w-auto shrink-0'
+      : 'h-14 w-auto max-w-[200px]'
+
   return (
-    <Link href='/'>
+    <Link href='/' className={variant === 'header' ? 'inline-flex shrink-0' : undefined}>
       <Image
-        src='/images/logo/image.png'
-        alt='logo'
-        width={150}
-        height={50}
-        className='h-auto max-w-[180px] block dark:hidden'        
+        src='/images/logo/ZYNOVIAPNGG-removebg-preview.png'
+        alt='ZYNOVIA'
+        width={221}
+        height={207}
+        className={`${sizeClass} block dark:hidden`}
+        priority={variant === 'header'}
       />
       <Image
-        src='/images/logo/inoteqia-Academy-logo-h-white-color-01.png'
-        alt='logo'
-        width={150}
-        height={50}
-        className='h-auto max-w-[180px] hidden dark:block'        
+        src='/images/logo/ZYNOVIA VERSION NEGATIVE.png'
+        alt='ZYNOVIA'
+        width={333}
+        height={309}
+        className={`${sizeClass} hidden dark:block`}
+        priority={variant === 'header'}
       />
     </Link>
   )

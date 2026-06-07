@@ -34,6 +34,7 @@ setInterval(() => {
 }, RATE_LIMIT_WINDOW)
 
 export async function POST(request: Request) {
+  console.log('--- Start /api/contact POST ---')
   try {
     // Get client IP for rate limiting
     const forwarded = request.headers.get('x-forwarded-for')
@@ -41,24 +42,34 @@ export async function POST(request: Request) {
 
     // Rate limiting check
     if (!checkRateLimit(ip)) {
+      console.log('Rate limit exceeded for IP:', ip)
       return NextResponse.json(
         { error: 'Trop de requêtes. Veuillez réessayer dans quelques instants.' },
         { status: 429 }
       )
     }
 
-    const body = await request.json()
+    const rawBody = await request.text()
+    console.log('Raw body received:', rawBody)
+
+    let body;
+    try {
+      body = JSON.parse(rawBody)
+    } catch (e) {
+      console.error('Failed to parse JSON body:', e)
+      return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
+    }
 
     // Honeypot field check (spam protection)
-    if (body.website || body.website !== '') {
-      // If honeypot is filled, it's likely a bot
-      return NextResponse.json({ success: true }) // Silent fail to not alert bots
+    const { name, email, role, message, phone, website } = body
+    if (website && website !== '') {
+      console.log('Honeypot triggered, silent fail.')
+      return NextResponse.json({ success: true })
     }
 
     // Validation
-    const { name, email, role, message, phone } = body
-
     if (!name || typeof name !== 'string' || name.trim().length < 2) {
+      console.log('Validation failed: name too short or missing')
       return NextResponse.json(
         { error: 'Le nom doit contenir au moins 2 caractères.' },
         { status: 400 }
@@ -66,109 +77,120 @@ export async function POST(request: Request) {
     }
 
     if (!email || typeof email !== 'string') {
+      console.log('Validation failed: email missing')
       return NextResponse.json(
         { error: 'L\'email est requis.' },
         { status: 400 }
       )
     }
 
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(email.trim())) {
+      console.log('Validation failed: invalid email format')
       return NextResponse.json(
         { error: 'Format d\'email invalide.' },
         { status: 400 }
       )
     }
 
-    if (!role || typeof role !== 'string') {
-      return NextResponse.json(
-        { error: 'Le rôle est requis.' },
-        { status: 400 }
-      )
-    }
-
     if (!message || typeof message !== 'string' || message.trim().length < 10) {
+      console.log('Validation failed: message too short')
       return NextResponse.json(
         { error: 'Le message doit contenir au moins 10 caractères.' },
         { status: 400 }
       )
     }
 
-    // Sanitize inputs (basic sanitization)
+    // Sanitize and format
     const sanitizedName = name.trim().substring(0, 100)
     const sanitizedEmail = email.trim().substring(0, 255)
-    const sanitizedPhone = phone ? phone.trim().substring(0, 20) : ''
-    const sanitizedRole = role.trim().substring(0, 50)
+    const sanitizedPhone = phone ? phone.trim().substring(0, 20) : 'Non fourni'
+    const sanitizedRole = (role || 'General').trim().substring(0, 50)
     const sanitizedMessage = message.trim().substring(0, 2000)
 
-    // In production, you would:
-    // 1. Save to database
-    // 2. Send email notification using nodemailer, SendGrid, Resend, etc.
-    // 3. Send confirmation email to user
-    // 4. Log the submission
+    const formattedMessage = `Rôle: ${sanitizedRole}\nTéléphone: ${sanitizedPhone}\n\nMessage:\n${sanitizedMessage}`
 
-    // Example email sending (commented out - requires email service setup):
-    /*
-    import nodemailer from 'nodemailer'
-    
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: false,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
+    console.log('Env variables check:', {
+      EMAILJS_SERVICE_ID: process.env.EMAILJS_SERVICE_ID ? 'Exists' : 'Missing',
+      EMAILJS_TEMPLATE_ID: process.env.EMAILJS_TEMPLATE_ID ? 'Exists' : 'Missing',
+      EMAILJS_PUBLIC_KEY: process.env.EMAILJS_PUBLIC_KEY ? 'Exists' : 'Missing',
+      WEB3FORMS_ACCESS_KEY: process.env.WEB3FORMS_ACCESS_KEY ? 'Exists' : 'Missing',
     })
 
-    // Send notification to admin
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM,
-      to: process.env.CONTACT_EMAIL,
-      subject: `Nouveau contact: ${sanitizedRole} - ${sanitizedName}`,
-      html: `
-        <h2>Nouveau message de contact</h2>
-        <p><strong>Nom:</strong> ${sanitizedName}</p>
-        <p><strong>Email:</strong> ${sanitizedEmail}</p>
-        <p><strong>Téléphone:</strong> ${sanitizedPhone || 'Non fourni'}</p>
-        <p><strong>Rôle:</strong> ${sanitizedRole}</p>
-        <p><strong>Message:</strong></p>
-        <p>${sanitizedMessage.replace(/\n/g, '<br>')}</p>
-      `,
-    })
+    // 1. EmailJS (Primary)
+    let emailStatus = false
+    try {
+      console.log('Attempting EmailJS send...')
+      const emailJsResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          service_id: process.env.EMAILJS_SERVICE_ID,
+          template_id: process.env.EMAILJS_TEMPLATE_ID,
+          user_id: process.env.EMAILJS_PUBLIC_KEY,
+          template_params: {
+            from_name: sanitizedName,
+            from_email: sanitizedEmail,
+            message: formattedMessage,
+            role: sanitizedRole,
+            phone: sanitizedPhone,
+          },
+        }),
+      })
+      emailStatus = emailJsResponse.ok
+      console.log('EmailJS Response Status:', emailJsResponse.status, emailJsResponse.statusText)
+      if (!emailStatus) {
+        const errorText = await emailJsResponse.text()
+        console.error('EmailJS Error Detail:', errorText)
+      }
+    } catch (error) {
+      console.error('EmailJS Fetch Exception:', error)
+    }
 
-    // Send confirmation to user
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM,
-      to: sanitizedEmail,
-      subject: 'Confirmation de réception - INOTEQIA Academy',
-      html: `
-        <h2>Merci pour votre message !</h2>
-        <p>Nous avons bien reçu votre demande et nous vous répondrons dans les plus brefs délais.</p>
-        <p>L'équipe INOTEQIA Academy</p>
-      `,
-    })
-    */
+    // 2. Web3 Forms (Redundancy)
+    let web3Status = false
+    try {
+      console.log('Attempting Web3Forms send...')
+      const web3FormData = new URLSearchParams()
+      web3FormData.append('access_key', process.env.WEB3FORMS_ACCESS_KEY || '')
+      web3FormData.append('name', sanitizedName)
+      web3FormData.append('email', sanitizedEmail)
+      web3FormData.append('message', formattedMessage)
+      web3FormData.append('subject', `Nouveau Contact: ${sanitizedName} (${sanitizedRole})`)
 
-    // For now, just log and return success
-    console.log('Contact form submission:', {
-      name: sanitizedName,
-      email: sanitizedEmail,
-      phone: sanitizedPhone,
-      role: sanitizedRole,
-      message: sanitizedMessage.substring(0, 100) + '...',
-    })
+      const web3Response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: web3FormData,
+      })
+      web3Status = web3Response.ok
+      console.log('Web3Forms Response Status:', web3Response.status)
+      if (!web3Status) {
+        const errorText = await web3Response.text()
+        console.error('Web3Forms Error Detail:', errorText)
+      }
+    } catch (error) {
+      console.error('Web3Forms Fetch Exception:', error)
+    }
 
+    console.log('Final Status - EmailJS:', emailStatus, 'Web3Forms:', web3Status)
+
+    if (emailStatus || web3Status) {
+      return NextResponse.json(
+        {
+          success: true,
+          message: 'Votre message a été envoyé avec succès. Nous vous répondrons rapidement.',
+        },
+        { status: 200 }
+      )
+    }
+
+    console.log('Both services failed.')
     return NextResponse.json(
-      {
-        success: true,
-        message: 'Votre message a été envoyé avec succès. Nous vous répondrons rapidement.',
-      },
-      { status: 200 }
+      { error: 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer.' },
+      { status: 500 }
     )
   } catch (error) {
-    console.error('Error processing contact form:', error)
+    console.error('CRITICAL Error processing contact form:', error)
     return NextResponse.json(
       { error: 'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.' },
       { status: 500 }

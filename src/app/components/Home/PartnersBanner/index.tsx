@@ -19,7 +19,7 @@ const PartnersBanner = () => {
     <section className='relative py-16 sm:py-20 bg-secondary/30 dark:bg-darklight/50 overflow-hidden'>
       {/* Subtle background glow */}
       <div className='pointer-events-none absolute inset-0 opacity-40 dark:opacity-60'>
-        <div className='absolute -top-32 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-primary/20 blur-3xl' />
+        <div className='absolute -top-32 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-[#3FA9DF]/20 blur-3xl' />
       </div>
 
       <div className='container relative mx-auto max-w-7xl px-4 sm:px-6'>
@@ -30,20 +30,20 @@ const PartnersBanner = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className='text-center mb-12 sm:mb-16'>
-          <p className='text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-primary dark:text-cyan-300 mb-3'>
+          <p className='text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-gradient mb-3'>
             Preuve sociale
           </p>
           <h3 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-darkblue dark:text-white mb-4'>
             Établissements qui nous font confiance
           </h3>
           <div className='mt-6 mb-8 flex flex-col items-center gap-4'>
-            <p className='text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary to-indigo-500 bg-clip-text text-transparent'>
-              <AnimatedNumber value='+2000' className='mr-2 inline-block' />
+            <p className='text-3xl sm:text-4xl lg:text-5xl font-bold text-gradient'>
+              <AnimatedNumber value='+2000' className='mr-2 inline-block font-black' />
               élèves formés
             </p>
             <Link
               href='/parents#appointment-form'
-              className='inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/30 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
+              className='inline-flex items-center justify-center rounded-xl btn-primary btn-hover px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#27397F]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
             >
               Réserver une session découverte
             </Link>
@@ -97,20 +97,20 @@ const PartnersBanner = () => {
           className='mt-12 sm:mt-16 max-w-3xl mx-auto text-center'
         >
           <div className='relative overflow-hidden rounded-2xl border border-slate-200/60 bg-white/90 p-6 shadow-lg backdrop-blur dark:border-slate-700/70 dark:bg-slate-900/90 sm:p-8'>
-            <div className='pointer-events-none absolute -top-10 left-10 h-24 w-24 rounded-full bg-primary/10 blur-2xl' />
-            <div className='pointer-events-none absolute -bottom-10 right-10 h-24 w-24 rounded-full bg-indigo-500/10 blur-2xl' />
+            <div className='pointer-events-none absolute -top-10 left-10 h-24 w-24 rounded-full bg-[#3FA9DF]/10 blur-2xl' />
+            <div className='pointer-events-none absolute -bottom-10 right-10 h-24 w-24 rounded-full bg-[#27397F]/10 blur-2xl' />
 
             <div className='mb-3 flex items-center justify-center gap-3'>
-              <span className='inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-2xl text-primary dark:bg-primary/20'>
+              <span className='inline-flex h-9 w-9 items-center justify-center rounded-full bg-gradient-soft text-2xl text-[#27397F] dark:text-[#3FA9DF]'>
                 “
               </span>
-              <p className='text-xs font-semibold uppercase tracking-[0.2em] text-primary/80 dark:text-cyan-300/80'>
+              <p className='text-xs font-bold uppercase tracking-[0.2em] text-gradient'>
                 Témoignage partenaire
               </p>
             </div>
 
             <p className='text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed italic mb-4'>
-              &quot;INOTEQIA Academy a transformé notre approche de l&apos;enseignement de l&apos;IA. Nos élèves sont
+              &quot;ZYNOVIA Academy a transformé notre approche de l&apos;enseignement de l&apos;IA. Nos élèves sont
               maintenant mieux préparés aux défis de demain.&quot;
             </p>
             <p className='text-sm sm:text-base font-semibold text-slate-800 dark:text-slate-200'>

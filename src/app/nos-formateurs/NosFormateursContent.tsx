@@ -33,7 +33,10 @@ export default function NosFormateursContent() {
       <section className='relative overflow-hidden pt-28 pb-20 lg:pt-32 lg:pb-24'>
         <div
           aria-hidden='true'
-          className='pointer-events-none absolute inset-x-0 top-0 -z-10 h-80 bg-[radial-gradient(circle_at_top,_rgba(0,195,217,0.25),transparent_55%)] dark:bg-[radial-gradient(circle_at_top,_rgba(0,195,217,0.35),transparent_55%)]'
+          className='pointer-events-none absolute inset-x-0 top-0 -z-10 h-80'
+          style={{
+            background: 'radial-gradient(circle at top, rgba(68,144,199,0.25), transparent 55%)',
+          }}
         />
         <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
           <div className='grid items-center gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]'>
@@ -41,24 +44,36 @@ export default function NosFormateursContent() {
               {...fadeInUp}
               transition={{ duration: 0.65, ease: 'easeOut' }}
               className='space-y-6'>
-              <div className='inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-primary shadow-sm ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/80 dark:text-cyan-300 dark:ring-white/10'>
-                <span className='h-2 w-2 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] animate-pulse' />
+              <div
+                className='inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] shadow-sm ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/80 dark:ring-white/10'
+                style={{ color: '#27397F' }}>
+                <span
+                  className='h-2 w-2 rounded-full animate-pulse'
+                  style={{ background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)' }}
+                />
                 Nos Formateurs
               </div>
               <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#0A004B] dark:text-white'>
                 Nos Formateurs
               </h1>
-              <p className='text-lg font-semibold text-primary dark:text-cyan-300'>
+              <p
+                className='text-lg font-semibold'
+                style={{
+                  background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}>
                 Une équipe d&apos;experts passionnés
               </p>
               <p className='max-w-3xl text-base sm:text-lg text-slate-700 dark:text-slate-200'>
-                Des spécialistes de l’IA, du développement, de la robotique et du produit. Ils
+                Des spécialistes de l'IA, du développement, de la robotique et du produit. Ils
                 conçoivent des parcours pratiques, coachent les apprenants et les aident à transformer
                 leurs idées en projets concrets.
               </p>
               <div className='flex flex-wrap gap-3'>
                 <span className='inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold text-slate-700 shadow-sm ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/80 dark:text-slate-100 dark:ring-white/10'>
-                  <Sparkles className='h-4 w-4 text-primary' />
+                  <Sparkles className='h-4 w-4' style={{ color: '#27397F' }} />
                   Mentorat personnalisé
                 </span>
                 <span className='inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold text-slate-700 shadow-sm ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/80 dark:text-slate-100 dark:ring-white/10'>
@@ -69,12 +84,19 @@ export default function NosFormateursContent() {
               <div className='flex flex-wrap gap-3'>
                 <Link
                   href='/programmes'
-                  className='inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/30 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'>
+                  className='inline-flex items-center justify-center rounded-xl px-6 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-950'
+                  style={{
+                    background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)',
+                    boxShadow: '0 8px 24px -6px rgba(46,83,145,0.40)',
+                  }}>
                   Découvrir les parcours
                 </Link>
                 <Link
                   href='/contact'
-                  className='inline-flex items-center gap-2 rounded-xl border border-primary/25 bg-white/80 px-5 py-2.5 text-sm font-semibold text-[#0A004B] shadow-sm backdrop-blur hover:border-primary hover:text-primary dark:bg-slate-900/70 dark:text-white'>
+                  className='inline-flex items-center gap-2 rounded-xl border bg-white/80 px-5 py-2.5 text-sm font-semibold text-[#0A004B] shadow-sm backdrop-blur dark:bg-slate-900/70 dark:text-white'
+                  style={{ borderColor: 'rgba(39,57,127,0.25)' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#4490C7')}
+                  onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(39,57,127,0.25)')}>
                   Parler à un formateur
                 </Link>
               </div>
@@ -86,7 +108,8 @@ export default function NosFormateursContent() {
               className='relative'>
               <div
                 aria-hidden='true'
-                className='pointer-events-none absolute -right-12 -top-10 h-48 w-48 rounded-full bg-gradient-to-br from-[#00C3D9]/45 via-[#0091E6]/30 to-[#0067E0]/25 blur-3xl'
+                className='pointer-events-none absolute -right-12 -top-10 h-48 w-48 rounded-full blur-3xl'
+                style={{ background: 'linear-gradient(to br, rgba(68,144,199,0.45), rgba(63,169,223,0.30), rgba(39,57,127,0.25))' }}
               />
               <div className='relative overflow-hidden rounded-3xl bg-white/80 shadow-[0_18px_55px_rgba(15,23,42,0.18)] ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/85 dark:ring-white/10'>
                 <Image
@@ -109,7 +132,11 @@ export default function NosFormateursContent() {
             {...fadeInUp}
             transition={{ duration: 0.55, ease: 'easeOut' }}
             className='mx-auto max-w-3xl text-center'>
-            <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>Notre équipe</p>
+            <p
+              className='text-xs font-semibold uppercase tracking-[0.22em]'
+              style={{ color: '#27397F' }}>
+              Notre équipe
+            </p>
             <h2 className='mt-3 text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A004B] dark:text-white'>
               Des mentors engagés pour chaque apprenant
             </h2>
@@ -130,7 +157,9 @@ export default function NosFormateursContent() {
                 variants={cardVariant}
                 className='relative overflow-hidden rounded-2xl bg-white/90 p-5 shadow-[0_16px_40px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/90 dark:ring-slate-700/70'>
                 <div className='flex items-center gap-4'>
-                  <div className='relative h-16 w-16 overflow-hidden rounded-full ring-2 ring-primary/40 bg-slate-200 dark:bg-slate-700'>
+                  <div
+                    className='relative h-16 w-16 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700'
+                    style={{ boxShadow: '0 0 0 2px rgba(68,144,199,0.4)' }}>
                     <Image
                       src={trainer.photo || '/images/default-avatar.png'}
                       alt={trainer.name}
@@ -145,7 +174,7 @@ export default function NosFormateursContent() {
                   </div>
                   <div>
                     <h3 className='text-lg font-semibold text-[#0A004B] dark:text-white'>{trainer.name}</h3>
-                    <p className='text-sm text-primary dark:text-cyan-300'>{trainer.title}</p>
+                    <p className='text-sm font-medium' style={{ color: '#4490C7' }}>{trainer.title}</p>
                   </div>
                 </div>
                 <p className='mt-4 text-sm text-slate-600 dark:text-slate-200'>{trainer.bio}</p>
@@ -163,7 +192,8 @@ export default function NosFormateursContent() {
                     href={trainer.linkedin}
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 dark:text-cyan-300'>
+                    className='mt-4 inline-flex items-center gap-2 text-sm font-semibold transition hover:opacity-75'
+                    style={{ color: '#27397F' }}>
                     <Linkedin className='h-4 w-4' />
                     Voir le profil
                   </Link>
@@ -181,7 +211,9 @@ export default function NosFormateursContent() {
             {...fadeInUp}
             transition={{ duration: 0.55, ease: 'easeOut' }}
             className='mx-auto max-w-3xl text-center'>
-            <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
+            <p
+              className='text-xs font-semibold uppercase tracking-[0.22em]'
+              style={{ color: '#27397F' }}>
               Témoignages apprenants
             </p>
             <h2 className='mt-3 text-2xl sm:text-3xl font-bold text-[#0A004B] dark:text-white'>
@@ -203,7 +235,7 @@ export default function NosFormateursContent() {
                 key={testimonial.quote}
                 variants={cardVariant}
                 className='relative overflow-hidden rounded-2xl bg-white/90 p-6 shadow-[0_16px_40px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/90 dark:ring-slate-700/70'>
-                <div className='flex items-center gap-2 text-primary'>
+                <div className='flex items-center gap-2' style={{ color: '#2E5391' }}>
                   <Quote className='h-5 w-5' />
                   <span className='text-xs font-semibold uppercase tracking-[0.2em]'>Feedback</span>
                 </div>
@@ -211,7 +243,7 @@ export default function NosFormateursContent() {
                 <div className='mt-4 flex items-center justify-between text-sm font-semibold text-[#0A004B] dark:text-white'>
                   <div>
                     <p>{testimonial.student}</p>
-                    <p className='text-xs text-primary dark:text-cyan-300'>{testimonial.focus}</p>
+                    <p className='text-xs font-medium' style={{ color: '#4490C7' }}>{testimonial.focus}</p>
                   </div>
                   <div className='flex items-center gap-1 text-amber-500'>
                     <Star className='h-4 w-4 fill-amber-400' />
@@ -229,4 +261,3 @@ export default function NosFormateursContent() {
     </main>
   )
 }
-

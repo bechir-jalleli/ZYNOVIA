@@ -58,7 +58,7 @@ const Pricing = () => {
           'Contenus adaptés collège & lycée',
           "Bases de l’IA et pensée algorithmique",
           'Mini-projets pratiques trimestriels',
-          'Encadrement par formateurs INOTEQIA',
+          'Encadrement par formateurs ZYNOVIA',
           'Évaluation pédagogique et suivi',
         ],
         cta: 'Découvrir le programme',
@@ -72,7 +72,7 @@ const Pricing = () => {
           'Initiation à la programmation et outils IA',
           'Travail en équipe et créativité',
           'Challenge final et présentation orale',
-          'Certificat INOTEQIA Academy',
+          'Certificat ZYNOVIA Academy',
         ],
         cta: ' Découvrir les bootcamps',
       },
@@ -115,7 +115,7 @@ const Pricing = () => {
             <div className='inline-flex bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm p-1.5 rounded-2xl shadow-[0_8px_30px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 dark:ring-slate-700/70 gap-2'>
               <button
                 className={`text-sm sm:text-base font-semibold cursor-pointer py-2.5 px-4 sm:py-3 sm:px-7 whitespace-nowrap rounded-xl transition-all duration-300 ${selectedCategory === 'etablissement'
-                    ? 'bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-[#0091E6]/40 scale-105'
+                    ? 'bg-gradient-brand text-white shadow-md shadow-[#27397F]/40 scale-105'
                     : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100/80 dark:hover:bg-slate-700/60'
                   }`}
                 onClick={() => handleCategoryChange('etablissement')}>
@@ -123,7 +123,7 @@ const Pricing = () => {
               </button>
               <button
                 className={`text-sm sm:text-base font-semibold cursor-pointer py-2.5 px-4 sm:py-3 sm:px-7 whitespace-nowrap rounded-xl transition-all duration-300 ${selectedCategory === 'entreprise'
-                    ? 'bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-[#0091E6]/40 scale-105'
+                    ? 'bg-gradient-brand text-white shadow-md shadow-[#27397F]/40 scale-105'
                     : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100/80 dark:hover:bg-slate-700/60'
                   }`}
                 onClick={() => handleCategoryChange('entreprise')}>
@@ -135,7 +135,7 @@ const Pricing = () => {
         {/* grid layout */}
         <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
           {/* card-1 */}
-          <div className='relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] lg:col-span-1 md:col-span-2 animate-gentle-pulse transition-all duration-300 hover:shadow-[0_24px_60px_rgba(15,23,42,0.35)]'>
+          <div className='relative overflow-hidden rounded-3xl bg-gradient-brand lg:col-span-1 md:col-span-2 animate-gentle-pulse transition-all duration-300 hover:shadow-[0_24px_60px_rgba(15,23,42,0.35)]'>
             {/* shimmer overlay */}
             <div className='pointer-events-none absolute inset-0 animate-shimmer opacity-0 transition-opacity duration-500 hover:opacity-100' />
 
@@ -199,7 +199,7 @@ const Pricing = () => {
                           {features.map((feat, i) => (
                             <li key={i}>
                               <div className='flex items-center gap-3'>
-                                <div className='p-1 rounded-full bg-primary/10 text-primary'>
+                                <div className='p-1 rounded-full bg-gradient-soft text-[#3FA9DF]'>
                                   <Icon
                                     icon={'material-symbols:check-rounded'}
                                     width={19}
@@ -211,7 +211,7 @@ const Pricing = () => {
                             </li>
                           ))}
                         </ul>
-                        <button className='mt-auto w-full rounded-xl border border-transparent bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] py-3 text-sm font-semibold text-white shadow-md shadow-[#0091E6]/40 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:cursor-pointer'>
+                        <button className='btn-primary btn-hover mt-auto w-full rounded-xl py-3 text-sm font-semibold shadow-md'>
                           {config.cta}
                         </button>
                       </div>

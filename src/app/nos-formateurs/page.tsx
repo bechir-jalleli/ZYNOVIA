@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import NosFormateursContent from './NosFormateursContent'
 
 export const metadata: Metadata = {
-  title: 'Nos Formateurs – INOTEQIA Academy',
+  title: 'Nos Formateurs – ZYNOVIA Academy',
   description:
-    "Découvrez l'équipe de formateurs d'INOTEQIA Academy : experts IA, développement, robotique et produit. Mentorat personnalisé et expertise terrain.",
+    "Découvrez l'équipe de formateurs de ZYNOVIA Academy : experts IA, développement, robotique et produit. Mentorat personnalisé et expertise terrain.",
   keywords: [
     'formateurs IA Tunisie',
     'experts IA',
@@ -14,17 +14,17 @@ export const metadata: Metadata = {
     'experts développement',
   ],
   openGraph: {
-    title: 'Nos Formateurs – INOTEQIA Academy',
+    title: 'Nos Formateurs – ZYNOVIA Academy',
     description:
       "Une équipe de formateurs passionnés pour accompagner chaque apprenant vers la maîtrise de l'IA et du numérique.",
     url: 'https://inoteqia.com/nos-formateurs',
-    siteName: 'INOTEQIA Academy',
+    siteName: 'ZYNOVIA Academy',
     images: [
       {
         url: '/images/review/daniel.webp',
         width: 1200,
         height: 630,
-        alt: 'Formateurs INOTEQIA Academy',
+        alt: 'Formateurs ZYNOVIA Academy',
       },
     ],
     locale: 'fr_FR',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nos Formateurs – INOTEQIA Academy',
+    title: 'Nos Formateurs – ZYNOVIA Academy',
     description: 'Une équipe de formateurs passionnés pour accompagner chaque apprenant.',
     images: ['/images/review/daniel.webp'],
   },

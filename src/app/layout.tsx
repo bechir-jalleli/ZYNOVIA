@@ -15,13 +15,13 @@ const DMSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://inoteqia.com'),
   title: {
-    default: 'INOTEQIA Academy – Académie Tunisienne de l\'IA et des Technologies du Futur',
-    template: '%s | INOTEQIA Academy',
+    default: 'ZYNOVIA Academy – Académie Tunisienne de l\'IA et des Technologies du Futur',
+    template: '%s | ZYNOVIA Academy',
   },
   description:
-    'INOTEQIA Academy – Académie Tunisienne de l\'Intelligence Artificielle et des Technologies du Futur. Formation IA, robotique et programmation pour collégiens et lycéens à Tunis.',
+    'ZYNOVIA Academy – Académie Tunisienne de l\'Intelligence Artificielle et des Technologies du Futur. Formation IA, robotique et programmation pour collégiens et lycéens à Tunis.',
   keywords: [
-    'INOTEQIA Academy',
+    'ZYNOVIA Academy',
     'académie IA Tunisie',
     'formation intelligence artificielle',
     'formation IA enfants',
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
     'bootcamp IA',
     'formation technologique Tunisie',
   ],
-  authors: [{ name: 'INOTEQIA Academy' }],
-  creator: 'INOTEQIA Academy',
-  publisher: 'INOTEQIA Academy',
+  authors: [{ name: 'ZYNOVIA Academy' }],
+  creator: 'ZYNOVIA Academy',
+  publisher: 'ZYNOVIA Academy',
   formatDetection: {
     email: false,
     address: false,
@@ -41,19 +41,19 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/images/logo/inoteqia-Academy-logo-v-White-color-01.png',
+        url: '/images/logo/ZYNOVIAPNGG-removebg-preview.png',
         type: 'image/png',
       },
     ],
-    shortcut: '/images/logo/inoteqia-Academy-logo-v-White-color-01.png',
-    apple: '/images/logo/inoteqia-Academy-logo-v-White-color-01.png',
+    shortcut: '/images/logo/ZYNOVIAPNGG-removebg-preview.png',
+    apple: '/images/logo/ZYNOVIAPNGG-removebg-preview.png',
   },
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://inoteqia.com',
-    siteName: 'INOTEQIA Academy',
-    title: 'INOTEQIA Academy – Académie Tunisienne de l\'IA',
+    siteName: 'ZYNOVIA Academy',
+    title: 'ZYNOVIA Academy – Académie Tunisienne de l\'IA',
     description:
       'Formation IA, robotique et programmation pour collégiens et lycéens à Tunis. Programmes annuels et bootcamps.',
     images: [
@@ -61,13 +61,13 @@ export const metadata: Metadata = {
         url: '/images/banner/image.png',
         width: 1200,
         height: 630,
-        alt: 'INOTEQIA Academy',
+        alt: 'ZYNOVIA Academy',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'INOTEQIA Academy – Académie Tunisienne de l\'IA',
+    title: 'ZYNOVIA Academy – Académie Tunisienne de l\'IA',
     description: 'Formation IA, robotique et programmation pour collégiens et lycéens à Tunis.',
     images: ['/images/banner/image.png'],
   },
@@ -96,6 +96,81 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='fr' suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  if (typeof window !== 'undefined') {
+                    if (!window.matchMedia) {
+                      window.matchMedia = function(query) {
+                        return {
+                          matches: false,
+                          media: query || '',
+                          onchange: null,
+                          addListener: function() {},
+                          removeListener: function() {},
+                          addEventListener: function() {},
+                          removeEventListener: function() {},
+                          dispatchEvent: function() { return false; }
+                        };
+                      };
+                    } else {
+                      var originalMatchMedia = window.matchMedia;
+                      window.matchMedia = function(query) {
+                        try {
+                          var res = originalMatchMedia(query);
+                          if (!res) {
+                            return {
+                              matches: false,
+                              media: query || '',
+                              onchange: null,
+                              addListener: function() {},
+                              removeListener: function() {},
+                              addEventListener: function() {},
+                              removeEventListener: function() {},
+                              dispatchEvent: function() { return false; }
+                            };
+                          }
+                          if (!res.addListener) {
+                            res.addListener = function(cb) {
+                              if (res.addEventListener) {
+                                res.addEventListener('change', cb);
+                              }
+                            };
+                          }
+                          if (!res.removeListener) {
+                            res.removeListener = function(cb) {
+                              if (res.removeEventListener) {
+                                res.removeEventListener('change', cb);
+                              }
+                            };
+                          }
+                          return res;
+                        } catch (e) {
+                          return {
+                            matches: false,
+                            media: query || '',
+                            onchange: null,
+                            addListener: function() {},
+                            removeListener: function() {},
+                            addEventListener: function() {},
+                            removeEventListener: function() {},
+                            dispatchEvent: function() { return false; }
+                          };
+                        }
+                      };
+                    }
+                  }
+                } catch (e) {
+                  console.error('matchMedia polyfill error:', e);
+                }
+              })();
+            `
+          }}
+        />
+      </head>
       <body className={`${DMSans.variable} antialiased dark:bg-darkmode`}>
         <ThemeProvider
           attribute='class'

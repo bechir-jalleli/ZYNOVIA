@@ -82,7 +82,8 @@ export default function NosInfrastructuresContent() {
       <section className='relative overflow-hidden pt-32 pb-10 sm:pt-24 sm:pb-16 lg:pt-32 lg:pb-24'>
         <div
           aria-hidden='true'
-          className='pointer-events-none absolute inset-x-0 top-0 -z-10 h-60 sm:h-80 bg-[radial-gradient(circle_at_top,_rgba(0,195,217,0.25),transparent_55%)] dark:bg-[radial-gradient(circle_at_top,_rgba(0,195,217,0.35),transparent_55%)]'
+          className='pointer-events-none absolute inset-x-0 top-0 -z-10 h-60 sm:h-80'
+          style={{ background: 'radial-gradient(circle at top, rgba(68,144,199,0.25), transparent 55%)' }}
         />
         <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 relative'>
           <div className='grid items-center gap-10 sm:gap-10 lg:gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]'>
@@ -90,14 +91,16 @@ export default function NosInfrastructuresContent() {
               {...fadeInUp}
               transition={{ duration: 0.65, ease: 'easeOut' }}
               className='flex flex-col items-center text-center lg:items-start lg:text-left space-y-6 sm:space-y-5 lg:space-y-6 min-w-0 w-full'>
-              <div className='inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-1.5 sm:bg-white/80 sm:px-4 sm:py-1 text-[11px] sm:text-[11px] font-bold sm:font-semibold uppercase tracking-[0.25em] text-primary shadow-sm ring-1 ring-slate-200/50 sm:ring-white/80 backdrop-blur dark:bg-slate-900/90 dark:text-cyan-300 dark:ring-white/10 max-w-full overflow-hidden'>
-                <span className='h-2 w-2 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] animate-pulse flex-shrink-0' />
+              <div
+                className='inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-1.5 sm:bg-white/80 sm:px-4 sm:py-1 text-[11px] sm:text-[11px] font-bold sm:font-semibold uppercase tracking-[0.25em] shadow-sm ring-1 ring-slate-200/50 sm:ring-white/80 backdrop-blur dark:bg-slate-900/90 dark:ring-white/10 max-w-full overflow-hidden'
+                style={{ color: '#27397F' }}>
+                <span className='h-2 w-2 rounded-full animate-pulse flex-shrink-0' style={{ background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)' }} />
                 <span className='truncate'>{infrastructureIntro.title}</span>
               </div>
               <h1 className='text-[2rem] leading-[1.15] sm:text-3xl md:text-4xl lg:text-5xl font-extrabold sm:font-bold text-[#0A004B] dark:text-white'>
                 {infrastructureIntro.title}
               </h1>
-              <p className='text-lg leading-snug sm:text-lg sm:leading-inherit font-bold sm:font-semibold text-primary dark:text-cyan-300'>
+              <p className='text-lg leading-snug sm:text-lg sm:leading-inherit font-bold sm:font-semibold' style={{ background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                 {infrastructureIntro.subtitle}
               </p>
               <p className='max-w-3xl text-[15px] leading-relaxed sm:text-base lg:text-lg text-slate-700 dark:text-slate-200'>
@@ -109,19 +112,21 @@ export default function NosInfrastructuresContent() {
                   <span className='truncate'>Cadre sécurisé et encadré</span>
                 </span>
                 <span className='flex items-center justify-center gap-2.5 rounded-xl bg-white/90 px-4 py-3.5 sm:rounded-full sm:bg-white/80 sm:px-4 sm:py-2 text-[13px] sm:text-xs font-semibold text-slate-700 shadow-sm ring-1 ring-slate-200/60 backdrop-blur dark:bg-slate-900/90 dark:text-slate-100 dark:ring-white/10'>
-                  <Sparkles className='h-4 w-4 text-primary flex-shrink-0' />
+                  <Sparkles className='h-4 w-4 flex-shrink-0' style={{ color: '#4490C7' }} />
                   <span className='truncate'>Expérience apprenante immersive</span>
                 </span>
               </div>
               <div className='flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-3 w-full pt-2 sm:pt-0'>
                 <Link
                   href='/contact'
-                  className='inline-flex h-12 sm:h-auto items-center justify-center rounded-xl bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] px-5 py-2.5 sm:px-6 text-[15px] sm:text-sm font-bold sm:font-semibold text-white shadow-lg shadow-[#0091E6]/30 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950 w-full sm:w-auto overflow-hidden'>
+                  className='inline-flex h-12 sm:h-auto items-center justify-center rounded-xl px-5 py-2.5 sm:px-6 text-[15px] sm:text-sm font-bold sm:font-semibold text-white shadow-lg transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-950 w-full sm:w-auto overflow-hidden'
+                  style={{ background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)', boxShadow: '0 8px 24px -6px rgba(46,83,145,0.40)' }}>
                   <span className='truncate'>Visiter l&apos;académie</span>
                 </Link>
                 <Link
                   href='/programmes'
-                  className='inline-flex h-12 sm:h-auto items-center justify-center gap-2 rounded-xl border border-slate-200 sm:border-primary/25 bg-white sm:bg-white/80 px-5 py-2.5 text-[15px] sm:text-sm font-bold sm:font-semibold text-[#0A004B] shadow-sm backdrop-blur hover:border-primary hover:text-primary dark:bg-slate-900/70 dark:text-white dark:border-slate-800 w-full sm:w-auto overflow-hidden'>
+                  className='inline-flex h-12 sm:h-auto items-center justify-center gap-2 rounded-xl border bg-white sm:bg-white/80 px-5 py-2.5 text-[15px] sm:text-sm font-bold sm:font-semibold text-[#0A004B] shadow-sm backdrop-blur dark:bg-slate-900/70 dark:text-white dark:border-slate-800 w-full sm:w-auto overflow-hidden'
+                  style={{ borderColor: 'rgba(39,57,127,0.25)' }}>
                   <span className='truncate'>Découvrir les programmes</span>
                 </Link>
               </div>
@@ -133,9 +138,10 @@ export default function NosInfrastructuresContent() {
               className='relative mt-2 sm:mt-6 lg:mt-0 min-w-0 w-full'>
               <div
                 aria-hidden='true'
-                className='pointer-events-none absolute -left-5 -top-8 sm:-left-10 sm:-top-12 h-32 w-32 sm:h-48 sm:w-48 rounded-full bg-gradient-to-br from-[#00C3D9]/45 via-[#0091E6]/30 to-[#0067E0]/30 blur-3xl'
+                className='pointer-events-none absolute -left-5 -top-8 sm:-left-10 sm:-top-12 h-32 w-32 sm:h-48 sm:w-48 rounded-full blur-3xl'
+                style={{ background: 'linear-gradient(to bottom right, rgba(68,144,199,0.45), rgba(46,83,145,0.30), rgba(39,57,127,0.30))' }}
               />
-              <RoomGallery images={getAllRoomImages()} title="Espace professionnel d&apos;INOTEQIA Academy" />
+              <RoomGallery images={getAllRoomImages()} title="Espace professionnel d&apos;ZYNOVIA Academy" />
             </motion.div>
           </div>
         </div>
@@ -148,7 +154,7 @@ export default function NosInfrastructuresContent() {
             {...fadeInUp}
             transition={{ duration: 0.55, ease: 'easeOut' }}
             className='mx-auto max-w-3xl text-center'>
-            <p className='text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
+            <p className='text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em]' style={{ background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
               Espace & équipements
             </p>
             <h2 className='mt-2 sm:mt-3 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#0A004B] dark:text-white'>
@@ -171,10 +177,11 @@ export default function NosInfrastructuresContent() {
                   className='relative overflow-hidden rounded-2xl sm:rounded-3xl bg-white/90 p-4 sm:p-5 lg:p-6 shadow-[0_16px_40px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/90 dark:ring-slate-700/70'>
                   <div
                     aria-hidden='true'
-                    className='pointer-events-none absolute inset-x-4 sm:inset-x-6 -top-10 sm:-top-14 h-20 sm:h-24 rounded-full bg-gradient-to-r from-[#00C3D9]/25 via-[#0091E6]/30 to-[#0067E0]/25 blur-2xl'
+                    className='pointer-events-none absolute inset-x-4 sm:inset-x-6 -top-10 sm:-top-14 h-20 sm:h-24 rounded-full blur-2xl'
+                    style={{ background: 'linear-gradient(to right, rgba(39,57,127,0.25), rgba(68,144,199,0.30), rgba(63,169,223,0.25))' }}
                   />
                   <div className='relative space-y-3 sm:space-y-4'>
-                    <div className='flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-[#0091E6]/40'>
+                    <div className='flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl text-white shadow-md' style={{ background: 'linear-gradient(to bottom right, #27397F, #2E5391, #4490C7, #3FA9DF)', boxShadow: '0 4px 12px rgba(46,83,145,0.40)' }}>
                       <Icon className='h-5 w-5 sm:h-6 sm:w-6' />
                     </div>
                     <div className='space-y-1.5 sm:space-y-2'>
@@ -187,7 +194,7 @@ export default function NosInfrastructuresContent() {
                       <ul className='space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-200'>
                         {section.highlights.map((item) => (
                           <li key={item} className='flex items-start gap-2'>
-                            <span className='mt-1 inline-block h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-primary flex-shrink-0' />
+                            <span className='mt-1 inline-block h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full flex-shrink-0' style={{ background: '#4490C7' }} />
                             <span>{item}</span>
                           </li>
                         ))}
@@ -209,7 +216,7 @@ export default function NosInfrastructuresContent() {
               {...fadeInUp}
               transition={{ duration: 0.6, ease: 'easeOut' }}
               className='space-y-3 sm:space-y-4'>
-              <p className='text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
+              <p className='text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em]' style={{ background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                 Nos équipements
               </p>
               <h2 className='text-xl sm:text-2xl md:text-3xl font-bold text-[#0A004B] dark:text-white'>
@@ -234,7 +241,7 @@ export default function NosInfrastructuresContent() {
                     <ul className='mt-2 sm:mt-3 space-y-1 sm:space-y-1.5 text-xs sm:text-sm text-slate-600 dark:text-slate-200'>
                       {category.items.map((item) => (
                         <li key={item} className='flex items-start gap-2'>
-                          <span className='mt-1 inline-block h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0' />
+                          <span className='mt-1 inline-block h-1.5 w-1.5 rounded-full flex-shrink-0' style={{ background: '#4490C7' }} />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -250,7 +257,8 @@ export default function NosInfrastructuresContent() {
               className='relative mt-6 lg:mt-0'>
               <div
                 aria-hidden='true'
-                className='pointer-events-none absolute -right-5 -top-6 sm:-right-10 sm:-top-8 h-32 w-32 sm:h-40 sm:w-40 rounded-full bg-gradient-to-br from-[#00C3D9]/35 via-[#0091E6]/30 to-[#0067E0]/25 blur-3xl'
+                className='pointer-events-none absolute -right-5 -top-6 sm:-right-10 sm:-top-8 h-32 w-32 sm:h-40 sm:w-40 rounded-full blur-3xl'
+                style={{ background: 'linear-gradient(to bottom right, rgba(68,144,199,0.35), rgba(46,83,145,0.30), rgba(39,57,127,0.25))' }}
               />
               <div
                 className='relative overflow-hidden rounded-2xl sm:rounded-3xl bg-white/80 shadow-[0_18px_55px_rgba(15,23,42,0.18)] ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/85 dark:ring-white/10 cursor-pointer group'
@@ -275,7 +283,7 @@ export default function NosInfrastructuresContent() {
             {...fadeInUp}
             transition={{ duration: 0.55, ease: 'easeOut' }}
             className='mx-auto max-w-3xl text-center'>
-            <p className='text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
+            <p className='text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em]' style={{ background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
               Nos espaces
             </p>
             <h2 className='mt-2 sm:mt-3 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#0A004B] dark:text-white'>
@@ -347,7 +355,7 @@ export default function NosInfrastructuresContent() {
             className='rounded-2xl sm:rounded-3xl bg-white/90 p-5 sm:p-6 lg:p-8 shadow-[0_18px_45px_rgba(15,23,42,0.14)] ring-1 ring-slate-200/70 backdrop-blur dark:bg-slate-900/90 dark:ring-slate-700/70'>
             <div className='grid gap-6 sm:gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] md:items-center'>
               <div className='space-y-2 sm:space-y-3'>
-                <p className='text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
+                <p className='text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em]' style={{ background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                   Accessibilité
                 </p>
                 <h2 className='text-xl sm:text-2xl font-bold text-[#0A004B] dark:text-white'>
@@ -364,7 +372,7 @@ export default function NosInfrastructuresContent() {
                   <ul className='mt-1.5 sm:mt-2 space-y-1.5 sm:space-y-2 text-[10px] sm:text-xs text-slate-600 dark:text-slate-300'>
                     {accessibility.access.map((item) => (
                       <li key={item} className='flex items-start gap-1.5 sm:gap-2'>
-                        <MapPin className='mt-0.5 h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary flex-shrink-0' />
+                        <MapPin className='mt-0.5 h-3 w-3 sm:h-3.5 sm:w-3.5 flex-shrink-0' style={{ color: '#4490C7' }} />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -385,7 +393,7 @@ export default function NosInfrastructuresContent() {
                   <h3 className='text-xs sm:text-sm font-semibold text-[#0A004B] dark:text-white'>Contact</h3>
                   <p className='mt-1.5 sm:mt-2 text-[10px] sm:text-xs text-slate-600 dark:text-slate-300'>
                     Une question ? Contactez-nous :{' '}
-                    <Link href={`mailto:${accessibility.contact}`} className='text-primary underline break-all'>
+                    <Link href={`mailto:${accessibility.contact}`} className='underline break-all' style={{ color: '#4490C7' }}>
                       {accessibility.contact}
                     </Link>
                   </p>
@@ -406,7 +414,7 @@ export default function NosInfrastructuresContent() {
             <div className='rounded-2xl sm:rounded-3xl bg-gradient-to-br from-white/90 via-white/80 to-secondary/20 p-5 sm:p-6 lg:p-8 xl:p-12 shadow-[0_18px_45px_rgba(15,23,42,0.14)] ring-1 ring-slate-200/70 backdrop-blur dark:from-slate-900/90 dark:via-slate-900/80 dark:to-slate-950 dark:ring-slate-700/70'>
               <div className='space-y-4 sm:space-y-5 lg:space-y-6'>
                 <div className='text-center'>
-                  <p className='text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
+                  <p className='text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em]' style={{ color: '#27397F' }}>
                     Notre approche
                   </p>
                   <h2 className='mt-2 sm:mt-3 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#0A004B] dark:text-white'>
@@ -415,7 +423,7 @@ export default function NosInfrastructuresContent() {
                 </div>
                 <div className='space-y-3 sm:space-y-4 text-sm sm:text-base text-slate-700 dark:text-slate-200 lg:text-lg'>
                   <p>
-                    INOTEQIA Academy n&apos;est pas un campus traditionnel. Nous sommes une académie située au cœur
+                    ZYNOVIA Academy n&apos;est pas un campus traditionnel. Nous sommes une académie située au cœur
                     d&apos;un environnement de coworking professionnel. Cette configuration unique permet aux étudiants
                     d&apos;apprendre dans un espace de travail réel, similaire à celui des entreprises.
                   </p>
@@ -445,7 +453,7 @@ export default function NosInfrastructuresContent() {
             {...fadeInUp}
             transition={{ duration: 0.55, ease: 'easeOut' }}
             className='mx-auto max-w-3xl text-center'>
-            <p className='text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-primary'>En images</p>
+            <p className='text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em]' style={{ color: '#27397F' }}>En images</p>
             <h2 className='mt-2 sm:mt-3 text-xl sm:text-2xl md:text-3xl font-bold text-[#0A004B] dark:text-white'>
               Découvrez nos espaces en action
             </h2>
@@ -493,7 +501,7 @@ export default function NosInfrastructuresContent() {
         currentIndex={lightboxIndex}
         isOpen={lightboxOpen}
         onClose={closeLightbox}
-        title="Galerie d'infrastructures INOTEQIA Academy"
+        title="Galerie d'infrastructures ZYNOVIA Academy"
       />
     </main>
   )

@@ -42,9 +42,9 @@ type FaqItem = {
 
 const faqItems: FaqItem[] = [
   {
-    question: 'À qui s’adresse INOTEQIA ?',
+    question: 'À qui s’adresse ZYNOVIA ?',
     answer:
-          'INOTEQIA Academy s’adresse aux collégiens et lycéens curieux et motivés, qui s’intéressent à la technologie, qu’ils soient débutants ou déjà avancés.',
+          'ZYNOVIA Academy s’adresse aux collégiens et lycéens curieux et motivés, qui s’intéressent à la technologie, qu’ils soient débutants ou déjà avancés.',
   },
   {
     question: 'Faut-il déjà programmer ?',
@@ -92,7 +92,7 @@ const ParentsContent = () => {
                 Parce que l’avenir de votre enfant mérite une préparation claire, rassurante et ambitieuse.
               </p>
               <p className='max-w-2xl text-sm sm:text-base text-slate-700 dark:text-slate-300'>
-                INOTEQIA Academy accompagne les familles en offrant aux enfants un environnement moderne,
+                ZYNOVIA Academy accompagne les familles en offrant aux enfants un environnement moderne,
                 stimulant et adapté à leur âge, pour les préparer sereinement aux métiers et usages de demain.
               </p>
 
@@ -147,7 +147,7 @@ const ParentsContent = () => {
         </div>
       </section>
 
-      {/* SECTION – Pourquoi les parents choisissent INOTEQIA ? */}
+      {/* SECTION – Pourquoi les parents choisissent ZYNOVIA ? */}
       <section className='py-24 lg:py-32'>
         <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
           <motion.div
@@ -156,7 +156,7 @@ const ParentsContent = () => {
             className='md:text-left'
           >
             <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
-              Pourquoi les parents choisissent INOTEQIA ?
+              Pourquoi les parents choisissent ZYNOVIA ?
             </p>
             <h2 className='mt-3 text-2xl font-semibold text-[#0A004B] sm:text-3xl dark:text-white'>
               Un partenaire de confiance pour accompagner votre enfant pas à pas
@@ -437,7 +437,7 @@ const ParentsContent = () => {
                 </div>
               </div>
               <p className='text-sm leading-relaxed text-slate-700 dark:text-slate-200'>
-                « Avant INOTEQIA, mon fils passait beaucoup de temps en ligne sans objectif clair. Aujourd’hui, il
+                « Avant ZYNOVIA, mon fils passait beaucoup de temps en ligne sans objectif clair. Aujourd’hui, il
                 utilise l’IA pour créer des projets et a retrouvé confiance en lui à l’école. »
               </p>
             </div>

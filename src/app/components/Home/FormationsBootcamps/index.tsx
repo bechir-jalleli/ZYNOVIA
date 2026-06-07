@@ -22,10 +22,18 @@ const staggerContainer = {
   },
 }
 
-const cardVariant = {
-  initial: { opacity: 0, y: 30, scale: 0.95 },
-  whileInView: { opacity: 1, y: 0, scale: 1 },
-  transition: { duration: 0.5, ease: 'easeOut' },
+const normalizeFormationType = (
+  formation: FormationType & { _id?: string }
+): 'formation' | 'bootcamp' => {
+  const rawType = formation.type?.toLowerCase().trim()
+  const title = formation.title?.toLowerCase() ?? ''
+  const badge = formation.badge?.toLowerCase() ?? ''
+
+  if (title.includes('bootcamp') || badge.includes('bootcamp')) {
+    return 'bootcamp'
+  }
+
+  return rawType === 'bootcamp' ? 'bootcamp' : 'formation'
 }
 
 const FormationsBootcamps = () => {
@@ -51,7 +59,7 @@ const FormationsBootcamps = () => {
 
   const filteredFormations = formations.filter((formation) => {
     if (selectedFilter === 'all') return true
-    return formation.type === selectedFilter
+    return normalizeFormationType(formation) === selectedFilter
   })
 
   return (
@@ -66,7 +74,7 @@ const FormationsBootcamps = () => {
         >
           <motion.div variants={fadeInUp} className='text-center mb-16 max-w-3xl'>
             <h2 className='text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0A004B] dark:text-white mb-6 tracking-tight'>
-              Nos <span className='text-primary'>Formations</span> Actuelles
+              Nos <span className='text-gradient'>Formations</span> Actuelles
             </h2>
             <p className='text-lg text-slate-600 dark:text-lightgrey font-medium leading-relaxed'>
               Découvrez nos programmes de formation en Intelligence Artificielle et technologies du futur
@@ -87,8 +95,8 @@ const FormationsBootcamps = () => {
                 key={tab.id}
                 onClick={() => setSelectedFilter(tab.id as any)}
                 className={`flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 ${selectedFilter === tab.id
-                  ? 'bg-white dark:bg-primary text-primary dark:text-white shadow-lg'
-                  : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-white'
+                  ? 'bg-gradient-brand text-white shadow-lg'
+                  : 'text-slate-500 dark:text-slate-400 hover:text-gradient-hover'
                   }`}
               >
                 <Icon icon={tab.icon} className='w-4 h-4' />
@@ -99,26 +107,49 @@ const FormationsBootcamps = () => {
 
           {/* Grid Layout */}
           <div className='w-full'>
-            <AnimatePresence mode='wait'>
-              <motion.div
-                key={selectedFilter}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.4 }}
-                className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8'
-              >
-                {filteredFormations.map((formation: any) => (
+            {loading ? (
+              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8'>
+                {Array.from({ length: 3 }).map((_, index) => (
+                  <div
+                    key={index}
+                    className='h-[520px] rounded-3xl bg-slate-200/60 dark:bg-slate-800/60 animate-pulse'
+                  />
+                ))}
+              </div>
+            ) : filteredFormations.length === 0 ? (
+              <div className='rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 px-6 py-16 text-center'>
+                <p className='text-lg font-semibold text-slate-700 dark:text-slate-200 mb-2'>
+                  Aucun programme trouvé
+                </p>
+                <p className='text-slate-500 dark:text-slate-400'>
+                  Essayez un autre filtre ou revenez plus tard.
+                </p>
+              </div>
+            ) : (
+              <AnimatePresence mode='wait'>
+                <motion.div
+                  key={selectedFilter}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.3 }}
+                  className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8'
+                >
+                  {filteredFormations.map((formation: FormationType & { _id?: string }, index) => {
+                    const formationType = normalizeFormationType(formation)
+
+                    return (
                   <motion.div
                     key={formation.id || formation._id}
-                    variants={cardVariant}
-                    viewport={{ once: false, amount: 0.2 }}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.35, delay: index * 0.06 }}
                     className='group relative overflow-hidden rounded-3xl bg-white/95 dark:bg-slate-900/95 shadow-[0_18px_45px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 dark:ring-slate-700/70 backdrop-blur transition-all duration-500 hover:shadow-[0_24px_60px_rgba(15,23,42,0.18)] hover:-translate-y-2 flex flex-col h-full'
                   >
                     {/* Gradient Background Effect */}
                     <div
                       aria-hidden='true'
-                      className='pointer-events-none absolute inset-x-6 -top-12 h-32 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500'
+                      className='pointer-events-none absolute inset-x-6 -top-12 h-32 rounded-full bg-gradient-to-r from-[#27397F]/30 to-[#3FA9DF]/30 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500'
                     />
 
                     {/* Badge */}
@@ -127,7 +158,7 @@ const FormationsBootcamps = () => {
                         <motion.span
                           initial={{ scale: 0 }}
                           animate={{ scale: 1 }}
-                          className='inline-flex items-center px-3 py-1.5 text-xs font-bold rounded-full bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-lg shadow-primary/40 backdrop-blur-sm'
+                          className='inline-flex items-center px-3 py-1.5 text-xs font-bold rounded-full bg-gradient-brand text-white shadow-lg shadow-[#27397F]/30 backdrop-blur-sm'
                         >
                           {formation.badge}
                         </motion.span>
@@ -148,12 +179,12 @@ const FormationsBootcamps = () => {
                       {/* Type Badge on Image */}
                       <div className='absolute bottom-4 left-4 right-4'>
                         <span
-                          className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold backdrop-blur-md shadow-lg ${formation.type === 'bootcamp'
+                          className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold backdrop-blur-md shadow-lg ${formationType === 'bootcamp'
                             ? 'bg-gradient-to-r from-orange-500/95 to-orange-600/95 text-white'
-                            : 'bg-gradient-to-r from-blue-500/95 to-blue-600/95 text-white'
+                            : 'bg-gradient-brand text-white shadow-[#27397F]/20'
                             }`}
                         >
-                          {formation.type === 'bootcamp' ? (
+                          {formationType === 'bootcamp' ? (
                             <>
                               <Icon icon='material-symbols:rocket-launch' className='w-4 h-4' />
                               <span>Bootcamp</span>
@@ -170,7 +201,7 @@ const FormationsBootcamps = () => {
 
                     {/* Content */}
                     <div className='relative flex flex-col flex-grow p-6 sm:p-8'>
-                      <h3 className='text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100 mb-3 line-clamp-2 leading-tight group-hover:text-primary dark:group-hover:text-cyan-300 transition-colors duration-300'>
+                      <h3 className='text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100 mb-3 line-clamp-2 leading-tight group-hover:text-[#3FA9DF] transition-colors duration-300'>
                         {formation.title}
                       </h3>
                       <p className='text-sm sm:text-base text-slate-600 dark:text-slate-300 mb-5 line-clamp-2 flex-grow leading-relaxed'>
@@ -180,7 +211,7 @@ const FormationsBootcamps = () => {
                       {/* Info Icons */}
                       <div className='flex flex-wrap gap-3 sm:gap-4 mb-5 pb-5 border-b border-slate-200/60 dark:border-slate-700/60'>
                         <div className='flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400'>
-                          <div className='flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary'>
+                          <div className='flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-soft text-[#27397F] dark:text-[#3FA9DF]'>
                             <Icon
                               icon='material-symbols:schedule'
                               className='w-4 h-4'
@@ -189,7 +220,7 @@ const FormationsBootcamps = () => {
                           <span className='font-medium'>{formation.duration}</span>
                         </div>
                         <div className='flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400'>
-                          <div className='flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary'>
+                          <div className='flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-soft text-[#27397F] dark:text-[#3FA9DF]'>
                             <Icon
                               icon='material-symbols:school'
                               className='w-4 h-4'
@@ -199,7 +230,7 @@ const FormationsBootcamps = () => {
                         </div>
                         {formation.startDate && (
                           <div className='flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400'>
-                            <div className='flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary'>
+                            <div className='flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-soft text-[#27397F] dark:text-[#3FA9DF]'>
                               <Icon
                                 icon='material-symbols:calendar-today'
                                 className='w-4 h-4'
@@ -224,7 +255,8 @@ const FormationsBootcamps = () => {
                               <div className='flex-shrink-0 mt-0.5'>
                                 <Icon
                                   icon='material-symbols:check-circle-rounded'
-                                  className='w-5 h-5 text-primary'
+                                  className='w-5 h-5 text-[#3FA9DF]'
+                                  style={{ color: '#3FA9DF' }}
                                 />
                               </div>
                               <span className='text-sm text-slate-600 dark:text-slate-300 leading-relaxed'>
@@ -241,7 +273,7 @@ const FormationsBootcamps = () => {
                         </div>
                         <Link
                           href={formation.href || '/programmes'}
-                          className='group/btn block w-full px-6 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-center text-white border rounded-xl border-transparent bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] hover:shadow-xl hover:shadow-primary/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-md relative overflow-hidden'
+                          className='group/btn block w-full px-6 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-center btn-primary btn-hover rounded-xl shadow-md'
                         >
                           <span className='relative z-10 flex items-center justify-center gap-2'>
                             En savoir plus
@@ -250,14 +282,15 @@ const FormationsBootcamps = () => {
                               className='w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300'
                             />
                           </span>
-                          <div className='absolute inset-0 bg-gradient-to-r from-[#0091E6] via-[#0067E0] to-[#00C3D9] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300' />
                         </Link>
                       </div>
                     </div>
                   </motion.div>
-                ))}
-              </motion.div>
-            </AnimatePresence>
+                    )
+                  })}
+                </motion.div>
+              </AnimatePresence>
+            )}
           </div>
         </motion.div>
       </div>

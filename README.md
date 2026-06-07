@@ -1,6 +1,6 @@
-## Inoteqia Academy Website – Project Plan
+## Zynovia Academy Website – Project Plan
 
-This document describes the structure and roadmap to turn this Next.js project into the best possible website for **INOTEQIA Academy**.
+This document describes the structure and roadmap to turn this Next.js project into the best possible website for **ZYNOVIA Academy**.
 
 ### 1. Current Architecture
 
@@ -20,7 +20,6 @@ This document describes the structure and roadmap to turn this Next.js project i
 Create a clear structure with dedicated pages instead of one very long homepage:
 
 - **Home (`/`)**
-
   - Short hero (who we are, for whom, main CTA “Prendre rendez-vous” + “Découvrir nos programmes”).
   - Compact “Pourquoi l’IA maintenant ?” block with 1–2 key stats.
   - Highlight cards for 3–4 flagship programs (Collège, Lycée, Stages vacances, Clubs scolaires).
@@ -28,10 +27,9 @@ Create a clear structure with dedicated pages instead of one very long homepage:
   - Clear CTA section leading to `/contact`.
 
 - **Vision / Pédagogie (`/vision` or `/notre-vision`)**
-
   - Move content from `components/Home/Vision/page` here.
   - Sections:
-    - Notre vision & “Pont INOTEQIA” (bridge between école, technologie, emploi, parents/entreprises).
+    - Notre vision & “Pont ZYNOVIA” (bridge between école, technologie, emploi, parents/entreprises).
     - Tendances du marché (macro stats + chart).
     - Métiers de demain (future jobs donut + parcours élève → professionnel).
     - Compétences clés (radar chart + soft skills vs hard skills).
@@ -39,7 +37,6 @@ Create a clear structure with dedicated pages instead of one very long homepage:
     - Sources détaillées & FAQ.
 
 - **Programmes (`/programmes`)**
-
   - Group existing “program-like” sections (Projects, Categories, Specialize, Pricing, Records, Review) into one page:
     - Cards per programme (Collégiens, Lycéens, Prépa concours, Clubs, Vacances).
     - For each: objectifs, contenu, format, durée, prix, prérequis.
@@ -47,20 +44,17 @@ Create a clear structure with dedicated pages instead of one very long homepage:
     - “Exemples de projets” section using existing `project` images.
 
 - **Parents & Orientation (`/parents`)**
-
-  - Explain how INOTEQIA accompagne les familles:
+  - Explain how ZYNOVIA accompagne les familles:
     - Suivi (bilans, feedback, bulletins de progression).
     - Orientation (concours blancs, simulations d’oraux, dossiers).
     - Réassurance (chiffres clés, témoignages, chiffres `AnimatedCounter`).
 
 - **Partenariats – Écoles & Entreprises (`/partenariats`)**
-
   - Offres pour établissements scolaires (clubs IA, ateliers, formations enseignants).
   - Offres pour entreprises (ateliers IA jeunesse, hackathons, sponsoring).
   - Dedicated B2B contact CTA.
 
 - **Ressources / Blog (`/ressources`)**
-
   - Articles courts pour parents et éducateurs (future of work, IA pour les jeunes, etc.).
   - Reuse or extend references already present in `SourcesSection`.
   - Later: plug into a CMS or MDX-based content system.
@@ -72,13 +66,11 @@ Create a clear structure with dedicated pages instead of one very long homepage:
 ### 3. Design & UX Guidelines
 
 - **Hero and sections**
-
   - Prefer the modern animated hero from `components/Home/Vision/Hero` as the base hero pattern.
   - Use one `h1` per page, then `h2` for main sections, `h3` for sub-sections.
   - Keep copy concise: 2–3 lines intros, then bullet points for clarity.
 
 - **Brand and consistency**
-
   - Keep using the Tailwind theme defined in `globals.css` (`primary`, `secondary`, gradients).
   - Ensure all CTA labels are consistent (e.g. “Prendre rendez-vous”, “Découvrir nos programmes”).
   - Align the `/charts` page text to education/IA for youth instead of healthcare analytics.
@@ -133,7 +125,7 @@ Create a clear structure with dedicated pages instead of one very long homepage:
   - On submit, POST to an API route (e.g. `src/app/api/contact/route.ts`).
 - Backend (MERN-style or Next API + MongoDB):
   - Persist leads in a `leads` collection (name, contact info, child details, programme, source).
-  - Send notification email to `academy@inoteqia.com` (via a provider like SendGrid, Resend, etc.).
+  - Send notification email to `academy@zynovia.com` (via a provider like SendGrid, Resend, etc.).
 
 **Step 6 – Navigation & footer data**
 

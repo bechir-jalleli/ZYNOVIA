@@ -24,7 +24,7 @@ const Hero = () => {
       {/* Decorative background glow */}
       <div
         aria-hidden='true'
-        className='pointer-events-none absolute inset-x-0 top-0 -z-10 h-96 bg-[radial-gradient(circle_at_center,_rgba(0,195,217,0.25),transparent_60%)] dark:bg-[radial-gradient(circle_at_center,_rgba(0,195,217,0.35),transparent_60%)]'
+        className='pointer-events-none absolute inset-x-0 top-0 -z-10 h-96 bg-[radial-gradient(circle_at_center,_rgba(63,169,223,0.15),transparent_60%)] dark:bg-[radial-gradient(circle_at_center,_rgba(63,169,223,0.25),transparent_60%)]'
       />
 
       {/* Animated curved shapes */}
@@ -33,13 +33,13 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 0.15, scale: 1 }}
           transition={{ duration: 2, ease: 'easeOut' }}
-          className='absolute -top-20 -right-20 h-96 w-96 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] blur-3xl'
+          className='absolute -top-20 -right-20 h-96 w-96 rounded-full bg-gradient-brand blur-3xl'
         />
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 0.1, scale: 1 }}
           transition={{ duration: 2.5, ease: 'easeOut', delay: 0.3 }}
-          className='absolute bottom-0 left-0 h-80 w-80 rounded-full bg-gradient-to-tr from-[#0067E0] via-[#0091E6] to-[#00C3D9] blur-3xl'
+          className='absolute bottom-0 left-0 h-80 w-80 rounded-full bg-gradient-brand blur-3xl'
         />
       </div>
 
@@ -57,9 +57,9 @@ const Hero = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className='inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.25em] text-primary shadow-sm ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/80 dark:text-cyan-300 dark:ring-white/10'>
-                <span className='h-2 w-2 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] animate-pulse' />
-                INOTEQIA Academy
+                className='inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.25em] text-gradient shadow-sm ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/80 dark:ring-white/10'>
+                <span className='h-2 w-2 rounded-full bg-gradient-brand animate-pulse' />
+                ZYNOVIA Academy
               </motion.div>
 
               {/* Title */}
@@ -75,7 +75,7 @@ const Hero = () => {
               <motion.p
                 {...fadeInUp}
                 transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
-                className='lg:text-start text-center text-lg sm:text-xl lg:text-2xl font-semibold text-primary dark:text-cyan-300'>
+                className='lg:text-start text-center text-lg sm:text-xl lg:text-2xl font-bold text-gradient'>
                 Former une génération prête à affronter l&apos;avenir avec l&apos;IA
               </motion.p>
 
@@ -84,7 +84,7 @@ const Hero = () => {
                 {...fadeInUp}
                 transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
                 className='lg:text-start text-center max-w-2xl text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed'>
-                INOTEQIA Academy prépare les jeunes aux compétences essentielles du futur : IA, pensée
+                ZYNOVIA Academy prépare les jeunes aux compétences essentielles du futur : IA, pensée
                 algorithmique, robotique, créativité et culture numérique.
               </motion.p>
 
@@ -97,24 +97,16 @@ const Hero = () => {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className='w-full sm:w-auto px-8 sm:px-10 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-white border rounded-full border-primary bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] hover:shadow-lg hover:shadow-[#0091E6]/30 hover:cursor-pointer duration-300 transition-all relative overflow-hidden group'>
-                    <span className='relative z-10'>Explorer</span>
-                    <motion.div
-                      className='absolute inset-0 bg-gradient-to-r from-[#0067E0] via-[#0091E6] to-[#00C3D9] opacity-0 group-hover:opacity-100 transition-opacity duration-300'
-                      initial={false}
-                    />
+                    className='w-full sm:w-auto px-8 sm:px-10 py-3.5 text-sm sm:text-base font-semibold tracking-wide btn-primary btn-hover rounded-full shadow-md whitespace-nowrap'>
+                    <span>Explorer</span>
                   </motion.button>
                 </Link>
                 <Link href={'/#contact'} className='w-full sm:w-auto'>
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className='w-full sm:w-auto px-8 sm:px-10 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-primary border rounded-full border-primary bg-white/70 dark:bg-slate-900/70 hover:bg-primary hover:text-white hover:cursor-pointer duration-300 shadow-sm backdrop-blur relative overflow-hidden group'>
-                    <span className='relative z-10'>Prendre rendez-vous</span>
-                    <motion.div
-                      className='absolute inset-0 bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] opacity-0 group-hover:opacity-100 transition-opacity duration-300'
-                      initial={false}
-                    />
+                    className='w-full sm:w-auto px-8 sm:px-10 py-3.5 text-sm sm:text-base font-semibold tracking-wide btn-outline btn-hover rounded-full shadow-sm whitespace-nowrap'>
+                    <span>Prendre rendez-vous</span>
                   </motion.button>
                 </Link>
               </motion.div>
@@ -156,13 +148,13 @@ const Hero = () => {
                           delay: i * 0.05,
                           ease: 'easeOut',
                         }}
-                        className='aspect-square rounded-2xl bg-gradient-to-br from-[#00C3D9]/20 via-[#0091E6]/20 to-[#0067E0]/20 dark:from-[#00C3D9]/30 dark:via-[#0091E6]/30 dark:to-[#0067E0]/30 backdrop-blur-sm border border-primary/10 dark:border-cyan-400/20 relative overflow-hidden group'>
+                        className='aspect-square rounded-2xl bg-gradient-soft border border-[#3FA9DF]/15 relative overflow-hidden group'>
                         <motion.div
                           animate={{
                             background: [
-                              'radial-gradient(circle, rgba(0,195,217,0.3), transparent)',
-                              'radial-gradient(circle, rgba(0,145,230,0.3), transparent)',
-                              'radial-gradient(circle, rgba(0,195,217,0.3), transparent)',
+                              'radial-gradient(circle, rgba(39,57,127,0.3), transparent)',
+                              'radial-gradient(circle, rgba(63,169,223,0.3), transparent)',
+                              'radial-gradient(circle, rgba(39,57,127,0.3), transparent)',
                             ],
                           }}
                           transition={{
@@ -173,7 +165,7 @@ const Hero = () => {
                           className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300'
                         />
                         {/* Glow effect on hover */}
-                        <div className='absolute inset-0 rounded-2xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300' />
+                        <div className='absolute inset-0 rounded-2xl bg-gradient-brand opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300' />
                       </motion.div>
                     ))}
                   </div>
@@ -186,7 +178,7 @@ const Hero = () => {
                     rotate: [0, 5, 0],
                   }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                  className='absolute top-4 right-4 h-16 w-16 rounded-full bg-gradient-to-br from-[#00C3D9]/30 to-[#0091E6]/30 blur-xl'
+                  className='absolute top-4 right-4 h-16 w-16 rounded-full bg-gradient-to-br from-[#27397F]/30 to-[#3FA9DF]/30 blur-xl'
                 />
                 <motion.div
                   animate={{
@@ -194,7 +186,7 @@ const Hero = () => {
                     rotate: [0, -5, 0],
                   }}
                   transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-                  className='absolute bottom-4 left-4 h-20 w-20 rounded-full bg-gradient-to-tr from-[#0067E0]/30 to-[#0091E6]/30 blur-xl'
+                  className='absolute bottom-4 left-4 h-20 w-20 rounded-full bg-gradient-to-tr from-[#27397F]/30 to-[#3FA9DF]/30 blur-xl'
                 />
               </div>
 

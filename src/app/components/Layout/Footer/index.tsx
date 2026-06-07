@@ -18,7 +18,7 @@ const Footer = () => {
               <Logo />
             </div>
             <p className='max-w-xs text-sm text-darkblue/60 dark:text-white/60'>
-              Inoteqia Academy accompagne les jeunes, les familles et les partenaires dans la
+              Zynovia Academy accompagne les jeunes, les familles et les partenaires dans la
               découverte et la maîtrise de l&apos;IA.
             </p>
             <div className='flex gap-4'>
@@ -79,7 +79,7 @@ const Footer = () => {
                 className='text-lightgrey flex-shrink-0 mt-0.5'
               />
               <Link
-                href='https://www.google.com/maps/place/INOTEQIA/@36.8550972,10.274117,17z/data=!3m1!4b1!4m6!3m5!1s0x12e2b5128a5ef2f1:0x4f3e6d7fbd54d6e2!8m2!3d36.8550929!4d10.2766919!16s%2Fg%2F11rr91xr_w?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D'
+                href='https://www.google.com/maps/place/ZYNOVIA/@36.8550972,10.274117,17z/data=!3m1!4b1!4m6!3m5!1s0x12e2b5128a5ef2f1:0x4f3e6d7fbd54d6e2!8m2!3d36.8550929!4d10.2766919!16s%2Fg%2F11rr91xr_w?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='text-sm font-normal text-darkblue/60 dark:text-white/60 transition-colors duration-200 hover:text-primary dark:hover:text-primary'>
@@ -134,7 +134,7 @@ const Footer = () => {
           <div className='flex flex-col'>
             <div className='overflow-hidden rounded-xl border border-slate-200/50 dark:border-slate-700/50 h-full min-h-[300px]'>
               <iframe
-                src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.4731121011414!2d10.274116975491433!3d36.85509287223157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e2b5128a5ef2f1%3A0x4f3e6d7fbd54d6e2!2sINOTEQIA!5e0!3m2!1sen!2stn!4v1764779777716!5m2!1sen!2stn'
+                src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.4731121011414!2d10.274116975491433!3d36.85509287223157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e2b5128a5ef2f1%3A0x4f3e6d7fbd54d6e2!2sZYNOVIA!5e0!3m2!1sen!2stn!4v1764779777716!5m2!1sen!2stn'
                 width='100%'
                 height='100%'
                 style={{ border: 0, minHeight: '300px' }}
@@ -142,7 +142,7 @@ const Footer = () => {
                 loading='lazy'
                 referrerPolicy='no-referrer-when-downgrade'
                 className='w-full h-full'
-                title='INOTEQIA Academy Location'
+                title='ZYNOVIA Academy Location'
               />
             </div>
           </div>
@@ -154,7 +154,7 @@ const Footer = () => {
           <Link
             href='/'
             className='hover:text-primary dark:hover:text-primary transition-colors duration-200'>
-            Inoteqia Academy
+            Zynovia Academy
           </Link>
         </p>
       </div>

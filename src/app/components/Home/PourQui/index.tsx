@@ -64,11 +64,11 @@ const PourQui = () => {
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className='text-center mb-12 lg:mb-16'
           >
-            <p className='text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-primary/80 mb-3'>
+            <p className='text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-gradient mb-3'>
               Pour qui ?
             </p>
             <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#0A004B] dark:text-white mb-4'>
-              INOTEQIA Academy s&apos;adresse à
+              ZYNOVIA Academy s&apos;adresse à
             </h2>
           </motion.div>
 
@@ -88,7 +88,7 @@ const PourQui = () => {
               >
                 <div
                   aria-hidden='true'
-                  className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
+                  className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#27397F]/30 to-[#3FA9DF]/30 blur-3xl opacity-70 dark:opacity-80'
                 />
                 <div className='relative flex flex-col items-center text-center gap-6 flex-grow'>
                   <div className='text-5xl sm:text-6xl mb-2'>
@@ -102,7 +102,7 @@ const PourQui = () => {
                   </p>
                   <Link
                     href={cible.href}
-                    className='mt-auto w-full px-6 py-3 text-sm sm:text-base font-semibold tracking-wide text-white border rounded-[10px] border-transparent bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-md text-center'
+                    className='mt-auto w-full px-6 py-3 text-sm sm:text-base font-semibold tracking-wide btn-primary btn-hover rounded-[10px] shadow-md text-center'
                   >
                     {cible.cta}
                   </Link>

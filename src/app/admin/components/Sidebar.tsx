@@ -59,7 +59,7 @@ export default function AdminSidebar() {
                 </div>
 
                 <div className="px-4 text-[10px] text-slate-400 dark:text-lightgrey/40 text-center leading-relaxed font-medium">
-                    © 2025 INOTEQIA ACADEMY.<br />All rights reserved.
+                    © 2025 ZYNOVIA ACADEMY.<br />All rights reserved.
                 </div>
             </div>
         </aside>

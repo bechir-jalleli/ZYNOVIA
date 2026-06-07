@@ -79,7 +79,7 @@ async function seedInitialContent() {
                 imgSrc: '/images/review/daniel.webp',
                 name: 'Maman de Sami, 4e',
                 rating: 4.9,
-                desc: '« Avant INOTEQIA, mon fils passait beaucoup de temps en ligne sans objectif clair. Aujourd’hui, il utilise l’IA pour créer des projets et a retrouvé confiance en lui à l’école. »',
+                desc: '« Avant ZYNOVIA, mon fils passait beaucoup de temps en ligne sans objectif clair. Aujourd’hui, il utilise l’IA pour créer des projets et a retrouvé confiance en lui à l’école. »',
             },
             {
                 imgSrc: '/images/review/sophia.webp',
@@ -91,7 +91,7 @@ async function seedInitialContent() {
                 imgSrc: '/images/review/marcus.webp',
                 name: 'Responsable pédagogique partenaire',
                 rating: 4.8,
-                desc: '« INOTEQIA Academy complète parfaitement nos enseignements. Les élèves développent des projets concrets en IA et gagnent en autonomie comme en motivation. »',
+                desc: '« ZYNOVIA Academy complète parfaitement nos enseignements. Les élèves développent des projets concrets en IA et gagnent en autonomie comme en motivation. »',
             }
         ];
         await Review.insertMany(defaultReviews);

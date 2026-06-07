@@ -43,7 +43,7 @@ type FaqItem = {
 
 const faqItems: FaqItem[] = [
   {
-    question: 'Que trouve-t-on dans les ressources INOTEQIA ?',
+    question: 'Que trouve-t-on dans les ressources ZYNOVIA ?',
     answer:
       'Les ressources regroupent des guides pratiques, des fiches pédagogiques, des supports d’ateliers, des vidéos et des analyses pour les familles, les élèves, les enseignants et les partenaires.',
   },
@@ -87,13 +87,13 @@ const RessourcesContent = () => {
                 Ressources
               </p>
               <h1 className='text-3xl font-bold leading-tight text-[#0A004B] sm:text-4xl lg:text-5xl dark:text-white'>
-                Ressources INOTEQIA
+                Ressources ZYNOVIA
               </h1>
               <p className='text-lg font-medium text-primary/90 dark:text-cyan-300'>
                 Comprendre l’IA, accompagner les élèves, anticiper les métiers de demain.
               </p>
               <p className='max-w-2xl text-sm sm:text-base text-slate-700 dark:text-slate-300'>
-                INOTEQIA met à disposition des ressources pédagogiques, guides pratiques et analyses
+                ZYNOVIA met à disposition des ressources pédagogiques, guides pratiques et analyses
                 pour aider familles, enseignants et partenaires.
               </p>
             </div>

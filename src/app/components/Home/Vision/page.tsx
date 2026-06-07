@@ -88,8 +88,8 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: IconComponent, title, d
     variants={featureCardVariants}
     viewport={{ once: true, amount: 0.3 }}
     transition={{ duration: 0.45, ease: 'easeOut' }}
-    className='group flex flex-col gap-3 rounded-2xl bg-white/85 p-4 shadow-[0_18px_45px_rgba(15,23,42,0.12)] ring-1 ring-primary/10 backdrop-blur-sm dark:bg-slate-900/80 dark:ring-white/10'>
-    <div className='inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-black/15'>
+    className='group flex flex-col gap-3 rounded-2xl bg-white/85 p-4 shadow-[0_18px_45px_rgba(15,23,42,0.12)] ring-1 ring-[#3FA9DF]/10 backdrop-blur-sm dark:bg-slate-900/80 dark:ring-white/10'>
+    <div className='inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-brand text-white shadow-md shadow-black/15'>
       <IconComponent className='h-5 w-5' aria-hidden='true' />
     </div>
     <div className='space-y-1'>
@@ -105,7 +105,7 @@ const BridgeStep: React.FC<{
   subtitle: string
 }> = ({ icon, title, subtitle }) => (
   <div className='relative flex flex-col items-center text-center'>
-    <div className='relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-lg shadow-black/10'>
+    <div className='relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-brand text-white shadow-lg shadow-black/10'>
       <Icon icon={icon} className='h-7 w-7' />
     </div>
     <div className='mt-3 space-y-1'>
@@ -142,7 +142,7 @@ const FaqAccordion: React.FC<{ items: FaqItem[] }> = ({ items }) => {
                 icon={
                   isOpen ? 'solar:minus-circle-outline' : 'solar:add-circle-outline'
                 }
-                className='h-5 w-5 text-primary'
+                className='h-5 w-5 text-[#3FA9DF]'
                 aria-hidden='true'
               />
             </button>
@@ -356,9 +356,9 @@ const SourcesSection: React.FC = () => {
 export default function NotreVisionPage() {
   const faqItems: FaqItem[] = [
     {
-      question: "À qui s'adresse INOTEQIA Academy ?",
+      question: "À qui s'adresse ZYNOVIA Academy ?",
       answer:
-        "INOTEQIA s'adresse aux collégiens et lycéens (12-18 ans) curieux et motivés, quel que soit leur niveau initial en programmation. Nos parcours s'adaptent à chaque profil : débutant, intermédiaire ou avancé. L'essentiel ? La motivation et l'envie d'explorer l'intelligence artificielle.",
+        "ZYNOVIA s'adresse aux collégiens et lycéens (12-18 ans) curieux et motivés, quel que soit leur niveau initial en programmation. Nos parcours s'adaptent à chaque profil : débutant, intermédiaire ou avancé. L'essentiel ? La motivation et l'envie d'explorer l'intelligence artificielle.",
     },
     {
       question: 'Faut‑il déjà savoir programmer pour commencer ?',
@@ -366,7 +366,7 @@ export default function NotreVisionPage() {
         "Non, pas du tout. Nos parcours sont conçus pour accueillir les débutants. Nous proposons trois niveaux progressifs : introduction (découverte de l'IA), initiation (premiers projets) et approfondissement (projets complexes). Un accompagnement continu garantit que chaque élève progresse à son rythme, quel que soit son point de départ.",
     },
     {
-      question: 'Comment INOTEQIA prépare‑t‑elle concrètement aux études supérieures et au monde professionnel ?',
+      question: 'Comment ZYNOVIA prépare‑t‑elle concrètement aux études supérieures et au monde professionnel ?',
       answer:
         "Par une approche pratique et progressive : projets concrets, défis collaboratifs, simulations de concours, construction d'un portfolio de projets IA valorisable dans les dossiers d'admission. Nous développons aussi les soft skills (communication, leadership, esprit critique) recherchés par les grandes écoles et les entreprises. Résultat : une longueur d'avance pour les concours, les filières STEM et les carrières technologiques.",
     },
@@ -490,7 +490,7 @@ export default function NotreVisionPage() {
               transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
               className='relative rounded-3xl bg-white/80 p-5 shadow-[0_16px_40px_rgba(15,23,42,0.18)] ring-1 ring-white/80 backdrop-blur-2xl dark:bg-slate-900/80 dark:ring-white/10'>
               <p className='text-xs font-semibold uppercase tracking-[0.18em] text-primary'>
-                Le pont INOTEQIA
+                Le pont ZYNOVIA
               </p>
               <p className='mt-1 text-sm text-slate-600 dark:text-slate-200'>
                 Un parcours progressif de la découverte à la maîtrise, 
@@ -707,7 +707,7 @@ export default function NotreVisionPage() {
             transition={{ duration: 0.7, ease: 'easeOut', delay: 0.05 }}
             className='relative rounded-3xl bg-white/90 p-5 text-slate-900 shadow-xl shadow-slate-900/5 ring-1 ring-slate-200/80 backdrop-blur-sm dark:bg-slate-950/95 dark:text-slate-100 dark:ring-cyan-400/40 dark:shadow-cyan-500/20'>
             <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary dark:text-cyan-300'>
-              Le parcours INOTEQIA
+              Le parcours ZYNOVIA
             </p>
             <p className='mt-2 text-sm text-slate-600 dark:text-slate-200'>
               <strong>Une trajectoire progressive</strong>, de la découverte à la maîtrise, 
@@ -876,7 +876,7 @@ export default function NotreVisionPage() {
                 Une longueur d&apos;avance pour les études et la carrière
               </h2>
               <p className='text-sm sm:text-base text-slate-700 dark:text-slate-200'>
-                <strong>INOTEQIA donne un avantage stratégique déterminant</strong> pour réussir les concours exigeants, 
+                <strong>ZYNOVIA donne un avantage stratégique déterminant</strong> pour réussir les concours exigeants, 
                 intégrer les meilleures filières STEM, accéder aux grandes écoles d&apos;ingénieurs, 
                 et se démarquer dans les carrières technologiques.
               </p>
@@ -940,7 +940,7 @@ export default function NotreVisionPage() {
                 Témoignages &amp; indicateurs de confiance
               </p>
               <p className='text-sm sm:text-base text-slate-700 dark:text-slate-100 italic'>
-                « Depuis qu&apos;il suit INOTEQIA, notre fils a gagné en assurance et en curiosité scientifique. 
+                « Depuis qu&apos;il suit ZYNOVIA, notre fils a gagné en assurance et en curiosité scientifique. 
                 Il travaille mieux en équipe et se projette enfin dans des études qui lui correspondent vraiment. 
                 <strong> Une transformation positive qui nous rassure pour son avenir.</strong> »
               </p>
@@ -983,7 +983,7 @@ export default function NotreVisionPage() {
                 Une décision qui construit l&apos;avenir dès aujourd&apos;hui
               </h3>
               <p className='text-xs sm:text-sm text-slate-600 dark:text-slate-200 mb-4'>
-                Choisir INOTEQIA, c&apos;est offrir à votre enfant un <strong>terrain d&apos;expérimentation sécurisé, exigeant et enthousiasmant</strong>, 
+                Choisir ZYNOVIA, c&apos;est offrir à votre enfant un <strong>terrain d&apos;expérimentation sécurisé, exigeant et enthousiasmant</strong>, 
                 où l&apos;IA devient un levier de créativité, pas une source de crainte.
               </p>
               <div className='space-y-3'>
@@ -1010,7 +1010,7 @@ export default function NotreVisionPage() {
         <motion.section
           {...fadeInUp}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          aria-label='Questions fréquentes sur INOTEQIA Academy'
+          aria-label='Questions fréquentes sur ZYNOVIA Academy'
           className='space-y-5'>
           <div className='space-y-2 text-center md:text-left'>
             <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
@@ -1038,7 +1038,7 @@ export default function NotreVisionPage() {
                 Prêt à préparer l&apos;avenir de votre enfant ?
               </h2>
               <p className='text-base sm:text-lg text-slate-700 dark:text-slate-300'>
-                Rejoignez INOTEQIA Academy et offrez-lui les compétences essentielles pour réussir dans un monde transformé par l&apos;IA.
+                Rejoignez ZYNOVIA Academy et offrez-lui les compétences essentielles pour réussir dans un monde transformé par l&apos;IA.
               </p>
             </div>
             

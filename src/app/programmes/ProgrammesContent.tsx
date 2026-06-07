@@ -51,7 +51,7 @@ const planningPhases = [
     ],
     weeksLabel: 'Semaine 1–4',
     weeksSummary: "Découverte des bases de l'IA et de son impact dans notre quotidien.",
-    },
+  },
   {
     icon: Cpu,
     title: "Apprentissage des algorithmes & cas d'utilisation",
@@ -63,7 +63,7 @@ const planningPhases = [
     ],
     weeksLabel: 'Semaine 5–8',
     weeksSummary: "Plongée dans les algorithmes d'IA et premiers pas en programmation.",
-   },
+  },
   {
     icon: BarChart3,
     title: 'Préparation des données & techniques de traitement',
@@ -74,7 +74,7 @@ const planningPhases = [
     ],
     weeksLabel: 'Semaine 9–12',
     weeksSummary: 'Maîtrise des techniques essentielles pour préparer et traiter les données.',
-    },
+  },
   {
     icon: Users,
     title: 'Application des connaissances apprises',
@@ -86,7 +86,7 @@ const planningPhases = [
     ],
     weeksLabel: 'Semaine 13–15',
     weeksSummary: 'Mise en pratique concrète à travers des projets collaboratifs et des présentations.',
-    },
+  },
   {
     icon: Sparkles,
     title: 'Ateliers spécialisés',
@@ -97,7 +97,7 @@ const planningPhases = [
     ],
     weeksLabel: 'Semaine 16–30',
     weeksSummary: "Approfondissement thématique et développement de projets personnalisés pour aller plus loin.",
-    },
+  },
 ]
 
 const bootcampsSchedule = [
@@ -151,6 +151,7 @@ export default function ProgrammesContent() {
   return (
     <main className='bg-gradient-to-b from-secondary/10 via-secondary/5 to-transparent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
       {/* HERO SECTION – PROGRAMME ANNUEL */}
+
       <section className='relative min-h-screen flex items-center overflow-hidden bg-gradient-to-b from-secondary/60 via-secondary/30 to-transparent dark:from-slate-950 dark:via-slate-900/80 dark:to-slate-950'>
         {/* Decorative background glow */}
         <div
@@ -180,10 +181,10 @@ export default function ProgrammesContent() {
               {/* Colonne texte – même logique que le Hero de l'accueil */}
               <div className='lg:col-span-7 col-span-1'>
                 <div className='flex flex-col lg:items-start items-center gap-6 lg:gap-8'>
-                  
+
                   <div className='flex flex-col lg:items-start items-center gap-4 lg:gap-5'>
                     <h1 className='lg:text-start text-center w-full max-w-3xl text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-[#0A004B] dark:text-white'>
-                      Programme Annuel IA 
+                      Programme Annuel IA
                     </h1>
                     <p className='lg:text-start text-center text-sm sm:text-base font-semibold text-primary/80 dark:text-cyan-200'>
                       Un programme intégré au cœur du cursus scolaire
@@ -194,7 +195,7 @@ export default function ProgrammesContent() {
                       transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
                       className='lg:text-start text-center text-lg sm:text-xl lg:text-2xl font-semibold text-primary dark:text-cyan-300'
                     >
-                      
+
                     </motion.p>
 
                     <motion.p
@@ -202,15 +203,14 @@ export default function ProgrammesContent() {
                       transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
                       className='lg:text-start text-center max-w-3xl text-base sm:text-lg lg:text-xl text-slate-700 dark:text-slate-300 leading-relaxed'
                     >
-                      INOTEQIA Academy propose un programme innovant, conçu en collaboration avec les équipes pédagogiques, pour moderniser l&apos;apprentissage, renforcer les matières STEM et préparer les élèves aux compétences technologiques de demain.
+                      ZYNOVIA Academy propose un programme innovant, conçu en collaboration avec les équipes pédagogiques, pour moderniser l&apos;apprentissage, renforcer les matières STEM et préparer les élèves aux compétences technologiques de demain.
                     </motion.p>
                   </div>
 
                   {/* CTA buttons – calquées sur celles de l'accueil */}
                   <div className='flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 w-full max-w-2xl'>
                     <Link href='/parents'>
-                      <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-white border rounded-[10px] border-transparent bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-md whitespace-nowrap'>
-                        👨‍👩‍👧 Je suis parent
+<button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-white border rounded-[10px] border-transparent bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-md whitespace-nowrap'>                        👨‍👩‍👧 Je suis parent
                       </button>
                     </Link>
                     <Link href='/contact?type=etablissement#contact-form'>
@@ -233,7 +233,7 @@ export default function ProgrammesContent() {
                     <div className='relative overflow-hidden rounded-3xl shadow-[0_24px_60px_rgba(15,23,42,0.35)] ring-1 ring-white/60 dark:ring-slate-700/80'>
                       <Image
                         src='/images/image.png'
-                        alt="Élève découvrant l'intelligence artificielle avec INOTEQIA Academy"
+                        alt="Élève découvrant l'intelligence artificielle avec ZYNOVIA Academy"
                         width={600}
                         height={420}
                         className='w-full object-cover'
@@ -247,7 +247,7 @@ export default function ProgrammesContent() {
         </div>
       </section>
 
-      {/* Statistics Section - INOTEQIA ACADEMY EN CHIFFRES */}
+      {/* Statistics Section - ZYNOVIA ACADEMY EN CHIFFRES */}
       <section className='py-24 lg:py-32'>
         <div className='container mx-auto max-w-6xl sm:px-6 lg:px-8'>
           <motion.div
@@ -257,7 +257,7 @@ export default function ProgrammesContent() {
           >
             <div className='text-center mb-6'>
               <h2 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
-                INOTEQIA ACADEMY EN CHIFFRES
+                ZYNOVIA ACADEMY EN CHIFFRES
               </h2>
               <p className='text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl mx-auto'>
                 Des résultats concrets qui témoignent de l&apos;impact du programme auprès des établissements,
@@ -283,8 +283,7 @@ export default function ProgrammesContent() {
                   className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
                 />
                 <div className='relative flex flex-col items-center text-center'>
-                  <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-[#0091E6]/40 mb-4'>
-                    <Building2 className='h-7 w-7' />
+<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                    <Building2 className='h-7 w-7' />
                   </div>
                   <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
                     <AnimatedNumber value={6} duration={1500} />
@@ -308,7 +307,7 @@ export default function ProgrammesContent() {
                   className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
                 />
                 <div className='relative flex flex-col items-center text-center'>
-                  <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-[#0091E6]/40 mb-4'>
+<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                
                     <Users className='h-7 w-7' />
                   </div>
                   <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
@@ -330,7 +329,7 @@ export default function ProgrammesContent() {
                   className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
                 />
                 <div className='relative flex flex-col items-center text-center'>
-                  <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-[#0091E6]/40 mb-4'>
+<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                
                     <Clock className='h-7 w-7' />
                   </div>
                   <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
@@ -352,7 +351,7 @@ export default function ProgrammesContent() {
                   className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
                 />
                 <div className='relative flex flex-col items-center text-center'>
-                  <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-[#0091E6]/40 mb-4'>
+<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                
                     <Calendar className='h-7 w-7' />
                   </div>
                   <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
@@ -374,7 +373,7 @@ export default function ProgrammesContent() {
                   className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
                 />
                 <div className='relative flex flex-col items-center text-center'>
-                  <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-[#0091E6]/40 mb-4'>
+<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                
                     <GraduationCap className='h-7 w-7' />
                   </div>
                   <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
@@ -399,7 +398,7 @@ export default function ProgrammesContent() {
                   className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
                 />
                 <div className='relative flex flex-col items-center text-center'>
-                  <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-[#0091E6]/40 mb-4'>
+<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                
                     <FolderKanban className='h-7 w-7' />
                   </div>
                   <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
@@ -428,7 +427,7 @@ export default function ProgrammesContent() {
           >
             <p className='inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-primary shadow-sm ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/80 dark:text-cyan-300 dark:ring-white/10'>
               <span className='h-2 w-2 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
-              INOTEQIA • NOTRE OFFRE
+              ZYNOVIA • NOTRE OFFRE
             </p>
             <h2 className='mt-5 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#0A004B] dark:text-white'>
               Notre offre : cursus scolaire &amp; clubs IA
@@ -463,8 +462,7 @@ export default function ProgrammesContent() {
                     className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
                   />
                   <div className='relative flex items-start gap-3'>
-                    <div className='flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-[#0091E6]/40'>
-                      <Icon className='h-5 w-5' />
+<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-brand text-white shadow-md shadow-[#27397F]/40 mb-4'>                      <Icon className='h-5 w-5' />
                     </div>
                     <div>
                       <h3 className='text-sm font-semibold text-[#0A004B] dark:text-white'>
@@ -491,10 +489,10 @@ export default function ProgrammesContent() {
             >
               <div
                 aria-hidden='true'
-                className='pointer-events-none absolute -right-10 top-0 h-48 w-48 rounded-full bg-gradient-to-br from-[#00C3D9]/25 via-[#0091E6]/30 to-[#0067E0]/25 blur-2xl opacity-90 dark:from-[#00C3D9]/35 dark:via-[#0091E6]/40 dark:to-[#0067E0]/35'
+                className='pointer-events-none absolute -right-10 top-0 h-48 w-48 rounded-full bg-[linear-gradient(to_right,_rgba(39,57,127,0.25),_rgba(46,83,145,0.30),_rgba(68,144,199,0.30),_rgba(63,169,223,0.25))] blur-2xl opacity-90'
               />
               <div className='relative'>
-                <p className='text-[11px] font-semibold uppercase tracking-[0.24em] text-primary dark:text-cyan-300'>
+                <p className='text-[11px] font-semibold uppercase tracking-[0.24em] text-[#27397F] dark:text-[#3FA9DF]'>
                   Déroulé du programme par semaines
                 </p>
                 <p className='mt-2 text-sm font-semibold text-slate-900 dark:text-white'>
@@ -502,18 +500,18 @@ export default function ProgrammesContent() {
                 </p>
 
                 <div className='mt-6 relative'>
-                  <div className='pointer-events-none absolute left-[10px] top-0 bottom-0 w-px bg-gradient-to-b from-primary/60 via-primary/30 to-transparent dark:from-cyan-300/70 dark:via-cyan-400/40 dark:to-transparent' />
+                  <div className='pointer-events-none absolute left-[10px] top-0 bottom-0 w-px bg-gradient-to-b from-[#27397F] via-[#4490C7] to-transparent' />
                   <div className='space-y-4'>
                     {planningPhases.map(({ weeksLabel, title, weeksSummary }, index) => (
                       <div
                         key={weeksLabel}
                         className='relative flex gap-4'
                       >
-                        <div className='mt-1.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-white ring-2 ring-primary/70 shadow-md shadow-primary/30 dark:bg-slate-900 dark:ring-cyan-300/80 dark:shadow-cyan-500/40'>
-                          <span className='h-2.5 w-2.5 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                        <div className='mt-1.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-white ring-2 ring-[#2E5391]/70 shadow-md shadow-[#27397F]/30 dark:bg-slate-900 dark:ring-[#4490C7]/80 dark:shadow-[#3FA9DF]/40'>
+                          <span className='h-2.5 w-2.5 rounded-full bg-gradient-brand' />
                         </div>
                         <div className='flex-1'>
-                          <div className='inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold text-primary ring-1 ring-primary/20 dark:bg-slate-900/80 dark:text-cyan-200 dark:ring-cyan-400/40'>
+                          <div className='inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold text-[#27397F] ring-1 ring-[#4490C7]/20 dark:bg-slate-900/80 dark:text-[#3FA9DF] dark:ring-[#4490C7]/40'>
                             <span>{weeksLabel}</span>
                             <span className='hidden sm:inline text-slate-400 dark:text-slate-400'>•</span>
                             <span className='hidden sm:inline text-slate-600 dark:text-slate-100/80'>
@@ -567,7 +565,7 @@ export default function ProgrammesContent() {
               className='text-center mb-12 lg:mb-16'
             >
               <div className='inline-flex items-center justify-center mb-6'>
-              
+
               </div>
               <h2 className='text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-[#0A004B] dark:text-white mb-4'>
                 Objectifs pédagogiques
@@ -604,7 +602,7 @@ export default function ProgrammesContent() {
                     className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
                   />
                   <div className='relative flex items-start gap-4'>
-                    <div className='flex h-12 w-12 sm:h-14 sm:w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-[#0091E6]/40'>
+                    <div className='flex h-12 w-12 sm:h-14 sm:w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#0091E6]/40'>
                       <span className='text-lg sm:text-xl font-bold'>{index + 1}</span>
                     </div>
                     <p className='text-sm sm:text-base lg:text-lg text-slate-700 dark:text-slate-200 leading-relaxed pt-1'>
@@ -635,7 +633,7 @@ export default function ProgrammesContent() {
               className='text-center mb-12 lg:mb-16'
             >
               <div className='inline-flex items-center justify-center mb-6'>
-                
+
               </div>
               <h2 className='text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-[#0A004B] dark:text-white mb-4'>
                 Ce qui rend ce programme unique
@@ -673,7 +671,7 @@ export default function ProgrammesContent() {
                 },
                 {
                   icon: Bot,
-                  text: 'Certification officielle INOTEQIA Academy pour valoriser le parcours des élèves.',
+                  text: 'Certification officielle ZYNOVIA Academy pour valoriser le parcours des élèves.',
                 },
               ].map(({ icon: Icon, text }) => (
                 <motion.div
@@ -723,7 +721,7 @@ export default function ProgrammesContent() {
                   className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
                 />
                 <div className='relative flex items-center gap-3'>
-                  <div className='flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-[#0091E6]/40'>
+                  <div className='flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] to-[#0067E0] text-white shadow-md shadow-[#0091E6]/40'>
                     <Brain className='h-5 w-5' />
                   </div>
                   <div>
@@ -764,7 +762,7 @@ export default function ProgrammesContent() {
                   className='pointer-events-none absolute inset-y-0 right-0 w-40 bg-gradient-to-t from-[#00C3D9]/15 via-[#0091E6]/20 to-[#0067E0]/15 blur-2xl'
                 />
                 <div className='relative flex items-center gap-3'>
-                  <div className='flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-cyan-400 to-blue-500 text-white shadow-md shadow-emerald-500/40'>
+                  <div className='flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-emerald-500/40'>
                     <Sparkles className='h-5 w-5' />
                   </div>
                   <div>
@@ -793,7 +791,7 @@ export default function ProgrammesContent() {
                     },
                     {
                       icon: Bot,
-                      text: 'Une certification INOTEQIA Academy qui valorise le parcours des élèves et l\'image de l\'établissement.',
+                      text: 'Une certification ZYNOVIA Academy qui valorise le parcours des élèves et l\'image de l\'établissement.',
                     },
                   ].map(({ icon: Icon, text }) => (
                     <div
@@ -839,7 +837,7 @@ export default function ProgrammesContent() {
                         key={item}
                         className='flex items-start gap-2 rounded-2xl bg-slate-50/90 px-3 py-2 ring-1 ring-slate-100/90 dark:bg-slate-900/75 dark:ring-slate-700/70'
                       >
-                        <span className='mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                        <span className='mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full icon-gradient' />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -858,12 +856,12 @@ export default function ProgrammesContent() {
                       Pour les établissements scolaires
                     </p>
                     <p className='mt-1 text-sm font-semibold text-[#0A004B] dark:text-white'>
-                      Devenir établissement partenaire d&apos;INOTEQIA
+                      Devenir établissement partenaire d&apos;ZYNOVIA
                     </p>
                   </div>
                   <Link
                     href='/contact?type=etablissement#contact-form'
-                    className='inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/40 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
+                    className='inline-flex items-center justify-center rounded-xl btn-gradient px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/40 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
                   >
                     Devenir établissement partenaire
                   </Link>
@@ -883,7 +881,7 @@ export default function ProgrammesContent() {
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             <p className='inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-primary shadow-sm ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/80 dark:text-cyan-300 dark:ring-white/10'>
-              <span className='h-2 w-2 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+              <span className='h-2 w-2 rounded-full icon-gradient' />
               Bootcamps IA
             </p>
             <h2 className='mt-4 text-3xl font-bold leading-tight text-[#0A004B] sm:text-4xl lg:text-5xl dark:text-white'>
@@ -919,7 +917,7 @@ export default function ProgrammesContent() {
                   <div className='flex items-start justify-between gap-2'>
                     <div className='flex flex-col gap-1'>
                       <span className='inline-flex items-center gap-1 rounded-full bg-slate-100 text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-900 px-3 py-1 shadow-sm shadow-slate-200/80 dark:bg-slate-900 dark:text-white dark:shadow-slate-900/40'>
-                        <span className='h-1.5 w-1.5 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                        <span className='h-1.5 w-1.5 rounded-full icon-gradient' />
                         {label}
                       </span>
                       <p className='text-[11px] font-medium text-slate-600 dark:text-slate-300 mt-1'>
@@ -927,15 +925,14 @@ export default function ProgrammesContent() {
                       </p>
                     </div>
                     <div
-                      className={`inline-flex items-center rounded-full px-3 py-1 text-[10px] font-semibold ring-1 ${
-                        index === 0
-                          ? 'bg-amber-50 text-amber-700 ring-amber-200 dark:bg-amber-500/10 dark:text-amber-200 dark:ring-amber-500/40'
-                          : index === 1
+                      className={`inline-flex items-center rounded-full px-3 py-1 text-[10px] font-semibold ring-1 ${index === 0
+                        ? 'bg-amber-50 text-amber-700 ring-amber-200 dark:bg-amber-500/10 dark:text-amber-200 dark:ring-amber-500/40'
+                        : index === 1
                           ? 'bg-emerald-50 text-emerald-700 ring-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-200 dark:ring-emerald-500/40'
                           : index === 2
-                          ? 'bg-fuchsia-50 text-fuchsia-700 ring-fuchsia-200 dark:bg-fuchsia-500/10 dark:text-fuchsia-200 dark:ring-fuchsia-500/40'
-                          : 'bg-sky-50 text-sky-700 ring-sky-200 dark:bg-sky-500/10 dark:text-sky-200 dark:ring-sky-500/40'
-                      }`}
+                            ? 'bg-fuchsia-50 text-fuchsia-700 ring-fuchsia-200 dark:bg-fuchsia-500/10 dark:text-fuchsia-200 dark:ring-fuchsia-500/40'
+                            : 'bg-sky-50 text-sky-700 ring-sky-200 dark:bg-sky-500/10 dark:text-sky-200 dark:ring-sky-500/40'
+                        }`}
                     >
                       {theme}
                     </div>
@@ -953,7 +950,7 @@ export default function ProgrammesContent() {
                         key={bullet}
                         className='flex gap-2'
                       >
-                        <span className='mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                        <span className='mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full icon-gradient' />
                         <span>{bullet}</span>
                       </li>
                     ))}
@@ -993,7 +990,7 @@ export default function ProgrammesContent() {
                   className='pointer-events-none absolute inset-x-6 -top-16 h-32 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/30 to-[#0067E0]/30 blur-3xl opacity-80'
                 />
                 <div className='relative flex items-center gap-3'>
-                  <div className='flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0] text-white shadow-md shadow-[#0091E6]/40'>
+                  <div className='flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#0091E6]/40'>
                     <Cpu className='h-5 w-5' />
                   </div>
                   <div>
@@ -1015,7 +1012,7 @@ export default function ProgrammesContent() {
                       key={item}
                       className='flex items-start gap-2 rounded-2xl bg-slate-50/80 px-3 py-2 ring-1 ring-slate-100/80 shadow-sm shadow-slate-900/5 dark:bg-slate-900/70 dark:ring-slate-700/70'
                     >
-                      <span className='mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                      <span className='mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full icon-gradient' />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -1040,7 +1037,7 @@ export default function ProgrammesContent() {
                   </div>
                   <Link
                     href='/contact?type=parent'
-                    className='inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/40 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
+                    className='inline-flex items-center justify-center rounded-xl btn-gradient px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/40 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
                   >
                     S&apos;inscrire au prochain bootcamp
                   </Link>
@@ -1077,13 +1074,13 @@ export default function ProgrammesContent() {
                         key={item}
                         className='flex items-start gap-3 rounded-2xl bg-slate-50/90 px-3 py-3 ring-1 ring-slate-100/90 shadow-sm shadow-slate-900/5 transition hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/15 dark:bg-slate-900/80 dark:ring-slate-700/70'
                       >
-                        <div className='mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#00C3D9]/15 via-[#0091E6]/20 to-[#0067E0]/15 text-primary dark:text-cyan-300'>
-                          {index % 2 === 0 ? (
-                            <Cpu className='h-4 w-4' />
-                          ) : (
-                            <CircuitBoard className='h-4 w-4' />
-                          )}
-                        </div>
+                       <div className='mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#00C3D9]/15 via-[#0091E6]/20 to-[#0067E0]/15 text-primary dark:text-cyan-300'>
+  {index % 2 === 0 ? (
+    <Cpu className='h-4 w-4' />
+  ) : (
+    <CircuitBoard className='h-4 w-4' />
+  )}
+</div>
                         <p className='text-xs sm:text-sm text-slate-700 dark:text-slate-200'>
                           {item}
                         </p>

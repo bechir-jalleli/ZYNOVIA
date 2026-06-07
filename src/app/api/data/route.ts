@@ -124,7 +124,7 @@ const ReviewData: ReviewType[] = [
     imgSrc: '/images/review/daniel.webp',
     name: 'Maman de Sami, 4e',
     rating: 4.9,
-    desc: '« Avant INOTEQIA, mon fils passait beaucoup de temps en ligne sans objectif clair. Aujourd’hui, il utilise l’IA pour créer des projets et a retrouvé confiance en lui à l’école. »',
+    desc: '« Avant ZYNOVIA, mon fils passait beaucoup de temps en ligne sans objectif clair. Aujourd’hui, il utilise l’IA pour créer des projets et a retrouvé confiance en lui à l’école. »',
   },
   {
     imgSrc: '/images/review/sophia.webp',
@@ -136,7 +136,7 @@ const ReviewData: ReviewType[] = [
     imgSrc: '/images/review/marcus.webp',
     name: 'Responsable pédagogique partenaire',
     rating: 4.8,
-    desc: '« INOTEQIA Academy complète parfaitement nos enseignements. Les élèves développent des projets concrets en IA et gagnent en autonomie comme en motivation. »',
+    desc: '« ZYNOVIA Academy complète parfaitement nos enseignements. Les élèves développent des projets concrets en IA et gagnent en autonomie comme en motivation. »',
   },
 ]
 
@@ -304,7 +304,7 @@ const FormationData: FormationType[] = [
       'Contenus adaptés collège & lycée',
       "Bases de l'IA et pensée algorithmique",
       'Mini-projets pratiques trimestriels',
-      'Encadrement par formateurs INOTEQIA',
+      'Encadrement par formateurs ZYNOVIA',
     ],
     href: '/programmes',
   },

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import NosInfrastructuresContent from './NosInfrastructuresContent'
 
 export const metadata: Metadata = {
-  title: 'Nos Infrastructures – INOTEQIA Academy',
+  title: 'Nos Infrastructures – ZYNOVIA Academy',
   description:
     "Découvrez notre espace de coworking professionnel : open space, salles de formation, salles confort et équipements modernes pour apprendre dans un environnement professionnel.",
   keywords: [
@@ -14,17 +14,17 @@ export const metadata: Metadata = {
     'infrastructure académie',
   ],
   openGraph: {
-    title: 'Nos Infrastructures – INOTEQIA Academy',
+    title: 'Nos Infrastructures – ZYNOVIA Academy',
     description:
       "Un espace conçu pour apprendre dans un environnement professionnel. Découvrez nos espaces partagés, salles de formation et équipements modernes.",
     url: 'https://inoteqia.com/nos-infrastructures',
-    siteName: 'INOTEQIA Academy',
+    siteName: 'ZYNOVIA Academy',
     images: [
       {
         url: '/images/banner/entreprise.jpg',
         width: 1200,
         height: 630,
-        alt: 'Espace professionnel INOTEQIA Academy',
+        alt: 'Espace professionnel ZYNOVIA Academy',
       },
     ],
     locale: 'fr_FR',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nos Infrastructures – INOTEQIA Academy',
+    title: 'Nos Infrastructures – ZYNOVIA Academy',
     description: 'Un espace professionnel conçu pour apprendre dans les meilleures conditions.',
     images: ['/images/banner/entreprise.jpg'],
   },

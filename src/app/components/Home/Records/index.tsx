@@ -107,12 +107,12 @@ const Records = () => {
     <section ref={sectionRef} id='records' className='py-16'>
       <div className='container'>
         <div className='text-center mb-10'>
-          <p className='text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-primary/80'>
+          <p className='text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-gradient'>
             IA &amp; futur
           </p>
           <h2 className='mt-3 text-3xl sm:text-4xl font-semibold'>
             Pourquoi{' '}
-            <span className='bg-gradient-to-r from-primary to-indigo-500 bg-clip-text text-transparent'>
+            <span className='text-gradient'>
               apprendre l&apos;IA ?
             </span>
           </h2>
@@ -155,7 +155,7 @@ const Records = () => {
                   style={{ transitionDelay: `${i * 120}ms` }}
                 >
                   <div className='border border-darkblue/10 dark:border-white/10 rounded-2xl flex flex-col gap-4 items-center justify-center px-6 py-8 shadow-sm dark:shadow-white/10 bg-white/70 dark:bg-slate-900/60 backdrop-blur-sm'>
-                    <div className='p-3 bg-primary/10 rounded-full w-fit flex items-center justify-center'>
+                    <div className='p-3 bg-gradient-soft rounded-full w-fit flex items-center justify-center'>
                       <Image
                         src={item.imgSrc}
                         alt={item.imgSrc}
@@ -180,7 +180,7 @@ const Records = () => {
         <div className='mt-10 text-center'>
           <Link
             href='/vision'
-            className='inline-block px-8 sm:px-10 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-white border rounded-[10px] border-transparent bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-md whitespace-nowrap'>
+            className='inline-block px-8 sm:px-10 py-3.5 text-sm sm:text-base font-semibold tracking-wide btn-primary btn-hover rounded-[10px] shadow-md whitespace-nowrap'>
             👉 Découvrir notre vision
           </Link>
         </div>

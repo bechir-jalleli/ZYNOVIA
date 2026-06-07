@@ -38,15 +38,15 @@ const ContactForm = () => {
     e.preventDefault()
     setLoader(true)
 
-    fetch('https://formsubmit.co/ajax/bhainirav772@gmail.com', {
+    fetch('/api/client', {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({
-        Name: formData.firstname,
-        LastName: formData.lastname,
-        Email: formData.email,
-        PhoneNo: formData.phnumber,
-        Message: formData.Message,
+        name: `${formData.firstname} ${formData.lastname}`,
+        email: formData.email,
+        phone: formData.phnumber,
+        message: formData.Message,
+        role: 'Contact General',
       }),
     })
       .then((response) => response.json())
@@ -58,13 +58,16 @@ const ContactForm = () => {
           setTimeout(() => {
             setShowThanks(false)
           }, 5000)
+        } else {
+          throw new Error(data.error || 'Failed to send')
         }
-
-        reset()
       })
       .catch((error) => {
         setLoader(false)
-        console.log(error.message)
+        console.error('Contact error:', error.message)
+      })
+      .finally(() => {
+        setLoader(false)
       })
   }
   return (
@@ -161,10 +164,9 @@ const ContactForm = () => {
                   type='submit'
                   disabled={!isFormValid || loader}
                   className={`border leading-none px-6 text-lg font-medium py-4 rounded-lg 
-                    ${
-                      !isFormValid || loader
-                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                        : 'bg-primary border-primary text-white hover:bg-transparent hover:text-primary cursor-pointer'
+                    ${!isFormValid || loader
+                      ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                      : 'bg-primary border-primary text-white hover:bg-transparent hover:text-primary cursor-pointer'
                     }`}>
                   Submit
                 </button>

@@ -28,9 +28,11 @@ const MobileHeaderLink: React.FC<{ item: NavLinkType; onItemClick: () => void }>
       <Link
         href={item.href}
         onClick={item.submenu ? handleToggle : handleItemClick}
-        className={`flex items-center justify-between w-full py-2 text-darkblue dark:text-white focus:outline-none hover:text-primary dark:hover:text-primary hover:cursor-pointer ${
-          item.href === path ? '!text-primary dark:!text-primary' : null
-        } `}>
+        className={`flex items-center justify-between w-full py-2 text-darkblue dark:text-white focus:outline-none transition-all duration-300 ${
+          item.href === path || path.startsWith(`/${item.label.toLowerCase()}`)
+            ? 'text-gradient font-bold'
+            : 'hover:text-gradient-hover'
+        }`}>
         {item.label}
         {item.submenu && (
           <svg
@@ -50,13 +52,13 @@ const MobileHeaderLink: React.FC<{ item: NavLinkType; onItemClick: () => void }>
         )}
       </Link>
       {submenuOpen && item.submenu && (
-        <div className='bg-white  dark:bg-white/10  p-2 w-full'>
+        <div className='bg-white dark:bg-white/10 p-2 w-full'>
           {item.submenu.map((subItem, index) => (
             <Link
               key={index}
               href={subItem.href}
               onClick={handleSubItemClick}
-              className='block py-2 text-darkblue dark:text-white hover:bg-neutral-50 dark:hover:bg-darkmode/10 hover:text-primary dark:hover:text-primary'>
+              className='block py-2 text-darkblue dark:text-white transition-all duration-300 hover:text-gradient-hover'>
               {subItem.label}
             </Link>
           ))}

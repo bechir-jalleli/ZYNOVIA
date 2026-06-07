@@ -26,13 +26,11 @@ const HeaderLink: React.FC<{ item: NavLinkType }> = ({ item }) => {
       onMouseLeave={handleMouseLeave}>
       <Link
         href={item.href}
-        className={`text-base flex font-normal  text-darkblue dark:text-white hover:text-primary  dark:hover:text-primary  ${
-          item.href === path ? '!text-primary dark:!text-primary' : null
-        } ${
-          path.startsWith(`/${item.label.toLowerCase()}`)
-            ? 'text-primary dark:!text-primary'
-            : null
-        } text-black hover:text-primary dark:text-white dark:hover:text-primary`}>
+        className={`text-base flex font-medium transition-all duration-300 ${
+          item.href === path || path.startsWith(`/${item.label.toLowerCase()}`)
+            ? 'text-gradient font-bold'
+            : 'text-darkblue dark:text-white hover:text-gradient-hover'
+        }`}>
         {item.label}
         {item.submenu && (
           <svg

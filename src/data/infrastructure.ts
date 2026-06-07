@@ -33,7 +33,7 @@ export const infrastructureIntro = {
   title: 'Nos Infrastructures',
   subtitle: 'Un espace conçu pour apprendre dans un environnement professionnel',
   description:
-    "INOTEQIA Academy offre un espace de travail partagé professionnel où les étudiants apprennent dans un environnement similaire aux vraies entreprises. Nous proposons des espaces partagés en open space, des salles confort avec canapés, de petites salles pour le mentorat, une salle de réunion professionnelle, une cuisine et des salles équipées pour la formation avec tableaux d'écriture et vidéo projecteurs.",
+    "ZYNOVIA Academy offre un espace de travail partagé professionnel où les étudiants apprennent dans un environnement similaire aux vraies entreprises. Nous proposons des espaces partagés en open space, des salles confort avec canapés, de petites salles pour le mentorat, une salle de réunion professionnelle, une cuisine et des salles équipées pour la formation avec tableaux d'écriture et vidéo projecteurs.",
 }
 
 export const spaceSections: InfrastructureSection[] = [
@@ -103,7 +103,7 @@ export const equipmentCategories: EquipmentCategory[] = [
 ]
 
 export const accessibility: Accessibility = {
-  location: 'INOTEQIA Academy – Tunis',
+  location: 'ZYNOVIA Academy – Tunis',
   access: [
     'Transports en commun et parking à proximité',
     'Accueil et orientation dès l\'entrée de l\'académie',
