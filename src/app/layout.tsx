@@ -102,70 +102,44 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  if (typeof window !== 'undefined') {
-                    if (!window.matchMedia) {
-                      window.matchMedia = function(query) {
-                        return {
-                          matches: false,
-                          media: query || '',
-                          onchange: null,
-                          addListener: function() {},
-                          removeListener: function() {},
-                          addEventListener: function() {},
-                          removeEventListener: function() {},
-                          dispatchEvent: function() { return false; }
-                        };
-                      };
-                    } else {
-                      var originalMatchMedia = window.matchMedia;
-                      window.matchMedia = function(query) {
-                        try {
-                          var res = originalMatchMedia(query);
-                          if (!res) {
-                            return {
-                              matches: false,
-                              media: query || '',
-                              onchange: null,
-                              addListener: function() {},
-                              removeListener: function() {},
-                              addEventListener: function() {},
-                              removeEventListener: function() {},
-                              dispatchEvent: function() { return false; }
-                            };
-                          }
-                          if (!res.addListener) {
-                            res.addListener = function(cb) {
-                              if (res.addEventListener) {
-                                res.addEventListener('change', cb);
-                              }
-                            };
-                          }
-                          if (!res.removeListener) {
-                            res.removeListener = function(cb) {
-                              if (res.removeEventListener) {
-                                res.removeEventListener('change', cb);
-                              }
-                            };
-                          }
-                          return res;
-                        } catch (e) {
-                          return {
-                            matches: false,
-                            media: query || '',
-                            onchange: null,
-                            addListener: function() {},
-                            removeListener: function() {},
-                            addEventListener: function() {},
-                            removeEventListener: function() {},
-                            dispatchEvent: function() { return false; }
+                  if (typeof window === 'undefined') return;
+                  var fallback = function(query) {
+                    return {
+                      matches: false,
+                      media: query || '',
+                      onchange: null,
+                      addListener: function() {},
+                      removeListener: function() {},
+                      addEventListener: function() {},
+                      removeEventListener: function() {},
+                      dispatchEvent: function() { return false; }
+                    };
+                  };
+                  if (!window.matchMedia) {
+                    window.matchMedia = fallback;
+                  } else {
+                    var orig = window.matchMedia.bind(window);
+                    window.matchMedia = function(query) {
+                      try {
+                        var res = orig(query);
+                        if (!res) return fallback(query);
+                        if (!res.addListener) {
+                          res.addListener = function(cb) {
+                            try { res.addEventListener('change', cb); } catch(e) {}
                           };
                         }
-                      };
-                    }
+                        if (!res.removeListener) {
+                          res.removeListener = function(cb) {
+                            try { res.removeEventListener('change', cb); } catch(e) {}
+                          };
+                        }
+                        return res;
+                      } catch (e) {
+                        return fallback(query);
+                      }
+                    };
                   }
-                } catch (e) {
-                  console.error('matchMedia polyfill error:', e);
-                }
+                } catch (e) {}
               })();
             `
           }}

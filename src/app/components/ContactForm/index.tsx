@@ -47,6 +47,7 @@ const ContactForm = () => {
         phone: formData.phnumber,
         message: formData.Message,
         role: 'Contact General',
+        formType: 'contact',
       }),
     })
       .then((response) => response.json())

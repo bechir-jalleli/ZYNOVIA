@@ -1,9 +1,10 @@
-'use client'
+'use client';
 
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { trainers, trainerTestimonials } from '@/data/trainers'
+import { Trainer, trainerTestimonials } from '@/data/trainers'
 import { Sparkles, GraduationCap, Quote, Linkedin, Star } from 'lucide-react'
 
 const fadeInUp = {
@@ -27,6 +28,26 @@ const cardVariant = {
 }
 
 export default function NosFormateursContent() {
+  const [trainersList, setTrainersList] = useState<Trainer[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchTrainers = async () => {
+      try {
+        const res = await fetch('/api/data', { cache: 'no-store' })
+        if (res.ok) {
+          const data = await res.json()
+          setTrainersList(data.TrainerData || [])
+        }
+      } catch (err) {
+        console.error(err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchTrainers()
+  }, [])
+
   return (
     <main className='bg-gradient-to-b from-secondary/20 via-secondary/5 to-transparent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
       {/* HERO */}
@@ -151,9 +172,13 @@ export default function NosFormateursContent() {
             whileInView='whileInView'
             viewport={{ once: true, amount: 0.2 }}
             className='mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
-            {trainers.map((trainer) => (
+            {loading ? (
+              <div className="col-span-full py-12 text-center text-slate-500 font-medium">Chargement des formateurs...</div>
+            ) : trainersList.length === 0 ? (
+              <div className="col-span-full py-12 text-center text-slate-500 font-medium italic">Aucun formateur trouvé.</div>
+            ) : trainersList.map((trainer) => (
               <motion.div
-                key={trainer.id}
+                key={trainer._id || (trainer as any).id}
                 variants={cardVariant}
                 className='relative overflow-hidden rounded-2xl bg-white/90 p-5 shadow-[0_16px_40px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/90 dark:ring-slate-700/70'>
                 <div className='flex items-center gap-4'>

@@ -14,9 +14,6 @@ import { useAuth } from '@/context/AuthContext'
 const Header: React.FC = () => {
   const pathname = usePathname()
   const { user, logout } = useAuth()
-
-  if (pathname?.startsWith('/admin')) return null
-
   const [navlink, setNavlink] = useState<NavLinkType[]>([])
   const { theme, setTheme } = useTheme()
   const [navbarOpen, setNavbarOpen] = useState(false)
@@ -85,6 +82,8 @@ const Header: React.FC = () => {
     }
   }, [isSignInOpen, isSignUpOpen, navbarOpen])
 
+  if (pathname?.startsWith('/admin')) return null
+
   return (
     <header
       className={`fixed top-0 py-0 z-50 w-full bg-transparent transition-all ${sticky ? 'shadow-lg dark:shadow-neutral-50/5 bg-white dark:bg-darklight' : 'shadow-none'
@@ -119,7 +118,7 @@ const Header: React.FC = () => {
             />
           </button>
 <Link
-  href="/contact#appointment-form"
+  href="/rendez-vous"
   className="hidden xl:block px-6 py-2 btn-primary btn-hover rounded-[10px] text-sm font-semibold tracking-wide transition-all"
 >
   Rendez-vous
@@ -220,7 +219,7 @@ const Header: React.FC = () => {
             )}
 
             <Link
-              href='/contact#appointment-form'
+              href='/rendez-vous'
               className='flex items-center justify-center gap-2 px-6 py-4 btn-primary btn-hover rounded-xl font-semibold text-sm text-center w-full shadow-lg shadow-primary/20 transition-all active:scale-95'
               onClick={() => {
                 setNavbarOpen(false)

@@ -26,6 +26,11 @@ const normalizeFormationType = (
   formation: FormationType & { _id?: string }
 ): 'formation' | 'bootcamp' => {
   const rawType = formation.type?.toLowerCase().trim()
+
+  if (rawType === 'bootcamp' || rawType === 'formation') {
+    return rawType
+  }
+
   const title = formation.title?.toLowerCase() ?? ''
   const badge = formation.badge?.toLowerCase() ?? ''
 
@@ -33,7 +38,7 @@ const normalizeFormationType = (
     return 'bootcamp'
   }
 
-  return rawType === 'bootcamp' ? 'bootcamp' : 'formation'
+  return 'formation'
 }
 
 const FormationsBootcamps = () => {

@@ -67,6 +67,7 @@ const NavLinkData: NavLinkType[] = [
     label: 'Contact',
     href: '/contact',
   },
+
 ]
 
 const ProjectData: ProjectType[] = [
@@ -279,8 +280,12 @@ const FooterLinkData: FooterLinkType[] = [
     section: 'Contact',
     links: [
       {
-        label: 'Prendre rendez-vous',
+        label: 'Nous contacter',
         href: '/contact',
+      },
+      {
+        label: 'Prendre rendez-vous',
+        href: '/rendez-vous',
       },
     ],
   },
@@ -432,6 +437,8 @@ import connectToDatabase from '@/lib/mongodb'
 import StudentProject from '@/models/Project'
 import Review from '@/models/Review'
 import Formation from '@/models/Formation'
+import Trainer from '@/models/Trainer'
+import { trainers as TrainerStaticData } from '@/data/trainers'
 
 export const GET = async () => {
   try {
@@ -440,11 +447,20 @@ export const GET = async () => {
     const projects = await StudentProject.find();
     let reviews = await Review.find();
     const formations = await Formation.find();
+    let dbTrainers = await Trainer.find();
 
     // Auto-populate reviews if empty (save old comments)
     if (reviews.length === 0 && ReviewData.length > 0) {
       await Review.insertMany(ReviewData);
       reviews = await Review.find();
+    }
+
+    // Auto-populate trainers if empty
+    if (dbTrainers.length === 0 && TrainerStaticData.length > 0) {
+      // Remove id field from static data to let Mongo generate _id if needed, or map it
+      const trainersToInsert = TrainerStaticData.map(({ id, ...rest }) => rest);
+      await Trainer.insertMany(trainersToInsert);
+      dbTrainers = await Trainer.find();
     }
 
     // Use DB data if available, otherwise fallback to static (initial)
@@ -459,11 +475,12 @@ export const GET = async () => {
       CategoryData,
       FooterLinkData,
       FormationData: formations.length > 0 ? formations : FormationData,
+      TrainerData: dbTrainers.length > 0 ? dbTrainers : TrainerStaticData,
     })
   } catch (error) {
     console.error('API Data fetch error', error);
     return NextResponse.json({
-      HeroData, NavLinkData, ProjectData, RecordData, ReviewData, SpecializeData, PlanData, CategoryData, FooterLinkData, FormationData
+      HeroData, NavLinkData, ProjectData, RecordData, ReviewData, SpecializeData, PlanData, CategoryData, FooterLinkData, FormationData, TrainerData: TrainerStaticData
     });
   }
 }

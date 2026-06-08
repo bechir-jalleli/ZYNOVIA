@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { saveFormSubmission } from '@/lib/formSubmission';
 
 export async function POST(req: Request) {
     try {
@@ -115,6 +116,22 @@ export async function POST(req: Request) {
 
         // Return success if AT LEAST ONE service worked
         if (emailjsResponse?.ok || web3Status) {
+            try {
+                await saveFormSubmission({
+                    name: fullName,
+                    email,
+                    phone,
+                    role: company || role || 'Client',
+                    message: formattedMessage,
+                    formType: body.formType,
+                    appointmentDate: body.appointmentDate,
+                    appointmentTime: body.appointmentTime,
+                    appointmentType: body.appointmentType,
+                });
+            } catch (dbError) {
+                console.error('Failed to save form submission:', dbError);
+            }
+
             return NextResponse.json({
                 success: true,
                 message: 'Message envoyé avec succès',

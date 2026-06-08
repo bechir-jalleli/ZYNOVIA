@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { saveFormSubmission } from '@/lib/formSubmission'
 
 // Rate limiting: simple in-memory store (in production, use Redis or similar)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>()
@@ -175,6 +176,19 @@ export async function POST(request: Request) {
     console.log('Final Status - EmailJS:', emailStatus, 'Web3Forms:', web3Status)
 
     if (emailStatus || web3Status) {
+      try {
+        await saveFormSubmission({
+          name: sanitizedName,
+          email: sanitizedEmail,
+          phone: sanitizedPhone,
+          role: sanitizedRole,
+          message: sanitizedMessage,
+          formType: 'contact',
+        })
+      } catch (dbError) {
+        console.error('Failed to save contact submission:', dbError)
+      }
+
       return NextResponse.json(
         {
           success: true,

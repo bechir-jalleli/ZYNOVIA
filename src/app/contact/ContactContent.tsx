@@ -17,6 +17,7 @@ import {
 import Link from 'next/link'
 import Image from 'next/image'
 import { Icon } from '@iconify/react'
+import ContactFormSection from '@/app/components/ContactFormSection'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 28 },
@@ -38,19 +39,7 @@ const cardVariant = {
   whileInView: { opacity: 1, y: 0 },
 }
 
-type Role = 'parent' | 'school' | 'company' | ''
-
 const ContactContent = () => {
-  const [role, setRole] = useState<Role>('')
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
-  const [message, setMessage] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [honeypot, setHoneypot] = useState('') // Honeypot field for spam protection
-
   // Appointment form states
   const [appointmentName, setAppointmentName] = useState('')
   const [appointmentEmail, setAppointmentEmail] = useState('')
@@ -65,23 +54,6 @@ const ContactContent = () => {
 
   const isValidEmail = (value: string) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())
-
-  const isFormValid =
-    name.trim().length > 0 && isValidEmail(email) && role !== '' && message.trim().length > 0
-
-  // Get dynamic label for name field based on role
-  const getNameLabel = () => {
-    switch (role) {
-      case 'parent':
-        return 'Nom & prénom'
-      case 'school':
-        return 'Nom de l\'établissement'
-      case 'company':
-        return 'Nom de l\'entreprise'
-      default:
-        return 'Nom & prénom'
-    }
-  }
 
   // Appointment form validation
   const isAppointmentFormValid =
@@ -108,6 +80,10 @@ const ContactContent = () => {
           phone: appointmentPhone,
           role: `Rendez-vous - ${appointmentType === 'visio' ? 'Visio' : 'Sur site'}`,
           message: `Demande de rendez-vous\n\nDate souhaitée: ${appointmentDate}\nHeure souhaitée: ${appointmentTime}\nType: ${appointmentType === 'visio' ? 'Visioconférence' : 'Sur site'}\n\nMessage: ${appointmentMessage || 'Aucun message supplémentaire'}`,
+          formType: 'rendez-vous',
+          appointmentDate,
+          appointmentTime,
+          appointmentType,
           website: '', // Honeypot field (should be empty)
         }),
       })
@@ -141,84 +117,6 @@ const ContactContent = () => {
   const getMinDate = () => {
     const today = new Date()
     return today.toISOString().split('T')[0]
-  }
-
-  // Handle URL query params to pre-fill role and scroll to form
-  React.useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search)
-      const type = params.get('type')
-      if (type === 'parent') {
-        setRole('parent')
-        // Scroll to form section after a short delay to ensure DOM is ready
-        setTimeout(() => {
-          const formSection = document.getElementById('contact-form')
-          if (formSection) {
-            formSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
-          }
-        }, 100)
-      } else if (type === 'etablissement') {
-        setRole('school')
-        setTimeout(() => {
-          const formSection = document.getElementById('contact-form')
-          if (formSection) {
-            formSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
-          }
-        }, 100)
-      } else if (type === 'entreprise') {
-        setRole('company')
-        setTimeout(() => {
-          const formSection = document.getElementById('contact-form')
-          if (formSection) {
-            formSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
-          }
-        }, 100)
-      }
-    }
-  }, [])
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!isFormValid) return
-    setIsSubmitting(true)
-    setError(null)
-
-    try {
-      const response = await fetch('/api/client', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name,
-          email,
-          phone,
-          role,
-          message,
-          website: honeypot, // Honeypot field (should be empty)
-        }),
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(data.error || "Échec de l'envoi du message")
-      }
-
-      setSubmitted(true)
-      setName('')
-      setEmail('')
-      setPhone('')
-      setRole('')
-      setMessage('')
-      setHoneypot('')
-      setTimeout(() => setSubmitted(false), 5000)
-    } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : "Une erreur est survenue. Veuillez réessayer."
-      setError(errorMessage)
-      console.error('Contact form error:', err)
-    } finally {
-      setIsSubmitting(false)
-    }
   }
 
   return (
@@ -343,6 +241,8 @@ const ContactContent = () => {
         </div>
       </section>
 
+      <ContactFormSection />
+
       {/* SECTION – Nos coordonnées */}
       <section className='py-20 lg:py-28'>
         <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
@@ -419,167 +319,6 @@ const ContactContent = () => {
               </div>
               <p>Lundi – Vendredi, 8h–17h</p>
             </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* SECTION – Formulaire de contact */}
-      <section id='contact-form' className='py-20 lg:py-28 scroll-mt-24'>
-        <div className='container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8'>
-          <motion.div
-            {...fadeInUp}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className='mx-auto max-w-3xl text-center md:text-left mb-12'
-          >
-            <p className='text-base sm:text-lg font-semibold uppercase tracking-[0.22em]' style={{ color: '#27397F' }}>
-              Formulaire de contact
-            </p>
-          </motion.div>
-
-          <motion.div
-            {...fadeInUp}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.05 }}
-            className='rounded-3xl bg-white/95 p-8 shadow-[0_18px_45px_rgba(15,23,42,0.14)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/95 dark:ring-slate-700/80'
-          >
-            <form onSubmit={handleSubmit} className='space-y-6'>
-              {/* Honeypot field for spam protection - hidden from users */}
-              <input
-                type='text'
-                name='website'
-                value={honeypot}
-                onChange={(e) => setHoneypot(e.target.value)}
-                tabIndex={-1}
-                autoComplete='off'
-                style={{ position: 'absolute', left: '-9999px' }}
-                aria-hidden='true'
-              />
-              <div className='grid grid-cols-1 gap-6 sm:grid-cols-2'>
-                <div className='space-y-3'>
-                  <label
-                    htmlFor='name'
-                    className='block text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 dark:text-slate-300'
-                  >
-                    {getNameLabel()}
-                  </label>
-                  <div className='relative'>
-                    <input
-                      id='name'
-                      type='text'
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      className='w-full rounded-xl border border-slate-200/80 bg-white/80 px-4 py-2.5 text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#4490C7] focus:ring-1 focus:ring-[#4490C7]/40 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-100'
-                    />
-                    <User className='pointer-events-none absolute right-3 top-2.5 h-4 w-4 text-slate-400' />
-                  </div>
-                </div>
-
-                <div className='space-y-3'>
-                  <label
-                    htmlFor='email'
-                    className='block text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 dark:text-slate-300'
-                  >
-                    Email
-                  </label>
-                  <div className='relative'>
-                    <input
-                      id='email'
-                      type='email'
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className='w-full rounded-xl border border-slate-200/80 bg-white/80 px-4 py-2.5 text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#4490C7] focus:ring-1 focus:ring-[#4490C7]/40 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-100'
-                    />
-                    <Mail className='pointer-events-none absolute right-3 top-2.5 h-4 w-4 text-slate-400' />
-                  </div>
-                </div>
-              </div>
-
-              <div className='grid grid-cols-1 gap-6 sm:grid-cols-2'>
-                <div className='space-y-3'>
-                  <label
-                    htmlFor='phone'
-                    className='block text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 dark:text-slate-300'
-                  >
-                    Téléphone (optionnel)
-                  </label>
-                  <div className='relative'>
-                    <input
-                      id='phone'
-                      type='tel'
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      className='w-full rounded-xl border border-slate-200/80 bg-white/80 px-4 py-2.5 text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#4490C7] focus:ring-1 focus:ring-[#4490C7]/40 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-100'
-                    />
-                    <Phone className='pointer-events-none absolute right-3 top-2.5 h-4 w-4 text-slate-400' />
-                  </div>
-                </div>
-
-                <div className='space-y-3'>
-                  <label
-                    htmlFor='role'
-                    className='block text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 dark:text-slate-300'
-                  >
-                    Rôle
-                  </label>
-                  <div className='relative'>
-                    <select
-                      id='role'
-                      value={role}
-                      onChange={(e) => setRole(e.target.value as Role)}
-                      className='w-full appearance-none rounded-xl border border-slate-200/80 bg-white/80 px-4 py-2.5 text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#4490C7] focus:ring-1 focus:ring-[#4490C7]/40 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-100'
-                    >
-                      <option value=''>Sélectionner votre profil</option>
-                      <option value='parent'>Parent</option>
-                      <option value='school'>Établissement scolaire</option>
-                      <option value='company'>Entreprise</option>
-                    </select>
-                    <Handshake className='pointer-events-none absolute right-3 top-2.5 h-4 w-4 text-slate-400' />
-                  </div>
-                </div>
-              </div>
-
-              <div className='space-y-3'>
-                <label
-                  htmlFor='message'
-                  className='block text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 dark:text-slate-300'
-                >
-                  Message
-                </label>
-                <textarea
-                  id='message'
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  rows={4}
-                  className='w-full rounded-2xl border border-slate-200/80 bg-white/80 px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#4490C7] focus:ring-1 focus:ring-[#4490C7]/40 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-100'
-                />
-              </div>
-
-              <div className='flex flex-col gap-3'>
-                {error && (
-                  <div className='rounded-xl bg-red-50 p-3 text-sm text-red-700 ring-1 ring-red-200 dark:bg-red-900/20 dark:text-red-400 dark:ring-red-800'>
-                    {error}
-                  </div>
-                )}
-                {submitted && (
-                  <div className='rounded-xl bg-emerald-50 p-3 text-sm text-emerald-700 ring-1 ring-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-400 dark:ring-emerald-800'>
-                    Votre message a été envoyé avec succès. Nous reviendrons vers vous rapidement.
-                  </div>
-                )}
-                <div className='flex flex-wrap items-center gap-4'>
-                  <button
-                    type='submit'
-                    disabled={!isFormValid || isSubmitting}
-                    className={`inline-flex items-center justify-center rounded-xl px-6 py-2.5 text-sm font-semibold shadow-lg transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-950
-                      ${!isFormValid || isSubmitting
-                        ? 'cursor-not-allowed bg-slate-200 text-slate-500 dark:bg-slate-800 dark:text-slate-500'
-                        : 'text-white hover:scale-[1.02] hover:shadow-xl'
-                      }`}
-                    style={(!isFormValid || isSubmitting) ? {} : { background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)', boxShadow: '0 8px 24px -6px rgba(46,83,145,0.40)' }}
-                  >
-                    {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
-                  </button>
-                </div>
-              </div>
-            </form>
           </motion.div>
         </div>
       </section>
