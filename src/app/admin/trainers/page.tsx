@@ -105,7 +105,7 @@ export default function ManageTrainers() {
     };
 
     const startEdit = (t: Trainer) => {
-        setEditingId(t._id);
+        setEditingId(t.id);
         setFormData({
             name: t.name,
             title: t.title,
