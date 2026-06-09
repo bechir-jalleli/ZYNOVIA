@@ -164,7 +164,7 @@ export default function ManageTrainers() {
                 ) : trainers.length === 0 ? (
                     <div className="col-span-full py-20 text-center text-slate-400 italic">Aucun formateur enregistré.</div>
                 ) : trainers.map((t) => (
-                    <div key={t._id} className="bg-white dark:bg-darklight rounded-3xl border border-slate-200 dark:border-white/5 overflow-hidden shadow-xl group transition-all flex flex-col justify-between">
+                    <div key={t.id} className="bg-white dark:bg-darklight rounded-3xl border border-slate-200 dark:border-white/5 overflow-hidden shadow-xl group transition-all flex flex-col justify-between">
                         <div className="p-6 space-y-4">
                             <div className="flex justify-between items-start">
                                 <div className="flex items-center gap-4">
@@ -180,7 +180,7 @@ export default function ManageTrainers() {
                                     <button onClick={() => startEdit(t)} className="p-2 bg-slate-50 dark:bg-white/5 hover:bg-primary hover:text-white dark:hover:bg-primary rounded-lg text-slate-500 transition-all">
                                         <Icon icon="solar:pen-bold" width="16" />
                                     </button>
-                                    <button onClick={() => handleDelete(t._id)} className="p-2 bg-slate-50 dark:bg-white/5 hover:bg-red-500 hover:text-white dark:hover:bg-red-500 rounded-lg text-red-500 transition-all">
+                                    <button onClick={() => handleDelete(t.id)} className="p-2 bg-slate-50 dark:bg-white/5 hover:bg-red-500 hover:text-white dark:hover:bg-red-500 rounded-lg text-red-500 transition-all">
                                         <Icon icon="solar:trash-bin-trash-bold" width="16" />
                                     </button>
                                 </div>

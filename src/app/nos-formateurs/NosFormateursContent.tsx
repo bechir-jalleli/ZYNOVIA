@@ -178,7 +178,7 @@ export default function NosFormateursContent() {
               <div className="col-span-full py-12 text-center text-slate-500 font-medium italic">Aucun formateur trouvé.</div>
             ) : trainersList.map((trainer) => (
               <motion.div
-                key={trainer._id || (trainer as any).id}
+                key={trainer.id || (trainer as any).id}
                 variants={cardVariant}
                 className='relative overflow-hidden rounded-2xl bg-white/90 p-5 shadow-[0_16px_40px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/90 dark:ring-slate-700/70'>
                 <div className='flex items-center gap-4'>

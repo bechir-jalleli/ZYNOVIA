@@ -144,8 +144,8 @@ export default function ProgrammesDetails() {
                 <ul className='mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 text-xs sm:text-sm'>
                   {[
                     'Assistant intelligent pour réviser les cours et mieux retenir les notions clés.',
-                    'Mini-système de classification d'images pour reconnaître des objets ou des personnages.',
-                    'Chatbot dédié à l'établissement pour répondre aux questions fréquentes.',
+                    "Mini-système de classification d'images pour reconnaître des objets ou des personnages.",
+                    "Chatbot dédié à l'établissement pour répondre aux questions fréquentes.",
                     'Application de prévention et de signalement contre le harcèlement scolaire.',
                     'Outils interactifs pour rendre les matières STEM plus ludiques et accessibles.',
                   ].map((item) => (
