@@ -7,7 +7,7 @@ import Logo from '@/app/components/Layout/Header/Logo';
 import { useAuth } from '@/context/AuthContext';
 
 const menuItems = [
-    { label: 'Vue d\'ensemble', href: '/admin', icon: 'solar:widget-bold' },
+    { label: 'Tableau de bord', href: '/admin', icon: 'solar:widget-bold' },
     { label: 'Formations', href: '/admin/formations', icon: 'solar:book-bookmark-bold' },
 { label: 'Projets', href: '/admin/projects', icon: 'solar:folder-bold' },
     { label: 'Avis Clients', href: '/admin/reviews', icon: 'solar:star-bold' },

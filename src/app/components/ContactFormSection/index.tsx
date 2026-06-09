@@ -1,8 +1,9 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { User, Mail, Phone, Handshake, CheckCircle2, XCircle, Loader2 } from 'lucide-react'
+import { User, Mail, Phone, Handshake, CheckCircle2, XCircle, Send } from 'lucide-react'
 
 type Role = 'parent' | 'school' | 'company' | 'institution' | ''
 
@@ -18,6 +19,9 @@ const roleLabels: Record<string, string> = {
   company: 'Entreprise',
   institution: 'Institution & associations',
 }
+
+const brandGradient = 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)'
+const brandShadow = '0 8px 24px -6px rgba(46,83,145,0.40)'
 
 interface ContactFormSectionProps {
   prefillRole?: Role
@@ -129,6 +133,33 @@ const ContactFormSection = ({ prefillRole, scrollOnPrefill = true }: ContactForm
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.05 }}
           className='rounded-3xl bg-white/95 p-8 shadow-[0_18px_45px_rgba(15,23,42,0.14)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/95 dark:ring-slate-700/80'
         >
+          {submitted ? (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className='flex flex-col items-center gap-4 py-12 text-center'
+            >
+              <div
+                className='flex h-16 w-16 items-center justify-center rounded-full text-white shadow-lg'
+                style={{ background: brandGradient }}
+              >
+                <CheckCircle2 className='h-8 w-8' />
+              </div>
+              <h3 className='text-lg font-semibold text-[#0A004B] dark:text-white'>
+                Message envoyé avec succès !
+              </h3>
+              <p className='max-w-md text-sm text-slate-600 dark:text-slate-300'>
+                Merci de nous avoir contactés. Notre équipe vous répondra dans les plus brefs délais.
+              </p>
+              <Link
+                href='/rendez-vous'
+                className='mt-2 text-sm font-semibold underline underline-offset-2'
+                style={{ color: '#4490C7' }}
+              >
+                Réserver un rendez-vous ?
+              </Link>
+            </motion.div>
+          ) : (
           <form onSubmit={handleSubmit} className='space-y-6'>
             {/* Honeypot */}
             <input
@@ -276,56 +307,32 @@ const ContactFormSection = ({ prefillRole, scrollOnPrefill = true }: ContactForm
                 </motion.div>
               )}
 
-              {/* Success message */}
-              {submitted && (
-                <motion.div
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className='flex items-start gap-3 rounded-xl bg-emerald-50 p-4 ring-1 ring-emerald-200 dark:bg-emerald-900/20 dark:ring-emerald-800'
-                >
-                  <CheckCircle2 className='h-5 w-5 shrink-0 mt-0.5 text-emerald-500 dark:text-emerald-400' />
-                  <div>
-                    <p className='text-sm font-semibold text-emerald-700 dark:text-emerald-400'>
-                      Message envoyé avec succès !
-                    </p>
-                    <p className='mt-0.5 text-xs text-emerald-600 dark:text-emerald-500'>
-                      Merci de nous avoir contactés. Notre équipe vous répondra dans les plus brefs délais.
-                    </p>
-                  </div>
-                </motion.div>
-              )}
-
               {/* Submit button */}
               <div className='flex flex-wrap items-center gap-4'>
                 <button
                   type='submit'
                   disabled={!isFormValid || isSubmitting}
-                  className={`inline-flex items-center justify-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold shadow-lg transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-950
+                  className={`inline-flex items-center justify-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold shadow-lg transition focus-visible:outline-none
                     ${!isFormValid || isSubmitting
                       ? 'cursor-not-allowed bg-slate-200 text-slate-500 dark:bg-slate-800 dark:text-slate-500'
                       : 'text-white hover:scale-[1.02] hover:shadow-xl'
                     }`}
-                  style={
-                    !isFormValid || isSubmitting
-                      ? {}
-                      : {
-                          background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)',
-                          boxShadow: '0 8px 24px -6px rgba(46,83,145,0.40)',
-                        }
-                  }
+                  style={(!isFormValid || isSubmitting) ? {} : { background: brandGradient, boxShadow: brandShadow }}
                 >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className='h-4 w-4 animate-spin' />
-                      Envoi en cours...
-                    </>
-                  ) : (
-                    'Envoyer le message'
-                  )}
+                  <Send className='h-4 w-4' />
+                  {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
                 </button>
+
+                <Link
+                  href='/rendez-vous'
+                  className='text-sm font-medium text-slate-500 underline underline-offset-2 hover:text-[#4490C7] transition-colors'
+                >
+                  Plutôt réserver un rendez-vous ?
+                </Link>
               </div>
             </div>
           </form>
+          )}
         </motion.div>
       </div>
     </section>

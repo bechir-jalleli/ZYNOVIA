@@ -181,7 +181,7 @@ const Records = () => {
           <Link
             href='/vision'
             className='inline-block px-8 sm:px-10 py-3.5 text-sm sm:text-base font-semibold tracking-wide btn-primary btn-hover rounded-[10px] shadow-md whitespace-nowrap'>
-            👉 Découvrir notre vision
+            Découvrir notre vision
           </Link>
         </div>
       </div>

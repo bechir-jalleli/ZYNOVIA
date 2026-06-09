@@ -155,7 +155,7 @@ export default function ManageProjects() {
                         resetForm();
                         setIsModalOpen(true);
                     }}
-                    className="mt-4 sm:mt-0 flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-xl font-bold shadow-lg shadow-emerald-500/20 hover:scale-105 transition-all"
+                    className="mt-4 sm:mt-0 flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-bold shadow-lg shadow-emerald-500/20 hover:scale-105 transition-all"
                 >
                     <Icon icon="solar:add-circle-bold" width="20" />
                     Nouveau Projet

@@ -59,10 +59,7 @@ const NavLinkData: NavLinkType[] = [
   //   label: 'Ressources',
   //   href: '/ressources',
   // },
-  {
-    label: 'Infrastructures',
-    href: '/nos-infrastructures',
-  },
+ 
   {
     label: 'Contact',
     href: '/contact',

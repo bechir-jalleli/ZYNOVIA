@@ -7,7 +7,6 @@ import FormationsBootcamps from './components/Home/FormationsBootcamps'
 import Project from './components/Home/Project'
 import Review from './components/Home/Review'
 import Pricing from './components/Home/Pricing'
-import Category from './components/Home/Category'
 import PartnersBanner from './components/Home/PartnersBanner'
 import FinalCTA from './components/Home/FinalCTA'
 
@@ -81,8 +80,6 @@ export default function Home() {
       {/* 7️⃣ PRICING - Plans tarifaires */}
       <Pricing />
 
-      {/* 8️⃣ NOS INFRASTRUCTURES - Catégories d'espaces */}
-      <Category />
 
       {/* 9️⃣ PREUVE SOCIALE - Logos partenaires + chiffre clé + témoignage */}
       <PartnersBanner />

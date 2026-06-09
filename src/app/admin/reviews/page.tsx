@@ -113,7 +113,7 @@ export default function AdminReviews() {
         <div className="space-y-6">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white dark:bg-darklight p-6 rounded-3xl border border-slate-200 dark:border-white/5 shadow-xl transition-colors">
                 <div>
-                    <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white">Gestion des Témoignages</h1>
+                    <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white">Gestion des Avis Clients</h1>
                     <p className="text-slate-500 dark:text-lightgrey text-sm font-medium">Fidélisez vos futurs clients avec des avis réels.</p>
                 </div>
                 <button
@@ -122,10 +122,10 @@ export default function AdminReviews() {
                         resetForm();
                         setIsModalOpen(true);
                     }}
-                    className="mt-4 sm:mt-0 flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-600 text-white rounded-xl font-bold shadow-lg shadow-amber-500/20 hover:scale-105 transition-all"
+                    className="mt-4 sm:mt-0 flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-bold shadow-lg shadow-amber-500/20 hover:scale-105 transition-all"
                 >
                     <Icon icon="solar:star-ring-bold" width="20" />
-                    Nouveau Témoignage
+                    Nouveau Avis Clients
                 </button>
             </div>
 
