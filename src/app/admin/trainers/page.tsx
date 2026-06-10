@@ -2,15 +2,38 @@
 
 import { useEffect, useState } from 'react';
 import { Icon } from '@iconify/react';
+import { uploadImageClient, ClientUploadError } from '@/lib/uploadImageClient';
 
 interface Trainer {
-    id: string;
+    _id: string;
     name: string;
     title: string;
     bio: string;
     expertise: string[];
     photo: string;
+    photoPublicId?: string;
     linkedin?: string;
+}
+
+function TrainerAvatar({ photo, name }: { photo?: string; name: string }) {
+    const [error, setError] = useState(false);
+
+    if (!photo || error) {
+        return (
+            <div className="w-full h-full flex items-center justify-center">
+                <Icon icon="solar:user-bold" className="text-slate-400" width="28" />
+            </div>
+        );
+    }
+
+    return (
+        <img
+            src={photo}
+            alt={name}
+            className="w-full h-full object-cover"
+            onError={() => setError(true)}
+        />
+    );
 }
 
 export default function ManageTrainers() {
@@ -18,16 +41,20 @@ export default function ManageTrainers() {
     const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingId, setEditingId] = useState<string | null>(null);
+    const [uploadError, setUploadError] = useState<string | null>(null);
+    const [uploading, setUploading] = useState(false);
 
-    // Form State
-    const [formData, setFormData] = useState({
+    const defaultFormData = {
         name: '',
         title: '',
         bio: '',
-        expertiseStr: '', // comma-separated input string
+        expertiseStr: '',
         photo: '',
+        photoPublicId: '',
         linkedin: ''
-    });
+    };
+
+    const [formData, setFormData] = useState(defaultFormData);
 
     const fetchTrainers = async () => {
         try {
@@ -62,6 +89,7 @@ export default function ManageTrainers() {
             bio: formData.bio,
             expertise,
             photo: formData.photo,
+            photoPublicId: formData.photoPublicId,
             linkedin: formData.linkedin
         };
 
@@ -83,35 +111,29 @@ export default function ManageTrainers() {
     };
 
     const resetForm = () => {
-        setFormData({
-            name: '',
-            title: '',
-            bio: '',
-            expertiseStr: '',
-            photo: '',
-            linkedin: ''
-        });
+        setFormData(defaultFormData);
+        setUploadError(null);
     };
 
     const handleDelete = async (id: string) => {
-        if (confirm('Êtes-vous sûr de vouloir supprimer ce formateur ?')) {
-            try {
-                await fetch(`/api/trainers/${id}`, { method: 'DELETE' });
-                fetchTrainers();
-            } catch (err) {
-                console.error(err);
-            }
+        if (!confirm('Êtes-vous sûr de vouloir supprimer ce formateur ?')) return;
+        try {
+            const res = await fetch(`/api/trainers/${id}`, { method: 'DELETE' });
+            if (res.ok) fetchTrainers();
+        } catch (err) {
+            console.error(err);
         }
     };
 
     const startEdit = (t: Trainer) => {
-        setEditingId(t.id);
+        setEditingId(t._id);
         setFormData({
             name: t.name,
             title: t.title,
             bio: t.bio,
             expertiseStr: t.expertise ? t.expertise.join(', ') : '',
             photo: t.photo || '',
+            photoPublicId: t.photoPublicId || '',
             linkedin: t.linkedin || ''
         });
         setIsModalOpen(true);
@@ -121,20 +143,23 @@ export default function ManageTrainers() {
         const file = e.target.files?.[0];
         if (!file) return;
 
-        const uploadData = new FormData();
-        uploadData.append('file', file);
+        setUploadError(null);
+        setUploading(true);
 
         try {
-            const res = await fetch('/api/upload', {
-                method: 'POST',
-                body: uploadData
-            });
-            const data = await res.json();
-            if (data.filePath) {
-                setFormData(prev => ({ ...prev, photo: data.filePath }));
-            }
+            const result = await uploadImageClient(file, 'trainers');
+            setFormData(prev => ({
+                ...prev,
+                photo: result.url,
+                photoPublicId: result.publicId
+            }));
         } catch (err) {
+            const message = err instanceof ClientUploadError ? err.message : 'Upload failed';
+            setUploadError(message);
             console.error('Upload failed:', err);
+        } finally {
+            setUploading(false);
+            e.target.value = '';
         }
     };
 
@@ -164,12 +189,12 @@ export default function ManageTrainers() {
                 ) : trainers.length === 0 ? (
                     <div className="col-span-full py-20 text-center text-slate-400 italic">Aucun formateur enregistré.</div>
                 ) : trainers.map((t) => (
-                    <div key={t.id} className="bg-white dark:bg-darklight rounded-3xl border border-slate-200 dark:border-white/5 overflow-hidden shadow-xl group transition-all flex flex-col justify-between">
+                    <div key={t._id} className="bg-white dark:bg-darklight rounded-3xl border border-slate-200 dark:border-white/5 overflow-hidden shadow-xl group transition-all flex flex-col justify-between">
                         <div className="p-6 space-y-4">
                             <div className="flex justify-between items-start">
                                 <div className="flex items-center gap-4">
                                     <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/20 bg-slate-100 flex-shrink-0">
-                                        <img src={t.photo || '/images/default-avatar.png'} alt={t.name} className="w-full h-full object-cover" onError={(e)=>{(e.target as HTMLImageElement).src='/images/default-avatar.png'}} />
+                                        <TrainerAvatar photo={t.photo} name={t.name} />
                                     </div>
                                     <div>
                                         <h3 className="text-lg font-bold text-slate-900 dark:text-white">{t.name}</h3>
@@ -180,7 +205,7 @@ export default function ManageTrainers() {
                                     <button onClick={() => startEdit(t)} className="p-2 bg-slate-50 dark:bg-white/5 hover:bg-primary hover:text-white dark:hover:bg-primary rounded-lg text-slate-500 transition-all">
                                         <Icon icon="solar:pen-bold" width="16" />
                                     </button>
-                                    <button onClick={() => handleDelete(t.id)} className="p-2 bg-slate-50 dark:bg-white/5 hover:bg-red-500 hover:text-white dark:hover:bg-red-500 rounded-lg text-red-500 transition-all">
+                                    <button onClick={() => handleDelete(t._id)} className="p-2 bg-slate-50 dark:bg-white/5 hover:bg-red-500 hover:text-white dark:hover:bg-red-500 rounded-lg text-red-500 transition-all">
                                         <Icon icon="solar:trash-bin-trash-bold" width="16" />
                                     </button>
                                 </div>
@@ -206,7 +231,6 @@ export default function ManageTrainers() {
                 ))}
             </div>
 
-            {/* Modal */}
             {isModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
                     <div className="bg-white dark:bg-darklight w-full max-w-2xl rounded-3xl border border-slate-200 dark:border-white/5 shadow-2xl p-6 sm:p-8 space-y-6 animate-in zoom-in-95 duration-300 transition-colors max-h-[90vh] overflow-y-auto">
@@ -280,7 +304,7 @@ export default function ManageTrainers() {
                                 <div className="mt-1 flex items-center gap-6">
                                     <div className="relative group/photo w-24 h-24 rounded-full overflow-hidden bg-slate-100 dark:bg-slate-800 border-2 border-dashed border-slate-200 dark:border-white/10 flex items-center justify-center flex-shrink-0">
                                         {formData.photo ? (
-                                            <img src={formData.photo} className="w-full h-full object-cover" />
+                                            <img src={formData.photo} className="w-full h-full object-cover" alt="" />
                                         ) : (
                                             <Icon icon="solar:user-bold" className="text-slate-400" width="32" />
                                         )}
@@ -288,11 +312,17 @@ export default function ManageTrainers() {
                                             type="file"
                                             accept="image/*"
                                             onChange={handleImageUpload}
-                                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                                            disabled={uploading}
+                                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10 disabled:cursor-not-allowed"
                                         />
                                     </div>
                                     <div className="flex-1">
-                                        <p className="text-xs text-slate-500 dark:text-lightgrey italic mb-2">Cliquez sur le cercle pour télécharger la photo du formateur.</p>
+                                        <p className="text-xs text-slate-500 dark:text-lightgrey italic mb-2">
+                                            {uploading ? 'Téléchargement en cours...' : 'Cliquez sur le cercle pour télécharger la photo du formateur.'}
+                                        </p>
+                                        {uploadError && (
+                                            <p className="text-xs text-red-500 mb-2">{uploadError}</p>
+                                        )}
                                         <input
                                             type="text"
                                             readOnly

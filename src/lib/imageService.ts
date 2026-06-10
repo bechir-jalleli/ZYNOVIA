@@ -3,13 +3,14 @@ import { unlink } from 'fs/promises';
 import path from 'path';
 import { getCloudinaryMismatchHint, parseCloudinaryError } from '@/lib/cloudinaryErrors';
 
-export type ImageEntity = 'formations' | 'bootcamps' | 'projects' | 'reviews';
+export type ImageEntity = 'formations' | 'bootcamps' | 'projects' | 'reviews' | 'trainers';
 
 const ENTITY_FOLDERS: Record<ImageEntity, string> = {
     formations: 'pixelize/formations',
     bootcamps: 'pixelize/bootcamps',
     projects: 'pixelize/projects',
     reviews: 'pixelize/reviews',
+    trainers: 'pixelize/trainers',
 };
 
 const ALLOWED_MIME_TYPES = new Set([
@@ -226,7 +227,13 @@ function detectMimeFromBuffer(buffer: Buffer, filename?: string): string {
 }
 
 export function parseImageEntity(value: string | null): ImageEntity | null {
-    if (value === 'formations' || value === 'bootcamps' || value === 'projects' || value === 'reviews') {
+    if (
+        value === 'formations' ||
+        value === 'bootcamps' ||
+        value === 'projects' ||
+        value === 'reviews' ||
+        value === 'trainers'
+    ) {
         return value;
     }
     return null;

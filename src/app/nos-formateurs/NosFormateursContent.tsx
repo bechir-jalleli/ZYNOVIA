@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Trainer, trainerTestimonials } from '@/data/trainers'
+import { Trainer, TrainerTestimonial } from '@/data/trainers'
 import { Sparkles, GraduationCap, Quote, Linkedin, Star } from 'lucide-react'
 
 const fadeInUp = {
@@ -27,17 +27,42 @@ const cardVariant = {
   whileInView: { opacity: 1, y: 0 },
 }
 
+function TrainerPhoto({ photo, name }: { photo?: string; name: string }) {
+  const [error, setError] = useState(false)
+
+  if (!photo || error) {
+    return (
+      <div className="flex h-full w-full items-center justify-center bg-slate-200 dark:bg-slate-700">
+        <GraduationCap className="h-7 w-7 text-slate-400" />
+      </div>
+    )
+  }
+
+  return (
+    <Image
+      src={photo}
+      alt={name}
+      fill
+      sizes="64px"
+      className="object-cover"
+      onError={() => setError(true)}
+    />
+  )
+}
+
 export default function NosFormateursContent() {
   const [trainersList, setTrainersList] = useState<Trainer[]>([])
+  const [testimonialsList, setTestimonialsList] = useState<TrainerTestimonial[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const fetchTrainers = async () => {
+    const fetchData = async () => {
       try {
         const res = await fetch('/api/data', { cache: 'no-store' })
         if (res.ok) {
           const data = await res.json()
           setTrainersList(data.TrainerData || [])
+          setTestimonialsList(data.TrainerTestimonialData || [])
         }
       } catch (err) {
         console.error(err)
@@ -45,7 +70,7 @@ export default function NosFormateursContent() {
         setLoading(false)
       }
     }
-    fetchTrainers()
+    fetchData()
   }, [])
 
   return (
@@ -185,17 +210,7 @@ export default function NosFormateursContent() {
                   <div
                     className='relative h-16 w-16 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700'
                     style={{ boxShadow: '0 0 0 2px rgba(68,144,199,0.4)' }}>
-                    <Image
-                      src={trainer.photo || '/images/default-avatar.png'}
-                      alt={trainer.name}
-                      fill
-                      sizes='64px'
-                      className='object-cover'
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement
-                        target.src = '/images/default-avatar.png'
-                      }}
-                    />
+                    <TrainerPhoto photo={trainer.photo} name={trainer.name} />
                   </div>
                   <div>
                     <h3 className='text-lg font-semibold text-[#0A004B] dark:text-white'>{trainer.name}</h3>
@@ -255,9 +270,13 @@ export default function NosFormateursContent() {
             whileInView='whileInView'
             viewport={{ once: true, amount: 0.2 }}
             className='mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2'>
-            {trainerTestimonials.map((testimonial) => (
+            {testimonialsList.length === 0 ? (
+              <div className="col-span-full py-8 text-center text-slate-500 font-medium italic">
+                Aucun témoignage pour le moment.
+              </div>
+            ) : testimonialsList.map((testimonial, index) => (
               <motion.div
-                key={testimonial.quote}
+                key={(testimonial as TrainerTestimonial & { _id?: string })._id || `testimonial-${index}`}
                 variants={cardVariant}
                 className='relative overflow-hidden rounded-2xl bg-white/90 p-6 shadow-[0_16px_40px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/90 dark:ring-slate-700/70'>
                 <div className='flex items-center gap-2' style={{ color: '#2E5391' }}>

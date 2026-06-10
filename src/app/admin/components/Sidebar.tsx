@@ -9,47 +9,74 @@ import { useAuth } from '@/context/AuthContext';
 const menuItems = [
     { label: 'Tableau de bord', href: '/admin', icon: 'solar:widget-bold' },
     { label: 'Formations', href: '/admin/formations', icon: 'solar:book-bookmark-bold' },
-{ label: 'Projets', href: '/admin/projects', icon: 'solar:folder-bold' },
+    { label: 'Projets', href: '/admin/projects', icon: 'solar:folder-bold' },
     { label: 'Avis Clients', href: '/admin/reviews', icon: 'solar:star-bold' },
     { label: 'Formateurs', href: '/admin/trainers', icon: 'solar:users-group-rounded-bold' },
+    { label: 'Témoignages Formateurs', href: '/admin/trainer-testimonials', icon: 'solar:chat-round-dots-bold' },
     { label: 'Contact', href: '/admin/contact', icon: 'solar:letter-bold' },
     { label: 'Rendez-vous', href: '/admin/rendez-vous', icon: 'solar:calendar-bold' },
     { label: 'Paramètres', href: '/admin/settings', icon: 'solar:settings-bold' },
 ];
 
-export default function AdminSidebar() {
+type Props = {
+    open: boolean;
+    onClose: () => void;
+};
+
+export default function AdminSidebar({ open, onClose }: Props) {
     const pathname = usePathname();
     const { user, logout } = useAuth();
 
     return (
-        <aside className="w-64 bg-white dark:bg-darklight border-r border-slate-200 dark:border-white/5 min-h-screen fixed left-0 top-0 hidden xl:flex flex-col transition-colors duration-300 z-30">
-            {/* Logo Section */}
-            <div className="h-20 px-6 flex items-center justify-between border-b border-slate-100 dark:border-white/5">
+        <aside
+            className={`
+                w-64 bg-white dark:bg-darklight border-r border-slate-200 dark:border-white/5
+                h-screen fixed left-0 top-0 flex flex-col transition-transform duration-300 z-50
+                xl:translate-x-0
+                ${open ? 'translate-x-0 shadow-2xl' : '-translate-x-full'}
+                xl:shadow-none
+            `}
+        >
+            {/* Logo */}
+            <div className="h-16 xl:h-20 px-6 flex items-center justify-between border-b border-slate-100 dark:border-white/5 shrink-0">
                 <div className="scale-90 origin-left">
                     <Logo variant="header" />
                 </div>
+                <button
+                    onClick={onClose}
+                    className="xl:hidden p-1.5 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-colors"
+                    aria-label="Fermer le menu"
+                >
+                    <Icon icon="solar:close-circle-bold" width="22" />
+                </button>
             </div>
 
-            {/* Navigation Section */}
-            <nav className="p-4 space-y-1.5 flex-grow overflow-y-auto mt-2">
+            {/* Scrollable nav — min-h-0 is required so flex-1 can shrink below its content size */}
+            <nav className="p-4 space-y-1.5 flex-1 min-h-0 overflow-y-auto mt-2">
                 {menuItems.map((item) => {
                     const isActive = pathname === item.href;
                     return (
                         <Link
                             key={item.href}
                             href={item.href}
-                            className={`flex items-center gap-3.5 px-4 py-3 rounded-xl transition-all duration-200 group relative ${isActive
-                                ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold'
-                                : 'text-slate-600 dark:text-lightgrey hover:bg-slate-50 dark:hover:bg-white/5 hover:text-primary dark:hover:text-white font-medium'
-                                }`}
+                            onClick={onClose}
+                            className={`flex items-center gap-3.5 px-4 py-3 rounded-xl transition-all duration-200 group relative ${
+                                isActive
+                                    ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold'
+                                    : 'text-slate-600 dark:text-lightgrey hover:bg-slate-50 dark:hover:bg-white/5 hover:text-primary dark:hover:text-white font-medium'
+                            }`}
                         >
                             {isActive && (
                                 <span className="absolute left-0 top-3 bottom-3 w-1.5 bg-white rounded-r-md" />
                             )}
-                            <Icon 
-                                icon={item.icon} 
-                                width="22" 
-                                className={`transition-transform duration-200 group-hover:scale-110 ${isActive ? 'text-white' : 'text-slate-400 dark:text-lightgrey group-hover:text-primary dark:group-hover:text-white'}`} 
+                            <Icon
+                                icon={item.icon}
+                                width="22"
+                                className={`transition-transform duration-200 group-hover:scale-110 ${
+                                    isActive
+                                        ? 'text-white'
+                                        : 'text-slate-400 dark:text-lightgrey group-hover:text-primary dark:group-hover:text-white'
+                                }`}
                             />
                             <span>{item.label}</span>
                         </Link>
@@ -57,8 +84,8 @@ export default function AdminSidebar() {
                 })}
             </nav>
 
-            {/* Footer Section */}
-            <div className="p-4 border-t border-slate-100 dark:border-white/5 space-y-4 bg-slate-50/50 dark:bg-black/5">
+            {/* Footer */}
+            <div className="p-4 border-t border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-black/5 shrink-0">
                 <Link
                     href="/"
                     className="flex items-center gap-3 px-4 py-2.5 text-slate-500 dark:text-lightgrey hover:text-primary dark:hover:text-white hover:bg-slate-100/60 dark:hover:bg-white/5 rounded-xl transition-all w-full font-medium text-sm group"
@@ -95,4 +122,3 @@ export default function AdminSidebar() {
         </aside>
     );
 }
-

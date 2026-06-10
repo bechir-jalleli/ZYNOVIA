@@ -49,7 +49,7 @@ export async function POST(req: Request) {
         if (!entity) {
             logUploadFailure('invalid_entity', { file: fileMeta, rawEntity: formData.get('entity') });
             return NextResponse.json(
-                { message: 'Invalid entity. Use: formations, bootcamps, projects, or reviews.' },
+                { message: 'Invalid entity. Use: formations, bootcamps, projects, reviews, or trainers.' },
                 { status: 400 }
             );
         }

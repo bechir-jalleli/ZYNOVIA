@@ -2,9 +2,8 @@ import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 import connectToDatabase from '@/lib/mongodb';
-import Trainer from '@/models/Trainer';
+import TrainerTestimonial from '@/models/TrainerTestimonial';
 import { isAdmin } from '@/lib/adminAuth';
-import { replaceStoredImage, deleteStoredImage } from '@/lib/imageService';
 
 export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
     if (!(await isAdmin())) {
@@ -15,19 +14,7 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
         const { id } = await params;
         const data = await req.json();
         await connectToDatabase();
-
-        const oldTrainer = await Trainer.findById(id);
-
-        if (oldTrainer) {
-            await replaceStoredImage(
-                oldTrainer.photo,
-                oldTrainer.photoPublicId,
-                data.photo,
-                data.photoPublicId
-            );
-        }
-
-        const updated = await Trainer.findByIdAndUpdate(id, data, { returnDocument: 'after' });
+        const updated = await TrainerTestimonial.findByIdAndUpdate(id, data, { returnDocument: 'after' });
         return NextResponse.json(updated);
     } catch (error: any) {
         return NextResponse.json({ message: error.message }, { status: 400 });
@@ -42,13 +29,7 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
     try {
         const { id } = await params;
         await connectToDatabase();
-
-        const trainer = await Trainer.findById(id);
-        if (trainer) {
-            await deleteStoredImage(trainer.photo, trainer.photoPublicId);
-            await Trainer.findByIdAndDelete(id);
-        }
-
+        await TrainerTestimonial.findByIdAndDelete(id);
         return NextResponse.json({ message: 'Deleted' });
     } catch (error: any) {
         return NextResponse.json({ message: error.message }, { status: 400 });

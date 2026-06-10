@@ -435,7 +435,8 @@ import StudentProject from '@/models/Project'
 import Review from '@/models/Review'
 import Formation from '@/models/Formation'
 import Trainer from '@/models/Trainer'
-import { trainers as TrainerStaticData } from '@/data/trainers'
+import TrainerTestimonial from '@/models/TrainerTestimonial'
+import { trainers as TrainerStaticData, trainerTestimonials as TrainerTestimonialStaticData } from '@/data/trainers'
 
 export const GET = async () => {
   try {
@@ -445,6 +446,7 @@ export const GET = async () => {
     let reviews = await Review.find();
     const formations = await Formation.find();
     let dbTrainers = await Trainer.find();
+    let dbTrainerTestimonials = await TrainerTestimonial.find();
 
     // Auto-populate reviews if empty (save old comments)
     if (reviews.length === 0 && ReviewData.length > 0) {
@@ -460,6 +462,12 @@ export const GET = async () => {
       dbTrainers = await Trainer.find();
     }
 
+    // Auto-populate trainer testimonials if empty
+    if (dbTrainerTestimonials.length === 0 && TrainerTestimonialStaticData.length > 0) {
+      await TrainerTestimonial.insertMany(TrainerTestimonialStaticData);
+      dbTrainerTestimonials = await TrainerTestimonial.find();
+    }
+
     // Use DB data if available, otherwise fallback to static (initial)
     return NextResponse.json({
       HeroData,
@@ -473,11 +481,12 @@ export const GET = async () => {
       FooterLinkData,
       FormationData: formations.length > 0 ? formations : FormationData,
       TrainerData: dbTrainers.length > 0 ? dbTrainers : TrainerStaticData,
+      TrainerTestimonialData: dbTrainerTestimonials.length > 0 ? dbTrainerTestimonials : TrainerTestimonialStaticData,
     })
   } catch (error) {
     console.error('API Data fetch error', error);
     return NextResponse.json({
-      HeroData, NavLinkData, ProjectData, RecordData, ReviewData, SpecializeData, PlanData, CategoryData, FooterLinkData, FormationData, TrainerData: TrainerStaticData
+      HeroData, NavLinkData, ProjectData, RecordData, ReviewData, SpecializeData, PlanData, CategoryData, FooterLinkData, FormationData, TrainerData: TrainerStaticData, TrainerTestimonialData: TrainerTestimonialStaticData
     });
   }
 }

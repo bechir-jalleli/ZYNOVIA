@@ -5,7 +5,8 @@ const TrainerSchema = new Schema({
     title: { type: String, required: true },
     bio: { type: String, required: true },
     expertise: { type: [String], required: true, default: [] },
-    photo: { type: String, required: true },
+    photo: { type: String },
+    photoPublicId: { type: String },
     linkedin: { type: String },
 }, { timestamps: true });
 
