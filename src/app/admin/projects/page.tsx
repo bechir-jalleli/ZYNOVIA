@@ -2,16 +2,19 @@
 
 import { useEffect, useState } from 'react';
 import { Icon } from '@iconify/react';
+import { uploadImageClient, ClientUploadError } from '@/lib/uploadImageClient';
 
 interface Project {
     _id: string;
     name: string;
     description: string;
     coverImg: string;
+    coverImgPublicId?: string;
     creator: {
         firstName: string;
         lastName: string;
         picture: string;
+        picturePublicId?: string;
         school: string;
     };
 }
@@ -21,16 +24,20 @@ export default function ManageProjects() {
     const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingId, setEditingId] = useState<string | null>(null);
+    const [uploadError, setUploadError] = useState<string | null>(null);
+    const [uploading, setUploading] = useState(false);
 
     // Form State
     const [formData, setFormData] = useState({
         name: '',
         description: '',
         coverImg: '',
+        coverImgPublicId: '',
         creator: {
             firstName: '',
             lastName: '',
             picture: '',
+            picturePublicId: '',
             school: ''
         }
     });
@@ -78,13 +85,16 @@ export default function ManageProjects() {
             name: '',
             description: '',
             coverImg: '',
+            coverImgPublicId: '',
             creator: {
                 firstName: '',
                 lastName: '',
                 picture: '',
+                picturePublicId: '',
                 school: ''
             }
         });
+        setUploadError(null);
     };
 
     const handleDelete = async (id: string) => {
@@ -104,10 +114,12 @@ export default function ManageProjects() {
             name: p.name,
             description: p.description || '',
             coverImg: p.coverImg,
+            coverImgPublicId: p.coverImgPublicId || '',
             creator: {
                 firstName: p.creator?.firstName || '',
                 lastName: p.creator?.lastName || '',
                 picture: p.creator?.picture || '',
+                picturePublicId: p.creator?.picturePublicId || '',
                 school: p.creator?.school || ''
             }
         });
@@ -118,27 +130,27 @@ export default function ManageProjects() {
         const file = e.target.files?.[0];
         if (!file) return;
 
-        const uploadData = new FormData();
-        uploadData.append('file', file);
+        setUploadError(null);
+        setUploading(true);
 
         try {
-            const res = await fetch('/api/upload', {
-                method: 'POST',
-                body: uploadData
-            });
-            const data = await res.json();
-            if (data.filePath) {
-                if (targetField === 'coverImg') {
-                    setFormData({ ...formData, coverImg: data.filePath });
-                } else {
-                    setFormData({
-                        ...formData,
-                        creator: { ...formData.creator, picture: data.filePath }
-                    });
-                }
+            const result = await uploadImageClient(file, 'projects');
+
+            if (targetField === 'coverImg') {
+                setFormData({ ...formData, coverImg: result.url, coverImgPublicId: result.publicId });
+            } else {
+                setFormData({
+                    ...formData,
+                    creator: { ...formData.creator, picture: result.url, picturePublicId: result.publicId }
+                });
             }
         } catch (err) {
+            const message = err instanceof ClientUploadError ? err.message : 'Upload failed';
+            setUploadError(message);
             console.error('Upload failed:', err);
+        } finally {
+            setUploading(false);
+            e.target.value = '';
         }
     };
 
@@ -255,10 +267,14 @@ export default function ManageProjects() {
                                                 <input
                                                     type="file"
                                                     accept="image/*"
+                                                    disabled={uploading}
                                                     onChange={(e) => handleImageUpload(e, 'coverImg')}
                                                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                                                 />
                                             </div>
+                                            {uploadError && (
+                                                <p className="text-xs font-semibold text-red-500">{uploadError}</p>
+                                            )}
                                             <input
                                                 type="text"
                                                 readOnly

@@ -3,29 +3,8 @@ import { NextResponse } from 'next/server';
 export const dynamic = 'force-dynamic';
 import connectToDatabase from '@/lib/mongodb';
 import Review from '@/models/Review';
-import { cookies } from 'next/headers';
-import { verifyToken } from '@/lib/auth';
-import { unlink } from 'fs/promises';
-import path from 'path';
-
-async function isAdmin() {
-    const cookieStore = await cookies();
-    const token = (await cookieStore.get('token'))?.value;
-    if (!token) return false;
-    const payload: any = verifyToken(token);
-    return payload && payload.role === 'admin';
-}
-
-async function deleteLocalFile(filePath: string) {
-    if (filePath && filePath.startsWith('/uploads/')) {
-        try {
-            const absolutePath = path.join(process.cwd(), 'public', filePath);
-            await unlink(absolutePath);
-        } catch (error) {
-            console.error('Failed to delete file:', filePath, error);
-        }
-    }
-}
+import { isAdmin } from '@/lib/adminAuth';
+import { replaceStoredImage, deleteStoredImage } from '@/lib/imageService';
 
 export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
     if (!(await isAdmin())) {
@@ -39,9 +18,13 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
 
         const oldReview = await Review.findById(id);
 
-        // Cleanup old image if it changed
-        if (oldReview && oldReview.imgSrc !== data.imgSrc) {
-            await deleteLocalFile(oldReview.imgSrc);
+        if (oldReview) {
+            await replaceStoredImage(
+                oldReview.imgSrc,
+                oldReview.imgSrcPublicId,
+                data.imgSrc,
+                data.imgSrcPublicId
+            );
         }
 
         const updated = await Review.findByIdAndUpdate(id, data, { returnDocument: 'after' });
@@ -62,7 +45,7 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
 
         const review = await Review.findById(id);
         if (review) {
-            await deleteLocalFile(review.imgSrc);
+            await deleteStoredImage(review.imgSrc, review.imgSrcPublicId);
             await Review.findByIdAndDelete(id);
         }
 

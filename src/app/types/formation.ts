@@ -6,6 +6,7 @@ export type FormationType = {
   duration: string
   level: string
   image: string
+  imagePublicId?: string
   startDate?: string
   endDate?: string
   price?: number

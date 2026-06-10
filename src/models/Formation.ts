@@ -7,6 +7,7 @@ const FormationSchema = new Schema({
     duration: { type: String },
     level: { type: String },
     image: { type: String },
+    imagePublicId: { type: String },
     startDate: { type: String },
     price: { type: Number },
     badge: { type: String },

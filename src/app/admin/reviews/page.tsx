@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import { ReviewType } from '@/app/types/review';
+import { uploadImageClient, ClientUploadError } from '@/lib/uploadImageClient';
 
 interface Review extends ReviewType {
     _id: string;
@@ -13,9 +14,12 @@ export default function AdminReviews() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingId, setEditingId] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
+    const [uploadError, setUploadError] = useState<string | null>(null);
+    const [uploading, setUploading] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
         imgSrc: '',
+        imgSrcPublicId: '',
         rating: 5,
         desc: ''
     });
@@ -40,29 +44,30 @@ export default function AdminReviews() {
         setFormData({
             name: '',
             imgSrc: '',
+            imgSrcPublicId: '',
             rating: 5,
             desc: ''
         });
+        setUploadError(null);
     };
 
     const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (!file) return;
 
-        const uploadData = new FormData();
-        uploadData.append('file', file);
+        setUploadError(null);
+        setUploading(true);
 
         try {
-            const res = await fetch('/api/upload', {
-                method: 'POST',
-                body: uploadData
-            });
-            const data = await res.json();
-            if (data.filePath) {
-                setFormData({ ...formData, imgSrc: data.filePath });
-            }
+            const result = await uploadImageClient(file, 'reviews');
+            setFormData({ ...formData, imgSrc: result.url, imgSrcPublicId: result.publicId });
         } catch (err) {
+            const message = err instanceof ClientUploadError ? err.message : 'Upload failed';
+            setUploadError(message);
             console.error('Upload failed:', err);
+        } finally {
+            setUploading(false);
+            e.target.value = '';
         }
     };
 
@@ -103,6 +108,7 @@ export default function AdminReviews() {
         setFormData({
             name: r.name,
             imgSrc: r.imgSrc,
+            imgSrcPublicId: r.imgSrcPublicId || '',
             rating: r.rating,
             desc: r.desc
         });
@@ -212,9 +218,12 @@ export default function AdminReviews() {
                                     </div>
                                     <label className="absolute inset-0 flex items-center justify-center bg-black/40 text-white rounded-full opacity-0 group-hover:opacity-100 cursor-pointer transition-opacity backdrop-blur-[2px]">
                                         <Icon icon="solar:camera-bold" width="24" />
-                                        <input type="file" className="hidden" onChange={handleFileUpload} />
+                                        <input type="file" accept="image/*" className="hidden" disabled={uploading} onChange={handleFileUpload} />
                                     </label>
                                 </div>
+                                {uploadError && (
+                                    <p className="text-xs font-semibold text-red-500">{uploadError}</p>
+                                )}
                                 <div className="flex-1 space-y-4">
                                     <div>
                                         <label className="block text-xs font-extrabold text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Nom Complet</label>

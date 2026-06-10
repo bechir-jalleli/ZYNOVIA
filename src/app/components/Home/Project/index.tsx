@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import CloudImage from '@/app/components/Infrastructure/CloudImage'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -101,10 +102,13 @@ const Project = () => {
 
                     {/* Cover Image Container */}
                     <div className='relative mb-6 w-full h-56 overflow-hidden rounded-[2rem] bg-slate-100 dark:bg-slate-800'>
-                      <img
+                      <CloudImage
                         src={item.coverImg}
                         alt={item.name}
-                        className='h-full w-full object-cover transition-transform duration-700 group-hover:scale-110'
+                        fill
+                        optimizedWidth={480}
+                        className='object-cover transition-transform duration-700 group-hover:scale-110'
+                        sizes='(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 25vw'
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
@@ -126,9 +130,12 @@ const Project = () => {
                       <div className='relative group-hover:scale-110 transition-transform duration-300'>
                         <div className='flex-shrink-0 w-12 h-12 rounded-full overflow-hidden border-2 border-[#3FA9DF]/30 bg-slate-50 dark:bg-white/5 flex items-center justify-center shadow-inner'>
                           {item.creator?.picture ? (
-                            <img
+                            <CloudImage
                               src={item.creator.picture}
                               alt={item.creator.firstName}
+                              width={48}
+                              height={48}
+                              optimizedWidth={96}
                               className='h-full w-full object-cover'
                             />
                           ) : (

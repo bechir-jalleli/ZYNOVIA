@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import Image from 'next/image'
+import CloudImage from '@/app/components/Infrastructure/CloudImage'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { useEffect, useState } from 'react'
@@ -172,10 +172,11 @@ const FormationsBootcamps = () => {
 
                     {/* Image */}
                     <div className='relative h-56 sm:h-64 w-full overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900'>
-                      <Image
+                      <CloudImage
                         src={formation.image}
                         alt={formation.title}
                         fill
+                        optimizedWidth={640}
                         className='object-cover transition-transform duration-700 group-hover:scale-110'
                         sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                       />

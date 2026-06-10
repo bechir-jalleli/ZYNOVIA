@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { ReviewType } from '@/app/types/review'
 import Image from 'next/image'
+import CloudImage from '@/app/components/Infrastructure/CloudImage'
 import { Icon } from '@iconify/react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
@@ -112,11 +113,13 @@ const Review = () => {
                 <div className='m-3 rounded-3xl bg-white/95 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.10)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/95 dark:ring-slate-700/70 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(15,23,42,0.18)]'>
                   <div className='mb-5 flex items-center gap-4'>
                     <div className='relative'>
-                      <Image
+                      <CloudImage
                         src={item.imgSrc}
                         alt={item.name}
                         width={48}
                         height={48}
+                        optimizedWidth={96}
+                        crop='fill'
                         className='h-12 w-12 rounded-full object-cover'
                       />
                       <div className='absolute bottom-0 right-0'>

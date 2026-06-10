@@ -3,29 +3,8 @@ import { NextResponse } from 'next/server';
 export const dynamic = 'force-dynamic';
 import connectToDatabase from '@/lib/mongodb';
 import Formation from '@/models/Formation';
-import { cookies } from 'next/headers';
-import { verifyToken } from '@/lib/auth';
-import { unlink } from 'fs/promises';
-import path from 'path';
-
-async function isAdmin() {
-    const cookieStore = await cookies();
-    const token = (await cookieStore.get('token'))?.value;
-    if (!token) return false;
-    const payload: any = verifyToken(token);
-    return payload && payload.role === 'admin';
-}
-
-async function deleteLocalFile(filePath: string) {
-    if (filePath && filePath.startsWith('/uploads/')) {
-        try {
-            const absolutePath = path.join(process.cwd(), 'public', filePath);
-            await unlink(absolutePath);
-        } catch (error) {
-            console.error('Failed to delete file:', filePath, error);
-        }
-    }
-}
+import { isAdmin } from '@/lib/adminAuth';
+import { replaceStoredImage, deleteStoredImage } from '@/lib/imageService';
 
 export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
     if (!(await isAdmin())) {
@@ -37,11 +16,15 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
         const data = await req.json();
         await connectToDatabase();
 
-        // Get old version to check image change
         const oldFormation = await Formation.findById(id);
 
-        if (oldFormation && oldFormation.image !== data.image) {
-            await deleteLocalFile(oldFormation.image);
+        if (oldFormation) {
+            await replaceStoredImage(
+                oldFormation.image,
+                oldFormation.imagePublicId,
+                data.image,
+                data.imagePublicId
+            );
         }
 
         const updated = await Formation.findByIdAndUpdate(id, data, { returnDocument: 'after' });
@@ -62,7 +45,7 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
 
         const formation = await Formation.findById(id);
         if (formation) {
-            await deleteLocalFile(formation.image);
+            await deleteStoredImage(formation.image, formation.imagePublicId);
             await Formation.findByIdAndDelete(id);
         }
 

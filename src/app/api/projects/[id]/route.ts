@@ -3,29 +3,8 @@ import { NextResponse } from 'next/server';
 export const dynamic = 'force-dynamic';
 import connectToDatabase from '@/lib/mongodb';
 import StudentProject from '@/models/Project';
-import { cookies } from 'next/headers';
-import { verifyToken } from '@/lib/auth';
-import { unlink } from 'fs/promises';
-import path from 'path';
-
-async function isAdmin() {
-    const cookieStore = await cookies();
-    const token = (await cookieStore.get('token'))?.value;
-    if (!token) return false;
-    const payload: any = verifyToken(token);
-    return payload && payload.role === 'admin';
-}
-
-async function deleteLocalFile(filePath: string) {
-    if (filePath && filePath.startsWith('/uploads/')) {
-        try {
-            const absolutePath = path.join(process.cwd(), 'public', filePath);
-            await unlink(absolutePath);
-        } catch (error) {
-            console.error('Failed to delete file:', filePath, error);
-        }
-    }
-}
+import { isAdmin } from '@/lib/adminAuth';
+import { replaceStoredImage, deleteStoredImage } from '@/lib/imageService';
 
 export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
     if (!(await isAdmin())) {
@@ -39,14 +18,20 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
 
         const oldProject = await StudentProject.findById(id);
 
-        // Cleanup old images if they changed
         if (oldProject) {
-            if (oldProject.coverImg !== data.coverImg) {
-                await deleteLocalFile(oldProject.coverImg);
-            }
-            if (oldProject.creator?.picture !== data.creator?.picture) {
-                await deleteLocalFile(oldProject.creator?.picture);
-            }
+            await replaceStoredImage(
+                oldProject.coverImg,
+                oldProject.coverImgPublicId,
+                data.coverImg,
+                data.coverImgPublicId
+            );
+
+            await replaceStoredImage(
+                oldProject.creator?.picture,
+                oldProject.creator?.picturePublicId,
+                data.creator?.picture,
+                data.creator?.picturePublicId
+            );
         }
 
         const updated = await StudentProject.findByIdAndUpdate(id, data, { returnDocument: 'after' });
@@ -67,8 +52,8 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
 
         const project = await StudentProject.findById(id);
         if (project) {
-            await deleteLocalFile(project.coverImg);
-            await deleteLocalFile(project.creator?.picture);
+            await deleteStoredImage(project.coverImg, project.coverImgPublicId);
+            await deleteStoredImage(project.creator?.picture, project.creator?.picturePublicId);
             await StudentProject.findByIdAndDelete(id);
         }
 

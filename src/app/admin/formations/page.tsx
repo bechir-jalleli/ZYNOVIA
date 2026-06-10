@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Icon } from '@iconify/react';
+import { uploadImageClient, ClientUploadError } from '@/lib/uploadImageClient';
 
 interface Formation {
     _id: string;
@@ -11,6 +12,7 @@ interface Formation {
     duration: string;
     description: string;
     image: string;
+    imagePublicId?: string;
     features: string[];
     badge?: string;
     startDate?: string;
@@ -21,19 +23,24 @@ export default function ManageFormations() {
     const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingId, setEditingId] = useState<string | null>(null);
+    const [uploadError, setUploadError] = useState<string | null>(null);
+    const [uploading, setUploading] = useState(false);
 
-    // Form State
-    const [formData, setFormData] = useState({
+    const defaultFormData = {
         title: '',
         type: 'formation',
         level: '',
         duration: '',
         description: '',
         image: '/images/formations/default.jpg',
+        imagePublicId: '',
         features: [''],
         badge: '',
         startDate: ''
-    });
+    };
+
+    // Form State
+    const [formData, setFormData] = useState(defaultFormData);
 
     const fetchFormations = async () => {
         try {
@@ -68,7 +75,7 @@ export default function ManageFormations() {
             if (res.ok) {
                 setIsModalOpen(false);
                 setEditingId(null);
-                setFormData({ title: '', type: 'formation', level: '', duration: '', description: '', image: '/images/formations/default.jpg', features: [''], badge: '', startDate: '' });
+                setFormData(defaultFormData);
                 fetchFormations();
             }
         } catch (err) {
@@ -94,6 +101,7 @@ export default function ManageFormations() {
             features: f.features?.length > 0 ? f.features : [''],
             description: f.description || '',
             image: f.image || '/images/formations/default.jpg',
+            imagePublicId: f.imagePublicId || '',
             startDate: f.startDate || ''
         });
         setIsModalOpen(true);
@@ -118,20 +126,20 @@ export default function ManageFormations() {
         const file = e.target.files?.[0];
         if (!file) return;
 
-        const uploadData = new FormData();
-        uploadData.append('file', file);
+        setUploadError(null);
+        setUploading(true);
 
         try {
-            const res = await fetch('/api/upload', {
-                method: 'POST',
-                body: uploadData
-            });
-            const data = await res.json();
-            if (data.filePath) {
-                setFormData({ ...formData, image: data.filePath });
-            }
+            const entity = formData.type === 'bootcamp' ? 'bootcamps' : 'formations';
+            const result = await uploadImageClient(file, entity);
+            setFormData({ ...formData, image: result.url, imagePublicId: result.publicId });
         } catch (err) {
+            const message = err instanceof ClientUploadError ? err.message : 'Upload failed';
+            setUploadError(message);
             console.error('Upload failed:', err);
+        } finally {
+            setUploading(false);
+            e.target.value = '';
         }
     };
 
@@ -145,7 +153,7 @@ export default function ManageFormations() {
                 <button
                     onClick={() => {
                         setEditingId(null);
-                        setFormData({ title: '', type: 'formation', level: '', duration: '', description: '', image: '/images/formations/default.jpg', features: [''], badge: '', startDate: '' });
+                        setFormData(defaultFormData);
                         setIsModalOpen(true);
                     }}
                     className="mt-4 sm:mt-0 flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-blue-600 text-white rounded-xl font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-all"
@@ -305,9 +313,12 @@ export default function ManageFormations() {
                                                 />
                                                 <div className="w-full px-4 py-3 bg-slate-50 dark:bg-white/5 border-2 border-dashed border-slate-200 dark:border-white/10 rounded-xl text-slate-500 dark:text-lightgrey flex items-center justify-center gap-2 group-hover/upload:border-primary group-hover/upload:text-primary transition-all">
                                                     <Icon icon="solar:upload-minimalistic-bold" width="20" />
-                                                    <span className="text-sm font-semibold">Choisir une image</span>
+                                                    <span className="text-sm font-semibold">{uploading ? 'Téléversement...' : 'Choisir une image'}</span>
                                                 </div>
                                             </div>
+                                            {uploadError && (
+                                                <p className="text-xs font-semibold text-red-500">{uploadError}</p>
+                                            )}
                                             <input
                                                 type="text"
                                                 readOnly
