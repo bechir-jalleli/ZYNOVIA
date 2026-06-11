@@ -47,7 +47,7 @@ const Specialize = () => {
             className='text-center mb-12 lg:mb-16'
           >
             <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#0A004B] dark:text-white mb-4'>
-              Notre Valeur Ajoutée
+              Notre valeur ajoutée
             </h2>
           </motion.div>
 

@@ -272,7 +272,7 @@ const ContactContent = () => {
                 href='https://www.google.com/maps/place/ZYNOVIA/@36.8550972,10.274117,17z/data=!3m1!4b1!4m6!3m5!1s0x12e2b5128a5ef2f1:0x4f3e6d7fbd54d6e2!8m2!3d36.8550929!4d10.2766919!16s%2Fg%2F11rr91xr_w?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='text-slate-700 dark:text-slate-200 transition-colors duration-200' onMouseEnter={e => (e.currentTarget.style.color='#4490C7')} onMouseLeave={e => (e.currentTarget.style.color='')}>
+                className='text-slate-700 dark:text-slate-200 transition-colors duration-200' onMouseEnter={e => (e.currentTarget.style.color = '#4490C7')} onMouseLeave={e => (e.currentTarget.style.color = '')}>
                 V74G+2MP, Tunis
               </Link>
             </motion.div>
@@ -287,7 +287,7 @@ const ContactContent = () => {
               </div>
               <Link
                 href='tel:+21625857621'
-                className='text-slate-700 dark:text-slate-200 transition-colors duration-200' onMouseEnter={e => (e.currentTarget.style.color='#4490C7')} onMouseLeave={e => (e.currentTarget.style.color='')}>
+                className='text-slate-700 dark:text-slate-200 transition-colors duration-200' onMouseEnter={e => (e.currentTarget.style.color = '#4490C7')} onMouseLeave={e => (e.currentTarget.style.color = '')}>
                 +216 25 857 621
               </Link>
             </motion.div>
@@ -302,9 +302,9 @@ const ContactContent = () => {
               </div>
               <div className='space-y-1'>
                 <Link
-                  href='mailto:academy@inoteqia.com'
-                  className='block text-slate-700 dark:text-slate-200 transition-colors duration-200' onMouseEnter={e => (e.currentTarget.style.color='#4490C7')} onMouseLeave={e => (e.currentTarget.style.color='')}>
-                  academy@inoteqia.com
+                  href='mailto:contact@zynovia-academy.com'
+                  className='block text-slate-700 dark:text-slate-200 transition-colors duration-200' onMouseEnter={e => (e.currentTarget.style.color = '#4490C7')} onMouseLeave={e => (e.currentTarget.style.color = '')}>
+                  contact@zynovia-academy.com
                 </Link>
               </div>
             </motion.div>
@@ -317,7 +317,7 @@ const ContactContent = () => {
                 <CalendarDays className='h-5 w-5' style={{ color: '#4490C7' }} />
                 <p className='font-semibold text-[#0A004B] dark:text-white'>Horaires</p>
               </div>
-              <p>Lundi – Vendredi, 8h–17h</p>
+              <p>Lundi – Vendredi, 8h–19h</p>
             </motion.div>
           </motion.div>
         </div>
@@ -577,19 +577,7 @@ const ContactContent = () => {
                   className='text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 hover:text-[#4490C7] dark:hover:text-[#3FA9DF] hover:bg-[#27397F]/10 dark:hover:bg-[#4490C7]/20 transition-all duration-300'
                 />
               </Link>
-              <Link
-                href='https://www.linkedin.com/company/inoteqia-academy/about/'
-                target='_blank'
-                rel='noopener noreferrer'
-                aria-label='LinkedIn'
-                className='group transition-transform duration-300 hover:scale-110'>
-                <Icon
-                  icon='tabler:brand-linkedin'
-                  width={80}
-                  height={80}
-                  className='text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 hover:text-[#4490C7] dark:hover:text-[#3FA9DF] hover:bg-[#27397F]/10 dark:hover:bg-[#4490C7]/20 transition-all duration-300'
-                />
-              </Link>
+
             </div>
           </motion.div>
         </div>

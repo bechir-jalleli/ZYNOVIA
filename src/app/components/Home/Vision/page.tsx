@@ -168,7 +168,7 @@ const FaqAccordion: React.FC<{ items: FaqItem[] }> = ({ items }) => {
 
 const SourcesSection: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
-  
+
   const sources = [
     {
       stat: "40% des emplois transformés par l'IA d'ici 2030",
@@ -244,10 +244,10 @@ const SourcesSection: React.FC = () => {
             {sources.map((source, index) => (
               <motion.div
                 key={index}
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4, delay: index * 0.1 }}
-            viewport={{ once: true }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
                 className='group rounded-2xl bg-slate-50 p-4 transition hover:bg-slate-100 dark:bg-slate-800/50 dark:hover:bg-slate-800/70'>
                 {/* Stat highlight */}
                 <div className='mb-3 flex items-start gap-3'>
@@ -297,43 +297,43 @@ const SourcesSection: React.FC = () => {
 
             {/* Additional Resources */}
             <div className='mt-6 rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800/30'>
-        <div className='mb-3 flex items-center gap-2'>
-          <Icon icon='mdi:information' className='h-5 w-5 text-cyan-400' />
-          <h4 className='text-xs font-semibold uppercase tracking-wider text-cyan-300'>
-            Autres ressources recommandées
-          </h4>
-        </div>
-        <ul className='space-y-2 text-xs text-slate-400'>
-          <li className='flex items-start gap-2'>
-            <span className='mt-1 h-1 w-1 flex-shrink-0 rounded-full bg-cyan-400' />
-            <a
-              href='https://www.oecd.org/employment/future-of-work/'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='hover:text-cyan-300 hover:underline'>
-              OCDE - The Future of Work
-            </a>
-          </li>
-          <li className='flex items-start gap-2'>
-            <span className='mt-1 h-1 w-1 flex-shrink-0 rounded-full bg-cyan-400' />
-            <a
-              href='https://www.brookings.edu/articles/what-jobs-are-affected-by-ai/'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='hover:text-cyan-300 hover:underline'>
-              Brookings Institution - AI Impact on Jobs
-            </a>
-          </li>
-          <li className='flex items-start gap-2'>
-            <span className='mt-1 h-1 w-1 flex-shrink-0 rounded-full bg-cyan-400' />
-            <a
-              href='https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='hover:text-cyan-300 hover:underline'>
-              PwC - Global AI Study
-            </a>
-          </li>
+              <div className='mb-3 flex items-center gap-2'>
+                <Icon icon='mdi:information' className='h-5 w-5 text-cyan-400' />
+                <h4 className='text-xs font-semibold uppercase tracking-wider text-cyan-300'>
+                  Autres ressources recommandées
+                </h4>
+              </div>
+              <ul className='space-y-2 text-xs text-slate-400'>
+                <li className='flex items-start gap-2'>
+                  <span className='mt-1 h-1 w-1 flex-shrink-0 rounded-full bg-cyan-400' />
+                  <a
+                    href='https://www.oecd.org/employment/future-of-work/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='hover:text-cyan-300 hover:underline'>
+                    OCDE - The Future of Work
+                  </a>
+                </li>
+                <li className='flex items-start gap-2'>
+                  <span className='mt-1 h-1 w-1 flex-shrink-0 rounded-full bg-cyan-400' />
+                  <a
+                    href='https://www.brookings.edu/articles/what-jobs-are-affected-by-ai/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='hover:text-cyan-300 hover:underline'>
+                    Brookings Institution - AI Impact on Jobs
+                  </a>
+                </li>
+                <li className='flex items-start gap-2'>
+                  <span className='mt-1 h-1 w-1 flex-shrink-0 rounded-full bg-cyan-400' />
+                  <a
+                    href='https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='hover:text-cyan-300 hover:underline'>
+                    PwC - Global AI Study
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -406,11 +406,11 @@ export default function NotreVisionPage() {
               </h2>
               <div className='mx-auto max-w-3xl space-y-3 text-sm sm:text-base text-slate-700 dark:text-slate-300'>
                 <p>
-                  Nous préparons les collégiens et lycéens aux compétences essentielles de demain : 
+                  Nous préparons les collégiens et lycéens aux compétences essentielles de demain :
                   <strong className='text-[#0A004B] dark:text-white'> intelligence artificielle, pensée algorithmique, créativité et culture numérique</strong>.
                 </p>
                 <p className='text-sm text-slate-600 dark:text-slate-400'>
-                  Notre objectif : devenir la référence tunisienne en formation IA pour les jeunes, 
+                  Notre objectif : devenir la référence tunisienne en formation IA pour les jeunes,
                   en créant un pont entre l&apos;école, la technologie et le monde professionnel.
                 </p>
               </div>
@@ -451,8 +451,9 @@ export default function NotreVisionPage() {
 
               <div className='mt-6 flex flex-wrap items-center justify-center gap-4 md:justify-start'>
                 <Link
-                  href='/#contact'
-                  className='inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/30 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'>
+                  href='/parents#appointment-form'
+                  className='inline-flex items-center justify-center rounded-xl btn-primary btn-hover px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#27397F]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
+                >
                   Réserver une session découverte
                 </Link>
                 <Link
@@ -493,7 +494,7 @@ export default function NotreVisionPage() {
                 Le pont ZYNOVIA
               </p>
               <p className='mt-1 text-sm text-slate-600 dark:text-slate-200'>
-                Un parcours progressif de la découverte à la maîtrise, 
+                Un parcours progressif de la découverte à la maîtrise,
                 qui connecte l&apos;école aux réalités technologiques et professionnelles.
               </p>
               <div className='mt-6 grid grid-cols-2 gap-6 sm:grid-cols-4'>
@@ -525,555 +526,557 @@ export default function NotreVisionPage() {
             </motion.div>
           </motion.div>
 
-        {/* Macro trends + line chart */}
-        <motion.section
-          {...fadeInUp}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className='space-y-8 sm:space-y-10'>
-          {/* Title */}
-          <motion.div
+          {/* Macro trends + line chart */}
+          <motion.section
             {...fadeInUp}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className='space-y-2 text-center md:text-left'>
-            <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
-              Tendances du marché
-            </p>
-            <h2 className='text-xl font-semibold text-[#0A004B] sm:text-2xl dark:text-white'>
-              L&apos;IA transforme le monde du travail : préparez-vous dès maintenant
-            </h2>
-            <p className='text-sm sm:text-base text-slate-700 dark:text-slate-200'>
-              Les chiffres parlent d&apos;eux-mêmes. L&apos;intelligence artificielle redéfinit les métiers 
-              à une vitesse inédite. <strong>Préparer les jeunes aujourd&apos;hui, c&apos;est leur garantir un avenir professionnel solide.</strong>
-            </p>
-          </motion.div>
-
-          {/* Stats grid */}
-          <motion.div
-            variants={{
-              initial: {},
-              whileInView: {
-                transition: { staggerChildren: 0.08 },
-              },
-            }}
-            initial='initial'
-            whileInView='whileInView'
-            viewport={{ once: true, amount: 0.3 }}
-            className='grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5'>
+            className='space-y-8 sm:space-y-10'>
+            {/* Title */}
             <motion.div
-              variants={{
-                initial: { opacity: 0, y: 20 },
-                whileInView: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.45, ease: 'easeOut' }}
-              className='group flex flex-col justify-between rounded-2xl bg-white/80 p-4 shadow-md shadow-slate-900/5 ring-1 ring-slate-200/80 backdrop-blur-xl dark:bg-slate-900/80 dark:ring-slate-700/70'>
-              <p className='text-xs font-medium uppercase tracking-[0.22em] text-primary/90 dark:text-cyan-300'>
-                40%
-              </p>
-              <p className='mt-2 text-sm sm:text-base text-slate-700 dark:text-slate-200'>
-                des emplois mondiaux seront impactés par l’IA d’ici 2030.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={{
-                initial: { opacity: 0, y: 20 },
-                whileInView: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.45, ease: 'easeOut', delay: 0.03 }}
-              className='group flex flex-col justify-between rounded-2xl bg-white/80 p-4 shadow-md shadow-slate-900/5 ring-1 ring-slate-200/80 backdrop-blur-xl dark:bg-slate-900/80 dark:ring-slate-700/70'>
-              <p className='text-xs font-medium uppercase tracking-[0.22em] text-primary/90 dark:text-cyan-300'>
-                85%
-              </p>
-              <p className='mt-2 text-sm sm:text-base text-slate-700 dark:text-slate-200'>
-                des métiers de demain n&apos;existent pas encore.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={{
-                initial: { opacity: 0, y: 20 },
-                whileInView: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.45, ease: 'easeOut', delay: 0.06 }}
-              className='group flex flex-col justify-between rounded-2xl bg-white/80 p-4 shadow-md shadow-slate-900/5 ring-1 ring-slate-200/80 backdrop-blur-xl dark:bg-slate-900/80 dark:ring-slate-700/70'>
-              <p className='text-xs font-medium uppercase tracking-[0.22em] text-primary/90 dark:text-cyan-300'>
-                70%
-              </p>
-              <p className='mt-2 text-sm sm:text-base text-slate-700 dark:text-slate-200'>
-                des entreprises investiront massivement dans l’IA.
-              </p>
-            </motion.div>
-          </motion.div>
-
-          {/* Chart block + footer note */}
-          <motion.div
-            {...fadeInUp}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.05 }}
-            className='space-y-3 rounded-3xl bg-white/90 p-5 shadow-[0_16px_40px_rgba(15,23,42,0.18)] ring-1 ring-slate-200/80 backdrop-blur-2xl dark:bg-slate-900/90 dark:ring-slate-700/80'>
-            <div className='space-y-1'>
-              <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary dark:text-cyan-300'>
-                Horizon 2024 – 2030
-              </p>
-              <p className='text-xs sm:text-sm text-slate-600 dark:text-slate-200'>
-                Projection mondiale des métiers impactés par l&apos;intelligence artificielle.
-              </p>
-            </div>
-
-            <div
-              aria-label="Projection mondiale des métiers impactés par l'intelligence artificielle"
-              className='mt-3 flex h-56 items-center justify-center rounded-2xl border border-dashed border-primary/25 bg-gradient-to-br from-[#00C3D9]/5 via-[#0091E6]/5 to-[#0067E0]/5 px-4 py-3 dark:border-cyan-400/40'>
-              <div className='flex w-full max-w-xl items-end justify-between gap-2'>
-                {Array.from({ length: 7 }).map((_, index) => {
-                  const height = 30 + index * 10
-                  return (
-                    <div
-                      key={index}
-                      className='flex flex-1 flex-col items-center gap-1'>
-                      <div
-                        className='w-full rounded-t-xl bg-gradient-to-t from-[#0067E0] via-[#0091E6] to-[#00C3D9] shadow-sm shadow-[#0091E6]/35 dark:shadow-cyan-500/30'
-                        style={{ height }}
-                      />
-                      <span className='h-1 w-1 rounded-full bg-primary/60 dark:bg-cyan-300/80' />
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-
-            <div className='pt-2 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400'>
-              <p>Source: FMI, WEF, McKinsey (2024)</p>
-              <button
-                type='button'
-                onClick={() => {
-                  const sourcesSection = document.querySelector('section[aria-label="Sources et références"]')
-                  if (sourcesSection) {
-                    sourcesSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
-                    setTimeout(() => {
-                      const button = sourcesSection.querySelector('button[type="button"]') as HTMLButtonElement
-                      if (button && button.textContent?.includes('Sources')) button.click()
-                    }, 500)
-                  }
-                }}
-                className='text-primary hover:underline dark:text-cyan-300 font-medium'>
-                Voir toutes les sources
-              </button>
-            </div>
-          </motion.div>
-        </motion.section>
-
-        {/* Future jobs donut + journey timeline */}
-        <motion.section
-          {...fadeInUp}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className='grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-start'>
-          <div className='space-y-4 text-sm sm:text-base text-slate-700 dark:text-slate-200'>
-            <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
-              Métiers de demain
-            </p>
-            <h2 className='text-xl font-semibold text-[#0A004B] sm:text-2xl dark:text-white'>
-              Un monde où 85% des métiers de demain n&apos;existent pas encore
-            </h2>
-            <p className='text-sm sm:text-base text-slate-700 dark:text-slate-200 mb-3'>
-              La transformation est déjà en cours. <strong>Les métiers d&apos;aujourd&apos;hui évoluent, ceux de demain restent à inventer.</strong>
-            </p>
-            <ul className='space-y-2 text-sm sm:text-base text-slate-700 dark:text-slate-200 mb-4'>
-              <li className='flex items-start gap-2'>
-                <span className='mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
-                <span><strong>40% des emplois</strong> seront transformés par l&apos;IA d&apos;ici 2030</span>
-              </li>
-              <li className='flex items-start gap-2'>
-                <span className='mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
-                <span><strong>85% des métiers de demain</strong> n&apos;existent pas encore</span>
-              </li>
-              <li className='flex items-start gap-2'>
-                <span className='mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
-                <span>Les entreprises recherchent des <strong>profils créatifs capables de collaborer avec l&apos;IA</strong></span>
-              </li>
-            </ul>
-            <p className='text-sm sm:text-base text-slate-700 dark:text-slate-200'>
-              <strong>Notre réponse :</strong> former des innovateurs, des créateurs de solutions, des esprits critiques et autonomes. 
-              Des jeunes qui sauront inventer leur métier plutôt que de le subir.
-            </p>
-            <div
-              aria-label='Répartition entre métiers actuels et métiers de demain'
-              className='mt-4 w-full'>
-              <DonutChartFutureJobs />
-            </div>
-          </div>
-
-          {/* Journey timeline */}
-          <motion.div
-            {...fadeIn}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.05 }}
-            className='relative rounded-3xl bg-white/90 p-5 text-slate-900 shadow-xl shadow-slate-900/5 ring-1 ring-slate-200/80 backdrop-blur-sm dark:bg-slate-950/95 dark:text-slate-100 dark:ring-cyan-400/40 dark:shadow-cyan-500/20'>
-            <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary dark:text-cyan-300'>
-              Le parcours ZYNOVIA
-            </p>
-            <p className='mt-2 text-sm text-slate-600 dark:text-slate-200'>
-              <strong>Une trajectoire progressive</strong>, de la découverte à la maîtrise, 
-              jalonnée de projets concrets qui construisent le portfolio de l&apos;élève.
-            </p>
-            <ol className='mt-5 space-y-4'>
-              {[
-                {
-                  title: '1. Découverte & curiosité',
-                  desc: "Comprendre l'IA, ses usages et ses limites. Développer une première culture numérique solide.",
-                },
-                {
-                  title: '2. Pratique & expérimentation',
-                  desc: "Créer des mini‑projets, manipuler des modèles, explorer des cas d'usage concrets et proches de leur quotidien.",
-                },
-                {
-                  title: "3. Projets d'impact",
-                  desc: "Imaginer et prototyper des solutions IA pour l'éducation, la santé, le sport, l'environnement… Des projets qui ont du sens.",
-                },
-                {
-                  title: '4. Orientation & projection',
-                  desc: 'Construire un portfolio valorisable, préparer concours et dossiers, se projeter dans les études et métiers de demain.',
-                },
-              ].map((step, index) => (
-                <li key={step.title} className='relative flex gap-3'>
-                  <div className='mt-1 flex flex-col items-center'>
-                    <div className='flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-[#00C3D9] to-[#0067E0] text-xs font-semibold text-white shadow-md'>
-                      {index + 1}
-                    </div>
-                    {index < 3 && (
-                      <div className='mt-1.5 h-10 w-px bg-gradient-to-b from-cyan-400/70 to-cyan-500/10' />
-                    )}
-                  </div>
-                  <div className='space-y-1.5 text-xs sm:text-sm flex-1'>
-                    <p className='font-semibold text-slate-900 dark:text-white'>{step.title}</p>
-                    <p className='text-slate-600 dark:text-slate-300 leading-relaxed'>{step.desc}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </motion.div>
-        </motion.section>
-
-        {/* Competencies + radar chart */}
-        <motion.section
-          {...fadeInUp}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className='grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1.1fr)] lg:items-center'>
-          <div className='space-y-4 text-sm sm:text-base text-slate-700 dark:text-slate-200'>
-            <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
-              Compétences clés
-            </p>
-            <h2 className='text-xl font-semibold text-[#0A004B] sm:text-2xl dark:text-white'>
-              L&apos;excellence technique + l&apos;intelligence humaine
-            </h2>
-            <p className='text-sm sm:text-base text-slate-700 dark:text-slate-200'>
-              L&apos;IA ne remplace pas l&apos;humain. Elle l&apos;amplifie. Nous développons chez chaque élève 
-              <strong className='text-[#0A004B] dark:text-white'> l&apos;équilibre parfait entre compétences techniques de haut niveau et qualités humaines essentielles.</strong>
-            </p>
-
-            <div className='grid gap-4 md:grid-cols-2'>
-              <div className='space-y-2 rounded-2xl bg-white/70 p-4 shadow-sm ring-1 ring-slate-200/70 backdrop-blur dark:bg-slate-900/70 dark:ring-slate-700/60'>
-                <div className='flex items-center gap-2'>
-                  <Icon
-                    icon='solar:atom-bold-duotone'
-                    className='h-5 w-5 text-[#0091E6]'
-                    aria-hidden='true'
-                  />
-                  <h3 className='text-sm font-semibold text-[#0A004B] dark:text-white'>
-                    Compétences scientifiques avancées
-                  </h3>
-                </div>
-                <ul className='mt-2 space-y-1.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300'>
-                  <li className='flex items-start gap-2'>
-                    <span className='mt-1.5 h-1 w-1 rounded-full bg-[#0091E6]' />
-                    <span>IA, modèles d&apos;apprentissage, algorithmes</span>
-                  </li>
-                  <li className='flex items-start gap-2'>
-                    <span className='mt-1.5 h-1 w-1 rounded-full bg-[#0091E6]' />
-                    <span>Pensée logique et abstraction</span>
-                  </li>
-                  <li className='flex items-start gap-2'>
-                    <span className='mt-1.5 h-1 w-1 rounded-full bg-[#0091E6]' />
-                    <span>Culture numérique profonde</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className='space-y-2 rounded-2xl bg-white/70 p-4 shadow-sm ring-1 ring-slate-200/70 backdrop-blur dark:bg-slate-900/70 dark:ring-slate-700/60'>
-                <div className='flex items-center gap-2'>
-                  <Icon
-                    icon='solar:people-speak-rounded-bold-duotone'
-                    className='h-5 w-5 text-emerald-500'
-                    aria-hidden='true'
-                  />
-                  <h3 className='text-sm font-semibold text-[#0A004B] dark:text-white'>
-                    Compétences humaines &amp; soft skills
-                  </h3>
-                </div>
-                <ul className='mt-2 space-y-1.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300'>
-                  <li className='flex items-start gap-2'>
-                    <span className='mt-1.5 h-1 w-1 rounded-full bg-emerald-500' />
-                    <span>Collaboration et travail d&apos;équipe</span>
-                  </li>
-                  <li className='flex items-start gap-2'>
-                    <span className='mt-1.5 h-1 w-1 rounded-full bg-emerald-500' />
-                    <span>Communication efficace</span>
-                  </li>
-                  <li className='flex items-start gap-2'>
-                    <span className='mt-1.5 h-1 w-1 rounded-full bg-emerald-500' />
-                    <span>Leadership et prise d&apos;initiative</span>
-                  </li>
-                  <li className='flex items-start gap-2'>
-                    <span className='mt-1.5 h-1 w-1 rounded-full bg-emerald-500' />
-                    <span>Esprit critique et analyse</span>
-                  </li>
-                  <li className='flex items-start gap-2'>
-                    <span className='mt-1.5 h-1 w-1 rounded-full bg-emerald-500' />
-                    <span>Créativité et innovation</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className='mt-3 rounded-2xl border border-dashed border-primary/30 bg-primary/5 px-4 py-3 text-sm text-slate-700 dark:border-cyan-400/40 dark:bg-cyan-500/5 dark:text-slate-200'>
-              <p className='font-semibold text-[#0A004B] dark:text-white mb-1'>
-                Notre conviction
-              </p>
-              <p className='text-xs sm:text-sm'>
-                Un élève qui maîtrise l&apos;IA aujourd&apos;hui devient <strong>un adulte indispensable demain</strong>. 
-                Dans toutes ses dimensions : technique, éthique et humaine.
-              </p>
-            </div>
-          </div>
-
-          <motion.div
-            {...fadeIn}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
-            className='p-2 sm:p-3'>
-            <h3 className='mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-primary dark:text-primary'>
-              Profil de compétences
-            </h3>
-            <p className='mb-4 text-xs text-slate-600 dark:text-slate-300'>
-              Visualisation de l’équilibre entre compétences techniques et humaines cultivées chez nos
-              élèves.
-            </p>
-            <div
-              aria-label='Radar des compétences développées chez les élèves'
-              className='h-72 w-full sm:h-80'>
-              <RadarChartSkills />
-            </div>
-          </motion.div>
-        </motion.section>
-
-        {/* Opportunities + bar chart + trust */}
-        <motion.section
-          {...fadeInUp}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className='space-y-10'>
-          <div className='grid gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1.05fr)] lg:items-start'>
-            <div className='space-y-4 text-sm sm:text-base text-slate-700 dark:text-slate-200'>
+              {...fadeInUp}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              className='space-y-2 text-center md:text-left'>
               <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
-                Opportunités &amp; débouchés
+                Tendances du marché
               </p>
               <h2 className='text-xl font-semibold text-[#0A004B] sm:text-2xl dark:text-white'>
-                Une longueur d&apos;avance pour les études et la carrière
+                L&apos;IA transforme le monde du travail : préparez-vous dès maintenant
               </h2>
               <p className='text-sm sm:text-base text-slate-700 dark:text-slate-200'>
-                <strong>ZYNOVIA donne un avantage stratégique déterminant</strong> pour réussir les concours exigeants, 
-                intégrer les meilleures filières STEM, accéder aux grandes écoles d&apos;ingénieurs, 
-                et se démarquer dans les carrières technologiques.
+                Les chiffres parlent d&apos;eux-mêmes. L&apos;intelligence artificielle redéfinit les métiers
+                à une vitesse inédite. <strong>Préparer les jeunes aujourd&apos;hui, c&apos;est leur garantir un avenir professionnel solide.</strong>
               </p>
-              <ul className='mt-3 grid gap-2 text-xs sm:grid-cols-2 sm:text-sm'>
+            </motion.div>
+
+            {/* Stats grid */}
+            <motion.div
+              variants={{
+                initial: {},
+                whileInView: {
+                  transition: { staggerChildren: 0.08 },
+                },
+              }}
+              initial='initial'
+              whileInView='whileInView'
+              viewport={{ once: true, amount: 0.3 }}
+              className='grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5'>
+              <motion.div
+                variants={{
+                  initial: { opacity: 0, y: 20 },
+                  whileInView: { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.45, ease: 'easeOut' }}
+                className='group flex flex-col justify-between rounded-2xl bg-white/80 p-4 shadow-md shadow-slate-900/5 ring-1 ring-slate-200/80 backdrop-blur-xl dark:bg-slate-900/80 dark:ring-slate-700/70'>
+                <p className='text-xs font-medium uppercase tracking-[0.22em] text-primary/90 dark:text-cyan-300'>
+                  40%
+                </p>
+                <p className='mt-2 text-sm sm:text-base text-slate-700 dark:text-slate-200'>
+                  des emplois mondiaux seront impactés par l’IA d’ici 2030.
+                </p>
+              </motion.div>
+
+              <motion.div
+                variants={{
+                  initial: { opacity: 0, y: 20 },
+                  whileInView: { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.45, ease: 'easeOut', delay: 0.03 }}
+                className='group flex flex-col justify-between rounded-2xl bg-white/80 p-4 shadow-md shadow-slate-900/5 ring-1 ring-slate-200/80 backdrop-blur-xl dark:bg-slate-900/80 dark:ring-slate-700/70'>
+                <p className='text-xs font-medium uppercase tracking-[0.22em] text-primary/90 dark:text-cyan-300'>
+                  85%
+                </p>
+                <p className='mt-2 text-sm sm:text-base text-slate-700 dark:text-slate-200'>
+                  des métiers de demain n&apos;existent pas encore.
+                </p>
+              </motion.div>
+
+              <motion.div
+                variants={{
+                  initial: { opacity: 0, y: 20 },
+                  whileInView: { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.45, ease: 'easeOut', delay: 0.06 }}
+                className='group flex flex-col justify-between rounded-2xl bg-white/80 p-4 shadow-md shadow-slate-900/5 ring-1 ring-slate-200/80 backdrop-blur-xl dark:bg-slate-900/80 dark:ring-slate-700/70'>
+                <p className='text-xs font-medium uppercase tracking-[0.22em] text-primary/90 dark:text-cyan-300'>
+                  70%
+                </p>
+                <p className='mt-2 text-sm sm:text-base text-slate-700 dark:text-slate-200'>
+                  des entreprises investiront massivement dans l’IA.
+                </p>
+              </motion.div>
+            </motion.div>
+
+            {/* Chart block + footer note */}
+            <motion.div
+              {...fadeInUp}
+              transition={{ duration: 0.6, ease: 'easeOut', delay: 0.05 }}
+              className='space-y-3 rounded-3xl bg-white/90 p-5 shadow-[0_16px_40px_rgba(15,23,42,0.18)] ring-1 ring-slate-200/80 backdrop-blur-2xl dark:bg-slate-900/90 dark:ring-slate-700/80'>
+              <div className='space-y-1'>
+                <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary dark:text-cyan-300'>
+                  Horizon 2024 – 2030
+                </p>
+                <p className='text-xs sm:text-sm text-slate-600 dark:text-slate-200'>
+                  Projection mondiale des métiers impactés par l&apos;intelligence artificielle.
+                </p>
+              </div>
+
+              <div
+                aria-label="Projection mondiale des métiers impactés par l'intelligence artificielle"
+                className='mt-3 flex h-56 items-center justify-center rounded-2xl border border-dashed border-primary/25 bg-gradient-to-br from-[#00C3D9]/5 via-[#0091E6]/5 to-[#0067E0]/5 px-4 py-3 dark:border-cyan-400/40'>
+                <div className='flex w-full max-w-xl items-end justify-between gap-2'>
+                  {Array.from({ length: 7 }).map((_, index) => {
+                    const height = 30 + index * 10
+                    return (
+                      <div
+                        key={index}
+                        className='flex flex-1 flex-col items-center gap-1'>
+                        <div
+                          className='w-full rounded-t-xl bg-gradient-to-t from-[#0067E0] via-[#0091E6] to-[#00C3D9] shadow-sm shadow-[#0091E6]/35 dark:shadow-cyan-500/30'
+                          style={{ height }}
+                        />
+                        <span className='h-1 w-1 rounded-full bg-primary/60 dark:bg-cyan-300/80' />
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+
+              <div className='pt-2 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400'>
+                <p>Source : FMI, WEF, McKinsey (2024)</p>
+                <button
+                  type='button'
+                  onClick={() => {
+                    const sourcesSection = document.querySelector('section[aria-label="Sources et références"]')
+                    if (sourcesSection) {
+                      sourcesSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+                      setTimeout(() => {
+                        const button = sourcesSection.querySelector('button[type="button"]') as HTMLButtonElement
+                        if (button && button.textContent?.includes('Sources')) button.click()
+                      }, 500)
+                    }
+                  }}
+                  className='text-primary hover:underline dark:text-cyan-300 font-medium'>
+                  Voir toutes les sources
+                </button>
+              </div>
+            </motion.div>
+          </motion.section>
+
+          {/* Future jobs donut + journey timeline */}
+          <motion.section
+            {...fadeInUp}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className='grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-start'>
+            <div className='space-y-4 text-sm sm:text-base text-slate-700 dark:text-slate-200'>
+              <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
+                Métiers de demain
+              </p>
+              <h2 className='text-xl font-semibold text-[#0A004B] sm:text-2xl dark:text-white'>
+                Un monde où 85% des métiers de demain n&apos;existent pas encore
+              </h2>
+              <p className='text-sm sm:text-base text-slate-700 dark:text-slate-200 mb-3'>
+                La transformation est déjà en cours. <strong>Les métiers d&apos;aujourd&apos;hui évoluent, ceux de demain restent à inventer.</strong>
+              </p>
+              <ul className='space-y-2 text-sm sm:text-base text-slate-700 dark:text-slate-200 mb-4'>
                 <li className='flex items-start gap-2'>
-                  <span className='mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
-                  <span>Concours exigeants et sélectifs</span>
+                  <span className='mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                  <span><strong>40% des emplois</strong> seront transformés par l&apos;IA d&apos;ici 2030</span>
                 </li>
                 <li className='flex items-start gap-2'>
-                  <span className='mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
-                  <span>Parcours scientifiques et technologiques (STEM)</span>
+                  <span className='mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                  <span><strong>85% des métiers de demain</strong> n&apos;existent pas encore</span>
                 </li>
                 <li className='flex items-start gap-2'>
-                  <span className='mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
-                  <span>Écoles d’ingénieurs</span>
-                </li>
-                <li className='flex items-start gap-2'>
-                  <span className='mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
-                  <span>Carrières technologiques et métiers de l’IA</span>
-                </li>
-                <li className='flex items-start gap-2 sm:col-span-2'>
-                  <span className='mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
-                  <span>Entreprises innovantes en recherche de talents IA</span>
+                  <span className='mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                  <span>Les entreprises recherchent des <strong>profils créatifs capables de collaborer avec l&apos;IA</strong></span>
                 </li>
               </ul>
+              <p className='text-sm sm:text-base text-slate-700 dark:text-slate-200'>
+                <strong>Notre réponse :</strong> former des innovateurs, des créateurs de solutions, des esprits critiques et autonomes.
+                Des jeunes qui sauront inventer leur métier plutôt que de le subir.
+              </p>
+              <div
+                aria-label='Répartition entre métiers actuels et métiers de demain'
+                className='mt-4 w-full'>
+                <DonutChartFutureJobs />
+              </div>
+            </div>
+
+            {/* Journey timeline */}
+            <motion.div
+              {...fadeIn}
+              transition={{ duration: 0.7, ease: 'easeOut', delay: 0.05 }}
+              className='relative rounded-3xl bg-white/90 p-5 text-slate-900 shadow-xl shadow-slate-900/5 ring-1 ring-slate-200/80 backdrop-blur-sm dark:bg-slate-950/95 dark:text-slate-100 dark:ring-cyan-400/40 dark:shadow-cyan-500/20'>
+              <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary dark:text-cyan-300'>
+                Le parcours ZYNOVIA
+              </p>
+              <p className='mt-2 text-sm text-slate-600 dark:text-slate-200'>
+                <strong>Une trajectoire progressive</strong>, de la découverte à la maîtrise,
+                jalonnée de projets concrets qui construisent le portfolio de l&apos;élève.
+              </p>
+              <ol className='mt-5 space-y-4'>
+                {[
+                  {
+                    title: '1. Découverte & curiosité',
+                    desc: "Comprendre l'IA, ses usages et ses limites. Développer une première culture numérique solide.",
+                  },
+                  {
+                    title: '2. Pratique & expérimentation',
+                    desc: "Créer des mini‑projets, manipuler des modèles, explorer des cas d'usage concrets et proches de leur quotidien.",
+                  },
+                  {
+                    title: "3. Projets d'impact",
+                    desc: "Imaginer et prototyper des solutions IA pour l'éducation, la santé, le sport, l'environnement… Des projets qui ont du sens.",
+                  },
+                  {
+                    title: '4. Orientation & projection',
+                    desc: 'Construire un portfolio valorisable, préparer concours et dossiers, se projeter dans les études et métiers de demain.',
+                  },
+                ].map((step, index) => (
+                  <li key={step.title} className='relative flex gap-3'>
+                    <div className='mt-1 flex flex-col items-center'>
+                      <div className='flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-[#00C3D9] to-[#0067E0] text-xs font-semibold text-white shadow-md'>
+                        {index + 1}
+                      </div>
+                      {index < 3 && (
+                        <div className='mt-1.5 h-10 w-px bg-gradient-to-b from-cyan-400/70 to-cyan-500/10' />
+                      )}
+                    </div>
+                    <div className='space-y-1.5 text-xs sm:text-sm flex-1'>
+                      <p className='font-semibold text-slate-900 dark:text-white'>{step.title}</p>
+                      <p className='text-slate-600 dark:text-slate-300 leading-relaxed'>{step.desc}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </motion.div>
+          </motion.section>
+
+          {/* Competencies + radar chart */}
+          <motion.section
+            {...fadeInUp}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className='grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1.1fr)] lg:items-center'>
+            <div className='space-y-4 text-sm sm:text-base text-slate-700 dark:text-slate-200'>
+              <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
+                Compétences clés
+              </p>
+              <h2 className='text-xl font-semibold text-[#0A004B] sm:text-2xl dark:text-white'>
+                L&apos;excellence technique + l&apos;intelligence humaine
+              </h2>
+              <p className='text-sm sm:text-base text-slate-700 dark:text-slate-200'>
+                L&apos;IA ne remplace pas l&apos;humain. Elle l&apos;amplifie. Nous développons chez chaque élève
+                <strong className='text-[#0A004B] dark:text-white'> l&apos;équilibre parfait entre compétences techniques de haut niveau et qualités humaines essentielles.</strong>
+              </p>
+
+              <div className='grid gap-4 md:grid-cols-2'>
+                <div className='space-y-2 rounded-2xl bg-white/70 p-4 shadow-sm ring-1 ring-slate-200/70 backdrop-blur dark:bg-slate-900/70 dark:ring-slate-700/60'>
+                  <div className='flex items-center gap-2'>
+                    <Icon
+                      icon='solar:atom-bold-duotone'
+                      className='h-5 w-5 text-[#0091E6]'
+                      aria-hidden='true'
+                    />
+                    <h3 className='text-sm font-semibold text-[#0A004B] dark:text-white'>
+                      Compétences scientifiques avancées
+                    </h3>
+                  </div>
+                  <ul className='mt-2 space-y-1.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300'>
+                    <li className='flex items-start gap-2'>
+                      <span className='mt-1.5 h-1 w-1 rounded-full bg-[#0091E6]' />
+                      <span>IA, modèles d&apos;apprentissage, algorithmes</span>
+                    </li>
+                    <li className='flex items-start gap-2'>
+                      <span className='mt-1.5 h-1 w-1 rounded-full bg-[#0091E6]' />
+                      <span>Pensée logique et abstraction</span>
+                    </li>
+                    <li className='flex items-start gap-2'>
+                      <span className='mt-1.5 h-1 w-1 rounded-full bg-[#0091E6]' />
+                      <span>Culture numérique profonde</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className='space-y-2 rounded-2xl bg-white/70 p-4 shadow-sm ring-1 ring-slate-200/70 backdrop-blur dark:bg-slate-900/70 dark:ring-slate-700/60'>
+                  <div className='flex items-center gap-2'>
+                    <Icon
+                      icon='solar:people-speak-rounded-bold-duotone'
+                      className='h-5 w-5 text-emerald-500'
+                      aria-hidden='true'
+                    />
+                    <h3 className='text-sm font-semibold text-[#0A004B] dark:text-white'>
+                      Compétences humaines &amp; soft skills
+                    </h3>
+                  </div>
+                  <ul className='mt-2 space-y-1.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300'>
+                    <li className='flex items-start gap-2'>
+                      <span className='mt-1.5 h-1 w-1 rounded-full bg-emerald-500' />
+                      <span>Collaboration et travail d&apos;équipe</span>
+                    </li>
+                    <li className='flex items-start gap-2'>
+                      <span className='mt-1.5 h-1 w-1 rounded-full bg-emerald-500' />
+                      <span>Communication efficace</span>
+                    </li>
+                    <li className='flex items-start gap-2'>
+                      <span className='mt-1.5 h-1 w-1 rounded-full bg-emerald-500' />
+                      <span>Leadership et prise d&apos;initiative</span>
+                    </li>
+                    <li className='flex items-start gap-2'>
+                      <span className='mt-1.5 h-1 w-1 rounded-full bg-emerald-500' />
+                      <span>Esprit critique et analyse</span>
+                    </li>
+                    <li className='flex items-start gap-2'>
+                      <span className='mt-1.5 h-1 w-1 rounded-full bg-emerald-500' />
+                      <span>Créativité et innovation</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className='mt-3 rounded-2xl border border-dashed border-primary/30 bg-primary/5 px-4 py-3 text-sm text-slate-700 dark:border-cyan-400/40 dark:bg-cyan-500/5 dark:text-slate-200'>
+                <p className='font-semibold text-[#0A004B] dark:text-white mb-1'>
+                  Notre conviction
+                </p>
+                <p className='text-xs sm:text-sm'>
+                  Un élève qui maîtrise l&apos;IA aujourd&apos;hui devient <strong>un adulte indispensable demain</strong>.
+                  Dans toutes ses dimensions : technique, éthique et humaine.
+                </p>
+              </div>
             </div>
 
             <motion.div
               {...fadeIn}
               transition={{ duration: 0.7, ease: 'easeOut' }}
-              className='rounded-3xl bg-white/90 p-4 shadow-md shadow-slate-900/5 ring-1 ring-slate-200/80 backdrop-blur-sm dark:bg-slate-900/90 dark:ring-slate-700/80'>
-              <div className='flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between'>
-                <div>
-                  <h3 className='text-xs font-semibold uppercase tracking-[0.22em] text-primary dark:text-primary'>
-                    Impact global sur le parcours
-                  </h3>
-                  <p className='mt-1 text-xs text-slate-600 dark:text-slate-300'>
-                    Niveau de préparation des élèves pour chaque étape clé de leur avenir académique et
-                    professionnel.
+              className='p-2 sm:p-3'>
+              <h3 className='mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-primary dark:text-primary'>
+                Profil de compétences
+              </h3>
+              <p className='mb-4 text-xs text-slate-600 dark:text-slate-300'>
+                Visualisation de l’équilibre entre compétences techniques et humaines cultivées chez nos
+                élèves.
+              </p>
+              <div
+                aria-label='Radar des compétences développées chez les élèves'
+                className='h-72 w-full sm:h-80'>
+                <RadarChartSkills />
+              </div>
+            </motion.div>
+          </motion.section>
+
+          {/* Opportunities + bar chart + trust */}
+          <motion.section
+            {...fadeInUp}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className='space-y-10'>
+            <div className='grid gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1.05fr)] lg:items-start'>
+              <div className='space-y-4 text-sm sm:text-base text-slate-700 dark:text-slate-200'>
+                <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
+                  Opportunités &amp; débouchés
+                </p>
+                <h2 className='text-xl font-semibold text-[#0A004B] sm:text-2xl dark:text-white'>
+                  Une longueur d&apos;avance pour les études et la carrière
+                </h2>
+                <p className='text-sm sm:text-base text-slate-700 dark:text-slate-200'>
+                  <strong>ZYNOVIA donne un avantage stratégique déterminant</strong> pour réussir les concours exigeants,
+                  intégrer les meilleures filières STEM, accéder aux grandes écoles d&apos;ingénieurs,
+                  et se démarquer dans les carrières technologiques.
+                </p>
+                <ul className='mt-3 grid gap-2 text-xs sm:grid-cols-2 sm:text-sm'>
+                  <li className='flex items-start gap-2'>
+                    <span className='mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                    <span>Concours exigeants et sélectifs</span>
+                  </li>
+                  <li className='flex items-start gap-2'>
+                    <span className='mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                    <span>Parcours scientifiques et technologiques (STEM)</span>
+                  </li>
+                  <li className='flex items-start gap-2'>
+                    <span className='mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                    <span>Écoles d’ingénieurs</span>
+                  </li>
+                  <li className='flex items-start gap-2'>
+                    <span className='mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                    <span>Carrières technologiques et métiers de l’IA</span>
+                  </li>
+                  <li className='flex items-start gap-2 sm:col-span-2'>
+                    <span className='mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
+                    <span>Entreprises innovantes en recherche de talents IA</span>
+                  </li>
+                </ul>
+              </div>
+
+              <motion.div
+                {...fadeIn}
+                transition={{ duration: 0.7, ease: 'easeOut' }}
+                className='rounded-3xl bg-white/90 p-4 shadow-md shadow-slate-900/5 ring-1 ring-slate-200/80 backdrop-blur-sm dark:bg-slate-900/90 dark:ring-slate-700/80'>
+                <div className='flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between'>
+                  <div>
+                    <h3 className='text-xs font-semibold uppercase tracking-[0.22em] text-primary dark:text-primary'>
+                      Impact global sur le parcours
+                    </h3>
+                    <p className='mt-1 text-xs text-slate-600 dark:text-slate-300'>
+                      Niveau de préparation des élèves pour chaque étape clé de leur avenir académique et
+                      professionnel.
+                    </p>
+                  </div>
+                  <p className='mt-1 text-[11px] font-medium text-slate-500 dark:text-slate-400'>
+                    0% ⟶ 100% | Concours, STEM, écoles, carrières IA
                   </p>
                 </div>
-                <p className='mt-1 text-[11px] font-medium text-slate-500 dark:text-slate-400'>
-                  0% ⟶ 100% | Concours, STEM, écoles, carrières IA
+
+                <div
+                  aria-label='Préparation aux concours, filières sélectives et carrières IA'
+                  className='mt-4 h-64 w-full sm:h-72'>
+                  <RoundedBarChartOpportunities />
+                </div>
+              </motion.div>
+            </div>
+
+            <div className='mt-16 grid gap-6 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1.1fr)] md:items-center'>
+              <motion.div
+                {...fadeInUp}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+                className='space-y-4 rounded-3xl bg-white/95 p-5 text-slate-900 shadow-xl shadow-slate-900/5 ring-1 ring-slate-200/80 backdrop-blur-sm dark:bg-slate-900/95 dark:text-slate-100 dark:shadow-cyan-500/20 dark:ring-cyan-400/40'>
+                <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary dark:text-cyan-300'>
+                  Témoignages &amp; indicateurs de confiance
+                </p>
+                <p className='text-sm sm:text-base text-slate-700 dark:text-slate-100 italic'>
+                  « Depuis qu&apos;il suit ZYNOVIA, notre fils a gagné en assurance et en curiosité scientifique.
+                  Il travaille mieux en équipe et se projette enfin dans des études qui lui correspondent vraiment.
+                  <strong> Une transformation positive qui nous rassure pour son avenir.</strong> »
+                </p>
+                <p className='text-xs sm:text-sm text-slate-500 dark:text-slate-300 mt-2'>
+                  — Parent d&apos;élève, niveau lycée
+                </p>
+                <div className='mt-3 grid gap-4 sm:grid-cols-3'>
+                  <div className='space-y-1'>
+                    <p className='text-2xl font-semibold text-slate-900 dark:text-white'>
+                      <AnimatedCounter value={95} suffix='%' />
+                    </p>
+                    <p className='text-xs text-slate-600 dark:text-slate-300'>
+                      des parents constatent une progression de la confiance de leur enfant.
+                    </p>
+                  </div>
+                  <div className='space-y-1'>
+                    <p className='text-2xl font-semibold text-slate-900 dark:text-white'>
+                      <AnimatedCounter value={90} suffix='%' />
+                    </p>
+                    <p className='text-xs text-slate-600 dark:text-slate-300'>
+                      des élèves souhaitent poursuivre dans un parcours technologique ou scientifique.
+                    </p>
+                  </div>
+                  <div className='space-y-1'>
+                    <p className='text-2xl font-semibold text-slate-900 dark:text-white'>
+                      <AnimatedCounter value={4} suffix='/5' />
+                    </p>
+                    <p className='text-xs text-slate-600 dark:text-slate-300'>
+                      note moyenne de satisfaction des familles accompagnées.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                {...fadeInUp}
+                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.05 }}
+                className='space-y-4 rounded-3xl bg-white/80 p-5 shadow-md shadow-black/5 ring-1 ring-white/70 backdrop-blur-2xl dark:bg-slate-900/80 dark:ring-white/10'>
+                <h3 className='text-sm sm:text-base font-semibold text-[#0A004B] dark:text-white mb-2'>
+                  Une décision qui construit l&apos;avenir dès aujourd&apos;hui
+                </h3>
+                <p className='text-xs sm:text-sm text-slate-600 dark:text-slate-200 mb-4'>
+                  Choisir ZYNOVIA, c&apos;est offrir à votre enfant un <strong>terrain d&apos;expérimentation sécurisé, exigeant et enthousiasmant</strong>,
+                  où l&apos;IA devient un levier de créativité, pas une source de crainte.
+                </p>
+                <div className='space-y-3'>
+                  <Link
+                    href='/parents#appointment-form'
+                    className='inline-flex items-center justify-center rounded-xl btn-primary btn-hover px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#27397F]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
+                  >
+                    Réserver une session découverte
+                  </Link>
+                  <Link
+                    href='/programmes'
+                    className='inline-flex w-full items-center justify-center gap-2 rounded-xl border border-primary/30 bg-white/70 px-5 py-2.5 text-sm font-semibold text-[#0A004B] shadow-sm backdrop-blur hover:border-primary hover:text-primary dark:bg-slate-900/70 dark:text-white'>
+                    <Icon icon='mdi:school' className='h-4 w-4' />
+                    Découvrir les parcours élèves
+                  </Link>
+                </div>
+              </motion.div>
+            </div>
+          </motion.section>
+
+          {/* Sources Section (détaillée) */}
+          <SourcesSection />
+
+          {/* FAQ */}
+          <motion.section
+            {...fadeInUp}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            aria-label='Questions fréquentes sur ZYNOVIA Academy'
+            className='space-y-5'>
+            <div className='space-y-2 text-center md:text-left'>
+              <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
+                Questions fréquentes
+              </p>
+              <h2 className='text-xl font-semibold text-[#0A004B] sm:text-2xl dark:text-white'>
+                Questions fréquentes
+              </h2>
+              <p className='mx-auto max-w-3xl text-xs sm:text-sm text-slate-600 dark:text-slate-300'>
+                Les réponses aux questions que vous vous posez le plus souvent.
+                Nous accompagnons les familles à chaque étape : choix du parcours, suivi des progrès et préparation de l&apos;orientation.
+              </p>
+            </div>
+            <FaqAccordion items={faqItems} />
+          </motion.section>
+
+          {/* Final CTA Section */}
+          <motion.section
+            {...fadeInUp}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            className='relative rounded-3xl bg-gradient-to-br from-[#00C3D9]/10 via-[#0091E6]/10 to-[#0067E0]/10 p-8 sm:p-10 text-center ring-1 ring-primary/20 backdrop-blur-sm dark:from-cyan-500/5 dark:via-blue-600/5 dark:to-blue-700/5 dark:ring-cyan-400/30'>
+            <div className='mx-auto max-w-3xl space-y-6'>
+              <div className='space-y-3'>
+                <h2 className='text-2xl sm:text-3xl font-bold text-[#0A004B] dark:text-white'>
+                  Prêt à préparer l&apos;avenir de votre enfant ?
+                </h2>
+                <p className='text-base sm:text-lg text-slate-700 dark:text-slate-300'>
+                  Rejoignez ZYNOVIA Academy et offrez-lui les compétences essentielles pour réussir dans un monde transformé par l&apos;IA.
                 </p>
               </div>
 
-              <div
-                aria-label='Préparation aux concours, filières sélectives et carrières IA'
-                className='mt-4 h-64 w-full sm:h-72'>
-                <RoundedBarChartOpportunities />
-              </div>
-            </motion.div>
-          </div>
-
-          <div className='mt-16 grid gap-6 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1.1fr)] md:items-center'>
-            <motion.div
-              {...fadeInUp}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
-              className='space-y-4 rounded-3xl bg-white/95 p-5 text-slate-900 shadow-xl shadow-slate-900/5 ring-1 ring-slate-200/80 backdrop-blur-sm dark:bg-slate-900/95 dark:text-slate-100 dark:shadow-cyan-500/20 dark:ring-cyan-400/40'>
-              <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary dark:text-cyan-300'>
-                Témoignages &amp; indicateurs de confiance
-              </p>
-              <p className='text-sm sm:text-base text-slate-700 dark:text-slate-100 italic'>
-                « Depuis qu&apos;il suit ZYNOVIA, notre fils a gagné en assurance et en curiosité scientifique. 
-                Il travaille mieux en équipe et se projette enfin dans des études qui lui correspondent vraiment. 
-                <strong> Une transformation positive qui nous rassure pour son avenir.</strong> »
-              </p>
-              <p className='text-xs sm:text-sm text-slate-500 dark:text-slate-300 mt-2'>
-                — Parent d&apos;élève, niveau lycée
-              </p>
-              <div className='mt-3 grid gap-4 sm:grid-cols-3'>
-                <div className='space-y-1'>
-                  <p className='text-2xl font-semibold text-slate-900 dark:text-white'>
-                    <AnimatedCounter value={95} suffix='%' />
-                  </p>
-                  <p className='text-xs text-slate-600 dark:text-slate-300'>
-                    des parents constatent une progression de la confiance de leur enfant.
-                  </p>
-                </div>
-                <div className='space-y-1'>
-                  <p className='text-2xl font-semibold text-slate-900 dark:text-white'>
-                    <AnimatedCounter value={90} suffix='%' />
-                  </p>
-                  <p className='text-xs text-slate-600 dark:text-slate-300'>
-                    des élèves souhaitent poursuivre dans un parcours technologique ou scientifique.
-                  </p>
-                </div>
-                <div className='space-y-1'>
-                  <p className='text-2xl font-semibold text-slate-900 dark:text-white'>
-                    <AnimatedCounter value={4} suffix='/5' />
-                  </p>
-                  <p className='text-xs text-slate-600 dark:text-slate-300'>
-                    note moyenne de satisfaction des familles accompagnées.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              {...fadeInUp}
-              transition={{ duration: 0.6, ease: 'easeOut', delay: 0.05 }}
-              className='space-y-4 rounded-3xl bg-white/80 p-5 shadow-md shadow-black/5 ring-1 ring-white/70 backdrop-blur-2xl dark:bg-slate-900/80 dark:ring-white/10'>
-              <h3 className='text-sm sm:text-base font-semibold text-[#0A004B] dark:text-white mb-2'>
-                Une décision qui construit l&apos;avenir dès aujourd&apos;hui
-              </h3>
-              <p className='text-xs sm:text-sm text-slate-600 dark:text-slate-200 mb-4'>
-                Choisir ZYNOVIA, c&apos;est offrir à votre enfant un <strong>terrain d&apos;expérimentation sécurisé, exigeant et enthousiasmant</strong>, 
-                où l&apos;IA devient un levier de créativité, pas une source de crainte.
-              </p>
-              <div className='space-y-3'>
+              <div className='flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4'>
                 <Link
-                  href='/#contact'
-                  className='inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/30 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'>
+                  href="/#contact"
+                  className="inline-flex items-center justify-center rounded-xl btn-primary btn-hover px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-[#27397F]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950"
+                >
                   Réserver une session découverte
                 </Link>
                 <Link
                   href='/programmes'
-                  className='inline-flex w-full items-center justify-center gap-2 rounded-xl border border-primary/30 bg-white/70 px-5 py-2.5 text-sm font-semibold text-[#0A004B] shadow-sm backdrop-blur hover:border-primary hover:text-primary dark:bg-slate-900/70 dark:text-white'>
-                  <Icon icon='mdi:school' className='h-4 w-4' />
+                  className='inline-flex items-center justify-center gap-2 rounded-xl border-2 border-primary/30 bg-white/90 px-7 py-3.5 text-base font-semibold text-[#0A004B] shadow-sm backdrop-blur hover:border-primary hover:bg-white transition dark:bg-slate-900/90 dark:text-white dark:hover:bg-slate-900'>
+                  <Icon icon='mdi:school' className='h-5 w-5' />
                   Découvrir les parcours élèves
                 </Link>
               </div>
-            </motion.div>
-          </div>
-        </motion.section>
 
-        {/* Sources Section (détaillée) */}
-        <SourcesSection />
-
-        {/* FAQ */}
-        <motion.section
-          {...fadeInUp}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          aria-label='Questions fréquentes sur ZYNOVIA Academy'
-          className='space-y-5'>
-          <div className='space-y-2 text-center md:text-left'>
-            <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary'>
-              Questions fréquentes
-            </p>
-            <h2 className='text-xl font-semibold text-[#0A004B] sm:text-2xl dark:text-white'>
-              Questions fréquentes
-            </h2>
-            <p className='mx-auto max-w-3xl text-xs sm:text-sm text-slate-600 dark:text-slate-300'>
-              Les réponses aux questions que vous vous posez le plus souvent. 
-              Nous accompagnons les familles à chaque étape : choix du parcours, suivi des progrès et préparation de l&apos;orientation.
-            </p>
-          </div>
-          <FaqAccordion items={faqItems} />
-        </motion.section>
-
-        {/* Final CTA Section */}
-        <motion.section
-          {...fadeInUp}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
-          className='relative rounded-3xl bg-gradient-to-br from-[#00C3D9]/10 via-[#0091E6]/10 to-[#0067E0]/10 p-8 sm:p-10 text-center ring-1 ring-primary/20 backdrop-blur-sm dark:from-cyan-500/5 dark:via-blue-600/5 dark:to-blue-700/5 dark:ring-cyan-400/30'>
-          <div className='mx-auto max-w-3xl space-y-6'>
-            <div className='space-y-3'>
-              <h2 className='text-2xl sm:text-3xl font-bold text-[#0A004B] dark:text-white'>
-                Prêt à préparer l&apos;avenir de votre enfant ?
-              </h2>
-              <p className='text-base sm:text-lg text-slate-700 dark:text-slate-300'>
-                Rejoignez ZYNOVIA Academy et offrez-lui les compétences essentielles pour réussir dans un monde transformé par l&apos;IA.
-              </p>
-            </div>
-            
-            <div className='flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4'>
-              <Link
-                href='/#contact'
-                className='inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#00C3D9] via-[#0091E6] to-[#0067E0] px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-[#0091E6]/30 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'>
-                Réserver une session découverte
-              </Link>
-              <Link
-                href='/programmes'
-                className='inline-flex items-center justify-center gap-2 rounded-xl border-2 border-primary/30 bg-white/90 px-7 py-3.5 text-base font-semibold text-[#0A004B] shadow-sm backdrop-blur hover:border-primary hover:bg-white transition dark:bg-slate-900/90 dark:text-white dark:hover:bg-slate-900'>
-                <Icon icon='mdi:school' className='h-5 w-5' />
-                Découvrir les parcours élèves
-              </Link>
-            </div>
-
-            <div className='pt-4 flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm text-slate-600 dark:text-slate-400'>
-              <div className='inline-flex items-center gap-2'>
-                <Icon icon='solar:shield-check-bold-duotone' className='h-4 w-4 text-emerald-500' />
-                <span>+200 élèves accompagnés</span>
-              </div>
-              <div className='inline-flex items-center gap-2'>
-                <Icon icon='solar:hand-stars-bold-duotone' className='h-4 w-4 text-primary' />
-                <span>95% de satisfaction parents</span>
-              </div>
-              <div className='inline-flex items-center gap-2'>
-                <Icon icon='solar:users-group-rounded-bold-duotone' className='h-4 w-4 text-primary' />
-                <span>Partenariats établissements & entreprises</span>
+              <div className='pt-4 flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm text-slate-600 dark:text-slate-400'>
+                <div className='inline-flex items-center gap-2'>
+                  <Icon icon='solar:shield-check-bold-duotone' className='h-4 w-4 text-emerald-500' />
+                  <span>+200 élèves accompagnés</span>
+                </div>
+                <div className='inline-flex items-center gap-2'>
+                  <Icon icon='solar:hand-stars-bold-duotone' className='h-4 w-4 text-primary' />
+                  <span>95% de satisfaction parents</span>
+                </div>
+                <div className='inline-flex items-center gap-2'>
+                  <Icon icon='solar:users-group-rounded-bold-duotone' className='h-4 w-4 text-primary' />
+                  <span>Partenariats établissements & entreprises</span>
+                </div>
               </div>
             </div>
-          </div>
-        </motion.section>
-      </div>
-    </section>
+          </motion.section>
+        </div>
+      </section>
     </>
   )
 }

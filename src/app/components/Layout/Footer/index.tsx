@@ -23,8 +23,7 @@ const Footer = () => {
             </p>
             <div className='flex gap-4'>
               <Link
-                href='https://www.facebook.com/Inoteqiaacademy?locale=fr_FR'
-                target='_blank'
+                href='https://www.facebook.com/profile.php?id=61590195886623' target='_blank'
                 rel='noopener noreferrer'
                 aria-label='Facebook'>
                 <Icon
@@ -34,20 +33,9 @@ const Footer = () => {
                   className='text-darkblue dark:text-white bg-darkmode/5 dark:bg-white/10 rounded-lg p-2 hover:text-primary dark:hover:text-primary duration-300'
                 />
               </Link>
+
               <Link
-                href='https://www.linkedin.com/company/inoteqia-academy/about/'
-                target='_blank'
-                rel='noopener noreferrer'
-                aria-label='LinkedIn'>
-                <Icon
-                  icon='tabler:brand-linkedin'
-                  width={45}
-                  height={45}
-                  className='text-darkblue dark:text-white bg-darkmode/5 dark:bg-white/10 rounded-lg p-2 hover:text-primary dark:hover:text-primary duration-300'
-                />
-              </Link>
-              <Link
-                href='https://www.instagram.com/inoteqiaacademy/'
+                href='https://www.instagram.com/zynovia_academy/'
                 target='_blank'
                 rel='noopener noreferrer'
                 aria-label='Instagram'>
@@ -83,7 +71,7 @@ const Footer = () => {
                 target='_blank'
                 rel='noopener noreferrer'
                 className='text-sm font-normal text-darkblue/60 dark:text-white/60 transition-colors duration-200 hover:text-primary dark:hover:text-primary'>
-                V74G+2MP, Tunis
+                B2-2 Immeuble Mak Crown, rue du Lac Léman, Les Berges du Lac 1053 Tunis
               </Link>
             </div>
             <div className='flex items-start gap-2'>
@@ -93,11 +81,18 @@ const Footer = () => {
                 height={22}
                 className='text-lightgrey flex-shrink-0 mt-0.5'
               />
-              <Link href='tel:+21625857621'>
-                <p className='text-sm font-normal text-darkblue/60 dark:text-white/60 hover:text-primary dark:hover:text-primary transition-colors duration-200'>
-                  +216 25 857 621
-                </p>
-              </Link>
+              <div className='flex flex-col gap-1'>
+                <Link href='tel:+21625857621'>
+                  <p className='text-sm font-normal text-darkblue/60 dark:text-white/60 hover:text-primary dark:hover:text-primary transition-colors duration-200'>
+                    +216 25 857 621
+                  </p>
+                </Link>
+                <Link href='tel:+21690145046'>
+                  <p className='text-sm font-normal text-darkblue/60 dark:text-white/60 hover:text-primary dark:hover:text-primary transition-colors duration-200'>
+                    +216 90 145 046
+                  </p>
+                </Link>
+              </div>
             </div>
             <div className='flex items-start gap-2'>
               <Icon
@@ -106,9 +101,9 @@ const Footer = () => {
                 height={22}
                 className='text-lightgrey flex-shrink-0 mt-0.5'
               />
-              <Link href='mailto:academy@inoteqia.com'>
+              <Link href='mailto:contact@zynovia-academy.com'>
                 <p className='text-sm font-normal text-darkblue/60 dark:text-white/60 hover:text-primary dark:hover:text-primary transition-colors duration-200'>
-                  academy@inoteqia.com
+                  contact@zynovia-academy.com
                 </p>
               </Link>
             </div>
@@ -124,7 +119,7 @@ const Footer = () => {
                   Horaires
                 </p>
                 <p className='text-sm font-normal text-darkblue/60 dark:text-white/60'>
-                  Lundi – Vendredi, 8h–17h
+                  Lundi – Vendredi, 8h–19h
                 </p>
               </div>
             </div>
@@ -134,7 +129,7 @@ const Footer = () => {
           <div className='flex flex-col'>
             <div className='overflow-hidden rounded-xl border border-slate-200/50 dark:border-slate-700/50 h-full min-h-[300px]'>
               <iframe
-                src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.4731121011414!2d10.274116975491433!3d36.85509287223157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e2b5128a5ef2f1%3A0x4f3e6d7fbd54d6e2!2sZYNOVIA!5e0!3m2!1sen!2stn!4v1764779777716!5m2!1sen!2stn'
+                src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3193.095126408207!2d10.241040175304933!3d36.840197765444806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd35442439218b%3A0xf94daf30bad489ca!2sBureau%20N%C2%B0%20B2%2C%20Immeuble%20Mak%20Crown%2C%202%20Rue%20Du%20Lac%20L%C3%A9man%D8%8C%20Tunis%201053!5e0!3m2!1sen!2stn!4v1781179372702!5m2!1sen!2stn'
                 width='100%'
                 height='100%'
                 style={{ border: 0, minHeight: '300px' }}

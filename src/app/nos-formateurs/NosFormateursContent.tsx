@@ -1,12 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Trainer, TrainerTestimonial } from '@/data/trainers'
-import { Sparkles, GraduationCap, Quote, Linkedin, Star } from 'lucide-react'
+import { Sparkles, GraduationCap, Quote, Linkedin, Star, RefreshCw, AlertTriangle, CheckCircle2, Bug } from 'lucide-react'
 
+// ---------------------------------------------------------------------------
+// Animation variants
+// ---------------------------------------------------------------------------
 const fadeInUp = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
@@ -15,11 +18,7 @@ const fadeInUp = {
 
 const staggerContainer = {
   initial: {},
-  whileInView: {
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
+  whileInView: { transition: { staggerChildren: 0.08 } },
 }
 
 const cardVariant = {
@@ -27,6 +26,26 @@ const cardVariant = {
   whileInView: { opacity: 1, y: 0 },
 }
 
+// ---------------------------------------------------------------------------
+// Types
+// ---------------------------------------------------------------------------
+type TrainerFromAPI = Trainer & { _id?: string }
+type TestimonialFromAPI = TrainerTestimonial & { _id?: string }
+
+type DebugInfo = {
+  source: 'db' | 'static-fallback' | null
+  durationMs?: number
+  trainersCount?: number
+  testimonialsCount?: number
+  timestamp?: string
+  error?: string
+  httpStatus?: number
+  fetchError?: string
+}
+
+// ---------------------------------------------------------------------------
+// Sub-components
+// ---------------------------------------------------------------------------
 function TrainerPhoto({ photo, name }: { photo?: string; name: string }) {
   const [error, setError] = useState(false)
 
@@ -50,31 +69,123 @@ function TrainerPhoto({ photo, name }: { photo?: string; name: string }) {
   )
 }
 
+function DebugPanel({ debug, retryCount }: { debug: DebugInfo; retryCount: number }) {
+  const [open, setOpen] = useState(false)
+  const isError = !!debug.fetchError || debug.source === 'static-fallback'
+
+  return (
+    <div className="fixed bottom-4 right-4 z-50 max-w-sm font-mono text-xs">
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className={`flex items-center gap-2 rounded-full px-3 py-1.5 shadow-lg text-white transition ${
+          isError ? 'bg-red-600 hover:bg-red-700' : 'bg-emerald-600 hover:bg-emerald-700'
+        }`}
+      >
+        {isError ? <AlertTriangle className="h-3.5 w-3.5" /> : <CheckCircle2 className="h-3.5 w-3.5" />}
+        <Bug className="h-3.5 w-3.5" />
+        Debug {retryCount > 0 ? `(retry #${retryCount})` : ''}
+      </button>
+
+      {open && (
+        <div className="mt-2 rounded-xl bg-slate-900 text-slate-100 p-4 shadow-2xl ring-1 ring-slate-700 space-y-1 max-h-72 overflow-y-auto">
+          <p className="font-bold text-slate-300 mb-2">API Debug Info</p>
+          <Row label="Source" value={debug.source ?? '—'} error={debug.source === 'static-fallback'} />
+          <Row label="HTTP" value={String(debug.httpStatus ?? '—')} error={(debug.httpStatus ?? 200) >= 400} />
+          <Row label="Duration" value={debug.durationMs != null ? `${debug.durationMs}ms` : '—'} />
+          <Row label="Trainers" value={String(debug.trainersCount ?? '—')} error={debug.trainersCount === 0} />
+          <Row label="Testimonials" value={String(debug.testimonialsCount ?? '—')} error={debug.testimonialsCount === 0} />
+          <Row label="Retries" value={String(retryCount)} />
+          {debug.timestamp && <Row label="Time" value={new Date(debug.timestamp).toLocaleTimeString()} />}
+          {debug.error && <Row label="DB Error" value={debug.error} error />}
+          {debug.fetchError && <Row label="Fetch Error" value={debug.fetchError} error />}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function Row({ label, value, error }: { label: string; value: string; error?: boolean }) {
+  return (
+    <div className="flex justify-between gap-4">
+      <span className="text-slate-400">{label}</span>
+      <span className={error ? 'text-red-400 font-semibold' : 'text-slate-100'}>{value}</span>
+    </div>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// Main page component
+// ---------------------------------------------------------------------------
 export default function NosFormateursContent() {
-  const [trainersList, setTrainersList] = useState<Trainer[]>([])
-  const [testimonialsList, setTestimonialsList] = useState<TrainerTestimonial[]>([])
+  const [trainersList, setTrainersList] = useState<TrainerFromAPI[]>([])
+  const [testimonialsList, setTestimonialsList] = useState<TestimonialFromAPI[]>([])
   const [loading, setLoading] = useState(true)
+  const [fetchError, setFetchError] = useState<string | null>(null)
+  const [retryCount, setRetryCount] = useState(0)
+  const [debug, setDebug] = useState<DebugInfo>({ source: null })
+
+  const fetchData = useCallback(async () => {
+    console.log(`[NosFormateurs] fetchData called (retry: ${retryCount})`)
+    setLoading(true)
+    setFetchError(null)
+
+    try {
+      const res = await fetch('/api/data', {
+        cache: 'no-store',
+        headers: { 'Cache-Control': 'no-cache' },
+      })
+
+      console.log(`[NosFormateurs] Response status: ${res.status}`)
+
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status} ${res.statusText}`)
+      }
+
+      const data = await res.json()
+
+      console.log('[NosFormateurs] Raw API data._debug:', data._debug)
+      console.log('[NosFormateurs] TrainerData length:', data.TrainerData?.length)
+      console.log('[NosFormateurs] TrainerTestimonialData length:', data.TrainerTestimonialData?.length)
+
+      setDebug({
+        ...(data._debug ?? {}),
+        httpStatus: res.status,
+        source: data._debug?.source ?? 'db',
+      })
+
+      const trainers: TrainerFromAPI[] = data.TrainerData ?? []
+      const testimonials: TestimonialFromAPI[] = data.TrainerTestimonialData ?? []
+
+      if (trainers.length === 0) {
+        console.warn('[NosFormateurs] TrainerData is empty — DB may not have seeded yet')
+      }
+
+      setTrainersList(trainers)
+      setTestimonialsList(testimonials)
+    } catch (err: any) {
+      const msg = err?.message ?? 'Unknown error'
+      console.error('[NosFormateurs] Fetch error:', msg)
+      setFetchError(msg)
+      setDebug((prev) => ({ ...prev, fetchError: msg }))
+    } finally {
+      setLoading(false)
+    }
+  }, [retryCount])
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/data', { cache: 'no-store' })
-        if (res.ok) {
-          const data = await res.json()
-          setTrainersList(data.TrainerData || [])
-          setTestimonialsList(data.TrainerTestimonialData || [])
-        }
-      } catch (err) {
-        console.error(err)
-      } finally {
-        setLoading(false)
-      }
-    }
     fetchData()
-  }, [])
+  }, [fetchData])
+
+  // Stable keys
+  const trainerKey = (t: TrainerFromAPI, i: number) => t.id || t._id || `trainer-${i}`
+  const testimonialKey = (t: TestimonialFromAPI, i: number) => t._id || `testimonial-${i}`
 
   return (
     <main className='bg-gradient-to-b from-secondary/20 via-secondary/5 to-transparent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
+
+      {/* Debug panel — always visible during development */}
+      <DebugPanel debug={debug} retryCount={retryCount} />
+
       {/* HERO */}
       <section className='relative overflow-hidden pt-28 pb-20 lg:pt-32 lg:pb-24'>
         <div
@@ -113,7 +224,7 @@ export default function NosFormateursContent() {
                 Une équipe d&apos;experts passionnés
               </p>
               <p className='max-w-3xl text-base sm:text-lg text-slate-700 dark:text-slate-200'>
-                Des spécialistes de l'IA, du développement, de la robotique et du produit. Ils
+                Des spécialistes de l&apos;IA, du développement, de la robotique et du produit. Ils
                 conçoivent des parcours pratiques, coachent les apprenants et les aident à transformer
                 leurs idées en projets concrets.
               </p>
@@ -159,7 +270,7 @@ export default function NosFormateursContent() {
               />
               <div className='relative overflow-hidden rounded-3xl bg-white/80 shadow-[0_18px_55px_rgba(15,23,42,0.18)] ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/85 dark:ring-white/10'>
                 <Image
-                  src='/images/review/marcus.webp'
+                  src='/images/formateurs/nos-formateurs.jpg'
                   alt='Formateurs en session'
                   width={1100}
                   height={820}
@@ -197,13 +308,56 @@ export default function NosFormateursContent() {
             whileInView='whileInView'
             viewport={{ once: true, amount: 0.2 }}
             className='mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+
             {loading ? (
-              <div className="col-span-full py-12 text-center text-slate-500 font-medium">Chargement des formateurs...</div>
+              // Skeleton cards while loading
+              Array.from({ length: 3 }).map((_, i) => (
+                <div
+                  key={`skeleton-${i}`}
+                  className='animate-pulse rounded-2xl bg-slate-100 dark:bg-slate-800 p-5 h-52 ring-1 ring-slate-200 dark:ring-slate-700'
+                >
+                  <div className='flex items-center gap-4 mb-4'>
+                    <div className='h-16 w-16 rounded-full bg-slate-200 dark:bg-slate-700' />
+                    <div className='space-y-2 flex-1'>
+                      <div className='h-4 bg-slate-200 dark:bg-slate-700 rounded w-3/4' />
+                      <div className='h-3 bg-slate-200 dark:bg-slate-700 rounded w-1/2' />
+                    </div>
+                  </div>
+                  <div className='space-y-2'>
+                    <div className='h-3 bg-slate-200 dark:bg-slate-700 rounded' />
+                    <div className='h-3 bg-slate-200 dark:bg-slate-700 rounded w-5/6' />
+                  </div>
+                </div>
+              ))
+            ) : fetchError ? (
+              <div className='col-span-full py-12 flex flex-col items-center gap-4'>
+                <AlertTriangle className='h-8 w-8 text-red-400' />
+                <p className='text-red-500 font-medium text-center'>
+                  Impossible de charger les formateurs.
+                </p>
+                <p className='text-slate-400 text-xs font-mono text-center max-w-xs break-all'>{fetchError}</p>
+                <button
+                  onClick={() => setRetryCount((c) => c + 1)}
+                  className='inline-flex items-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold text-white shadow transition hover:scale-[1.02]'
+                  style={{ background: 'linear-gradient(to right, #27397F, #4490C7)' }}>
+                  <RefreshCw className='h-4 w-4' />
+                  Réessayer
+                </button>
+              </div>
             ) : trainersList.length === 0 ? (
-              <div className="col-span-full py-12 text-center text-slate-500 font-medium italic">Aucun formateur trouvé.</div>
-            ) : trainersList.map((trainer) => (
+              <div className='col-span-full py-12 flex flex-col items-center gap-4'>
+                <p className='text-slate-500 font-medium italic text-center'>Aucun formateur trouvé.</p>
+                <button
+                  onClick={() => setRetryCount((c) => c + 1)}
+                  className='inline-flex items-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold text-white shadow transition hover:scale-[1.02]'
+                  style={{ background: 'linear-gradient(to right, #27397F, #4490C7)' }}>
+                  <RefreshCw className='h-4 w-4' />
+                  Actualiser
+                </button>
+              </div>
+            ) : trainersList.map((trainer, i) => (
               <motion.div
-                key={trainer.id || (trainer as any).id}
+                key={trainerKey(trainer, i)}
                 variants={cardVariant}
                 className='relative overflow-hidden rounded-2xl bg-white/90 p-5 shadow-[0_16px_40px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/90 dark:ring-slate-700/70'>
                 <div className='flex items-center gap-4'>
@@ -270,13 +424,26 @@ export default function NosFormateursContent() {
             whileInView='whileInView'
             viewport={{ once: true, amount: 0.2 }}
             className='mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2'>
-            {testimonialsList.length === 0 ? (
-              <div className="col-span-full py-8 text-center text-slate-500 font-medium italic">
+            {loading ? (
+              Array.from({ length: 2 }).map((_, i) => (
+                <div
+                  key={`skeleton-testimonial-${i}`}
+                  className='animate-pulse rounded-2xl bg-slate-100 dark:bg-slate-800 p-6 h-40 ring-1 ring-slate-200 dark:ring-slate-700'
+                >
+                  <div className='space-y-2'>
+                    <div className='h-3 bg-slate-200 dark:bg-slate-700 rounded' />
+                    <div className='h-3 bg-slate-200 dark:bg-slate-700 rounded w-5/6' />
+                    <div className='h-3 bg-slate-200 dark:bg-slate-700 rounded w-4/6' />
+                  </div>
+                </div>
+              ))
+            ) : testimonialsList.length === 0 ? (
+              <div className='col-span-full py-8 text-center text-slate-500 font-medium italic'>
                 Aucun témoignage pour le moment.
               </div>
-            ) : testimonialsList.map((testimonial, index) => (
+            ) : testimonialsList.map((testimonial, i) => (
               <motion.div
-                key={(testimonial as TrainerTestimonial & { _id?: string })._id || `testimonial-${index}`}
+                key={testimonialKey(testimonial, i)}
                 variants={cardVariant}
                 className='relative overflow-hidden rounded-2xl bg-white/90 p-6 shadow-[0_16px_40px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/90 dark:ring-slate-700/70'>
                 <div className='flex items-center gap-2' style={{ color: '#2E5391' }}>
@@ -290,11 +457,9 @@ export default function NosFormateursContent() {
                     <p className='text-xs font-medium' style={{ color: '#4490C7' }}>{testimonial.focus}</p>
                   </div>
                   <div className='flex items-center gap-1 text-amber-500'>
-                    <Star className='h-4 w-4 fill-amber-400' />
-                    <Star className='h-4 w-4 fill-amber-400' />
-                    <Star className='h-4 w-4 fill-amber-400' />
-                    <Star className='h-4 w-4 fill-amber-400' />
-                    <Star className='h-4 w-4 fill-amber-400' />
+                    {Array.from({ length: 5 }).map((_, si) => (
+                      <Star key={si} className='h-4 w-4 fill-amber-400' />
+                    ))}
                   </div>
                 </div>
               </motion.div>

@@ -9,6 +9,7 @@ export type Trainer = {
 }
 
 export type TrainerTestimonial = {
+  _id?: string
   quote: string
   student: string
   focus: string
@@ -18,7 +19,7 @@ export const trainers: Trainer[] = [
   {
     id: 'trainer-1',
     name: 'Ghofran',
-    title: 'Formatrice IA ',
+    title: 'Formatrice IA',
     bio: 'Ingénieure data avec 10 ans en machine learning appliqué, passionnée par la pédagogie project-based.',
     expertise: ['Python', 'Machine Learning', 'MLOps', 'DataViz'],
     photo: '/images/review/sophia.webp',
@@ -27,16 +28,16 @@ export const trainers: Trainer[] = [
   {
     id: 'trainer-2',
     name: 'Aziz',
-    title: ' Formateur AI',
-    bio: 'Architecte cloud, expert en intégration CI/CD et en conception d\'API modernes.',
+    title: 'Formateur AI',
+    bio: "Architecte cloud, expert en intégration CI/CD et en conception d'API modernes.",
     expertise: ['Python', 'Machine Learning', 'MLOps', 'DataViz'],
     photo: '/images/review/marcus.webp',
     linkedin: 'https://www.linkedin.com/company/inoteqia-academy/about/',
   },
   {
     id: 'trainer-3',
-    name: 'mohamed',
-    title: 'Formatrice IA ',
+    name: 'Mohamed',
+    title: 'Formateur Robotique',
     bio: 'Spécialiste robotique éducative, accompagne les jeunes sur le prototypage rapide.',
     expertise: ['Python', 'Machine Learning', 'MLOps', 'DataViz'],
     photo: '/images/review/daniel.webp',
@@ -47,15 +48,14 @@ export const trainers: Trainer[] = [
 export const trainerTestimonials: TrainerTestimonial[] = [
   {
     quote:
-      'Les ateliers IA m’ont permis de comprendre comment passer d’une idée à un prototype fonctionnel. Les formateurs sont exigeants mais bienveillants.',
+      "Les ateliers IA m'ont permis de comprendre comment passer d'une idée à un prototype fonctionnel. Les formateurs sont exigeants mais bienveillants.",
     student: 'Amine, Lycéen – Parcours IA',
     focus: 'Prototype IA',
   },
   {
     quote:
-      'Grâce aux sprints et aux retours réguliers, j’ai gagné en confiance pour présenter mes projets techniques devant un jury.',
+      "Grâce aux sprints et aux retours réguliers, j'ai gagné en confiance pour présenter mes projets techniques devant un jury.",
     student: 'Sarra, Étudiante – Bootcamp Dev',
     focus: 'Pitch & Démo',
   },
 ]
-

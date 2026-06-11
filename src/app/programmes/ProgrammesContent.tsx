@@ -210,7 +210,7 @@ export default function ProgrammesContent() {
                   {/* CTA buttons – calquées sur celles de l'accueil */}
                   <div className='flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 w-full max-w-2xl'>
                     <Link href='/parents'>
-<button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-white border rounded-[10px] border-transparent bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-md whitespace-nowrap'>                        👨‍👩‍👧 Je suis parent
+                      <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-white border rounded-[10px] border-transparent bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-md whitespace-nowrap'>                        👨‍👩‍👧 Je suis parent
                       </button>
                     </Link>
                     <Link href='/contact?type=etablissement#contact-form'>
@@ -283,7 +283,7 @@ export default function ProgrammesContent() {
                   className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
                 />
                 <div className='relative flex flex-col items-center text-center'>
-<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                    <Building2 className='h-7 w-7' />
+                  <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                    <Building2 className='h-7 w-7' />
                   </div>
                   <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
                     <AnimatedNumber value={6} duration={1500} />
@@ -307,7 +307,7 @@ export default function ProgrammesContent() {
                   className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
                 />
                 <div className='relative flex flex-col items-center text-center'>
-<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                
+                  <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>
                     <Users className='h-7 w-7' />
                   </div>
                   <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
@@ -329,7 +329,7 @@ export default function ProgrammesContent() {
                   className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
                 />
                 <div className='relative flex flex-col items-center text-center'>
-<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                
+                  <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>
                     <Clock className='h-7 w-7' />
                   </div>
                   <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
@@ -351,7 +351,7 @@ export default function ProgrammesContent() {
                   className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
                 />
                 <div className='relative flex flex-col items-center text-center'>
-<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                
+                  <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>
                     <Calendar className='h-7 w-7' />
                   </div>
                   <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
@@ -373,7 +373,7 @@ export default function ProgrammesContent() {
                   className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
                 />
                 <div className='relative flex flex-col items-center text-center'>
-<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                
+                  <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>
                     <GraduationCap className='h-7 w-7' />
                   </div>
                   <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
@@ -398,7 +398,7 @@ export default function ProgrammesContent() {
                   className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
                 />
                 <div className='relative flex flex-col items-center text-center'>
-<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                
+                  <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>
                     <FolderKanban className='h-7 w-7' />
                   </div>
                   <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
@@ -462,7 +462,7 @@ export default function ProgrammesContent() {
                     className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
                   />
                   <div className='relative flex items-start gap-3'>
-<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-brand text-white shadow-md shadow-[#27397F]/40 mb-4'>                      <Icon className='h-5 w-5' />
+                    <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-brand text-white shadow-md shadow-[#27397F]/40 mb-4'>                      <Icon className='h-5 w-5' />
                     </div>
                     <div>
                       <h3 className='text-sm font-semibold text-[#0A004B] dark:text-white'>
@@ -856,7 +856,7 @@ export default function ProgrammesContent() {
                       Pour les établissements scolaires
                     </p>
                     <p className='mt-1 text-sm font-semibold text-[#0A004B] dark:text-white'>
-                      Devenir établissement partenaire d&apos;ZYNOVIA
+                      Devenir établissement partenaire de ZYNOVIA
                     </p>
                   </div>
                   <Link
@@ -1074,13 +1074,13 @@ export default function ProgrammesContent() {
                         key={item}
                         className='flex items-start gap-3 rounded-2xl bg-slate-50/90 px-3 py-3 ring-1 ring-slate-100/90 shadow-sm shadow-slate-900/5 transition hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/15 dark:bg-slate-900/80 dark:ring-slate-700/70'
                       >
-                       <div className='mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#00C3D9]/15 via-[#0091E6]/20 to-[#0067E0]/15 text-primary dark:text-cyan-300'>
-  {index % 2 === 0 ? (
-    <Cpu className='h-4 w-4' />
-  ) : (
-    <CircuitBoard className='h-4 w-4' />
-  )}
-</div>
+                        <div className='mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#00C3D9]/15 via-[#0091E6]/20 to-[#0067E0]/15 text-primary dark:text-cyan-300'>
+                          {index % 2 === 0 ? (
+                            <Cpu className='h-4 w-4' />
+                          ) : (
+                            <CircuitBoard className='h-4 w-4' />
+                          )}
+                        </div>
                         <p className='text-xs sm:text-sm text-slate-700 dark:text-slate-200'>
                           {item}
                         </p>

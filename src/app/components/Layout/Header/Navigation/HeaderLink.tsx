@@ -6,38 +6,23 @@ import { NavLinkType } from '@/app/types/navlink'
 
 const HeaderLink: React.FC<{ item: NavLinkType }> = ({ item }) => {
   const [submenuOpen, setSubmenuOpen] = useState(false)
-
-  const handleMouseEnter = () => {
-    if (item.submenu) {
-      setSubmenuOpen(true)
-    }
-  }
-
-  const handleMouseLeave = () => {
-    setSubmenuOpen(false)
-  }
-
   const path = usePathname()
 
   return (
     <li
       className='relative'
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}>
+      onMouseEnter={() => item.submenu && setSubmenuOpen(true)}
+      onMouseLeave={() => setSubmenuOpen(false)}>
       <Link
         href={item.href}
-        className={`text-base flex font-medium transition-all duration-300 ${
+        className={`text-lg flex items-center font-medium transition-all duration-300 ${
           item.href === path || path.startsWith(`/${item.label.toLowerCase()}`)
             ? 'text-gradient font-bold'
             : 'text-darkblue dark:text-white hover:text-gradient-hover'
         }`}>
         {item.label}
         {item.submenu && (
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            width='1.5em'
-            height='1.5em'
-            viewBox='0 0 24 24'>
+          <svg xmlns='http://www.w3.org/2000/svg' width='1.6em' height='1.6em' viewBox='0 0 24 24'>
             <path
               fill='none'
               stroke='currentColor'
@@ -50,12 +35,12 @@ const HeaderLink: React.FC<{ item: NavLinkType }> = ({ item }) => {
         )}
       </Link>
       {submenuOpen && (
-        <ul className='absolute py-2 left-0 mt-0.5 w-60 bg-white  dark:bg-white/10 shadow-lg rounded-lg'>
+        <ul className='absolute py-2 left-0 mt-0.5 w-64 bg-white dark:bg-white/10 shadow-lg rounded-lg'>
           {item.submenu?.map((subItem, index) => (
             <li key={index}>
               <Link
                 href={subItem.href}
-                className='block px-4 py-2 text-darkblue dark:text-white hover:bg-neutral-50 dark:hover:bg-darkmode/10 hover:text-primary dark:hover:text-primary'>
+                className='block px-5 py-3 text-base text-darkblue dark:text-white hover:bg-neutral-50 dark:hover:bg-darkmode/10 hover:text-primary dark:hover:text-primary'>
                 {subItem.label}
               </Link>
             </li>

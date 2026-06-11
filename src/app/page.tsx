@@ -4,7 +4,7 @@ import Records from './components/Home/Records'
 import Specialize from './components/Home/Specialize'
 import PourQui from './components/Home/PourQui'
 import FormationsBootcamps from './components/Home/FormationsBootcamps'
-import Project from './components/Home/Project'
+// import Project from './components/Home/Project'
 import Review from './components/Home/Review'
 import Pricing from './components/Home/Pricing'
 import PartnersBanner from './components/Home/PartnersBanner'
@@ -62,7 +62,7 @@ export default function Home() {
       {/* 2️⃣ POURQUOI APPRENDRE L'IA ? - Version courte avec 3 chiffres + bouton */}
       <Records />
 
-      {/* 3️⃣ NOTRE VALEUR AJOUTÉE - 4 cartes */}
+      {/* 3️⃣ Notre valeur ajoutée - 4 cartes */}
       <Specialize />
 
       {/* 4️⃣ POUR QUI ? - Section stratégique avec 3 cartes */}
@@ -72,7 +72,7 @@ export default function Home() {
       <FormationsBootcamps />
 
       {/* 5️⃣ POPULAR PROJECTS - Présentation des projets */}
-      <Project />
+      {/* <Project /> */}
 
       {/* 6️⃣ CLIENT REVIEWS - Avis clients */}
       <Review />

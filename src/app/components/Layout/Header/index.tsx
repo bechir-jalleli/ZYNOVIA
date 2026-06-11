@@ -18,13 +18,10 @@ const Header: React.FC = () => {
   const { theme, setTheme } = useTheme()
   const [navbarOpen, setNavbarOpen] = useState(false)
   const [sticky, setSticky] = useState(false)
-  const [isSignInOpen, setIsSignInOpen] = useState(false)
-  const [isSignUpOpen, setIsSignUpOpen] = useState(false)
   const signInRef = useRef<HTMLDivElement>(null)
   const signUpRef = useRef<HTMLDivElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
 
-  //   fetchData
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -45,17 +42,11 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        signInRef.current &&
-        !signInRef.current.contains(event.target as Node)
-      ) {
-        setIsSignInOpen(false)
+      if (signInRef.current && !signInRef.current.contains(event.target as Node)) {
+        // setIsSignInOpen(false)
       }
-      if (
-        signUpRef.current &&
-        !signUpRef.current.contains(event.target as Node)
-      ) {
-        setIsSignUpOpen(false)
+      if (signUpRef.current && !signUpRef.current.contains(event.target as Node)) {
+        // setIsSignUpOpen(false)
       }
       if (
         mobileMenuRef.current &&
@@ -72,81 +63,80 @@ const Header: React.FC = () => {
       window.removeEventListener('scroll', handleScroll)
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [navbarOpen, isSignInOpen, isSignUpOpen])
+  }, [navbarOpen])
 
   useEffect(() => {
-    if (isSignInOpen || isSignUpOpen || navbarOpen) {
+    if (navbarOpen) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = ''
     }
-  }, [isSignInOpen, isSignUpOpen, navbarOpen])
+  }, [navbarOpen])
 
   if (pathname?.startsWith('/admin')) return null
 
   return (
     <header
-      className={`fixed top-0 py-0 z-50 w-full bg-transparent transition-all ${sticky ? 'shadow-lg dark:shadow-neutral-50/5 bg-white dark:bg-darklight' : 'shadow-none'
-        }`}>
+      className={`fixed top-0 z-50 w-full bg-transparent transition-all ${
+        sticky ? 'shadow-lg dark:shadow-neutral-50/5 bg-white dark:bg-darklight' : 'shadow-none'
+      }`}>
       <div
-        className={`container flex items-center justify-between gap-10 duration-300  ${sticky ? 'py-1.5' : 'py-2.5'
-          }`}>
+        className={`container flex items-center justify-between gap-6 xl:gap-10 duration-300 ${
+          sticky ? 'py-2' : 'py-3'
+        }`}>
         <Logo variant='header' />
+
         <nav>
-          <ul className='hidden xl:flex flex-grow items-center justify-start gap-10 '>
+          <ul className='hidden xl:flex flex-grow items-center justify-start gap-8 2xl:gap-12'>
             {navlink.map((item, index) => (
               <HeaderLink key={index} item={item} />
             ))}
           </ul>
         </nav>
-        <div className='flex items-center gap-4'>
+
+        <div className='flex items-center gap-3 xl:gap-4'>
+          {/* Theme toggle */}
           <button
             aria-label='Toggle theme'
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className='flex items-center justify-center text-body-color duration-300 hover:cursor-pointer hover:text-primary dark:text-white bg-neutral-50 rounded-full dark:bg-darklight p-2 outline-none'>
-            <Icon
-              icon='solar:sun-2-bold'
-              width='24'
-              height='24'
-              className='hidden dark:block'
-            />
-            <Icon
-              icon='solar:moon-bold'
-              width='24'
-              height='24'
-              className='dark:hidden block'
-            />
+            className='flex items-center justify-center text-body-color duration-300 hover:cursor-pointer hover:text-primary dark:text-white bg-neutral-50 rounded-full dark:bg-darklight p-2.5 outline-none'>
+            <Icon icon='solar:sun-2-bold' width='26' height='26' className='hidden dark:block' />
+            <Icon icon='solar:moon-bold' width='26' height='26' className='dark:hidden block' />
           </button>
-<Link
-  href="/rendez-vous"
-  className="hidden xl:block px-6 py-2 btn-primary btn-hover rounded-[10px] text-sm font-semibold tracking-wide transition-all"
->
-  Rendez-vous
-</Link>
+
+          {/* Rendez-vous */}
+          <Link
+            href='/rendez-vous'
+            className='hidden xl:block px-7 py-2.5 btn-primary btn-hover rounded-[10px] text-base font-semibold tracking-wide transition-all'>
+            Rendez-vous
+          </Link>
+
+          {/* User menu */}
           {user ? (
             <div className='relative group hidden xl:block'>
-              <button className='flex items-center gap-2 px-5 py-2 bg-neutral-100 dark:bg-white/10 text-darkblue dark:text-white rounded-xl font-bold text-sm transition-all group-hover:bg-gradient-brand group-hover:text-white'>
-                <Icon icon="solar:user-circle-bold" width="22" />
+              <button className='flex items-center gap-2 px-5 py-2.5 bg-neutral-100 dark:bg-white/10 text-darkblue dark:text-white rounded-xl font-bold text-base transition-all group-hover:bg-gradient-brand group-hover:text-white'>
+                <Icon icon='solar:user-circle-bold' width='24' />
                 Compte
-                <Icon icon="solar:alt-arrow-down-bold" width="14" className="transition-transform group-hover:rotate-180" />
+                <Icon
+                  icon='solar:alt-arrow-down-bold'
+                  width='16'
+                  className='transition-transform group-hover:rotate-180'
+                />
               </button>
-
               <div className='absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50'>
-                <div className='w-56 bg-white dark:bg-darklight rounded-2xl shadow-2xl border border-black/5 dark:border-white/10 overflow-hidden flex flex-col p-2 gap-1'>
+                <div className='w-60 bg-white dark:bg-darklight rounded-2xl shadow-2xl border border-black/5 dark:border-white/10 overflow-hidden flex flex-col p-2 gap-1'>
                   {user.role === 'admin' && (
                     <Link
                       href='/admin'
-                      className='flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-gradient-hover rounded-xl transition-all'
-                    >
-                      <Icon icon="solar:widget-bold" width="20" />
+                      className='flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-gradient-hover rounded-xl transition-all'>
+                      <Icon icon='solar:widget-bold' width='20' />
                       Tableau de bord
                     </Link>
                   )}
                   <button
                     onClick={logout}
-                    className='flex items-center gap-3 px-4 py-3 text-sm font-semibold text-red-500 hover:bg-red-500/10 rounded-xl transition-all text-left w-full'
-                  >
-                    <Icon icon="solar:logout-3-bold" width="20" />
+                    className='flex items-center gap-3 px-4 py-3 text-sm font-semibold text-red-500 hover:bg-red-500/10 rounded-xl transition-all text-left w-full'>
+                    <Icon icon='solar:logout-3-bold' width='20' />
                     Déconnexion
                   </button>
                 </div>
@@ -155,39 +145,43 @@ const Header: React.FC = () => {
           ) : (
             <Link
               href='/auth/login'
-              className='connexion-btn hidden xl:flex items-center gap-2 px-5 py-2 rounded-xl font-semibold text-sm transition-all duration-300 relative overflow-hidden'
-            >
+              className='connexion-btn hidden xl:flex items-center gap-2 px-6 py-2.5 rounded-xl font-semibold text-base transition-all duration-300 relative overflow-hidden'>
               <span className='connexion-btn__shimmer' aria-hidden='true' />
-              <Icon icon="solar:user-bold" width="18" className='relative z-10' />
+              <Icon icon='solar:user-bold' width='20' className='relative z-10' />
               <span className='relative z-10'>Connexion</span>
             </Link>
           )}
+
+          {/* Hamburger */}
           <button
             onClick={() => setNavbarOpen(!navbarOpen)}
             className='block xl:hidden p-2 rounded-lg hover:cursor-pointer'
             aria-label='Toggle mobile menu'>
-            <span className='block w-6 h-0.5 bg-darkblue dark:bg-white'></span>
-            <span className='block w-6 h-0.5 bg-darkblue dark:bg-white mt-1.5'></span>
-            <span className='block w-6 h-0.5 bg-darkblue dark:bg-white mt-1.5'></span>
+            <span className='block w-7 h-0.5 bg-darkblue dark:bg-white'></span>
+            <span className='block w-7 h-0.5 bg-darkblue dark:bg-white mt-2'></span>
+            <span className='block w-7 h-0.5 bg-darkblue dark:bg-white mt-2'></span>
           </button>
         </div>
       </div>
+
+      {/* Mobile overlay */}
       {navbarOpen && (
         <div className='fixed top-0 left-0 w-full h-full bg-black/50 z-40' />
       )}
+
+      {/* Mobile drawer */}
       <div
         ref={mobileMenuRef}
-        className={`xl:hidden fixed top-0 right-0 h-full w-full bg-white dark:bg-darklight shadow-lg transform transition-transform duration-300 max-w-xs ${navbarOpen ? 'translate-x-0' : 'translate-x-full'
-          } z-50`}>
-        <div className='flex items-center justify-between p-4'>
+        className={`xl:hidden fixed top-0 right-0 h-full w-full bg-white dark:bg-darklight shadow-lg transform transition-transform duration-300 max-w-sm ${
+          navbarOpen ? 'translate-x-0' : 'translate-x-full'
+        } z-50`}>
+        <div className='flex items-center justify-between p-5'>
           <Logo variant='header' />
-          <button
-            onClick={() => setNavbarOpen(false)}
-            aria-label='Close mobile menu'>
+          <button onClick={() => setNavbarOpen(false)} aria-label='Close mobile menu'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              width='24'
-              height='24'
+              width='28'
+              height='28'
               viewBox='0 0 24 24'
               className='dark:text-white dark:hover:text-primary hover:text-primary hover:cursor-pointer'>
               <path
@@ -201,52 +195,49 @@ const Header: React.FC = () => {
             </svg>
           </button>
         </div>
-        <nav className='flex flex-col items-start p-4'>
-          {navlink.map((item, index) => (
-            <MobileHeaderLink key={index} item={item} onItemClick={() => setNavbarOpen(false)} />
-          ))}
-          <div className='mt-4 flex flex-col gap-4 w-full'>
 
+        <nav className='flex flex-col items-start px-5 pb-5'>
+          {navlink.map((item, index) => (
+            <MobileHeaderLink
+              key={index}
+              item={item}
+              onItemClick={() => setNavbarOpen(false)}
+            />
+          ))}
+
+          <div className='mt-6 flex flex-col gap-4 w-full'>
             {user?.role === 'admin' && (
               <Link
                 href='/admin'
-                className='flex items-center justify-center gap-2 px-6 py-4 bg-gradient-soft border border-[#3FA9DF]/20 text-[#27397F] dark:text-[#3FA9DF] rounded-xl font-semibold text-sm text-center w-full'
-                onClick={() => setNavbarOpen(false)}
-              >
-                <Icon icon="solar:widget-bold" width="20" />
+                className='flex items-center justify-center gap-2 px-6 py-4 bg-gradient-soft border border-[#3FA9DF]/20 text-[#27397F] dark:text-[#3FA9DF] rounded-xl font-semibold text-base text-center w-full'
+                onClick={() => setNavbarOpen(false)}>
+                <Icon icon='solar:widget-bold' width='22' />
                 Tableau de bord
               </Link>
             )}
 
             <Link
               href='/rendez-vous'
-              className='flex items-center justify-center gap-2 px-6 py-4 btn-primary btn-hover rounded-xl font-semibold text-sm text-center w-full shadow-lg shadow-primary/20 transition-all active:scale-95'
-              onClick={() => {
-                setNavbarOpen(false)
-              }}>
-              <Icon icon="solar:calendar-date-bold" width="20" />
+              className='flex items-center justify-center gap-2 px-6 py-4 btn-primary btn-hover rounded-xl font-semibold text-base text-center w-full shadow-lg shadow-primary/20 transition-all active:scale-95'
+              onClick={() => setNavbarOpen(false)}>
+              <Icon icon='solar:calendar-date-bold' width='22' />
               Rendez-vous
             </Link>
 
             {user ? (
               <button
-                onClick={() => {
-                  logout();
-                  setNavbarOpen(false);
-                }}
-                className='flex items-center justify-center gap-2 px-6 py-4 bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 border border-red-100 dark:border-red-500/20 rounded-xl font-semibold text-sm text-center w-full'
-              >
-                <Icon icon="solar:logout-3-bold" width="20" />
+                onClick={() => { logout(); setNavbarOpen(false) }}
+                className='flex items-center justify-center gap-2 px-6 py-4 bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 border border-red-100 dark:border-red-500/20 rounded-xl font-semibold text-base text-center w-full'>
+                <Icon icon='solar:logout-3-bold' width='22' />
                 Déconnexion
               </button>
             ) : (
               <Link
                 href='/auth/login'
-                className='connexion-btn connexion-btn--mobile flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold text-sm text-center w-full transition-all duration-300 relative overflow-hidden'
-                onClick={() => setNavbarOpen(false)}
-              >
+                className='connexion-btn connexion-btn--mobile flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold text-base text-center w-full transition-all duration-300 relative overflow-hidden'
+                onClick={() => setNavbarOpen(false)}>
                 <span className='connexion-btn__shimmer' aria-hidden='true' />
-                <Icon icon="solar:user-bold" width="20" className='relative z-10' />
+                <Icon icon='solar:user-bold' width='22' className='relative z-10' />
                 <span className='relative z-10'>Connexion</span>
               </Link>
             )}

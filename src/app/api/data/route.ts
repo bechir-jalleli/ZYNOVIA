@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 import { NavLinkType } from '@/app/types/navlink'
 import { ProjectType } from '@/app/types/project'
@@ -14,121 +15,60 @@ import { HeroType } from '@/app/types/hero'
 import { FormationType } from '@/app/types/formation'
 
 const HeroData: HeroType[] = [
-  {
-    imgSrc: '/images/banner/blogforgeCover.webp',
-  },
-  {
-    imgSrc: '/images/banner/gleamerCover.webp',
-  },
-  {
-    imgSrc: '/images/banner/learnaxisCover.webp',
-  },
-  {
-    imgSrc: '/images/banner/studiovaCover.webp',
-  },
+  { imgSrc: '/images/banner/blogforgeCover.webp' },
+  { imgSrc: '/images/banner/gleamerCover.webp' },
+  { imgSrc: '/images/banner/learnaxisCover.webp' },
+  { imgSrc: '/images/banner/studiovaCover.webp' },
 ]
 
 const NavLinkData: NavLinkType[] = [
-  {
-    label: 'Accueil',
-    href: '/',
-  },
-  {
-    label: 'Vision',
-    href: '/vision',
-  },
-  {
-    label: 'Programmes',
-    href: '/programmes',
-  },
-
-  {
-    label: 'Formateurs',
-    href: '/nos-formateurs',
-  },
-
-  // {
-  //   label: 'Parents',
-  //   href: '/parents',
-  // },
-  // {
-  //   label: 'Partenariats',
-  //   href: '/partenariats',
-  // },
-  // {
-  //   label: 'Ressources',
-  //   href: '/ressources',
-  // },
- 
-  {
-    label: 'Contact',
-    href: '/contact',
-  },
-
+  { label: 'Accueil', href: '/' },
+  { label: 'Vision', href: '/vision' },
+  { label: 'Programmes', href: '/programmes' },
+  { label: 'Formateurs', href: '/nos-formateurs' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 const ProjectData: ProjectType[] = [
-  {
-    coverImg: '/images/project/blogforge.webp',
-    name: 'Blog Forge',
-  },
-  {
-    coverImg: '/images/project/gleamer.webp',
-    name: 'Gleamer',
-  },
-  {
-    coverImg: '/images/project/learnaxis.webp',
-    name: 'Learnaxis',
-  },
-  {
-    coverImg: '/images/project/studiova.webp',
-    name: 'Studiova',
-  },
-  {
-    coverImg: '/images/project/homely.webp',
-    name: 'Homely',
-  },
-  {
-    coverImg: '/images/project/awake.webp',
-    name: 'Awake',
-  },
-  {
-    coverImg: '/images/project/endeavor.webp',
-    name: 'Endeavor',
-  },
+  { coverImg: '/images/project/blogforge.webp', name: 'Blog Forge' },
+  { coverImg: '/images/project/gleamer.webp', name: 'Gleamer' },
+  { coverImg: '/images/project/learnaxis.webp', name: 'Learnaxis' },
+  { coverImg: '/images/project/studiova.webp', name: 'Studiova' },
+  { coverImg: '/images/project/homely.webp', name: 'Homely' },
+  { coverImg: '/images/project/awake.webp', name: 'Awake' },
+  { coverImg: '/images/project/endeavor.webp', name: 'Endeavor' },
 ]
 
 const RecordData: RecordType[] = [
   {
     imgSrc: '/images/records/user.svg',
     digit: '90%',
-    desc: "Des jeunes estiment que maîtriser le numérique et l’IA est essentiel pour réussir demain",
+    desc: "Des jeunes estiment que maîtriser le numérique et l'IA est essentiel pour réussir demain pour réussir demain",
   },
   {
     imgSrc: '/images/records/cart.svg',
     digit: '97M',
-    desc: "De nouveaux emplois pourraient être créés grâce à l’intelligence artificielle d’ici 2030",
+    desc: "De nouveaux emplois pourraient être créés grâce à l'intelligence artificielle d'ici 2030",
   },
   {
     imgSrc: '/images/records/star.svg',
     digit: '70%',
-    desc: "Des entreprises dans le monde investiront dans l’IA d’ici 2030",
+    desc: "Des entreprises dans le monde investiront dans l'IA d'ici 2030",
   },
-];
-
+]
 
 const ReviewData: ReviewType[] = [
   {
     imgSrc: '/images/review/daniel.webp',
     name: 'Maman de Sami, 4e',
     rating: 4.9,
-    desc: '« Avant ZYNOVIA, mon fils passait beaucoup de temps en ligne sans objectif clair. Aujourd’hui, il utilise l’IA pour créer des projets et a retrouvé confiance en lui à l’école. »',
+    desc: "« Avant ZYNOVIA, mon fils passait beaucoup de temps en ligne sans objectif clair. Aujourd'hui, il utilise l'IA pour créer des projets et a retrouvé confiance en lui à l'école. »",
   },
   {
     imgSrc: '/images/review/sophia.webp',
     name: 'Papa de Lina, Terminale',
     rating: 5,
-    desc: '« Ma fille en terminale a découvert des métiers qu’elle ne connaissait pas et a pu présenter un projet d’IA lors d’un oral. Cela l’a beaucoup aidée pour son orientation. »',
+    desc: "« Ma fille en terminale a découvert des métiers qu'elle ne connaissait pas et a pu présenter un projet d'IA lors d'un oral. Cela l'a beaucoup aidée pour son orientation. »",
   },
   {
     imgSrc: '/images/review/marcus.webp',
@@ -151,7 +91,7 @@ const SpecializeData: SpecializeType[] = [
   },
   {
     imgSrc: '/images/specialization/mobileapp.svg',
-    title: 'Développement d\'Applications Mobiles',
+    title: "Développement d'Applications Mobiles",
     desc: 'Créez des applications iOS et Android personnalisées avec des flux fluides et des fonctionnalités avancées.',
   },
   {
@@ -174,10 +114,7 @@ const SpecializeData: SpecializeType[] = [
 const PlanData: PlanType[] = [
   {
     type: 'Programme une heure par semaine',
-    price: {
-      monthly: 9,
-      yearly: 95,
-    },
+    price: { monthly: 9, yearly: 95 },
     option: [
       'Consultation with strategy session',
       'Basic design and development',
@@ -188,10 +125,7 @@ const PlanData: PlanType[] = [
   },
   {
     type: 'Bootcamp AI',
-    price: {
-      monthly: 19,
-      yearly: 185,
-    },
+    price: { monthly: 19, yearly: 185 },
     option: [
       'Consultation with strategy session',
       'Basic design and development',
@@ -201,89 +135,44 @@ const PlanData: PlanType[] = [
     ],
   },
 ]
-const CategoryData: CategoryType[] = [
-  {
-    imgSrc: '/images/infrastructures/gallery/gallery-05.jpg',
-    title: 'Espace de Travail Moderne',
-  },
-  {
-    imgSrc: '/images/infrastructures/SalleReunion/file-0-20240115143823.jpg',
-    title: 'Salle de Réunion Professionnelle',
-  },
-  {
-    imgSrc: '/images/infrastructures/Coworkingspace/file-2-20240115154556.jpg',
-    title: 'salle Privé (1 à 2 personnes)',
-  },
-  {
-    imgSrc: '/images/infrastructures/Coworkingspace/image.png',
-    title: 'Espace de Détente',
-  },
-  {
-    imgSrc: '/images/infrastructures/gallery/gallery-03.jpg',
-    title: 'Cuisine Équipée',
-  }
-];
 
+const CategoryData: CategoryType[] = [
+  { imgSrc: '/images/infrastructures/gallery/gallery-05.jpg', title: 'Espace de Travail Moderne' },
+  { imgSrc: '/images/infrastructures/SalleReunion/file-0-20240115143823.jpg', title: 'Salle de Réunion Professionnelle' },
+  { imgSrc: '/images/infrastructures/Coworkingspace/file-2-20240115154556.jpg', title: 'salle Privé (1 à 2 personnes)' },
+  { imgSrc: '/images/infrastructures/Coworkingspace/image.png', title: 'Espace de Détente' },
+  { imgSrc: '/images/infrastructures/gallery/gallery-03.jpg', title: 'Cuisine Équipée' },
+]
 
 const FooterLinkData: FooterLinkType[] = [
   {
     section: 'Programmes',
     links: [
-      {
-        label: 'Tous les programmes',
-        href: '/programmes',
-      },
-      {
-        label: 'Collégiens & lycéens',
-        href: '/programmes',
-      },
-      {
-        label: 'Stages & ateliers',
-        href: '/programmes',
-      },
+      { label: 'Tous les programmes', href: '/programmes' },
+      { label: 'Collégiens & lycéens', href: '/programmes' },
+      { label: 'Stages & ateliers', href: '/programmes' },
     ],
   },
   {
     section: 'Vision & pédagogie',
     links: [
-      {
-        label: 'Notre vision',
-        href: '/vision',
-      },
-      {
-        label: 'Parents & orientation',
-        href: '/parents',
-      },
-      {
-        label: 'Ressources',
-        href: '/ressources',
-      },
+      { label: 'Notre vision', href: '/vision' },
+      { label: 'Parents & orientation', href: '/parents' },
+      { label: 'Ressources', href: '/ressources' },
     ],
   },
   {
     section: 'Partenariats',
     links: [
-      {
-        label: 'Écoles & établissements',
-        href: '/partenariats',
-      },
-      {
-        label: 'Entreprises',
-        href: '/partenariats',
-      },
+      { label: 'Écoles & établissements', href: '/partenariats' },
+      { label: 'Entreprises', href: '/partenariats' },
     ],
   },
   {
     section: 'Contact',
     links: [
-      {
-        label: 'Nous contacter',
-        href: '/contact',
-      },
-      {
-        label: 'Prendre rendez-vous',
-        href: '/rendez-vous',
-      },
+      { label: 'Nous contacter', href: '/contact' },
+      { label: 'Prendre rendez-vous', href: '/rendez-vous' },
     ],
   },
 ]
@@ -293,8 +182,7 @@ const FormationData: FormationType[] = [
     id: '1',
     title: 'Programme IA — Formation Annuelle',
     type: 'formation',
-    description:
-      "Programme complet d'intégration de l'IA dans le cursus scolaire avec 1h par semaine",
+    description: "Programme complet d'intégration de l'IA dans le cursus scolaire avec 1h par semaine",
     duration: 'Année scolaire',
     level: 'Collège & Lycée',
     image: '/images/banner/image.png',
@@ -310,13 +198,11 @@ const FormationData: FormationType[] = [
     ],
     href: '/programmes',
   },
-  // Formations classiques conservées
   {
     id: '2',
     title: 'Formation Robotique & IA',
     type: 'formation',
-    description:
-      'Découvrez la robotique intelligente et apprenez à programmer des robots avec IA',
+    description: 'Découvrez la robotique intelligente et apprenez à programmer des robots avec IA',
     duration: '3 mois',
     level: 'Lycée',
     image: '/images/banner/img4.jpg',
@@ -335,8 +221,7 @@ const FormationData: FormationType[] = [
     id: '3',
     title: 'Formation Machine Learning pour Débutants',
     type: 'formation',
-    description:
-      'Initiation au machine learning avec des projets pratiques et accessibles',
+    description: 'Initiation au machine learning avec des projets pratiques et accessibles',
     duration: '2 mois',
     level: 'Lycée',
     image: '/images/banner/image.png',
@@ -351,13 +236,11 @@ const FormationData: FormationType[] = [
     ],
     href: '/programmes',
   },
-  // Nouveaux bootcamps alignés sur le planning
   {
     id: '4',
     title: 'Bootcamp 1 — IA & Problèmes réels',
     type: 'bootcamp',
-    description:
-      'Identification de problèmes réels et conception de solutions en s’appuyant sur les bases de l’IA.',
+    description: "Identification de problèmes réels et conception de solutions en s'appuyant sur les bases de l'IA.",
     duration: '1 semaine',
     level: 'Collège & Lycée',
     image: '/images/banner/img3.jpg',
@@ -375,8 +258,7 @@ const FormationData: FormationType[] = [
     id: '5',
     title: 'Bootcamp 2 — Programmation & LLMs',
     type: 'bootcamp',
-    description:
-      'Découverte des bases de la programmation, logique algorithmique et introduction aux LLMs.',
+    description: 'Découverte des bases de la programmation, logique algorithmique et introduction aux LLMs.',
     duration: '1 semaine',
     level: 'Collège & Lycée',
     image: '/images/banner/img3.jpg',
@@ -394,8 +276,7 @@ const FormationData: FormationType[] = [
     id: '6',
     title: 'Bootcamp 3 & 4 — Vision par Ordinateur',
     type: 'bootcamp',
-    description:
-      "Initiation à la vision par ordinateur et aux techniques de reconnaissance d'objets.",
+    description: "Initiation à la vision par ordinateur et aux techniques de reconnaissance d'objets.",
     duration: '1 semaine',
     level: 'Collège & Lycée',
     image: '/images/banner/img3.jpg',
@@ -403,8 +284,8 @@ const FormationData: FormationType[] = [
     price: 185,
     badge: 'Bootcamps 3 & 4',
     features: [
-      "Introduction à la vision par ordinateur",
-      "Découverte de cas d’usage (ex. reconnaissance d'objets)",
+      'Introduction à la vision par ordinateur',
+      "Découverte de cas d'usage (ex. reconnaissance d'objets)",
       'Mise en pratique sur des projets simples',
     ],
     href: '/programmes',
@@ -413,8 +294,7 @@ const FormationData: FormationType[] = [
     id: '7',
     title: 'Bootcamp 5 — Restitution & Projets IA',
     type: 'bootcamp',
-    description:
-      'Semaine de restitution avec présentations de projets, jury et valorisation des réalisations.',
+    description: 'Semaine de restitution avec présentations de projets, jury et valorisation des réalisations.',
     duration: '1 semaine',
     level: 'Collège & Lycée',
     image: '/images/banner/img3.jpg',
@@ -430,63 +310,139 @@ const FormationData: FormationType[] = [
   },
 ]
 
+// ---------------------------------------------------------------------------
+// DB imports
+// ---------------------------------------------------------------------------
 import connectToDatabase from '@/lib/mongodb'
 import StudentProject from '@/models/Project'
 import Review from '@/models/Review'
 import Formation from '@/models/Formation'
-import Trainer from '@/models/Trainer'
-import TrainerTestimonial from '@/models/TrainerTestimonial'
+import TrainerModel from '@/models/Trainer'
+import TrainerTestimonialModel from '@/models/TrainerTestimonial'
 import { trainers as TrainerStaticData, trainerTestimonials as TrainerTestimonialStaticData } from '@/data/trainers'
 
+// ---------------------------------------------------------------------------
+// Helper: seed a collection only when it is empty, then return fresh docs.
+// Uses findOneAndUpdate / insertMany + explicit re-fetch to avoid race issues.
+// ---------------------------------------------------------------------------
+async function seedIfEmpty<T>(
+  Model: any,
+  staticData: T[],
+  label: string,
+): Promise<T[]> {
+  const count = await Model.countDocuments()
+  console.log(`[API/data] ${label}: ${count} document(s) in DB`)
+
+  if (count === 0 && staticData.length > 0) {
+    console.log(`[API/data] ${label}: seeding ${staticData.length} record(s)…`)
+    await Model.insertMany(staticData)
+    console.log(`[API/data] ${label}: seed done`)
+  }
+
+  // Always re-fetch after potential seed so we get the persisted docs
+  const docs = await Model.find().lean()
+  console.log(`[API/data] ${label}: returning ${docs.length} record(s)`)
+  return docs as T[]
+}
+
+// ---------------------------------------------------------------------------
+// Normalise Mongoose lean docs: expose `id` as string, stringify `_id`
+// ---------------------------------------------------------------------------
+function normalizeTrainers(list: any[]) {
+  return list.map((t) => ({
+    ...t,
+    _id: t._id?.toString() ?? '',
+    id: t.id ?? t._id?.toString() ?? '',
+  }))
+}
+
+function normalizeTestimonials(list: any[]) {
+  return list.map((t) => ({
+    ...t,
+    _id: t._id?.toString() ?? '',
+  }))
+}
+
+// ---------------------------------------------------------------------------
+// Route handler
+// ---------------------------------------------------------------------------
 export const GET = async () => {
+  const startTime = Date.now()
+  console.log('[API/data] GET called')
+
   try {
-    await connectToDatabase();
+    await connectToDatabase()
+    console.log('[API/data] DB connected')
 
-    const projects = await StudentProject.find();
-    let reviews = await Review.find();
-    const formations = await Formation.find();
-    let dbTrainers = await Trainer.find();
-    let dbTrainerTestimonials = await TrainerTestimonial.find();
+    // Run independent collections in parallel for speed
+    const [projects, reviews, formations, trainers, testimonials] = await Promise.all([
+      StudentProject.find().lean(),
+      seedIfEmpty(Review, ReviewData, 'Reviews'),
+      Formation.find().lean(),
+      seedIfEmpty(TrainerModel, TrainerStaticData, 'Trainers'),
+      seedIfEmpty(TrainerTestimonialModel, TrainerTestimonialStaticData, 'TrainerTestimonials'),
+    ])
 
-    // Auto-populate reviews if empty (save old comments)
-    if (reviews.length === 0 && ReviewData.length > 0) {
-      await Review.insertMany(ReviewData);
-      reviews = await Review.find();
-    }
+    console.log(`[API/data] All queries done in ${Date.now() - startTime}ms`)
+    console.log(`[API/data] trainers: ${trainers.length}, testimonials: ${testimonials.length}`)
 
-    // Auto-populate trainers if empty
-    if (dbTrainers.length === 0 && TrainerStaticData.length > 0) {
-      // Remove id field from static data to let Mongo generate _id if needed, or map it
-      const trainersToInsert = TrainerStaticData.map(({ id, ...rest }) => rest);
-      await Trainer.insertMany(trainersToInsert);
-      dbTrainers = await Trainer.find();
-    }
-
-    // Auto-populate trainer testimonials if empty
-    if (dbTrainerTestimonials.length === 0 && TrainerTestimonialStaticData.length > 0) {
-      await TrainerTestimonial.insertMany(TrainerTestimonialStaticData);
-      dbTrainerTestimonials = await TrainerTestimonial.find();
-    }
-
-    // Use DB data if available, otherwise fallback to static (initial)
-    return NextResponse.json({
+    const payload = {
+      _debug: {
+        source: 'db',
+        durationMs: Date.now() - startTime,
+        trainersCount: trainers.length,
+        testimonialsCount: testimonials.length,
+        timestamp: new Date().toISOString(),
+      },
       HeroData,
       NavLinkData,
       ProjectData: projects.length > 0 ? projects : ProjectData,
       RecordData,
-      ReviewData: reviews.length > 0 ? reviews : ReviewData,
+      ReviewData: reviews,
       SpecializeData,
       PlanData,
       CategoryData,
       FooterLinkData,
       FormationData: formations.length > 0 ? formations : FormationData,
-      TrainerData: dbTrainers.length > 0 ? dbTrainers : TrainerStaticData,
-      TrainerTestimonialData: dbTrainerTestimonials.length > 0 ? dbTrainerTestimonials : TrainerTestimonialStaticData,
+      TrainerData: normalizeTrainers(trainers),
+      TrainerTestimonialData: normalizeTestimonials(testimonials),
+    }
+
+    return NextResponse.json(payload, {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate',
+        'X-Debug-Duration': String(Date.now() - startTime),
+      },
     })
-  } catch (error) {
-    console.error('API Data fetch error', error);
-    return NextResponse.json({
-      HeroData, NavLinkData, ProjectData, RecordData, ReviewData, SpecializeData, PlanData, CategoryData, FooterLinkData, FormationData, TrainerData: TrainerStaticData, TrainerTestimonialData: TrainerTestimonialStaticData
-    });
+  } catch (error: any) {
+    console.error('[API/data] ERROR:', error?.message ?? error)
+    console.error('[API/data] Stack:', error?.stack)
+
+    // Graceful fallback to static data so the page still renders
+    return NextResponse.json(
+      {
+        _debug: {
+          source: 'static-fallback',
+          error: error?.message ?? 'unknown error',
+          timestamp: new Date().toISOString(),
+        },
+        HeroData,
+        NavLinkData,
+        ProjectData,
+        RecordData,
+        ReviewData,
+        SpecializeData,
+        PlanData,
+        CategoryData,
+        FooterLinkData,
+        FormationData,
+        TrainerData: TrainerStaticData,
+        TrainerTestimonialData: TrainerTestimonialStaticData,
+      },
+      {
+        status: 200, // still 200 so the client can render the fallback
+        headers: { 'Cache-Control': 'no-store' },
+      },
+    )
   }
 }

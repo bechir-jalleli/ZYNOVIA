@@ -172,7 +172,7 @@ export default function ProgrammesDetails() {
                     Pour les établissements scolaires
                   </p>
                   <p className='mt-1 text-sm font-semibold text-[#0A004B] dark:text-white'>
-                    Devenir établissement partenaire d&apos;ZYNOVIA
+                    Devenir établissement partenaire de ZYNOVIA
                   </p>
                 </div>
                 <Link

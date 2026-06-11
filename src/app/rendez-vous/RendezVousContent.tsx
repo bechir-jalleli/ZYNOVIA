@@ -166,7 +166,7 @@ const RendezVousContent = () => {
                 {[
                   { icon: Video, label: 'Visioconférence', desc: 'Échange à distance, flexible et rapide' },
                   { icon: MapPin, label: 'Sur site – Tunis', desc: 'Rencontre dans nos locaux à Tunis' },
-                  { icon: Clock, label: 'Lun – Ven, 8h–17h', desc: 'Créneaux disponibles en semaine' },
+                  { icon: Clock, label: 'Lun – Ven, 8h–19h', desc: 'Créneaux disponibles en semaine' },
                   { icon: CheckCircle2, label: 'Confirmation par email', desc: 'Nous confirmons votre rendez-vous' },
                 ].map(({ icon: Ic, label, desc }) => (
                   <div
@@ -475,8 +475,8 @@ const RendezVousContent = () => {
               {
                 icon: Mail,
                 label: 'Email',
-                value: 'academy@inoteqia.com',
-                href: 'mailto:academy@inoteqia.com',
+                value: 'contact@zynovia-academy.com',
+                href: 'mailto:contact@zynovia-academy.com',
               },
               {
                 icon: MapPin,

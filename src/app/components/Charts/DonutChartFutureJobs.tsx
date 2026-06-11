@@ -34,7 +34,7 @@ const DonutChartFutureJobs: React.FC = () => {
 
       <div className='grid gap-6 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:items-center'>
         <div style={{ width: '100%', height: 420, minWidth: 0 }}>
-          <ResponsiveContainer width='100%' height='100%'>  
+          <ResponsiveContainer width='100%' height='100%'>
             <PieChart>
               <defs>
                 <linearGradient id='aiDonutGradient' x1='0%' y1='0%' x2='100%' y2='100%'>
@@ -164,7 +164,7 @@ const DonutChartFutureJobs: React.FC = () => {
       {/* Footer / source */}
       <div className='mt-4 flex flex-col justify-between gap-2 text-[10px] text-slate-500 sm:flex-row sm:items-center dark:text-slate-400'>
         <p className='italic'>
-          Source: FMI (Fonds Monétaire International), WEF (Forum Économique Mondial), McKinsey (2024)
+          Source : FMI (Fonds Monétaire International), WEF (Forum Économique Mondial), McKinsey (2024)
         </p>
         <p className='text-[9px] uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500'>
           Projection 2030 • Scénario global

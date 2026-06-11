@@ -8,8 +8,8 @@ type LogoProps = {
 const Logo = ({ variant = 'footer' }: LogoProps) => {
   const sizeClass =
     variant === 'header'
-      ? 'h-12 md:h-16 w-auto shrink-0'
-      : 'h-14 w-auto max-w-[200px]'
+      ? 'h-16 md:h-20 lg:h-24 w-auto shrink-0'
+      : 'h-12 w-auto max-w-[220px]'
 
   return (
     <Link href='/' className={variant === 'header' ? 'inline-flex shrink-0' : undefined}>

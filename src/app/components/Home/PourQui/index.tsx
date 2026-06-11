@@ -28,7 +28,7 @@ const PourQui = () => {
     {
       emoji: '👨‍👩‍👧',
       titre: 'Parents',
-      description: 'Accompagner votre enfant vers les métiers de demain grâce à l\'IA',
+      description: 'Accompagner votre enfant pour les métiers de demain grâce àl\'IA',
       cta: 'Découvrir le parcours élève',
       href: '/parents',
     },
@@ -68,7 +68,7 @@ const PourQui = () => {
               Pour qui ?
             </p>
             <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#0A004B] dark:text-white mb-4'>
-              ZYNOVIA Academy s&apos;adresse à
+              ZYNOVIA Academy s&apos;adresse à :
             </h2>
           </motion.div>
 

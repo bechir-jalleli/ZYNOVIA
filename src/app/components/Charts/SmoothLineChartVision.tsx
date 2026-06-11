@@ -111,7 +111,7 @@ const SmoothLineChartVision: React.FC = () => {
       {/* Footer / source */}
       <div className='mt-3 flex flex-col justify-between gap-2 text-[10px] text-slate-500 sm:flex-row sm:items-center dark:text-slate-400'>
         <p className='italic'>
-          Source: FMI (Fonds Monétaire International), janvier 2024
+          Source : FMI (Fonds Monétaire International), janvier 2024
         </p>
         <p className='text-[9px] uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500'>
           Données 2024 – 2030 • Scénario de projection globale

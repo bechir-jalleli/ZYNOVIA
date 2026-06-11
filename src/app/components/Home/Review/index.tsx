@@ -101,7 +101,7 @@ const Review = () => {
             Témoignages
           </h2>
           <p className='mx-auto max-w-2xl text-base font-medium text-slate-700 sm:text-lg lg:text-xl dark:text-slate-200'>
-            Ce que disent les parents, élèves et partenaires de leurs expériences avec ZYNOVIA Academy.
+            Ce que disent les parents, élèves et partenaires de leur expérience avec ZYNOVIA Academy.
           </p>
         </div>
         {/* slider */}
