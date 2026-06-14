@@ -99,7 +99,7 @@ const QUICK_ACTIONS = [
         description: 'Formations, bootcamps et contenus pédagogiques.',
         href: '/admin/formations',
         icon: 'solar:book-bookmark-bold',
-        gradient: 'from-blue-500/20 via-primary/10 to-transparent',
+        gradient: 'from-blue-500/20 via-primary/10 to-transParent',
         border: 'border-blue-500/20',
     },
     {
@@ -107,7 +107,7 @@ const QUICK_ACTIONS = [
         description: 'Messages contact et rendez-vous à traiter.',
         href: '/admin/contact',
         icon: 'solar:inbox-bold',
-        gradient: 'from-primary/20 via-emerald-500/10 to-transparent',
+        gradient: 'from-primary/20 via-emerald-500/10 to-transParent',
         border: 'border-primary/20',
     },
 ];
@@ -119,13 +119,12 @@ function GrowthBadge({ growth }: { growth: number }) {
 
     return (
         <span
-            className={`text-xs font-bold px-2.5 py-1 rounded-lg flex items-center gap-1 ${
-                isNegative
+            className={`text-xs font-bold px-2.5 py-1 rounded-lg flex items-center gap-1 ${isNegative
                     ? 'text-red-600 dark:text-red-400 bg-red-500/10'
                     : isPositive
-                      ? 'text-green-600 dark:text-green-400 bg-green-500/10'
-                      : 'text-slate-500 dark:text-lightgrey bg-slate-500/10'
-            }`}
+                        ? 'text-green-600 dark:text-green-400 bg-green-500/10'
+                        : 'text-slate-500 dark:text-lightgrey bg-slate-500/10'
+                }`}
         >
             <Icon
                 icon={isNegative ? 'solar:arrow-down-bold' : isPositive ? 'solar:arrow-up-bold' : 'solar:minus-circle-bold'}
@@ -142,7 +141,7 @@ function StatCard({ stat }: { stat: DashboardStat }) {
             href={stat.href}
             className="group relative bg-white dark:bg-darklight p-5 sm:p-6 rounded-3xl border border-slate-200 dark:border-white/5 hover:border-primary/40 transition-all duration-300 shadow-lg hover:shadow-primary/10 overflow-hidden"
         >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/[0.03] group-hover:to-transparent transition-colors pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/[0.03] group-hover:to-transParent transition-colors pointer-events-none" />
             <div className="relative">
                 <div className="flex justify-between items-start mb-5">
                     <div className={`p-3 rounded-2xl ${stat.iconBg} ${stat.color} group-hover:scale-110 transition-transform duration-300`}>
@@ -245,7 +244,7 @@ export default function AdminOverview() {
                             Tableau de bord
                         </span>
                         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                            Bonjour, {user?.name || 'Administrateur'} 
+                            Bonjour, {user?.name || 'Administrateur'}
                         </h1>
                         <p className="text-slate-500 dark:text-lightgrey mt-2 text-base sm:text-lg font-medium max-w-xl">
                             Voici un aperçu de l&apos;activité de votre plateforme.
@@ -258,7 +257,7 @@ export default function AdminOverview() {
                             </p>
                             <p className="text-sm font-semibold text-slate-800 dark:text-white capitalize">{today}</p>
                         </div>
-                       
+
                     </div>
                 </div>
             </header>
@@ -291,7 +290,7 @@ export default function AdminOverview() {
                 </div>
             </section>
 
-           
+
 
 
         </div>

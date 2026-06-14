@@ -57,7 +57,7 @@ export default function LoginPage() {
                                 name="email"
                                 type="email"
                                 required
-                                className="appearance-none relative block w-full px-4 py-3 border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 placeholder-gray-400 dark:placeholder-gray-500 text-darkblue dark:text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all sm:text-sm"
+                                className="appearance-none relative block w-full px-4 py-3 border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 placeholder-gray-400 dark:placeholder-gray-500 text-darkblue dark:text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transParent transition-all sm:text-sm"
                                 placeholder="Email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
@@ -70,7 +70,7 @@ export default function LoginPage() {
                                 name="password"
                                 type="password"
                                 required
-                                className="appearance-none relative block w-full px-4 py-3 border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 placeholder-gray-400 dark:placeholder-gray-500 text-darkblue dark:text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all sm:text-sm"
+                                className="appearance-none relative block w-full px-4 py-3 border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 placeholder-gray-400 dark:placeholder-gray-500 text-darkblue dark:text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transParent transition-all sm:text-sm"
                                 placeholder="Mot de passe"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -88,7 +88,7 @@ export default function LoginPage() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className={`group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-semibold rounded-xl text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all shadow-lg shadow-primary/20 ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                            className={`group relative w-full flex justify-center py-3 px-4 border border-transParent text-sm font-semibold rounded-xl text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all shadow-lg shadow-primary/20 ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
                         >
                             {loading ? 'Connexion en cours...' : 'Se connecter'}
                         </button>

@@ -28,17 +28,17 @@ const Pricing = () => {
 
   //
   const [selectedCategory, setSelectedCategory] = useState<
-    'etablissement' | 'entreprise'
+    'etablissement' | 'Entreprise'
   >('etablissement')
 
   const handleCategoryChange = (
-    category: SetStateAction<'etablissement' | 'entreprise'>
+    category: SetStateAction<'etablissement' | 'Entreprise'>
   ) => {
     setSelectedCategory(category)
   }
 
   const contentConfig: Record<
-    'etablissement' | 'entreprise',
+    'etablissement' | 'Entreprise',
     Record<
       string,
       {
@@ -77,19 +77,19 @@ const Pricing = () => {
         cta: ' Découvrir les bootcamps',
       },
     },
-    entreprise: {
+    Entreprise: {
       'Programme une heure par semaine': {
         title: 'Bootcamp IA — Enfants de salariés',
-        desc: 'Un avantage social innovant pour les entreprises',
+        desc: 'Un avantage social innovant pour les Entreprises',
         options: [
           'Bootcamp IA pendant les vacances scolaires',
           'Programme éducatif adapté aux enfants',
           'Découverte de l’IA et des technologies du futur',
           'Projets inspirés du monde professionnel',
           'Encadrement par experts pédagogiques',
-          'Restitution finale devant les parents',
+          'Restitution finale devant les Parents',
         ],
-        cta: 'Découvrir le programme entreprise',
+        cta: 'Découvrir le programme Entreprise',
       },
     },
   }
@@ -97,7 +97,7 @@ const Pricing = () => {
   return (
     <section
       id='pricing'
-      className='scroll-mt-12 py-24 lg:py-32 bg-gradient-to-b from-transparent via-secondary/5 to-secondary/10 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'
+      className='scroll-mt-12 py-24 lg:py-32 bg-gradient-to-b from-transParent via-secondary/5 to-secondary/10 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'
     >
       <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
         <div className='text-center mb-10'>
@@ -105,7 +105,7 @@ const Pricing = () => {
             Nos Programmes
           </h2>
           <p className='text-lg font-normal max-w-xl mx-auto my-6 text-slate-700 dark:text-slate-200'>
-            Des formats adaptés aux établissements scolaires et aux entreprises.
+            Des formats adaptés aux établissements scolaires et aux Entreprises.
           </p>
         </div>
         {/* toggle button */}
@@ -115,18 +115,18 @@ const Pricing = () => {
             <div className='inline-flex bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm p-1.5 rounded-2xl shadow-[0_8px_30px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 dark:ring-slate-700/70 gap-2'>
               <button
                 className={`text-sm sm:text-base font-semibold cursor-pointer py-2.5 px-4 sm:py-3 sm:px-7 whitespace-nowrap rounded-xl transition-all duration-300 ${selectedCategory === 'etablissement'
-                    ? 'bg-gradient-brand text-white shadow-md shadow-[#27397F]/40 scale-105'
-                    : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100/80 dark:hover:bg-slate-700/60'
+                  ? 'bg-gradient-brand text-white shadow-md shadow-[#27397F]/40 scale-105'
+                  : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100/80 dark:hover:bg-slate-700/60'
                   }`}
                 onClick={() => handleCategoryChange('etablissement')}>
                 Établissements scolaires
               </button>
               <button
-                className={`text-sm sm:text-base font-semibold cursor-pointer py-2.5 px-4 sm:py-3 sm:px-7 whitespace-nowrap rounded-xl transition-all duration-300 ${selectedCategory === 'entreprise'
-                    ? 'bg-gradient-brand text-white shadow-md shadow-[#27397F]/40 scale-105'
-                    : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100/80 dark:hover:bg-slate-700/60'
+                className={`text-sm sm:text-base font-semibold cursor-pointer py-2.5 px-4 sm:py-3 sm:px-7 whitespace-nowrap rounded-xl transition-all duration-300 ${selectedCategory === 'Entreprise'
+                  ? 'bg-gradient-brand text-white shadow-md shadow-[#27397F]/40 scale-105'
+                  : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100/80 dark:hover:bg-slate-700/60'
                   }`}
-                onClick={() => handleCategoryChange('entreprise')}>
+                onClick={() => handleCategoryChange('Entreprise')}>
                 Entreprises
               </button>
             </div>
@@ -143,7 +143,7 @@ const Pricing = () => {
             <div className='relative z-10 flex w-full min-h-[500px] flex-col items-center justify-center gap-8 p-6 sm:p-8 md:min-h-[600px] lg:min-h-full lg:gap-10 lg:p-10'>
               {/* text */}
               <h3 className='max-w-xs text-center text-xl font-semibold leading-relaxed text-white lg:text-left lg:text-2xl lg:leading-10'>
-                Les entreprises partenaires bénéficient de conditions préférentielles sur nos
+                Les Entreprises partenaires bénéficient de conditions préférentielles sur nos
                 programmes.
               </h3>
 
@@ -169,8 +169,8 @@ const Pricing = () => {
             ))
             : plan
               .filter((item) => {
-                // For entreprise, filter out "Bootcamp AI" (Pro) plan
-                if (selectedCategory === 'entreprise' && item.type === 'Bootcamp AI') {
+                // For Entreprise, filter out "Bootcamp AI" (Pro) plan
+                if (selectedCategory === 'Entreprise' && item.type === 'Bootcamp AI') {
                   return false
                 }
                 return true

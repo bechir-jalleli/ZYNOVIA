@@ -13,7 +13,7 @@ const bootcampsSchedule = [
     theme: 'Déclic & créativité',
     bullets: [
       'Identification de problèmes concrets du quotidien ou de la vie scolaire.',
-"Brainstorming guidé pour imaginer des solutions innovantes appuyées par l'IA.",
+      "Brainstorming guidé pour imaginer des solutions innovantes appuyées par l'IA.",
       'Orientation vers les modèles et techniques de traitement adaptés aux idées des élèves.',
     ],
   },
@@ -45,7 +45,7 @@ const bootcampsSchedule = [
     title: 'Restitution & valorisation des projets',
     theme: 'Pitch & confiance en soi',
     bullets: [
-      'Présentation des projets devant un jury (parents, enseignants, encadrants).',
+      'Présentation des projets devant un jury (Parents, enseignants, encadrants).',
       'Remise de certificats et trophées pour valoriser les réalisations des élèves.',
       'Mise en avant des compétences acquises pour la suite de leur parcours.',
     ],
@@ -217,7 +217,7 @@ export default function ProgrammesBootcamps() {
                   </div>
                 </div>
                 <Link
-                  href='/contact?type=parent'
+                  href='/contact?type=Parent'
                   className='inline-flex items-center justify-center rounded-xl btn-gradient px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/40 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
                 >
                   S&apos;inscrire au prochain bootcamp
@@ -255,13 +255,13 @@ export default function ProgrammesBootcamps() {
                       key={item}
                       className='flex items-start gap-3 rounded-2xl bg-slate-50/90 px-3 py-3 ring-1 ring-slate-100/90 shadow-sm shadow-slate-900/5 transition hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/15 dark:bg-slate-900/80 dark:ring-slate-700/70'
                     >
-<div className='mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-brand'>
-  {index % 2 === 0 ? (
-    <Cpu className='h-4 w-4' style={{ stroke: '#ffffff', color: '#ffffff' }} />
-  ) : (
-    <CircuitBoard className='h-4 w-4' style={{ stroke: '#ffffff', color: '#ffffff' }} />
-  )}
-</div>
+                      <div className='mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-brand'>
+                        {index % 2 === 0 ? (
+                          <Cpu className='h-4 w-4' style={{ stroke: '#ffffff', color: '#ffffff' }} />
+                        ) : (
+                          <CircuitBoard className='h-4 w-4' style={{ stroke: '#ffffff', color: '#ffffff' }} />
+                        )}
+                      </div>
                       <p className='text-xs sm:text-sm text-slate-700 dark:text-slate-200'>
                         {item}
                       </p>

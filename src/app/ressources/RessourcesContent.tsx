@@ -60,7 +60,7 @@ const faqItems: FaqItem[] = [
   {
     question: 'Les ressources seront-elles mises à jour ?',
     answer:
-      'Oui, les contenus sont régulièrement enrichis pour suivre l’évolution de l’IA, des métiers et des besoins des familles, des écoles et des entreprises.',
+      'Oui, les contenus sont régulièrement enrichis pour suivre l’évolution de l’IA, des métiers et des besoins des familles, des écoles et des Entreprises.',
   },
 ]
 
@@ -68,12 +68,12 @@ const RessourcesContent = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0)
 
   return (
-    <main className='bg-gradient-to-b from-secondary/20 via-secondary/5 to-transparent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
+    <main className='bg-gradient-to-b from-secondary/20 via-secondary/5 to-transParent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
       {/* HERO */}
       <section className='relative py-24 lg:py-32'>
         <div
           aria-hidden='true'
-          className='pointer-events-none absolute inset-x-0 top-0 -z-10 h-72 bg-[radial-gradient(circle_at_top,_rgba(0,195,217,0.24),transparent_55%)] dark:bg-[radial-gradient(circle_at_top,_rgba(0,195,217,0.4),transparent_55%)]'
+          className='pointer-events-none absolute inset-x-0 top-0 -z-10 h-72 bg-[radial-gradient(circle_at_top,_rgba(0,195,217,0.24),transParent_55%)] dark:bg-[radial-gradient(circle_at_top,_rgba(0,195,217,0.4),transParent_55%)]'
         />
         <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
           <motion.div
@@ -146,7 +146,7 @@ const RessourcesContent = () => {
             className='mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4'
           >
             {[
-              { title: 'Le guide des parents', icon: Book },
+              { title: 'Le guide des Parents', icon: Book },
               { title: 'Le guide pour les élèves', icon: Brain },
               { title: 'Le guide enseignants', icon: School },
               { title: 'Le guide orientation : métiers de demain', icon: FileText },
@@ -479,7 +479,7 @@ const RessourcesContent = () => {
             <div className='flex flex-col items-start gap-5 rounded-[22px] bg-white/95 px-6 py-7 text-left sm:px-8 sm:py-8 md:flex-row md:items-center md:justify-between dark:bg-slate-950/95'>
               <div className='space-y-2'>
                 <h2 className='text-lg font-semibold text-[#0A004B] sm:text-xl dark:text-white'>
-                  Accédez aux guides, documents et outils qui préparent l’avenir
+                  Accédez aux guides, documents et outils qui préParent l’avenir
                 </h2>
               </div>
               <div className='flex flex-wrap gap-3'>

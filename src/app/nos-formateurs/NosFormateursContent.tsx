@@ -77,9 +77,8 @@ function DebugPanel({ debug, retryCount }: { debug: DebugInfo; retryCount: numbe
     <div className="fixed bottom-4 right-4 z-50 max-w-sm font-mono text-xs">
       <button
         onClick={() => setOpen((v) => !v)}
-        className={`flex items-center gap-2 rounded-full px-3 py-1.5 shadow-lg text-white transition ${
-          isError ? 'bg-red-600 hover:bg-red-700' : 'bg-emerald-600 hover:bg-emerald-700'
-        }`}
+        className={`flex items-center gap-2 rounded-full px-3 py-1.5 shadow-lg text-white transition ${isError ? 'bg-red-600 hover:bg-red-700' : 'bg-emerald-600 hover:bg-emerald-700'
+          }`}
       >
         {isError ? <AlertTriangle className="h-3.5 w-3.5" /> : <CheckCircle2 className="h-3.5 w-3.5" />}
         <Bug className="h-3.5 w-3.5" />
@@ -181,7 +180,7 @@ export default function NosFormateursContent() {
   const testimonialKey = (t: TestimonialFromAPI, i: number) => t._id || `testimonial-${i}`
 
   return (
-    <main className='bg-gradient-to-b from-secondary/20 via-secondary/5 to-transparent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
+    <main className='bg-gradient-to-b from-secondary/20 via-secondary/5 to-transParent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
 
       {/* Debug panel — always visible during development */}
       <DebugPanel debug={debug} retryCount={retryCount} />
@@ -192,7 +191,7 @@ export default function NosFormateursContent() {
           aria-hidden='true'
           className='pointer-events-none absolute inset-x-0 top-0 -z-10 h-80'
           style={{
-            background: 'radial-gradient(circle at top, rgba(68,144,199,0.25), transparent 55%)',
+            background: 'radial-gradient(circle at top, rgba(68,144,199,0.25), transParent 55%)',
           }}
         />
         <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
@@ -201,24 +200,17 @@ export default function NosFormateursContent() {
               {...fadeInUp}
               transition={{ duration: 0.65, ease: 'easeOut' }}
               className='space-y-6'>
-              <div
-                className='inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] shadow-sm ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/80 dark:ring-white/10'
-                style={{ color: '#27397F' }}>
-                <span
-                  className='h-2 w-2 rounded-full animate-pulse'
-                  style={{ background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)' }}
-                />
-                Nos Formateurs
-              </div>
+
               <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#0A004B] dark:text-white'>
-                Nos Formateurs
+                Nos{' '}
+                <span className='text-gradient'>Formateurs</span>
               </h1>
               <p
                 className='text-lg font-semibold'
                 style={{
                   background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)',
                   WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
+                  WebkitTextFillColor: 'transParent',
                   backgroundClip: 'text',
                 }}>
                 Une équipe d&apos;experts passionnés
@@ -303,6 +295,7 @@ export default function NosFormateursContent() {
           </motion.div>
 
           <motion.div
+            key={loading ? 'loading-trainers' : 'loaded-trainers'}
             variants={staggerContainer}
             initial='initial'
             whileInView='whileInView'
@@ -419,6 +412,7 @@ export default function NosFormateursContent() {
           </motion.div>
 
           <motion.div
+            key={loading ? 'loading-testimonials' : 'loaded-testimonials'}
             variants={staggerContainer}
             initial='initial'
             whileInView='whileInView'

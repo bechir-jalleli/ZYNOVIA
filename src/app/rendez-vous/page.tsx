@@ -4,7 +4,7 @@ import RendezVousContent from './RendezVousContent'
 export const metadata: Metadata = {
   title: 'Rendez-vous – ZYNOVIA Academy',
   description:
-    'Réservez un rendez-vous avec ZYNOVIA Academy en visioconférence ou sur site. Parents, établissements, entreprises : notre équipe vous accompagne pour trouver le programme adapté.',
+    'Réservez un rendez-vous avec ZYNOVIA Academy en visioconférence ou sur site. Parents, établissements, Entreprises : notre équipe vous accompagne pour trouver le programme adapté.',
   keywords: [
     'rendez-vous ZYNOVIA',
     'prendre rendez-vous IA',

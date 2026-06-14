@@ -115,14 +115,14 @@ const RendezVousContent = () => {
   }
 
   return (
-    <main className='bg-gradient-to-b from-secondary/20 via-secondary/5 to-transparent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
+    <main className='bg-gradient-to-b from-secondary/20 via-secondary/5 to-transParent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
 
       {/* HERO */}
       <section className='relative overflow-hidden py-20 lg:py-28'>
         <div
           aria-hidden='true'
           className='pointer-events-none absolute inset-x-0 top-0 -z-10 h-72'
-          style={{ background: 'radial-gradient(circle at top, rgba(68,144,199,0.24), transparent 55%)' }}
+          style={{ background: 'radial-gradient(circle at top, rgba(68,144,199,0.24), transParent 55%)' }}
         />
         <div
           aria-hidden='true'
@@ -151,7 +151,7 @@ const RendezVousContent = () => {
 
               <p
                 className='text-lg font-semibold'
-                style={{ background: brandGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
+                style={{ background: brandGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transParent', backgroundClip: 'text' }}
               >
                 Un échange personnalisé pour répondre à vos besoins
               </p>

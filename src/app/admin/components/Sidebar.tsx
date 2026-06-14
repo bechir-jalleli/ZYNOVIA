@@ -9,7 +9,7 @@ import { useAuth } from '@/context/AuthContext';
 const menuItems = [
     { label: 'Tableau de bord', href: '/admin', icon: 'solar:widget-bold' },
     { label: 'Formations', href: '/admin/formations', icon: 'solar:book-bookmark-bold' },
-    { label: 'Projets', href: '/admin/projects', icon: 'solar:folder-bold' },
+    //{ label: 'Projets', href: '/admin/projects', icon: 'solar:folder-bold' },
     { label: 'Avis Clients', href: '/admin/reviews', icon: 'solar:star-bold' },
     { label: 'Formateurs', href: '/admin/trainers', icon: 'solar:users-group-rounded-bold' },
     { label: 'Témoignages Formateurs', href: '/admin/trainer-testimonials', icon: 'solar:chat-round-dots-bold' },

@@ -319,6 +319,11 @@ export default function ManageFormations() {
                                             {uploadError && (
                                                 <p className="text-xs font-semibold text-red-500">{uploadError}</p>
                                             )}
+                                            {uploading && (
+                                                <div className="w-full h-1.5 bg-slate-100 dark:bg-white/10 rounded-full overflow-hidden relative">
+                                                    <div className="bg-gradient-to-r from-primary to-blue-600 rounded-full animate-progress-loading"></div>
+                                                </div>
+                                            )}
                                             <input
                                                 type="text"
                                                 readOnly

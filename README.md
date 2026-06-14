@@ -29,7 +29,7 @@ Create a clear structure with dedicated pages instead of one very long homepage:
 - **Vision / Pédagogie (`/vision` or `/notre-vision`)**
   - Move content from `components/Home/Vision/page` here.
   - Sections:
-    - Notre vision & “Pont ZYNOVIA” (bridge between école, technologie, emploi, parents/entreprises).
+    - Notre vision & “Pont ZYNOVIA” (bridge between école, technologie, emploi, Parents/Entreprises).
     - Tendances du marché (macro stats + chart).
     - Métiers de demain (future jobs donut + parcours élève → professionnel).
     - Compétences clés (radar chart + soft skills vs hard skills).
@@ -40,10 +40,10 @@ Create a clear structure with dedicated pages instead of one very long homepage:
   - Group existing “program-like” sections (Projects, Categories, Specialize, Pricing, Records, Review) into one page:
     - Cards per programme (Collégiens, Lycéens, Prépa concours, Clubs, Vacances).
     - For each: objectifs, contenu, format, durée, prix, prérequis.
-    - Comparison table for parents to pick the right programme.
+    - Comparison table for Parents to pick the right programme.
     - “Exemples de projets” section using existing `project` images.
 
-- **Parents & Orientation (`/parents`)**
+- **Parents & Orientation (`/Parents`)**
   - Explain how ZYNOVIA accompagne les familles:
     - Suivi (bilans, feedback, bulletins de progression).
     - Orientation (concours blancs, simulations d’oraux, dossiers).
@@ -51,16 +51,16 @@ Create a clear structure with dedicated pages instead of one very long homepage:
 
 - **Partenariats – Écoles & Entreprises (`/partenariats`)**
   - Offres pour établissements scolaires (clubs IA, ateliers, formations enseignants).
-  - Offres pour entreprises (ateliers IA jeunesse, hackathons, sponsoring).
+  - Offres pour Entreprises (ateliers IA jeunesse, hackathons, sponsoring).
   - Dedicated B2B contact CTA.
 
 - **Ressources / Blog (`/ressources`)**
-  - Articles courts pour parents et éducateurs (future of work, IA pour les jeunes, etc.).
+  - Articles courts pour Parents et éducateurs (future of work, IA pour les jeunes, etc.).
   - Reuse or extend references already present in `SourcesSection`.
   - Later: plug into a CMS or MDX-based content system.
 
 - **Contact & Rendez-vous (`/contact`)**
-  - Form with fields: nom du parent, email, téléphone, âge de l’élève, niveau, programme souhaité, créneau préféré, type de rendez-vous (en ligne / sur place).
+  - Form with fields: nom du Parent, email, téléphone, âge de l’élève, niveau, programme souhaité, créneau préféré, type de rendez-vous (en ligne / sur place).
   - Reassurance about délai de réponse et étapes post-rendez-vous.
 
 ### 3. Design & UX Guidelines
@@ -78,7 +78,7 @@ Create a clear structure with dedicated pages instead of one very long homepage:
 - **Navigation**
   - Update `/api/data` to include new nav items:
     - Accueil, Programmes, Vision, Parents, Partenariats, Ressources, Contact.
-  - Make audience-specific entries explicit (e.g. “Parents”, “Écoles & entreprises”).
+  - Make audience-specific entries explicit (e.g. “Parents”, “Écoles & Entreprises”).
 
 ### 4. Implementation Roadmap
 
@@ -87,7 +87,7 @@ Create a clear structure with dedicated pages instead of one very long homepage:
 - Add:
   - `src/app/vision/page.tsx`
   - `src/app/programmes/page.tsx`
-  - `src/app/parents/page.tsx`
+  - `src/app/Parents/page.tsx`
   - `src/app/partenariats/page.tsx`
   - `src/app/ressources/page.tsx`
   - `src/app/contact/page.tsx`
@@ -107,15 +107,15 @@ Create a clear structure with dedicated pages instead of one very long homepage:
 - Reuse `Project`, `Category`, `Specialize`, `Pricing`, `Records`, `Review` components where appropriate.
 - Organize programmes by age/niveau and standardize per-programme props:
   - `title`, `ageRange`, `level`, `format`, `duration`, `price`, `description`, `cta`.
-- Add a comparison table component so parents can see differences in one view.
+- Add a comparison table component so Parents can see differences in one view.
 
 **Step 4 – Parents & Partenariats pages**
 
-- For `/parents`:
+- For `/Parents`:
   - Focus the copy on accompagnement, orientation, bénéfices concrets pour l’enfant.
   - Reuse `AnimatedCounter` stats from the Vision page for trust indicators.
 - For `/partenariats`:
-  - Define 2 sections: “Pour les établissements scolaires” and “Pour les entreprises”.
+  - Define 2 sections: “Pour les établissements scolaires” and “Pour les Entreprises”.
   - Add use cases, example interventions, and a contact CTA.
 
 **Step 5 – Contact & backend integration**
@@ -146,4 +146,4 @@ Create a clear structure with dedicated pages instead of one very long homepage:
 
 - Implement Step 1 and Step 2 first (routing and homepage refactor) so the site structure is clear.
 - Then fill in `/programmes`, `/vision`, and `/contact` with real content and forms.
-- Finally, iterate on `/parents`, `/partenariats`, and `/ressources` as your content and partnerships grow.
+- Finally, iterate on `/Parents`, `/partenariats`, and `/ressources` as your content and partnerships grow.

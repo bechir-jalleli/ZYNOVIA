@@ -68,7 +68,7 @@ const FormationsBootcamps = () => {
   })
 
   return (
-    <section className='py-24 lg:py-32 bg-gradient-to-b from-transparent via-secondary/5 to-secondary/10 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
+    <section className='py-24 lg:py-32 bg-gradient-to-b from-transParent via-secondary/5 to-secondary/10 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
       <div className='container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
         <motion.div
           variants={staggerContainer}
@@ -144,154 +144,154 @@ const FormationsBootcamps = () => {
                     const formationType = normalizeFormationType(formation)
 
                     return (
-                  <motion.div
-                    key={formation.id || formation._id}
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.35, delay: index * 0.06 }}
-                    className='group relative overflow-hidden rounded-3xl bg-white/95 dark:bg-slate-900/95 shadow-[0_18px_45px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 dark:ring-slate-700/70 backdrop-blur transition-all duration-500 hover:shadow-[0_24px_60px_rgba(15,23,42,0.18)] hover:-translate-y-2 flex flex-col h-full'
-                  >
-                    {/* Gradient Background Effect */}
-                    <div
-                      aria-hidden='true'
-                      className='pointer-events-none absolute inset-x-6 -top-12 h-32 rounded-full bg-gradient-to-r from-[#27397F]/30 to-[#3FA9DF]/30 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500'
-                    />
+                      <motion.div
+                        key={formation.id || formation._id}
+                        initial={{ opacity: 0, y: 24 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.35, delay: index * 0.06 }}
+                        className='group relative overflow-hidden rounded-3xl bg-white/95 dark:bg-slate-900/95 shadow-[0_18px_45px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 dark:ring-slate-700/70 backdrop-blur transition-all duration-500 hover:shadow-[0_24px_60px_rgba(15,23,42,0.18)] hover:-translate-y-2 flex flex-col h-full'
+                      >
+                        {/* Gradient Background Effect */}
+                        <div
+                          aria-hidden='true'
+                          className='pointer-events-none absolute inset-x-6 -top-12 h-32 rounded-full bg-gradient-to-r from-[#27397F]/30 to-[#3FA9DF]/30 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500'
+                        />
 
-                    {/* Badge */}
-                    {formation.badge && (
-                      <div className='absolute top-4 right-4 z-20'>
-                        <motion.span
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          className='inline-flex items-center px-3 py-1.5 text-xs font-bold rounded-full bg-gradient-brand text-white shadow-lg shadow-[#27397F]/30 backdrop-blur-sm'
-                        >
-                          {formation.badge}
-                        </motion.span>
-                      </div>
-                    )}
-
-                    {/* Image */}
-                    <div className='relative h-56 sm:h-64 w-full overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900'>
-                      <CloudImage
-                        src={formation.image}
-                        alt={formation.title}
-                        fill
-                        optimizedWidth={640}
-                        className='object-cover transition-transform duration-700 group-hover:scale-110'
-                        sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-                      />
-                      <div className='absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent' />
-
-                      {/* Type Badge on Image */}
-                      <div className='absolute bottom-4 left-4 right-4'>
-                        <span
-                          className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold backdrop-blur-md shadow-lg ${formationType === 'bootcamp'
-                            ? 'bg-gradient-to-r from-orange-500/95 to-orange-600/95 text-white'
-                            : 'bg-gradient-brand text-white shadow-[#27397F]/20'
-                            }`}
-                        >
-                          {formationType === 'bootcamp' ? (
-                            <>
-                              <Icon icon='material-symbols:rocket-launch' className='w-4 h-4' />
-                              <span>Bootcamp</span>
-                            </>
-                          ) : (
-                            <>
-                              <Icon icon='material-symbols:menu-book' className='w-4 h-4' />
-                              <span>Formation</span>
-                            </>
-                          )}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className='relative flex flex-col flex-grow p-6 sm:p-8'>
-                      <h3 className='text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100 mb-3 line-clamp-2 leading-tight group-hover:text-[#3FA9DF] transition-colors duration-300'>
-                        {formation.title}
-                      </h3>
-                      <p className='text-sm sm:text-base text-slate-600 dark:text-slate-300 mb-5 line-clamp-2 flex-grow leading-relaxed'>
-                        {formation.description}
-                      </p>
-
-                      {/* Info Icons */}
-                      <div className='flex flex-wrap gap-3 sm:gap-4 mb-5 pb-5 border-b border-slate-200/60 dark:border-slate-700/60'>
-                        <div className='flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400'>
-                          <div className='flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-soft text-[#27397F] dark:text-[#3FA9DF]'>
-                            <Icon
-                              icon='material-symbols:schedule'
-                              className='w-4 h-4'
-                            />
-                          </div>
-                          <span className='font-medium'>{formation.duration}</span>
-                        </div>
-                        <div className='flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400'>
-                          <div className='flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-soft text-[#27397F] dark:text-[#3FA9DF]'>
-                            <Icon
-                              icon='material-symbols:school'
-                              className='w-4 h-4'
-                            />
-                          </div>
-                          <span className='font-medium'>{formation.level}</span>
-                        </div>
-                        {formation.startDate && (
-                          <div className='flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400'>
-                            <div className='flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-soft text-[#27397F] dark:text-[#3FA9DF]'>
-                              <Icon
-                                icon='material-symbols:calendar-today'
-                                className='w-4 h-4'
-                              />
-                            </div>
-                            <span className='font-medium'>{formation.startDate}</span>
+                        {/* Badge */}
+                        {formation.badge && (
+                          <div className='absolute top-4 right-4 z-20'>
+                            <motion.span
+                              initial={{ scale: 0 }}
+                              animate={{ scale: 1 }}
+                              className='inline-flex items-center px-3 py-1.5 text-xs font-bold rounded-full bg-gradient-brand text-white shadow-lg shadow-[#27397F]/30 backdrop-blur-sm'
+                            >
+                              {formation.badge}
+                            </motion.span>
                           </div>
                         )}
-                      </div>
 
-                      {/* Features */}
-                      {formation.features && formation.features.length > 0 && (
-                        <div className='mb-6 space-y-2.5'>
-                          {formation.features.slice(0, 3).map((feature: string, index: number) => (
-                            <motion.div
-                              key={index}
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: index * 0.1 }}
-                              className='flex items-start gap-2.5'
+                        {/* Image */}
+                        <div className='relative h-56 sm:h-64 w-full overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900'>
+                          <CloudImage
+                            src={formation.image}
+                            alt={formation.title}
+                            fill
+                            optimizedWidth={640}
+                            className='object-cover transition-transform duration-700 group-hover:scale-110'
+                            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                          />
+                          <div className='absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transParent' />
+
+                          {/* Type Badge on Image */}
+                          <div className='absolute bottom-4 left-4 right-4'>
+                            <span
+                              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold backdrop-blur-md shadow-lg ${formationType === 'bootcamp'
+                                ? 'bg-gradient-to-r from-orange-500/95 to-orange-600/95 text-white'
+                                : 'bg-gradient-brand text-white shadow-[#27397F]/20'
+                                }`}
                             >
-                              <div className='flex-shrink-0 mt-0.5'>
+                              {formationType === 'bootcamp' ? (
+                                <>
+                                  <Icon icon='material-symbols:rocket-launch' className='w-4 h-4' />
+                                  <span>Bootcamp</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Icon icon='material-symbols:menu-book' className='w-4 h-4' />
+                                  <span>Formation</span>
+                                </>
+                              )}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Content */}
+                        <div className='relative flex flex-col flex-grow p-6 sm:p-8'>
+                          <h3 className='text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100 mb-3 line-clamp-2 leading-tight group-hover:text-[#3FA9DF] transition-colors duration-300'>
+                            {formation.title}
+                          </h3>
+                          <p className='text-sm sm:text-base text-slate-600 dark:text-slate-300 mb-5 line-clamp-2 flex-grow leading-relaxed'>
+                            {formation.description}
+                          </p>
+
+                          {/* Info Icons */}
+                          <div className='flex flex-wrap gap-3 sm:gap-4 mb-5 pb-5 border-b border-slate-200/60 dark:border-slate-700/60'>
+                            <div className='flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400'>
+                              <div className='flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-soft text-[#27397F] dark:text-[#3FA9DF]'>
                                 <Icon
-                                  icon='material-symbols:check-circle-rounded'
-                                  className='w-5 h-5 text-[#3FA9DF]'
-                                  style={{ color: '#3FA9DF' }}
+                                  icon='material-symbols:schedule'
+                                  className='w-4 h-4'
                                 />
                               </div>
-                              <span className='text-sm text-slate-600 dark:text-slate-300 leading-relaxed'>
-                                {feature}
-                              </span>
-                            </motion.div>
-                          ))}
-                        </div>
-                      )}
+                              <span className='font-medium'>{formation.duration}</span>
+                            </div>
+                            <div className='flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400'>
+                              <div className='flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-soft text-[#27397F] dark:text-[#3FA9DF]'>
+                                <Icon
+                                  icon='material-symbols:school'
+                                  className='w-4 h-4'
+                                />
+                              </div>
+                              <span className='font-medium'>{formation.level}</span>
+                            </div>
+                            {formation.startDate && (
+                              <div className='flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400'>
+                                <div className='flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-soft text-[#27397F] dark:text-[#3FA9DF]'>
+                                  <Icon
+                                    icon='material-symbols:calendar-today'
+                                    className='w-4 h-4'
+                                  />
+                                </div>
+                                <span className='font-medium'>{formation.startDate}</span>
+                              </div>
+                            )}
+                          </div>
 
-                      {/* Price & CTA */}
-                      <div className='mt-auto pt-5 border-t border-slate-200/60 dark:border-slate-700/60'>
-                        <div className='flex items-center justify-between'>
+                          {/* Features */}
+                          {formation.features && formation.features.length > 0 && (
+                            <div className='mb-6 space-y-2.5'>
+                              {formation.features.slice(0, 3).map((feature: string, index: number) => (
+                                <motion.div
+                                  key={index}
+                                  initial={{ opacity: 0, x: -10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: index * 0.1 }}
+                                  className='flex items-start gap-2.5'
+                                >
+                                  <div className='flex-shrink-0 mt-0.5'>
+                                    <Icon
+                                      icon='material-symbols:check-circle-rounded'
+                                      className='w-5 h-5 text-[#3FA9DF]'
+                                      style={{ color: '#3FA9DF' }}
+                                    />
+                                  </div>
+                                  <span className='text-sm text-slate-600 dark:text-slate-300 leading-relaxed'>
+                                    {feature}
+                                  </span>
+                                </motion.div>
+                              ))}
+                            </div>
+                          )}
+
+                          {/* Price & CTA */}
+                          <div className='mt-auto pt-5 border-t border-slate-200/60 dark:border-slate-700/60'>
+                            <div className='flex items-center justify-between'>
+                            </div>
+                            <Link
+                              href={formation.href || '/programmes'}
+                              className='group/btn block w-full px-6 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-center btn-primary btn-hover rounded-xl shadow-md'
+                            >
+                              <span className='relative z-10 flex items-center justify-center gap-2'>
+                                En savoir plus
+                                <Icon
+                                  icon='material-symbols:arrow-forward-rounded'
+                                  className='w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300'
+                                />
+                              </span>
+                            </Link>
+                          </div>
                         </div>
-                        <Link
-                          href={formation.href || '/programmes'}
-                          className='group/btn block w-full px-6 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-center btn-primary btn-hover rounded-xl shadow-md'
-                        >
-                          <span className='relative z-10 flex items-center justify-center gap-2'>
-                            En savoir plus
-                            <Icon
-                              icon='material-symbols:arrow-forward-rounded'
-                              className='w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300'
-                            />
-                          </span>
-                        </Link>
-                      </div>
-                    </div>
-                  </motion.div>
+                      </motion.div>
                     )
                   })}
                 </motion.div>

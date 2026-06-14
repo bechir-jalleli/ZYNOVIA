@@ -15,11 +15,11 @@ const DMSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://inoteqia.com'),
   title: {
-    default: 'ZYNOVIA Academy – Académie Tunisienne de l\'IA et des Technologies du Futur',
+    default: 'ZYNOVIA Academy – Académie  de l\'IA et des Technologies du Futur',
     template: '%s | ZYNOVIA Academy',
   },
   description:
-    'ZYNOVIA Academy – Académie Tunisienne de l\'Intelligence Artificielle et des Technologies du Futur. Formation IA, robotique et programmation pour collégiens et lycéens à Tunis.',
+    'ZYNOVIA Academy – Académie  de l\'Intelligence Artificielle et des Technologies du Futur. Formation IA, robotique et programmation pour collégiens et lycéens à Tunis.',
   keywords: [
     'ZYNOVIA Academy',
     'académie IA Tunisie',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     locale: 'fr_FR',
     url: 'https://inoteqia.com',
     siteName: 'ZYNOVIA Academy',
-    title: 'ZYNOVIA Academy – Académie Tunisienne de l\'IA',
+    title: 'ZYNOVIA Academy – Académie  de l\'IA',
     description:
       'Formation IA, robotique et programmation pour collégiens et lycéens à Tunis. Programmes annuels et bootcamps.',
     images: [
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ZYNOVIA Academy – Académie Tunisienne de l\'IA',
+    title: 'ZYNOVIA Academy – Académie  de l\'IA',
     description: 'Formation IA, robotique et programmation pour collégiens et lycéens à Tunis.',
     images: ['/images/banner/image.png'],
   },

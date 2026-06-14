@@ -109,7 +109,7 @@ export default function ProgrammesPlanning() {
                   className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
                 />
                 <div className='relative flex items-start gap-3'>
-<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-brand text-white shadow-md shadow-[#27397F]/40 mb-4'>                      <Icon className='h-5 w-5' />
+                  <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-brand text-white shadow-md shadow-[#27397F]/40 mb-4'>                      <Icon className='h-5 w-5' />
                   </div>
                   <div>
                     <h3 className='text-sm font-semibold text-[#0A004B] dark:text-white'>
@@ -147,7 +147,7 @@ export default function ProgrammesPlanning() {
               </p>
 
               <div className='mt-6 relative'>
-                <div className='pointer-events-none absolute left-[10px] top-0 bottom-0 w-px bg-gradient-to-b from-[#27397F] via-[#4490C7] to-transparent' />
+                <div className='pointer-events-none absolute left-[10px] top-0 bottom-0 w-px bg-gradient-to-b from-[#27397F] via-[#4490C7] to-transParent' />
                 <div className='space-y-4'>
                   {planningPhases.map(({ weeksLabel, title, weeksSummary }, index) => (
                     <div

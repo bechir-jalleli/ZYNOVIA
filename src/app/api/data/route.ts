@@ -53,7 +53,7 @@ const RecordData: RecordType[] = [
   {
     imgSrc: '/images/records/star.svg',
     digit: '70%',
-    desc: "Des entreprises dans le monde investiront dans l'IA d'ici 2030",
+    desc: "Des Entreprises dans le monde investiront dans l'IA d'ici 2030",
   },
 ]
 
@@ -157,7 +157,7 @@ const FooterLinkData: FooterLinkType[] = [
     section: 'Vision & pédagogie',
     links: [
       { label: 'Notre vision', href: '/vision' },
-      { label: 'Parents & orientation', href: '/parents' },
+      { label: 'Parents & orientation', href: '/Parents' },
       { label: 'Ressources', href: '/ressources' },
     ],
   },
@@ -302,7 +302,7 @@ const FormationData: FormationType[] = [
     price: 185,
     badge: 'Bootcamp 5',
     features: [
-      'Présentation des projets devant un jury (parents, enseignants, encadrants)',
+      'Présentation des projets devant un jury (Parents, enseignants, encadrants)',
       'Remise de certificats et trophées',
       'Valorisation des réalisations des élèves',
     ],

@@ -1,10 +1,11 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { ReviewType } from '@/app/types/review'
 import Image from 'next/image'
 import CloudImage from '@/app/components/Infrastructure/CloudImage'
 import { Icon } from '@iconify/react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -29,6 +30,8 @@ const Review = () => {
     }
     fetchData()
   }, [])
+
+  const sliderRef = useRef<Slider>(null)
 
   const settings = {
     dots: true,
@@ -94,18 +97,38 @@ const Review = () => {
   }
 
   return (
-    <section className='py-24 lg:py-32 bg-gradient-to-b from-secondary/10 via-secondary/5 to-transparent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
+    <section className='py-24 lg:py-32 bg-gradient-to-b from-secondary/10 via-secondary/5 to-transParent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
       <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
         <div className='mb-10 text-center'>
           <h2 className='mb-4 text-3xl font-bold leading-tight text-[#0A004B] sm:text-4xl lg:text-5xl dark:text-white'>
-            Témoignages
+            <span className='text-gradient'>Témoignages</span>
           </h2>
           <p className='mx-auto max-w-2xl text-base font-medium text-slate-700 sm:text-lg lg:text-xl dark:text-slate-200'>
-            Ce que disent les parents, élèves et partenaires de leur expérience avec ZYNOVIA Academy.
+            Ce que disent les Parents, élèves et partenaires de leur expérience avec <span className='text-gradient font-semibold'>ZYNOVIA Academy</span>.
           </p>
         </div>
-        {/* slider */}
-        <Slider {...settings}>
+
+        {/* slider with side arrows */}
+        <div className='relative px-12'>
+          {/* Left arrow */}
+          <button
+            onClick={() => sliderRef.current?.slickPrev()}
+            className='absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-110'
+            aria-label='Précédent'
+          >
+            <ChevronLeft className='h-5 w-5' />
+          </button>
+
+          {/* Right arrow */}
+          <button
+            onClick={() => sliderRef.current?.slickNext()}
+            className='absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-110'
+            aria-label='Suivant'
+          >
+            <ChevronRight className='h-5 w-5' />
+          </button>
+
+          <Slider ref={sliderRef} {...settings}>
           {loading
             ? Array.from({ length: 3 }).map((_, i) => <ReviewSkeleton key={i} />)
             : review.map((item: any, i) => (
@@ -146,7 +169,8 @@ const Review = () => {
                 </div>
               </div>
             ))}
-        </Slider>
+          </Slider>
+        </div>
       </div>
     </section>
   )

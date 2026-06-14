@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { User, Mail, Phone, Handshake, CheckCircle2, XCircle, Send } from 'lucide-react'
 
-type Role = 'parent' | 'school' | 'company' | 'institution' | ''
+type Role = 'Parent' | 'school' | 'company' | 'institution' | ''
 
 const fadeInUp = {
   initial: { opacity: 0, y: 28 },
@@ -14,7 +14,7 @@ const fadeInUp = {
 }
 
 const roleLabels: Record<string, string> = {
-  parent: 'Parent',
+  Parent: 'Parent',
   school: 'Établissement scolaire',
   company: 'Entreprise',
   institution: 'Institution & associations',
@@ -49,12 +49,13 @@ const ContactFormSection = ({ prefillRole, scrollOnPrefill = true }: ContactForm
     if (typeof window === 'undefined') return
 
     const params = new URLSearchParams(window.location.search)
-    const type = params.get('type')
+    const type = params.get('profil')
+
 
     let resolvedRole: Role = prefillRole || ''
-    if (type === 'parent') resolvedRole = 'parent'
+    if (type === 'Parent') resolvedRole = 'Parent'
     else if (type === 'etablissement') resolvedRole = 'school'
-    else if (type === 'entreprise') resolvedRole = 'company'
+    else if (type === 'Entreprise') resolvedRole = 'company'
     else if (type === 'institution') resolvedRole = 'institution'
 
     if (resolvedRole) {
@@ -122,10 +123,10 @@ const ContactFormSection = ({ prefillRole, scrollOnPrefill = true }: ContactForm
           className='max-w-3xl text-center md:text-left mb-12'
         >
           <p className='mx-auto w-fit text-base sm:text-lg font-semibold uppercase tracking-[0.22em]' style={{ color: '#27397F' }}>
-           Envoyez-nous votre message
+            Envoyez-nous votre message
           </p>
-      
-          
+
+
         </motion.div>
 
         <motion.div
@@ -160,178 +161,178 @@ const ContactFormSection = ({ prefillRole, scrollOnPrefill = true }: ContactForm
               </Link>
             </motion.div>
           ) : (
-          <form onSubmit={handleSubmit} className='space-y-6'>
-            {/* Honeypot */}
-            <input
-              type='text'
-              name='website'
-              value={honeypot}
-              onChange={(e) => setHoneypot(e.target.value)}
-              tabIndex={-1}
-              autoComplete='off'
-              style={{ position: 'absolute', left: '-9999px' }}
-              aria-hidden='true'
-            />
-
-            {/* Name & Email */}
-            <div className='grid grid-cols-1 gap-6 sm:grid-cols-2'>
-              <div className='space-y-3'>
-                <label
-                  htmlFor='contact-name'
-                  className='block text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 dark:text-slate-300'
-                >
-                  Nom &amp; prénom
-                </label>
-                <div className='relative'>
-                  <input
-                    id='contact-name'
-                    type='text'
-                    required
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder='Jean Dupont'
-                    className='w-full rounded-xl border border-slate-200/80 bg-white/80 px-4 py-2.5 text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#4490C7] focus:ring-1 focus:ring-[#4490C7]/40 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-100'
-                  />
-                  <User className='pointer-events-none absolute right-3 top-2.5 h-4 w-4 text-slate-400' />
-                </div>
-              </div>
-
-              <div className='space-y-3'>
-                <label
-                  htmlFor='contact-email'
-                  className='block text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 dark:text-slate-300'
-                >
-                  Adresse e-mail
-                </label>
-                <div className='relative'>
-                  <input
-                    id='contact-email'
-                    type='email'
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder='vous@exemple.com'
-                    className='w-full rounded-xl border border-slate-200/80 bg-white/80 px-4 py-2.5 text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#4490C7] focus:ring-1 focus:ring-[#4490C7]/40 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-100'
-                  />
-                  <Mail className='pointer-events-none absolute right-3 top-2.5 h-4 w-4 text-slate-400' />
-                </div>
-              </div>
-            </div>
-
-            {/* Phone & Role */}
-            <div className='grid grid-cols-1 gap-6 sm:grid-cols-2'>
-              <div className='space-y-3'>
-                <label
-                  htmlFor='contact-phone'
-                  className='block text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 dark:text-slate-300'
-                >
-                  Téléphone <span className='normal-case font-normal text-slate-400'>(optionnel)</span>
-                </label>
-                <div className='relative'>
-                  <input
-                    id='contact-phone'
-                    type='tel'
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder='+216 XX XXX XXX'
-                    className='w-full rounded-xl border border-slate-200/80 bg-white/80 px-4 py-2.5 text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#4490C7] focus:ring-1 focus:ring-[#4490C7]/40 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-100'
-                  />
-                  <Phone className='pointer-events-none absolute right-3 top-2.5 h-4 w-4 text-slate-400' />
-                </div>
-              </div>
-
-              <div className='space-y-3'>
-                <label
-                  htmlFor='contact-role'
-                  className='block text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 dark:text-slate-300'
-                >
-                  Profil
-                </label>
-                <div className='relative'>
-                  <select
-                    id='contact-role'
-                    required
-                    value={role}
-                    onChange={(e) => setRole(e.target.value as Role)}
-                    className='w-full appearance-none rounded-xl border border-slate-200/80 bg-white/80 px-4 py-2.5 text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#4490C7] focus:ring-1 focus:ring-[#4490C7]/40 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-100'
-                  >
-                    <option value=''>Sélectionner votre profil</option>
-                    <option value='parent'>{roleLabels.parent}</option>
-                    <option value='school'>{roleLabels.school}</option>
-                    <option value='company'>{roleLabels.company}</option>
-                    <option value='institution'>{roleLabels.institution}</option>
-                  </select>
-                  <Handshake className='pointer-events-none absolute right-3 top-2.5 h-4 w-4 text-slate-400' />
-                </div>
-              </div>
-            </div>
-
-            {/* Message */}
-            <div className='space-y-3'>
-              <label
-                htmlFor='contact-message'
-                className='block text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 dark:text-slate-300'
-              >
-                Message
-              </label>
-              <textarea
-                id='contact-message'
-                required
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                rows={4}
-                placeholder='Décrivez votre demande ou votre question...'
-                className='w-full rounded-2xl border border-slate-200/80 bg-white/80 px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#4490C7] focus:ring-1 focus:ring-[#4490C7]/40 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-100'
+            <form onSubmit={handleSubmit} className='space-y-6'>
+              {/* Honeypot */}
+              <input
+                type='text'
+                name='website'
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                tabIndex={-1}
+                autoComplete='off'
+                style={{ position: 'absolute', left: '-9999px' }}
+                aria-hidden='true'
               />
-            </div>
 
-            {/* Status messages & Submit */}
-            <div className='flex flex-col gap-4'>
-
-              {/* Error message */}
-              {error && (
-                <motion.div
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className='flex items-start gap-3 rounded-xl bg-red-50 p-4 ring-1 ring-red-200 dark:bg-red-900/20 dark:ring-red-800'
-                >
-                  <XCircle className='h-5 w-5 shrink-0 mt-0.5 text-red-500 dark:text-red-400' />
-                  <div>
-                    <p className='text-sm font-semibold text-red-700 dark:text-red-400'>
-                      Échec de l&apos;envoi
-                    </p>
-                    <p className='mt-0.5 text-xs text-red-600 dark:text-red-500'>
-                      {error}
-                    </p>
+              {/* Name & Email */}
+              <div className='grid grid-cols-1 gap-6 sm:grid-cols-2'>
+                <div className='space-y-3'>
+                  <label
+                    htmlFor='contact-name'
+                    className='block text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 dark:text-slate-300'
+                  >
+                    Nom &amp; prénom
+                  </label>
+                  <div className='relative'>
+                    <input
+                      id='contact-name'
+                      type='text'
+                      required
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder='Jean Dupont'
+                      className='w-full rounded-xl border border-slate-200/80 bg-white/80 px-4 py-2.5 text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#4490C7] focus:ring-1 focus:ring-[#4490C7]/40 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-100'
+                    />
+                    <User className='pointer-events-none absolute right-3 top-2.5 h-4 w-4 text-slate-400' />
                   </div>
-                </motion.div>
-              )}
+                </div>
 
-              {/* Submit button */}
-              <div className='flex flex-wrap items-center gap-4'>
-                <button
-                  type='submit'
-                  disabled={!isFormValid || isSubmitting}
-                  className={`inline-flex items-center justify-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold shadow-lg transition focus-visible:outline-none
-                    ${!isFormValid || isSubmitting
-                      ? 'cursor-not-allowed bg-slate-200 text-slate-500 dark:bg-slate-800 dark:text-slate-500'
-                      : 'text-white hover:scale-[1.02] hover:shadow-xl'
-                    }`}
-                  style={(!isFormValid || isSubmitting) ? {} : { background: brandGradient, boxShadow: brandShadow }}
-                >
-                  <Send className='h-4 w-4' />
-                  {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
-                </button>
-
-                <Link
-                  href='/rendez-vous'
-                  className='text-sm font-medium text-slate-500 underline underline-offset-2 hover:text-[#4490C7] transition-colors'
-                >
-                  Plutôt réserver un rendez-vous ?
-                </Link>
+                <div className='space-y-3'>
+                  <label
+                    htmlFor='contact-email'
+                    className='block text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 dark:text-slate-300'
+                  >
+                    Adresse e-mail
+                  </label>
+                  <div className='relative'>
+                    <input
+                      id='contact-email'
+                      type='email'
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder='vous@exemple.com'
+                      className='w-full rounded-xl border border-slate-200/80 bg-white/80 px-4 py-2.5 text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#4490C7] focus:ring-1 focus:ring-[#4490C7]/40 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-100'
+                    />
+                    <Mail className='pointer-events-none absolute right-3 top-2.5 h-4 w-4 text-slate-400' />
+                  </div>
+                </div>
               </div>
-            </div>
-          </form>
+
+              {/* Phone & Role */}
+              <div className='grid grid-cols-1 gap-6 sm:grid-cols-2'>
+                <div className='space-y-3'>
+                  <label
+                    htmlFor='contact-phone'
+                    className='block text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 dark:text-slate-300'
+                  >
+                    Téléphone <span className='normal-case font-normal text-slate-400'>(optionnel)</span>
+                  </label>
+                  <div className='relative'>
+                    <input
+                      id='contact-phone'
+                      type='tel'
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder='+216 XX XXX XXX'
+                      className='w-full rounded-xl border border-slate-200/80 bg-white/80 px-4 py-2.5 text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#4490C7] focus:ring-1 focus:ring-[#4490C7]/40 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-100'
+                    />
+                    <Phone className='pointer-events-none absolute right-3 top-2.5 h-4 w-4 text-slate-400' />
+                  </div>
+                </div>
+
+                <div className='space-y-3'>
+                  <label
+                    htmlFor='contact-role'
+                    className='block text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 dark:text-slate-300'
+                  >
+                    Profil
+                  </label>
+                  <div className='relative'>
+                    <select
+                      id='contact-role'
+                      required
+                      value={role}
+                      onChange={(e) => setRole(e.target.value as Role)}
+                      className='w-full appearance-none rounded-xl border border-slate-200/80 bg-white/80 px-4 py-2.5 text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#4490C7] focus:ring-1 focus:ring-[#4490C7]/40 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-100'
+                    >
+                      <option value=''>Sélectionner votre profil</option>
+                      <option value='Parent'>{roleLabels.Parent}</option>
+                      <option value='school'>{roleLabels.school}</option>
+                      <option value='company'>{roleLabels.company}</option>
+                      <option value='institution'>{roleLabels.institution}</option>
+                    </select>
+                    <Handshake className='pointer-events-none absolute right-3 top-2.5 h-4 w-4 text-slate-400' />
+                  </div>
+                </div>
+              </div>
+
+              {/* Message */}
+              <div className='space-y-3'>
+                <label
+                  htmlFor='contact-message'
+                  className='block text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 dark:text-slate-300'
+                >
+                  Message
+                </label>
+                <textarea
+                  id='contact-message'
+                  required
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  rows={4}
+                  placeholder='Décrivez votre demande ou votre question...'
+                  className='w-full rounded-2xl border border-slate-200/80 bg-white/80 px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#4490C7] focus:ring-1 focus:ring-[#4490C7]/40 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-100'
+                />
+              </div>
+
+              {/* Status messages & Submit */}
+              <div className='flex flex-col gap-4'>
+
+                {/* Error message */}
+                {error && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className='flex items-start gap-3 rounded-xl bg-red-50 p-4 ring-1 ring-red-200 dark:bg-red-900/20 dark:ring-red-800'
+                  >
+                    <XCircle className='h-5 w-5 shrink-0 mt-0.5 text-red-500 dark:text-red-400' />
+                    <div>
+                      <p className='text-sm font-semibold text-red-700 dark:text-red-400'>
+                        Échec de l&apos;envoi
+                      </p>
+                      <p className='mt-0.5 text-xs text-red-600 dark:text-red-500'>
+                        {error}
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Submit button */}
+                <div className='flex flex-wrap items-center gap-4'>
+                  <button
+                    type='submit'
+                    disabled={!isFormValid || isSubmitting}
+                    className={`inline-flex items-center justify-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold shadow-lg transition focus-visible:outline-none
+                    ${!isFormValid || isSubmitting
+                        ? 'cursor-not-allowed bg-slate-200 text-slate-500 dark:bg-slate-800 dark:text-slate-500'
+                        : 'text-white hover:scale-[1.02] hover:shadow-xl'
+                      }`}
+                    style={(!isFormValid || isSubmitting) ? {} : { background: brandGradient, boxShadow: brandShadow }}
+                  >
+                    <Send className='h-4 w-4' />
+                    {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
+                  </button>
+
+                  <Link
+                    href='/rendez-vous'
+                    className='text-sm font-medium text-slate-500 underline underline-offset-2 hover:text-[#4490C7] transition-colors'
+                  >
+                    Plutôt réserver un rendez-vous ?
+                  </Link>
+                </div>
+              </div>
+            </form>
           )}
         </motion.div>
       </div>

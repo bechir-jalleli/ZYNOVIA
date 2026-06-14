@@ -61,7 +61,7 @@ const RadarChartSkills: React.FC = () => {
             <PolarAngleAxis
               dataKey='skill'
               tickLine={false}
-              stroke='transparent'
+              stroke='transParent'
               tick={{
                 fill: '#64748B',
                 fontSize: 11,

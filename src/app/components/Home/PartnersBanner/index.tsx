@@ -42,7 +42,7 @@ const PartnersBanner = () => {
               élèves formés
             </p>
             <Link
-              href='/parents#appointment-form'
+              href='/Parents#appointment-form'
               className='inline-flex items-center justify-center rounded-xl btn-primary btn-hover px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#27397F]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
             >
               Réserver une session découverte

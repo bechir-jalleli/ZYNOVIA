@@ -19,8 +19,10 @@ const Hero = () => {
           <div className='relative z-20 grid lg:grid-cols-12 grid-cols-1 lg:items-start items-center lg:justify-items-normal justify-items-center gap-10 lg:gap-20 pb-10'>
             <div className='lg:col-span-7 col-span-1'>
               <div className='flex flex-col lg:items-start items-center gap-8 lg:gap-12'>
-                <h1 className='lg:text-start text-center w-full max-w-2xl text-3xl sm:text-4xl lg:text-5xl'>
-                  L'Académie de l'Intelligence Artificielle et des Technologies du Futur
+                <h1 className='lg:text-start text-center w-full max-w-2xl text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#0A004B] dark:text-white'>
+                  L&apos;Académie de l&apos;
+                  <span className='text-gradient'>Intelligence Artificielle</span>{' '}
+                  et des Technologies du Futur
                 </h1>
 
                 <motion.p
@@ -39,35 +41,35 @@ const Hero = () => {
                 </motion.p>
 
                 <div className='flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 w-full max-w-2xl'>
-                  <Link href={'/parents'}>
+                  <Link href={'/contact?profil=Parent'}>
                     <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base btn-primary btn-hover rounded-[10px] shadow-md whitespace-nowrap'>
-                      👨‍👩‍👧 parent
+                      👨‍👩‍👧 Parent
                     </button>
                   </Link>
-                  <Link href={'/programmes'}>
+                  <Link href={'/contact?profil=etablissement'}>
                     <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base btn-outline btn-hover rounded-[10px] font-semibold shadow-sm whitespace-nowrap'>
-                      🏫 établissement scolaire
+                      🏫 Établissement scolaire
                     </button>
                   </Link>
-                  <Link href={'/entreprise'}>
+                  <Link href={'/contact?profil=Entreprise'}>
                     <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base btn-outline btn-hover rounded-[10px] font-semibold shadow-sm whitespace-nowrap'>
-                      🏢 entreprise
+                      🏢 Entreprise
                     </button>
                   </Link>
                 </div>
               </div>
             </div>
 
-           {/* Hero Image */}
-<div className='lg:col-span-5 col-span-1 lg:w-full sm:w-[80%] w-full mt-6 lg:mt-0'>
-  <Image
-    src='/images/home/hero.jpeg'
-    alt='ZYNOVIA Academy - IA et Technologies du Futur'
-    width={600}
-    height={620}
-className='rounded-lg w-full h-[380px] sm:h-[450px] lg:h-[520px] object-cover'    priority
-  />
-</div>
+            {/* Hero Image */}
+            <div className='lg:col-span-5 col-span-1 lg:w-full sm:w-[80%] w-full mt-6 lg:mt-0'>
+              <Image
+                src='/images/home/hero.jpeg'
+                alt='ZYNOVIA Academy - IA et Technologies du Futur'
+                width={600}
+                height={620}
+                className='rounded-lg w-full h-[380px] sm:h-[450px] lg:h-[520px] object-cover' priority
+              />
+            </div>
           </div>
 
           {/* Floating patterns */}

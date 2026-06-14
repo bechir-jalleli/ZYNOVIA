@@ -11,7 +11,7 @@ import PartnersBanner from './components/Home/PartnersBanner'
 import FinalCTA from './components/Home/FinalCTA'
 
 export const metadata: Metadata = {
-  title: 'ZYNOVIA Academy – Académie Tunisienne de l\'IA et des Technologies du Futur',
+  title: 'ZYNOVIA Academy – Académie  de l\'IA et des Technologies du Futur',
   description:
     'Formez votre enfant à l\'intelligence artificielle, la robotique et les technologies du futur. Programmes annuels et bootcamps pour collégiens et lycéens à Tunis.',
   keywords: [
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     'ZYNOVIA Academy',
   ],
   openGraph: {
-    title: 'ZYNOVIA Academy – Académie Tunisienne de l\'IA et des Technologies du Futur',
+    title: 'ZYNOVIA Academy – Académie  de l\'IA et des Technologies du Futur',
     description:
       'Formez votre enfant à l\'intelligence artificielle, la robotique et les technologies du futur. Programmes annuels et bootcamps pour collégiens et lycéens.',
     url: 'https://inoteqia.com',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ZYNOVIA Academy – Académie Tunisienne de l\'IA',
+    title: 'ZYNOVIA Academy – Académie  de l\'IA',
     description:
       'Formez votre enfant à l\'intelligence artificielle, la robotique et les technologies du futur.',
     images: ['/images/banner/image.png'],

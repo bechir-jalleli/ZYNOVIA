@@ -21,7 +21,7 @@ const ALLOWED_MIME_TYPES = new Set([
     'image/avif',
 ]);
 
-const MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024; // 10 MB
+const MAX_FILE_SIZE_BYTES = 100 * 1024 * 1024; // 100 MB
 
 export interface ImageUploadResult {
     url: string;

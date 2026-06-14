@@ -66,7 +66,7 @@ const Project = () => {
   return (
     <section
       id='project'
-      className='scroll-mt-12 py-24 lg:py-32 bg-gradient-to-b from-secondary/10 via-secondary/5 to-transparent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden'
+      className='scroll-mt-12 py-24 lg:py-32 bg-gradient-to-b from-secondary/10 via-secondary/5 to-transParent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden'
     >
       <div className='relative container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
         {/* Decorative patterns */}
@@ -110,7 +110,7 @@ const Project = () => {
                         className='object-cover transition-transform duration-700 group-hover:scale-110'
                         sizes='(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 25vw'
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transParent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
 
                     {/* Project Info */}

@@ -61,7 +61,7 @@
     background: var(--gradient-brand);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transParent;
   }
 
   .text-gradient-hover {
@@ -72,7 +72,7 @@
     background: var(--gradient-brand);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transParent;
   }
 
   /* =========================
@@ -104,9 +104,9 @@
     background-image: var(--gradient-brand);
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    border: 2px solid transparent;
+    color: transParent;
+    -webkit-text-fill-color: transParent;
+    border: 2px solid transParent;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -142,9 +142,9 @@
     background-image: var(--gradient-brand);
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    border: 2px solid transparent;
+    color: transParent;
+    -webkit-text-fill-color: transParent;
+    border: 2px solid transParent;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -207,9 +207,9 @@
 
   /* ── Desktop: gradient-border outline ── */
   .connexion-btn {
-    background: transparent;
+    background: transParent;
     color: #27397F;
-    border: 2px solid transparent;
+    border: 2px solid transParent;
     background-clip: padding-box;
     position: relative;
   }
@@ -235,7 +235,7 @@
     background: var(--gradient-brand);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transParent;
   }
 
   /* Icon inherits gradient via filter workaround */
@@ -250,9 +250,9 @@
     border-radius: inherit;
     background: linear-gradient(
       100deg,
-      transparent 20%,
+      transParent 20%,
       rgba(255, 255, 255, 0.18) 50%,
-      transparent 80%
+      transParent 80%
     );
     background-size: 200% 100%;
     background-position: -100% 0;
@@ -305,7 +305,7 @@
     background: var(--gradient-brand);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transParent;
   }
 
   .dark .connexion-btn svg {
@@ -471,4 +471,18 @@
   );
   background-size: 1000px 100%;
   animation: shimmer 3s linear infinite;
+}
+
+@keyframes progress-loading {
+  0% { left: -100%; }
+  50% { left: 30%; }
+  100% { left: 100%; }
+}
+
+.animate-progress-loading {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40%;
+  animation: progress-loading 1.6s infinite ease-in-out;
 }

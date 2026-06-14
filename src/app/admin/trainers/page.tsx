@@ -320,6 +320,11 @@ export default function ManageTrainers() {
                                         <p className="text-xs text-slate-500 dark:text-lightgrey italic mb-2">
                                             {uploading ? 'Téléchargement en cours...' : 'Cliquez sur le cercle pour télécharger la photo du formateur.'}
                                         </p>
+                                        {uploading && (
+                                            <div className="w-full h-1.5 bg-slate-100 dark:bg-white/10 rounded-full overflow-hidden relative mb-2">
+                                                <div className="bg-gradient-to-r from-primary to-blue-600 rounded-full animate-progress-loading"></div>
+                                            </div>
+                                        )}
                                         {uploadError && (
                                             <p className="text-xs text-red-500 mb-2">{uploadError}</p>
                                         )}

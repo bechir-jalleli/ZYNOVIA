@@ -189,7 +189,7 @@ const SourcesSection: React.FC = () => {
       icon: 'mdi:briefcase',
     },
     {
-      stat: '70% des entreprises investiront massivement dans l’IA',
+      stat: '70% des Entreprises investiront massivement dans l’IA',
       organization: 'McKinsey & Company',
       date: '2023',
       title: "The State of AI in 2023: Generative AI's breakout year",
@@ -368,7 +368,7 @@ export default function NotreVisionPage() {
     {
       question: 'Comment ZYNOVIA prépare‑t‑elle concrètement aux études supérieures et au monde professionnel ?',
       answer:
-        "Par une approche pratique et progressive : projets concrets, défis collaboratifs, simulations de concours, construction d'un portfolio de projets IA valorisable dans les dossiers d'admission. Nous développons aussi les soft skills (communication, leadership, esprit critique) recherchés par les grandes écoles et les entreprises. Résultat : une longueur d'avance pour les concours, les filières STEM et les carrières technologiques.",
+        "Par une approche pratique et progressive : projets concrets, défis collaboratifs, simulations de concours, construction d'un portfolio de projets IA valorisable dans les dossiers d'admission. Nous développons aussi les soft skills (communication, leadership, esprit critique) recherchés par les grandes écoles et les Entreprises. Résultat : une longueur d'avance pour les concours, les filières STEM et les carrières technologiques.",
     },
   ]
 
@@ -381,11 +381,11 @@ export default function NotreVisionPage() {
       <section
         id='vision'
         aria-labelledby='vision-heading'
-        className='relative bg-gradient-to-b from-secondary/60 via-secondary/30 to-transparent py-20 dark:from-slate-950 dark:via-slate-900/80 dark:to-slate-950'>
+        className='relative bg-gradient-to-b from-secondary/60 via-secondary/30 to-transParent py-20 dark:from-slate-950 dark:via-slate-900/80 dark:to-slate-950'>
         {/* decorative background */}
         <div
           aria-hidden='true'
-          className='pointer-events-none absolute inset-x-0 top-0 -z-10 h-80 bg-[radial-gradient(circle_at_top,_rgba(0,195,217,0.28),transparent_55%)] dark:bg-[radial-gradient(circle_at_top,_rgba(0,195,217,0.4),transparent_55%)]'
+          className='pointer-events-none absolute inset-x-0 top-0 -z-10 h-80 bg-[radial-gradient(circle_at_top,_rgba(0,195,217,0.28),transParent_55%)] dark:bg-[radial-gradient(circle_at_top,_rgba(0,195,217,0.4),transParent_55%)]'
         />
 
         <div className='container mx-auto max-w-6xl space-y-16 px-4 sm:px-6 lg:px-8'>
@@ -410,7 +410,7 @@ export default function NotreVisionPage() {
                   <strong className='text-[#0A004B] dark:text-white'> intelligence artificielle, pensée algorithmique, créativité et culture numérique</strong>.
                 </p>
                 <p className='text-sm text-slate-600 dark:text-slate-400'>
-                  Notre objectif : devenir la référence tunisienne en formation IA pour les jeunes,
+                  Notre objectif : devenir la référence  en formation IA pour les jeunes,
                   en créant un pont entre l&apos;école, la technologie et le monde professionnel.
                 </p>
               </div>
@@ -439,11 +439,11 @@ export default function NotreVisionPage() {
                   <FeatureCard
                     icon={Briefcase}
                     title="Le marché de l'emploi"
-                    description="Développer les compétences recherchées aujourd'hui et demain par les entreprises."
+                    description="Développer les compétences recherchées aujourd'hui et demain par les Entreprises."
                   />
                   <FeatureCard
                     icon={Users}
-                    title='Parents & entreprises'
+                    title='Parents & Entreprises'
                     description='Rassurer les familles et répondre aux attentes des partenaires professionnels.'
                   />
                 </div>
@@ -451,7 +451,7 @@ export default function NotreVisionPage() {
 
               <div className='mt-6 flex flex-wrap items-center justify-center gap-4 md:justify-start'>
                 <Link
-                  href='/parents#appointment-form'
+                  href='/Parents#appointment-form'
                   className='inline-flex items-center justify-center rounded-xl btn-primary btn-hover px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#27397F]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
                 >
                   Réserver une session découverte
@@ -480,7 +480,7 @@ export default function NotreVisionPage() {
                     icon='solar:shield-check-bold-duotone'
                     className='h-4 w-4 text-emerald-500'
                   />
-                  <span>Partenariats avec établissements &amp; entreprises</span>
+                  <span>Partenariats avec établissements &amp; Entreprises</span>
                 </div>
               </div>
             </div>
@@ -511,11 +511,11 @@ export default function NotreVisionPage() {
                 <BridgeStep
                   icon='solar:case-round-bold-duotone'
                   title='Emploi'
-                  subtitle='Compétences recherchées par les entreprises.'
+                  subtitle='Compétences recherchées par les Entreprises.'
                 />
                 <BridgeStep
                   icon='solar:hand-heart-bold-duotone'
-                  title='Parents &amp; entreprises'
+                  title='Parents &amp; Entreprises'
                   subtitle='Confiance, visibilité et accompagnement.'
                 />
               </div>
@@ -601,7 +601,7 @@ export default function NotreVisionPage() {
                   70%
                 </p>
                 <p className='mt-2 text-sm sm:text-base text-slate-700 dark:text-slate-200'>
-                  des entreprises investiront massivement dans l’IA.
+                  des Entreprises investiront massivement dans l’IA.
                 </p>
               </motion.div>
             </motion.div>
@@ -688,7 +688,7 @@ export default function NotreVisionPage() {
                 </li>
                 <li className='flex items-start gap-2'>
                   <span className='mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-[#00C3D9] via-[#0091E6] to-[#0067E0]' />
-                  <span>Les entreprises recherchent des <strong>profils créatifs capables de collaborer avec l&apos;IA</strong></span>
+                  <span>Les Entreprises recherchent des <strong>profils créatifs capables de collaborer avec l&apos;IA</strong></span>
                 </li>
               </ul>
               <p className='text-sm sm:text-base text-slate-700 dark:text-slate-200'>
@@ -954,7 +954,7 @@ export default function NotreVisionPage() {
                       <AnimatedCounter value={95} suffix='%' />
                     </p>
                     <p className='text-xs text-slate-600 dark:text-slate-300'>
-                      des parents constatent une progression de la confiance de leur enfant.
+                      des Parents constatent une progression de la confiance de leur enfant.
                     </p>
                   </div>
                   <div className='space-y-1'>
@@ -989,7 +989,7 @@ export default function NotreVisionPage() {
                 </p>
                 <div className='space-y-3'>
                   <Link
-                    href='/parents#appointment-form'
+                    href='/Parents#appointment-form'
                     className='inline-flex items-center justify-center rounded-xl btn-primary btn-hover px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#27397F]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
                   >
                     Réserver une session découverte
@@ -1066,11 +1066,11 @@ export default function NotreVisionPage() {
                 </div>
                 <div className='inline-flex items-center gap-2'>
                   <Icon icon='solar:hand-stars-bold-duotone' className='h-4 w-4 text-primary' />
-                  <span>95% de satisfaction parents</span>
+                  <span>95% de satisfaction Parents</span>
                 </div>
                 <div className='inline-flex items-center gap-2'>
                   <Icon icon='solar:users-group-rounded-bold-duotone' className='h-4 w-4 text-primary' />
-                  <span>Partenariats établissements & entreprises</span>
+                  <span>Partenariats établissements & Entreprises</span>
                 </div>
               </div>
             </div>

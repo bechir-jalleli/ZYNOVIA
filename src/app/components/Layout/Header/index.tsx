@@ -77,13 +77,11 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full bg-transparent transition-all ${
-        sticky ? 'shadow-lg dark:shadow-neutral-50/5 bg-white dark:bg-darklight' : 'shadow-none'
-      }`}>
-      <div
-        className={`container flex items-center justify-between gap-6 xl:gap-10 duration-300 ${
-          sticky ? 'py-2' : 'py-3'
+      className={`fixed top-0 z-50 w-full bg-transParent transition-all ${sticky ? 'shadow-lg dark:shadow-neutral-50/5 bg-white dark:bg-darklight' : 'shadow-none'
         }`}>
+      <div
+        className={`container flex items-center justify-between gap-6 xl:gap-10 duration-300 ${sticky ? 'py-2' : 'py-3'
+          }`}>
         <Logo variant='header' />
 
         <nav>
@@ -172,9 +170,8 @@ const Header: React.FC = () => {
       {/* Mobile drawer */}
       <div
         ref={mobileMenuRef}
-        className={`xl:hidden fixed top-0 right-0 h-full w-full bg-white dark:bg-darklight shadow-lg transform transition-transform duration-300 max-w-sm ${
-          navbarOpen ? 'translate-x-0' : 'translate-x-full'
-        } z-50`}>
+        className={`xl:hidden fixed top-0 right-0 h-full w-full bg-white dark:bg-darklight shadow-lg transform transition-transform duration-300 max-w-sm ${navbarOpen ? 'translate-x-0' : 'translate-x-full'
+          } z-50`}>
         <div className='flex items-center justify-between p-5'>
           <Logo variant='header' />
           <button onClick={() => setNavbarOpen(false)} aria-label='Close mobile menu'>

@@ -130,11 +130,10 @@ export default function AdminSettings() {
 
                     <form onSubmit={handleProfileSubmit} className="space-y-4">
                         {profileMessage && (
-                            <div className={`p-4 rounded-xl text-xs font-semibold flex items-center gap-2 ${
-                                profileMessage.type === 'success'
+                            <div className={`p-4 rounded-xl text-xs font-semibold flex items-center gap-2 ${profileMessage.type === 'success'
                                     ? 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'
                                     : 'bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400'
-                            }`}>
+                                }`}>
                                 <Icon icon={profileMessage.type === 'success' ? "solar:check-circle-bold" : "solar:danger-bold"} width="18" />
                                 <span>{profileMessage.text}</span>
                             </div>
@@ -168,7 +167,7 @@ export default function AdminSettings() {
                             className="w-full py-3 bg-gradient-to-r from-primary to-blue-600 text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 disabled:scale-100 disabled:opacity-50 transition-all flex items-center justify-center gap-2"
                         >
                             {profileLoading ? (
-                                <div className="h-5 w-5 border-2 border-t-transparent border-white rounded-full animate-spin" />
+                                <div className="h-5 w-5 border-2 border-t-transParent border-white rounded-full animate-spin" />
                             ) : (
                                 <>
                                     <Icon icon="solar:diskette-bold" width="18" />
@@ -193,11 +192,10 @@ export default function AdminSettings() {
 
                     <form onSubmit={handlePasswordSubmit} className="space-y-4">
                         {passwordMessage && (
-                            <div className={`p-4 rounded-xl text-xs font-semibold flex items-center gap-2 ${
-                                passwordMessage.type === 'success'
+                            <div className={`p-4 rounded-xl text-xs font-semibold flex items-center gap-2 ${passwordMessage.type === 'success'
                                     ? 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'
                                     : 'bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400'
-                            }`}>
+                                }`}>
                                 <Icon icon={passwordMessage.type === 'success' ? "solar:check-circle-bold" : "solar:danger-bold"} width="18" />
                                 <span>{passwordMessage.text}</span>
                             </div>
@@ -242,7 +240,7 @@ export default function AdminSettings() {
                             className="w-full py-3 bg-gradient-to-r from-red-500 to-rose-600 text-white font-bold rounded-xl shadow-lg shadow-red-500/20 hover:scale-[1.02] active:scale-95 disabled:scale-100 disabled:opacity-50 transition-all flex items-center justify-center gap-2"
                         >
                             {passwordLoading ? (
-                                <div className="h-5 w-5 border-2 border-t-transparent border-white rounded-full animate-spin" />
+                                <div className="h-5 w-5 border-2 border-t-transParent border-white rounded-full animate-spin" />
                             ) : (
                                 <>
                                     <Icon icon="solar:shield-keyhole-bold" width="18" />

@@ -14,7 +14,7 @@ interface ContactSubmission {
 }
 
 const roleLabels: Record<string, string> = {
-    parent: 'Parent',
+    Parent: 'Parent',
     school: 'Établissement scolaire',
     company: 'Entreprise',
     institution: 'Institution & associations',

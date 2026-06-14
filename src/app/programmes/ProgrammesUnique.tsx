@@ -6,7 +6,7 @@ import { fadeInUp, staggerContainer, cardVariant } from './programmesAnimations'
 
 export default function ProgrammesUnique() {
   return (
-    <section className='min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-transparent via-secondary/5 to-secondary/10 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-24 lg:py-32'>
+    <section className='min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-transParent via-secondary/5 to-secondary/10 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-24 lg:py-32'>
       <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 w-full'>
         <motion.div
           variants={staggerContainer}

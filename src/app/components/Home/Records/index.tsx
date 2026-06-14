@@ -116,9 +116,7 @@ const Records = () => {
               apprendre l&apos;IA ?
             </span>
           </h2>
-          <p className='mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl mx-auto'>
-            L&apos;intelligence artificielle transforme déjà nos études, nos métiers et les entreprises. C&apos;est maintenant qu&apos;il faut se préparer.
-          </p>
+          
         </div>
 
         <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 items-stretch gap-6'>
@@ -145,37 +143,36 @@ const Records = () => {
             </div>
           ) : (
             record.map((item, i) => (
-                <div
-                  key={i}
-                  className={`h-full transition-all duration-700 ease-out ${
-                    visible
-                      ? 'opacity-100 translate-y-0'
-                      : 'opacity-0 translate-y-6'
+              <div
+                key={i}
+                className={`h-full transition-all duration-700 ease-out ${visible
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-6'
                   }`}
-                  style={{ transitionDelay: `${i * 120}ms` }}
-                >
-                  <div className='border border-darkblue/10 dark:border-white/10 rounded-2xl flex flex-col gap-4 items-center justify-center px-6 py-8 shadow-sm dark:shadow-white/10 bg-white/70 dark:bg-slate-900/60 backdrop-blur-sm'>
-                    <div className='p-3 bg-gradient-soft rounded-full w-fit flex items-center justify-center'>
-                      <Image
-                        src={item.imgSrc}
-                        alt={item.imgSrc}
-                        width={36}
-                        height={36}
-                        className='drop-shadow-sm'
-                      />
-                    </div>
-                    <h4 className='text-center text-2xl sm:text-3xl font-semibold text-darkblue dark:text-white'>
-                      <AnimatedDigit value={item.digit} start={visible} />
-                    </h4>
-                    <p className='text-center text-sm sm:text-base font-normal text-slate-600 dark:text-slate-300 leading-relaxed'>
-                      {item.desc}
-                    </p>
+                style={{ transitionDelay: `${i * 120}ms` }}
+              >
+                <div className='border border-darkblue/10 dark:border-white/10 rounded-2xl flex flex-col gap-4 items-center justify-center px-6 py-8 shadow-sm dark:shadow-white/10 bg-white/70 dark:bg-slate-900/60 backdrop-blur-sm'>
+                  <div className='p-3 bg-gradient-soft rounded-full w-fit flex items-center justify-center'>
+                    <Image
+                      src={item.imgSrc}
+                      alt={item.imgSrc}
+                      width={36}
+                      height={36}
+                      className='drop-shadow-sm'
+                    />
                   </div>
+                  <h4 className='text-center text-2xl sm:text-3xl font-semibold text-darkblue dark:text-white'>
+                    <AnimatedDigit value={item.digit} start={visible} />
+                  </h4>
+                  <p className='text-center text-sm sm:text-base font-normal text-slate-600 dark:text-slate-300 leading-relaxed'>
+                    {item.desc}
+                  </p>
                 </div>
-              ))
+              </div>
+            ))
           )}
         </div>
-        
+
         {/* CTA Button */}
         <div className='mt-10 text-center'>
           <Link

@@ -140,7 +140,7 @@ const bootcampsSchedule = [
     title: 'Restitution & valorisation des projets',
     theme: 'Pitch & confiance en soi',
     bullets: [
-      'Présentation des projets devant un jury (parents, enseignants, encadrants).',
+      'Présentation des projets devant un jury (Parents, enseignants, encadrants).',
       'Remise de certificats et trophées pour valoriser les réalisations des élèves.',
       'Mise en avant des compétences acquises pour la suite de leur parcours.',
     ],
@@ -149,14 +149,14 @@ const bootcampsSchedule = [
 
 export default function ProgrammesContent() {
   return (
-    <main className='bg-gradient-to-b from-secondary/10 via-secondary/5 to-transparent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
+    <main className='bg-gradient-to-b from-secondary/10 via-secondary/5 to-transParent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
       {/* HERO SECTION – PROGRAMME ANNUEL */}
 
-      <section className='relative min-h-screen flex items-center overflow-hidden bg-gradient-to-b from-secondary/60 via-secondary/30 to-transparent dark:from-slate-950 dark:via-slate-900/80 dark:to-slate-950'>
+      <section className='relative min-h-screen flex items-center overflow-hidden bg-gradient-to-b from-secondary/60 via-secondary/30 to-transParent dark:from-slate-950 dark:via-slate-900/80 dark:to-slate-950'>
         {/* Decorative background glow */}
         <div
           aria-hidden='true'
-          className='pointer-events-none absolute inset-x-0 top-0 -z-10 h-96 bg-[radial-gradient(circle_at_center,_rgba(0,195,217,0.25),transparent_60%)] dark:bg-[radial-gradient(circle_at_center,_rgba(0,195,217,0.35),transparent_60%)]'
+          className='pointer-events-none absolute inset-x-0 top-0 -z-10 h-96 bg-[radial-gradient(circle_at_center,_rgba(0,195,217,0.25),transParent_60%)] dark:bg-[radial-gradient(circle_at_center,_rgba(0,195,217,0.35),transParent_60%)]'
         />
 
         {/* Animated curved shapes */}
@@ -184,7 +184,8 @@ export default function ProgrammesContent() {
 
                   <div className='flex flex-col lg:items-start items-center gap-4 lg:gap-5'>
                     <h1 className='lg:text-start text-center w-full max-w-3xl text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-[#0A004B] dark:text-white'>
-                      Programme Annuel IA
+                      Programme Annuel{' '}
+                      <span className='text-gradient'>IA</span>
                     </h1>
                     <p className='lg:text-start text-center text-sm sm:text-base font-semibold text-primary/80 dark:text-cyan-200'>
                       Un programme intégré au cœur du cursus scolaire
@@ -209,13 +210,13 @@ export default function ProgrammesContent() {
 
                   {/* CTA buttons – calquées sur celles de l'accueil */}
                   <div className='flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 w-full max-w-2xl'>
-                    <Link href='/parents'>
-                      <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-white border rounded-[10px] border-transparent bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-md whitespace-nowrap'>                        👨‍👩‍👧 Je suis parent
+                    <Link href='/Parents'>
+                      <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-white border rounded-[10px] border-transParent bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-md whitespace-nowrap'>                        👨‍👩‍👧 Parent
                       </button>
                     </Link>
                     <Link href='/contact?type=etablissement#contact-form'>
-                      <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-primary border rounded-[10px] border-primary bg-white dark:bg-transparent hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-sm whitespace-nowrap'>
-                        🏫 Je représente un établissement scolaire
+                      <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-primary border rounded-[10px] border-primary bg-white dark:bg-transParent hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-sm whitespace-nowrap'>
+                        🏫 Établissement scolaire
                       </button>
                     </Link>
                   </div>
@@ -232,7 +233,7 @@ export default function ProgrammesContent() {
                     <div className='absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#00C3D9]/25 via-[#0091E6]/20 to-[#0067E0]/25 blur-2xl' />
                     <div className='relative overflow-hidden rounded-3xl shadow-[0_24px_60px_rgba(15,23,42,0.35)] ring-1 ring-white/60 dark:ring-slate-700/80'>
                       <Image
-                        src='/images/image.png'
+                        src='/images/programe/programe.jpg'
                         alt="Élève découvrant l'intelligence artificielle avec ZYNOVIA Academy"
                         width={600}
                         height={420}
@@ -500,7 +501,7 @@ export default function ProgrammesContent() {
                 </p>
 
                 <div className='mt-6 relative'>
-                  <div className='pointer-events-none absolute left-[10px] top-0 bottom-0 w-px bg-gradient-to-b from-[#27397F] via-[#4490C7] to-transparent' />
+                  <div className='pointer-events-none absolute left-[10px] top-0 bottom-0 w-px bg-gradient-to-b from-[#27397F] via-[#4490C7] to-transParent' />
                   <div className='space-y-4'>
                     {planningPhases.map(({ weeksLabel, title, weeksSummary }, index) => (
                       <div
@@ -549,7 +550,7 @@ export default function ProgrammesContent() {
       <PartnersBanner />
 
       {/* FULL-SCREEN SECTION 1 – OBJECTIFS PÉDAGOGIQUES */}
-      <section className='min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-secondary/10 via-secondary/5 to-transparent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-24 lg:py-32'>
+      <section className='min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-secondary/10 via-secondary/5 to-transParent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-24 lg:py-32'>
         <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 w-full'>
           <motion.div
             variants={staggerContainer}
@@ -617,7 +618,7 @@ export default function ProgrammesContent() {
       </section>
 
       {/* FULL-SCREEN SECTION 2 – CE QUI REND CE PROGRAMME UNIQUE */}
-      <section className='min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-transparent via-secondary/5 to-secondary/10 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-24 lg:py-32'>
+      <section className='min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-transParent via-secondary/5 to-secondary/10 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-24 lg:py-32'>
         <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 w-full'>
           <motion.div
             variants={staggerContainer}
@@ -1036,7 +1037,7 @@ export default function ProgrammesContent() {
                     </div>
                   </div>
                   <Link
-                    href='/contact?type=parent'
+                    href='/contact?type=Parent'
                     className='inline-flex items-center justify-center rounded-xl btn-gradient px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/40 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
                   >
                     S&apos;inscrire au prochain bootcamp
