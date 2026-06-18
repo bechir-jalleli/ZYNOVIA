@@ -33,7 +33,7 @@ const FinalCTA = () => {
               Découvrir nos programmes
             </Link>
             <Link
-              href='/contact'
+              href='/rendez-vous'
               className='w-full sm:w-auto px-8 sm:px-10 py-3.5 text-sm sm:text-base btn-outline btn-hover rounded-[10px] font-semibold shadow-sm whitespace-nowrap text-center'
             >
               Parler à un conseiller

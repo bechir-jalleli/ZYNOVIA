@@ -3,6 +3,7 @@
 import { PlanType } from '@/app/types/plan'
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { SetStateAction, useEffect, useState } from 'react'
 import PricingSkeleton from '../../Skeleton/Pricing'
 
@@ -61,7 +62,7 @@ const Pricing = () => {
           'Encadrement par formateurs ZYNOVIA',
           'Évaluation pédagogique et suivi',
         ],
-        cta: 'Découvrir le programme',
+        cta: 'Inscrivez-vous maintenant',
       },
       'Bootcamp AI': {
         title: 'Bootcamp IA — Vacances scolaires',
@@ -74,7 +75,7 @@ const Pricing = () => {
           'Challenge final et présentation orale',
           'Certificat ZYNOVIA Academy',
         ],
-        cta: ' Découvrir les bootcamps',
+        cta: ' Inscrivez-vous maintenant',
       },
     },
     Entreprise: {
@@ -211,9 +212,11 @@ const Pricing = () => {
                             </li>
                           ))}
                         </ul>
-                        <button className='btn-primary btn-hover mt-auto w-full rounded-xl py-3 text-sm font-semibold shadow-md'>
-                          {config.cta}
-                        </button>
+                        <Link href="/contact" className="mt-auto w-full">
+                          <button className='btn-primary btn-hover w-full rounded-xl py-3 text-sm font-semibold shadow-md'>
+                            {config.cta}
+                          </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
