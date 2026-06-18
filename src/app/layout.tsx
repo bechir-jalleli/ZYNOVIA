@@ -15,20 +15,27 @@ const DMSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://inoteqia.com'),
   title: {
-    default: 'ZYNOVIA Academy – Académie  de l\'IA et des Technologies du Futur',
+    default: 'ZYNOVIA Academy – Académie de l\'IA et des Technologies du Futur en Tunisie',
     template: '%s | ZYNOVIA Academy',
   },
   description:
-    'ZYNOVIA Academy – Académie  de l\'Intelligence Artificielle et des Technologies du Futur. Formation IA, robotique et programmation pour collégiens et lycéens à Tunis.',
+    'ZYNOVIA Academy – Académie de l\'Intelligence Artificielle et des Technologies du Futur. Formation IA (Artificial Intelligence), robotique et programmation pour collégiens, lycéens et jeunes en Tunisie.',
   keywords: [
-    'ZYNOVIA Academy',
-    'académie IA Tunisie',
+    'zynovia',
+    'zynovia academy',
+    'academy',
+    'ai',
+    'tunisie',
+    'ai tunisie',
+    'academy ai tunisie',
+    'zynovia academy tunisie',
+    'formation ia tunisie',
+    'intelligence artificielle tunisie',
     'formation intelligence artificielle',
     'formation IA enfants',
     'robotique Tunisie',
     'programmation enfants',
     'bootcamp IA',
-    'formation technologique Tunisie',
   ],
   authors: [{ name: 'ZYNOVIA Academy' }],
   creator: 'ZYNOVIA Academy',
@@ -53,22 +60,22 @@ export const metadata: Metadata = {
     locale: 'fr_FR',
     url: 'https://inoteqia.com',
     siteName: 'ZYNOVIA Academy',
-    title: 'ZYNOVIA Academy – Académie  de l\'IA',
+    title: 'ZYNOVIA Academy – Académie de l\'IA en Tunisie',
     description:
-      'Formation IA, robotique et programmation pour collégiens et lycéens à Tunis. Programmes annuels et bootcamps.',
+      'Formation IA, robotique et programmation pour collégiens et lycéens en Tunisie. Découvrez nos programmes annuels et nos bootcamps.',
     images: [
       {
         url: '/images/banner/image.png',
         width: 1200,
         height: 630,
-        alt: 'ZYNOVIA Academy',
+        alt: 'ZYNOVIA Academy - AI Academy Tunisie',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ZYNOVIA Academy – Académie  de l\'IA',
-    description: 'Formation IA, robotique et programmation pour collégiens et lycéens à Tunis.',
+    title: 'ZYNOVIA Academy – Académie de l\'IA en Tunisie',
+    description: 'Formation IA, robotique et programmation pour collégiens, lycéens et jeunes en Tunisie.',
     images: ['/images/banner/image.png'],
   },
   robots: {
@@ -84,8 +91,6 @@ export const metadata: Metadata = {
   },
   verification: {
     // Add your verification codes here when available
-    // google: 'your-google-verification-code',
-    // yandex: 'your-yandex-verification-code',
   },
 }
 
@@ -94,9 +99,33 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    'name': 'ZYNOVIA Academy',
+    'alternateName': 'Zynovia',
+    'url': 'https://inoteqia.com',
+    'logo': 'https://inoteqia.com/images/logo/ZYNOVIAPNGG-removebg-preview.png',
+    'description': 'Académie d\'Intelligence Artificielle (AI) et des Technologies du Futur en Tunisie. Formation IA, robotique et programmation pour collégiens et lycéens.',
+    'address': {
+      '@type': 'PostalAddress',
+      'addressLocality': 'Tunis',
+      'addressCountry': 'TN'
+    },
+    'sameAs': [
+      'https://www.facebook.com/zynovia.academy',
+      'https://www.instagram.com/zynovia.academy',
+      'https://www.linkedin.com/company/zynovia-academy'
+    ]
+  }
+
   return (
     <html lang='fr' suppressHydrationWarning>
       <head>
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `

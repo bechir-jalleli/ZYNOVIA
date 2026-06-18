@@ -11,23 +11,30 @@ import PartnersBanner from './components/Home/PartnersBanner'
 import FinalCTA from './components/Home/FinalCTA'
 
 export const metadata: Metadata = {
-  title: 'ZYNOVIA Academy – Académie  de l\'IA et des Technologies du Futur',
+  title: 'ZYNOVIA Academy – Académie de l\'IA (Artificial Intelligence) en Tunisie',
   description:
-    'Formez votre enfant à l\'intelligence artificielle, la robotique et les technologies du futur. Programmes annuels et bootcamps pour collégiens et lycéens à Tunis.',
+    'L\'académie de référence en Intelligence Artificielle (AI), Robotique et Programmation en Tunisie. Programmes scolaires et bootcamps pour collégiens et lycéens.',
   keywords: [
-    'IA Tunisie',
-    'intelligence artificielle enfants',
-    'formation IA collégiens',
-    'formation IA lycéens',
+    'zynovia',
+    'zynovia academy',
+    'academy',
+    'ai',
+    'tunisie',
+    'ai tunisie',
+    'academy ai tunisie',
+    'zynovia academy tunisie',
+    'formation ia tunisie',
+    'intelligence artificielle tunisie',
+    'formation intelligence artificielle',
+    'formation IA enfants',
     'robotique Tunisie',
     'programmation enfants',
-    'académie IA Tunisie',
-    'ZYNOVIA Academy',
+    'bootcamp IA',
   ],
   openGraph: {
-    title: 'ZYNOVIA Academy – Académie  de l\'IA et des Technologies du Futur',
+    title: 'ZYNOVIA Academy – Académie de l\'IA en Tunisie',
     description:
-      'Formez votre enfant à l\'intelligence artificielle, la robotique et les technologies du futur. Programmes annuels et bootcamps pour collégiens et lycéens.',
+      'Formez vos enfants à l\'intelligence artificielle, la robotique et les technologies de demain avec ZYNOVIA Academy, l\'académie leader en Tunisie.',
     url: 'https://inoteqia.com',
     siteName: 'ZYNOVIA Academy',
     images: [
@@ -35,7 +42,7 @@ export const metadata: Metadata = {
         url: '/images/banner/image.png',
         width: 1200,
         height: 630,
-        alt: 'ZYNOVIA Academy - Formation IA pour jeunes',
+        alt: 'ZYNOVIA Academy - Formation IA pour jeunes en Tunisie',
       },
     ],
     locale: 'fr_FR',
@@ -43,9 +50,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ZYNOVIA Academy – Académie  de l\'IA',
+    title: 'ZYNOVIA Academy – Académie de l\'IA en Tunisie',
     description:
-      'Formez votre enfant à l\'intelligence artificielle, la robotique et les technologies du futur.',
+      'Découvrez ZYNOVIA Academy : formations en Intelligence Artificielle (AI), robotique et programmation pour jeunes en Tunisie.',
     images: ['/images/banner/image.png'],
   },
   alternates: {
