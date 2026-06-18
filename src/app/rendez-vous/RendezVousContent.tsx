@@ -517,8 +517,8 @@ const RendezVousContent = () => {
             className='mt-12 flex justify-center gap-6'
           >
             {[
-              { icon: 'tabler:brand-facebook-filled', href: 'https://www.facebook.com/Inoteqiaacademy?locale=fr_FR', label: 'Facebook' },
-              { icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/inoteqiaacademy/', label: 'Instagram' },
+              { icon: 'tabler:brand-facebook-filled', href: 'https://www.facebook.com/people/Zynovia/61590195886623/?locale=fr_FR', label: 'Facebook' },
+              { icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/zynovia_academy/', label: 'Instagram' },
               { icon: 'tabler:brand-linkedin', href: 'https://www.linkedin.com/company/inoteqia-academy/about/', label: 'LinkedIn' },
             ].map(({ icon, href, label }) => (
               <a

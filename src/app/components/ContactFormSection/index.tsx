@@ -125,9 +125,9 @@ const ContactFormSection = ({ prefillRole, scrollOnPrefill = true }: ContactForm
         <motion.div
           {...fadeInUp}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className='max-w-3xl text-center md:text-left mb-12'
+          className='mx-auto max-w-3xl text-center mb-12'
         >
-          <p className='mx-auto w-fit text-base sm:text-lg font-semibold uppercase tracking-[0.22em]' style={{ color: '#27397F' }}>
+          <p className='text-lg sm:text-xl font-extrabold uppercase tracking-[0.22em]' style={{ background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
             Envoyez-nous votre message
           </p>
 

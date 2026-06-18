@@ -451,7 +451,7 @@ export default function NotreVisionPage() {
 
               <div className='mt-6 flex flex-wrap items-center justify-center gap-4 md:justify-start'>
                 <Link
-                  href='/Parents#appointment-form'
+                  href='/contact'
                   className='inline-flex items-center justify-center rounded-xl btn-primary btn-hover px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#27397F]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
                 >
                   Réserver une session découverte
@@ -989,7 +989,7 @@ export default function NotreVisionPage() {
                 </p>
                 <div className='space-y-3'>
                   <Link
-                    href='/Parents#appointment-form'
+                    href='/contact'
                     className='inline-flex items-center justify-center rounded-xl btn-primary btn-hover px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#27397F]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
                   >
                     Réserver une session découverte
@@ -1046,7 +1046,7 @@ export default function NotreVisionPage() {
 
               <div className='flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4'>
                 <Link
-                  href="/#contact"
+                  href="/contact"
                   className="inline-flex items-center justify-center rounded-xl btn-primary btn-hover px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-[#27397F]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950"
                 >
                   Réserver une session découverte

@@ -125,7 +125,7 @@ const Hero = () => {
                 {...fadeInUp}
                 transition={{ duration: 0.7, ease: 'easeOut', delay: 0.4 }}
                 className='flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5 w-full max-w-md lg:max-w-none'>
-                <Link href={'/#project'} className='w-full sm:w-auto'>
+                <Link href={'/programmes'} className='w-full sm:w-auto'>
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -134,7 +134,7 @@ const Hero = () => {
                   </motion.button>
                 </Link>
 
-                <Link href={'/#contact'} className='w-full sm:w-auto'>
+                <Link href={'/contact'} className='w-full sm:w-auto'>
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}

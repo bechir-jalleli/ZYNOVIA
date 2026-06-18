@@ -119,9 +119,9 @@ const ContactContent = () => {
         <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
           <motion.div {...fadeInUp} transition={{ duration: 0.7, ease: 'easeOut' }} className='grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-center'>
             <div className='space-y-6 text-center md:text-left'>
-         <br /><br />
+              <br /><br />
               <h1 className='text-3xl font-bold leading-tight text-[#0A004B] sm:text-4xl lg:text-5xl dark:text-white'>
-                Contactez ZYNOVIA Academy
+                Contactez <span className='text-gradient'>ZYNOVIA Academy</span>
               </h1>
               <p className='text-lg font-semibold' style={{ background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transParent', backgroundClip: 'text' }}>
                 Nous sommes à votre écoute pour répondre à toutes vos questions.
@@ -150,8 +150,8 @@ const ContactContent = () => {
       {/* Comment pouvons-nous vous aider ? */}
       <section className='py-20 lg:py-28'>
         <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
-          <motion.div {...fadeInUp} transition={{ duration: 0.6, ease: 'easeOut' }} className='mx-auto max-w-3xl text-center md:text-left mb-12'>
-            <p className='text-base sm:text-lg font-semibold uppercase tracking-[0.22em]' style={{ color: '#27397F' }}>Comment pouvons-nous vous aider ?</p>
+          <motion.div {...fadeInUp} transition={{ duration: 0.6, ease: 'easeOut' }} className='mx-auto max-w-3xl text-center mb-12'>
+            <p className='text-base sm:text-lg font-extrabold uppercase tracking-[0.22em]' style={{ background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Comment pouvons-nous vous aider ?</p>
           </motion.div>
           <motion.div variants={staggerContainer} initial='initial' whileInView='whileInView' viewport={{ once: true, amount: 0.3 }} className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4'>
             {[
@@ -177,8 +177,8 @@ const ContactContent = () => {
       {/* Nos coordonnées */}
       <section className='py-20 lg:py-28'>
         <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
-          <motion.div {...fadeInUp} transition={{ duration: 0.6, ease: 'easeOut' }} className='mx-auto max-w-3xl text-center md:text-left mb-12'>
-            <p className='text-base sm:text-lg font-semibold uppercase tracking-[0.22em]' style={{ color: '#27397F' }}>Nos coordonnées</p>
+          <motion.div {...fadeInUp} transition={{ duration: 0.6, ease: 'easeOut' }} className='mx-auto max-w-3xl text-center mb-12'>
+            <p className='text-base sm:text-lg font-extrabold uppercase tracking-[0.22em]' style={{ background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Nos coordonnées</p>
           </motion.div>
           <motion.div variants={staggerContainer} initial='initial' whileInView='whileInView' viewport={{ once: true, amount: 0.3 }} className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
             {[
@@ -214,8 +214,8 @@ const ContactContent = () => {
       {/* Réservez un rendez-vous */}
       <section id='appointment-form' className='py-20 lg:py-28 scroll-mt-24'>
         <div className='container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8'>
-          <motion.div {...fadeInUp} transition={{ duration: 0.6, ease: 'easeOut' }} className='mx-auto max-w-3xl text-center md:text-left mb-12'>
-            <p className='text-base sm:text-lg font-semibold uppercase tracking-[0.22em]' style={{ color: '#27397F' }}>Réservez un rendez-vous</p>
+          <motion.div {...fadeInUp} transition={{ duration: 0.6, ease: 'easeOut' }} className='mx-auto max-w-3xl text-center mb-12'>
+            <p className='text-base sm:text-lg font-extrabold uppercase tracking-[0.22em]' style={{ background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Réservez un rendez-vous</p>
           </motion.div>
           <motion.div {...fadeInUp} transition={{ duration: 0.6, ease: 'easeOut', delay: 0.05 }} className='rounded-3xl bg-white/95 p-8 shadow-[0_18px_45px_rgba(15,23,42,0.14)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/95 dark:ring-slate-700/80'>
             <div className='mb-8 space-y-3'>
@@ -306,18 +306,18 @@ const ContactContent = () => {
       {/* Réseaux & communauté */}
       <section className='py-20 lg:py-28'>
         <div className='container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8'>
-          <motion.div {...fadeInUp} transition={{ duration: 0.6, ease: 'easeOut' }} className='mx-auto max-w-3xl text-center md:text-left mb-12'>
-            <p className='text-base sm:text-lg font-semibold uppercase tracking-[0.22em]' style={{ color: '#27397F' }}>Réseaux &amp; communauté</p>
+          <motion.div {...fadeInUp} transition={{ duration: 0.6, ease: 'easeOut' }} className='mx-auto max-w-3xl text-center mb-12'>
+            <p className='text-base sm:text-lg font-extrabold uppercase tracking-[0.22em]' style={{ background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Réseaux &amp; communauté</p>
           </motion.div>
           <motion.div {...fadeInUp} transition={{ duration: 0.6, ease: 'easeOut', delay: 0.05 }} className='rounded-3xl bg-white/95 p-8 text-slate-900 shadow-[0_18px_45px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/95 dark:text-slate-100 dark:ring-slate-700/80'>
             <p className='mb-10 text-center text-base leading-relaxed text-slate-700 dark:text-slate-200'>
               Retrouvez ZYNOVIA Academy sur les réseaux sociaux pour suivre les projets des élèves, les prochaines sessions et les actualités autour de l&apos;IA pour les jeunes.
             </p>
             <div className='flex justify-center gap-8'>
-              <Link href='https://www.facebook.com/Inoteqiaacademy?locale=fr_FR' target='_blank' rel='noopener noreferrer' aria-label='Facebook' className='group transition-transform duration-300 hover:scale-110'>
+              <Link href='https://www.facebook.com/people/Zynovia/61590195886623/?locale=fr_FR' target='_blank' rel='noopener noreferrer' aria-label='Facebook' className='group transition-transform duration-300 hover:scale-110'>
                 <Icon icon='tabler:brand-facebook-filled' width={80} height={80} className='text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 hover:text-[#4490C7] dark:hover:text-[#3FA9DF] hover:bg-[#27397F]/10 dark:hover:bg-[#4490C7]/20 transition-all duration-300' />
               </Link>
-              <Link href='https://www.instagram.com/inoteqiaacademy/' target='_blank' rel='noopener noreferrer' aria-label='Instagram' className='group transition-transform duration-300 hover:scale-110'>
+              <Link href='https://www.instagram.com/zynovia_academy/' target='_blank' rel='noopener noreferrer' aria-label='Instagram' className='group transition-transform duration-300 hover:scale-110'>
                 <Icon icon='tabler:brand-instagram' width={80} height={80} className='text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 hover:text-[#4490C7] dark:hover:text-[#3FA9DF] hover:bg-[#27397F]/10 dark:hover:bg-[#4490C7]/20 transition-all duration-300' />
               </Link>
             </div>
