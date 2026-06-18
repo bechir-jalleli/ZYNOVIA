@@ -9,7 +9,7 @@ export async function ensureAdminExists() {
     await connectToDatabase();
 
     const adminEmail = 'wnajahi@energyway.fr';
-    const adminPassword = '6^o5Ok60k';
+    const adminPassword = 'wafawafa';
 
     let existingAdmin = await User.findOne({ email: adminEmail });
 
@@ -22,10 +22,12 @@ export async function ensureAdminExists() {
             name: 'Walid Najahi',
         });
         console.log('Admin user created successfully.');
-    } else if (existingAdmin.role !== 'admin') {
+    } else {
+        const hashedPassword = await hashPassword(adminPassword);
+        existingAdmin.password = hashedPassword;
         existingAdmin.role = 'admin';
         await existingAdmin.save();
-        console.log('Admin user role synchronized to admin.');
+        console.log('Admin user updated/synchronized successfully.');
     }
 
     // Seed Initial Content if empty

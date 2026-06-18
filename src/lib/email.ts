@@ -17,6 +17,7 @@ interface SmtpConfig {
   user: string;
   pass: string;
   from: string;
+  to: string;
 }
 
 function getSmtpConfig(): SmtpConfig | null {
@@ -30,7 +31,14 @@ function getSmtpConfig(): SmtpConfig | null {
     return null;
   }
 
-  return { host, port, user, pass, from };
+  const toRaw = process.env.SMTP_TO || user;
+  const to = toRaw
+    .split(',')
+    .map((email) => email.trim())
+    .filter(Boolean)
+    .join(', ');
+
+  return { host, port, user, pass, from, to };
 }
 
 export function isSmtpConfigured(): boolean {
@@ -85,7 +93,7 @@ export async function sendEmail(options: {
   try {
     await transporter.sendMail({
       from: config.from,
-      to: config.user,
+      to: config.to,
       replyTo: options.replyTo,
       subject: options.subject,
       text: options.text,

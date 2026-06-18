@@ -71,7 +71,12 @@ const ContactFormSection = ({ prefillRole, scrollOnPrefill = true }: ContactForm
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!isFormValid || honeypot) return
+    if (!isFormValid || honeypot) {
+      if (honeypot) {
+        console.warn('Form submission blocked by spam protection (honeypot triggered). Value:', honeypot);
+      }
+      return
+    }
     setIsSubmitting(true)
     setError(null)
     setSubmitted(false)
@@ -165,7 +170,7 @@ const ContactFormSection = ({ prefillRole, scrollOnPrefill = true }: ContactForm
               {/* Honeypot */}
               <input
                 type='text'
-                name='website'
+                name='contact_bot_check'
                 value={honeypot}
                 onChange={(e) => setHoneypot(e.target.value)}
                 tabIndex={-1}
