@@ -153,9 +153,10 @@ const Pricing = () => {
                 <div className='relative w-full max-w-[280px] animate-float sm:max-w-[320px] md:max-w-[360px] lg:w-full lg:max-w-none'>
                   <Image
                     src='/images/pricing/child.png'
-                    alt='Illustration enfant programme'
+                    alt='Enfant en formation IA - Programme ZYNOVIA Academy'
                     width={320}
                     height={360}
+                    loading='lazy'
                     className='h-auto w-full object-contain transition-transform duration-300 hover:scale-105'
                   />
                 </div>

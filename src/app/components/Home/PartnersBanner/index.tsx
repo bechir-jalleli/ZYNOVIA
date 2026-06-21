@@ -72,9 +72,10 @@ const PartnersBanner = () => {
                 <div className='relative flex h-16 w-full items-center justify-center sm:h-20 lg:h-24'>
                   <Image
                     src={partner.image}
-                    alt={`Logo ${partner.name}`}
+                    alt={`Logo partenaire ${partner.name} - ZYNOVIA Academy`}
                     width={160}
                     height={80}
+                    loading='lazy'
                     className='h-full w-full object-contain opacity-80'
                     style={{
                       maxWidth: '100%',

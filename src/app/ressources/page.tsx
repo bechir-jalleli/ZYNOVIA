@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: 'Ressources, Blog & Articles IA – ZYNOVIA Academy',
     description:
       'Découvrez nos articles et ressources sur l’Intelligence Artificielle, l’éducation technologique et l’avenir des métiers en Tunisie.',
-    url: 'https://inoteqia.com/ressources',
+    url: 'https://www.zynovia-academy.com/ressources',
     siteName: 'ZYNOVIA Academy',
     images: [
       {
@@ -37,10 +37,57 @@ export const metadata: Metadata = {
     images: ['/images/banner/image.png'],
   },
   alternates: {
-    canonical: 'https://inoteqia.com/ressources',
+    canonical: 'https://www.zynovia-academy.com/ressources',
   },
 }
 
 export default function RessourcesPage() {
-  return <RessourcesContent />
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': [
+      {
+        '@type': 'Question',
+        'name': 'Que trouve-t-on dans les ressources ZYNOVIA ?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'Les ressources regroupent des guides pratiques, des fiches pédagogiques, des supports d’ateliers, des vidéos et des analyses pour les familles, les élèves, les enseignants et les partenaires.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'Les ressources sont-elles adaptées à tous les niveaux ?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'Oui, certaines ressources sont pensées pour les collégiens et lycéens débutants, d’autres pour des publics plus avancés ou pour les enseignants et partenaires.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'Comment utiliser ces ressources en classe ou à la maison ?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'Les guides et supports pédagogiques peuvent être utilisés en autonomie ou intégrés à des ateliers, des cours, des clubs IA ou des activités en famille.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'Les ressources seront-elles mises à jour ?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'Oui, les contenus sont régulièrement enrichis pour suivre l’évolution de l’IA, des métiers et des besoins des familles, des écoles et des Entreprises.'
+        }
+      }
+    ]
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <RessourcesContent />
+    </>
+  )
 }

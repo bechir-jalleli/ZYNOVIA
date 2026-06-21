@@ -74,10 +74,10 @@ const Hero = () => {
 
           {/* Floating patterns */}
           <div className='hidden lg:block absolute top-16 -left-10 dark:opacity-10'>
-            <Image src='/images/banner/pattern1.svg' alt='pattern 1' width={141} height={141} />
+            <Image src='/images/banner/pattern1.svg' alt='Motif décoratif technologique ZYNOVIA Academy' width={141} height={141} />
           </div>
           <div className='hidden lg:block absolute bottom-0 left-[53%] dark:opacity-10 z-10'>
-            <Image src='/images/banner/pattern2.svg' alt='pattern 2' width={141} height={141} />
+            <Image src='/images/banner/pattern2.svg' alt='Motif abstrait intelligence artificielle' width={141} height={141} />
           </div>
         </div>
       </div>

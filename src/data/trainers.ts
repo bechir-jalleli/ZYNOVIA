@@ -23,7 +23,7 @@ export const trainers: Trainer[] = [
     bio: 'Ingénieure data avec 10 ans en machine learning appliqué, passionnée par la pédagogie project-based.',
     expertise: ['Python', 'Machine Learning', 'MLOps', 'DataViz'],
     photo: '/images/review/sophia.webp',
-    linkedin: 'https://www.linkedin.com/company/inoteqia-academy/about/',
+    linkedin: 'https://www.linkedin.com/company/zynovia-academy/about/',
   },
   {
     id: 'trainer-2',
@@ -32,7 +32,7 @@ export const trainers: Trainer[] = [
     bio: "Architecte cloud, expert en intégration CI/CD et en conception d'API modernes.",
     expertise: ['Python', 'Machine Learning', 'MLOps', 'DataViz'],
     photo: '/images/review/marcus.webp',
-    linkedin: 'https://www.linkedin.com/company/inoteqia-academy/about/',
+    linkedin: 'https://www.linkedin.com/company/zynovia-academy/about/',
   },
   {
     id: 'trainer-3',
@@ -41,7 +41,7 @@ export const trainers: Trainer[] = [
     bio: 'Spécialiste robotique éducative, accompagne les jeunes sur le prototypage rapide.',
     expertise: ['Python', 'Machine Learning', 'MLOps', 'DataViz'],
     photo: '/images/review/daniel.webp',
-    linkedin: 'https://www.linkedin.com/company/inoteqia-academy/about/',
+    linkedin: 'https://www.linkedin.com/company/zynovia-academy/about/',
   },
 ]
 

@@ -1,13 +1,14 @@
 import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://inoteqia.com'
+  const baseUrl = 'https://www.zynovia-academy.com'
   return {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/admin/', '/api/'], // Disallow crawling admin and backend API endpoints
+      disallow: ['/admin/', '/api/', '/auth/'],
     },
     sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   }
 }

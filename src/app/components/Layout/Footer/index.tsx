@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <footer>
       <div className='container py-14'>
-        <div className='grid grid-cols-1 gap-12 lg:grid-cols-3 xl:gap-10'>
+        <div className='grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 xl:gap-10'>
           {/* LEFT COLUMN - Logo, Description, Social Media */}
           <div className='flex flex-col gap-5'>
             <div className='w-fit'>
@@ -49,7 +49,46 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* MIDDLE COLUMN - Contact Information */}
+          {/* SECOND COLUMN - Navigation Links */}
+          <div className='flex flex-col gap-4'>
+            <h3 className='text-sm font-semibold uppercase tracking-[0.16em] text-darkblue dark:text-white mb-2'>
+              Liens utiles
+            </h3>
+            <ul className='flex flex-col gap-2.5'>
+              <li>
+                <Link href='/' className='text-sm font-normal text-darkblue/60 hover:text-primary dark:text-white/60 dark:hover:text-primary transition-colors duration-200'>
+                  Accueil
+                </Link>
+              </li>
+              <li>
+                <Link href='/programmes' className='text-sm font-normal text-darkblue/60 hover:text-primary dark:text-white/60 dark:hover:text-primary transition-colors duration-200'>
+                  Nos Programmes
+                </Link>
+              </li>
+              <li>
+                <Link href='/vision' className='text-sm font-normal text-darkblue/60 hover:text-primary dark:text-white/60 dark:hover:text-primary transition-colors duration-200'>
+                  Notre Vision
+                </Link>
+              </li>
+              <li>
+                <Link href='/nos-formateurs' className='text-sm font-normal text-darkblue/60 hover:text-primary dark:text-white/60 dark:hover:text-primary transition-colors duration-200'>
+                  Nos Formateurs
+                </Link>
+              </li>
+              <li>
+                <Link href='/ressources' className='text-sm font-normal text-darkblue/60 hover:text-primary dark:text-white/60 dark:hover:text-primary transition-colors duration-200'>
+                  Ressources & Blog
+                </Link>
+              </li>
+              <li>
+                <Link href='/contact' className='text-sm font-normal text-darkblue/60 hover:text-primary dark:text-white/60 dark:hover:text-primary transition-colors duration-200'>
+                  Contact & Inscriptions
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* THIRD COLUMN - Contact Information */}
           <div className='flex flex-col gap-5'>
             <h3 className='text-sm font-semibold uppercase tracking-[0.16em] text-darkblue dark:text-white mb-2'>
               Nos coordonnées
@@ -125,7 +164,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* RIGHT COLUMN - Map */}
+          {/* FOURTH COLUMN - Map */}
           <div className='flex flex-col'>
             <div className='overflow-hidden rounded-xl border border-slate-200/50 dark:border-slate-700/50 h-full min-h-[300px]'>
               <iframe

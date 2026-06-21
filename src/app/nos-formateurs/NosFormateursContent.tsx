@@ -69,49 +69,6 @@ function TrainerPhoto({ photo, name }: { photo?: string; name: string }) {
   )
 }
 
-function DebugPanel({ debug, retryCount }: { debug: DebugInfo; retryCount: number }) {
-  const [open, setOpen] = useState(false)
-  const isError = !!debug.fetchError || debug.source === 'static-fallback'
-
-  return (
-    <div className="fixed bottom-4 right-4 z-50 max-w-sm font-mono text-xs">
-      <button
-        onClick={() => setOpen((v) => !v)}
-        className={`flex items-center gap-2 rounded-full px-3 py-1.5 shadow-lg text-white transition ${isError ? 'bg-red-600 hover:bg-red-700' : 'bg-emerald-600 hover:bg-emerald-700'
-          }`}
-      >
-        {isError ? <AlertTriangle className="h-3.5 w-3.5" /> : <CheckCircle2 className="h-3.5 w-3.5" />}
-        <Bug className="h-3.5 w-3.5" />
-        Debug {retryCount > 0 ? `(retry #${retryCount})` : ''}
-      </button>
-
-      {open && (
-        <div className="mt-2 rounded-xl bg-slate-900 text-slate-100 p-4 shadow-2xl ring-1 ring-slate-700 space-y-1 max-h-72 overflow-y-auto">
-          <p className="font-bold text-slate-300 mb-2">API Debug Info</p>
-          <Row label="Source" value={debug.source ?? '—'} error={debug.source === 'static-fallback'} />
-          <Row label="HTTP" value={String(debug.httpStatus ?? '—')} error={(debug.httpStatus ?? 200) >= 400} />
-          <Row label="Duration" value={debug.durationMs != null ? `${debug.durationMs}ms` : '—'} />
-          <Row label="Trainers" value={String(debug.trainersCount ?? '—')} error={debug.trainersCount === 0} />
-          <Row label="Testimonials" value={String(debug.testimonialsCount ?? '—')} error={debug.testimonialsCount === 0} />
-          <Row label="Retries" value={String(retryCount)} />
-          {debug.timestamp && <Row label="Time" value={new Date(debug.timestamp).toLocaleTimeString()} />}
-          {debug.error && <Row label="DB Error" value={debug.error} error />}
-          {debug.fetchError && <Row label="Fetch Error" value={debug.fetchError} error />}
-        </div>
-      )}
-    </div>
-  )
-}
-
-function Row({ label, value, error }: { label: string; value: string; error?: boolean }) {
-  return (
-    <div className="flex justify-between gap-4">
-      <span className="text-slate-400">{label}</span>
-      <span className={error ? 'text-red-400 font-semibold' : 'text-slate-100'}>{value}</span>
-    </div>
-  )
-}
-
 // ---------------------------------------------------------------------------
 // Main page component
 // ---------------------------------------------------------------------------
@@ -181,9 +138,6 @@ export default function NosFormateursContent() {
 
   return (
     <main className='bg-gradient-to-b from-secondary/20 via-secondary/5 to-transParent dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
-
-      {/* Debug panel — always visible during development */}
-      <DebugPanel debug={debug} retryCount={retryCount} />
 
       {/* HERO */}
       <section className='relative overflow-hidden pt-28 pb-20 lg:pt-32 lg:pb-24'>

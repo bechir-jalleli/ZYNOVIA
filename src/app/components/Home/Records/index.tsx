@@ -155,7 +155,7 @@ const Records = () => {
                   <div className='p-3 bg-gradient-soft rounded-full w-fit flex items-center justify-center'>
                     <Image
                       src={item.imgSrc}
-                      alt={item.imgSrc}
+                      alt={item.desc || 'Statistique IA'}
                       width={36}
                       height={36}
                       className='drop-shadow-sm'

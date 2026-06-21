@@ -8,6 +8,7 @@ import FormationsBootcamps from './components/Home/FormationsBootcamps'
 import Review from './components/Home/Review'
 import Pricing from './components/Home/Pricing'
 import PartnersBanner from './components/Home/PartnersBanner'
+import HomeFAQ from './components/Home/HomeFAQ'
 import FinalCTA from './components/Home/FinalCTA'
 
 export const metadata: Metadata = {
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     title: 'ZYNOVIA Academy – Académie de l\'IA en Tunisie',
     description:
       'Formez vos enfants à l\'intelligence artificielle, la robotique et les technologies de demain avec ZYNOVIA Academy, l\'académie leader en Tunisie.',
-    url: 'https://inoteqia.com',
+    url: 'https://www.zynovia-academy.com',
     siteName: 'ZYNOVIA Academy',
     images: [
       {
@@ -56,13 +57,29 @@ export const metadata: Metadata = {
     images: ['/images/banner/image.png'],
   },
   alternates: {
-    canonical: 'https://inoteqia.com',
+    canonical: 'https://www.zynovia-academy.com',
   },
 }
 
 export default function Home() {
+  const courseJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    'name': 'Formations IA ZYNOVIA Academy',
+    'description': 'Formations en Intelligence Artificielle, robotique et programmation en Tunisie pour collégiens et lycéens. Programmes annuels et bootcamps intensifs.',
+    'provider': {
+      '@type': 'EducationalOrganization',
+      'name': 'ZYNOVIA Academy',
+      'sameAs': 'https://www.zynovia-academy.com'
+    }
+  }
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
+      />
       {/* 1️⃣ HERO - Avec 3 CTAs clairs */}
       <Hero />
 
@@ -90,6 +107,9 @@ export default function Home() {
 
       {/* 9️⃣ PREUVE SOCIALE - Logos partenaires + chiffre clé + témoignage */}
       <PartnersBanner />
+
+      {/* 9.5️⃣ FAQ SECTION - Questions fréquentes */}
+      <HomeFAQ />
 
       {/* 🔟 CTA FINAL - Texte inspirant + 2 boutons */}
       <FinalCTA />

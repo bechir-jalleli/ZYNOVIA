@@ -519,7 +519,7 @@ const RendezVousContent = () => {
             {[
               { icon: 'tabler:brand-facebook-filled', href: 'https://www.facebook.com/people/Zynovia/61590195886623/?locale=fr_FR', label: 'Facebook' },
               { icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/zynovia_academy/', label: 'Instagram' },
-              { icon: 'tabler:brand-linkedin', href: 'https://www.linkedin.com/company/inoteqia-academy/about/', label: 'LinkedIn' },
+              { icon: 'tabler:brand-linkedin', href: 'https://www.linkedin.com/company/zynovia-academy/about/', label: 'LinkedIn' },
             ].map(({ icon, href, label }) => (
               <a
                 key={label}

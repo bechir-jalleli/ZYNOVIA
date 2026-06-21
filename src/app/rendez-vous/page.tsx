@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import RendezVousContent from './RendezVousContent'
 
 export const metadata: Metadata = {
-  title: 'Rendez-vous – ZYNOVIA Academy',
+  title: 'Prendre Rendez-vous – ZYNOVIA Academy',
   description:
-    'Réservez un rendez-vous avec ZYNOVIA Academy en visioconférence ou sur site. Parents, établissements, Entreprises : notre équipe vous accompagne pour trouver le programme adapté.',
+    "Planifiez un rendez-vous (sur site à Tunis ou en visioconférence) avec ZYNOVIA Academy. Découvrez nos formations d'intelligence artificielle, robotique et programmation pour jeunes.",
   keywords: [
     'rendez-vous ZYNOVIA',
     'prendre rendez-vous IA',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: 'Rendez-vous – ZYNOVIA Academy',
     description:
       'Réservez un rendez-vous en visioconférence ou sur site pour découvrir nos programmes IA ou établir un partenariat.',
-    url: 'https://inoteqia.com/rendez-vous',
+    url: 'https://www.zynovia-academy.com/rendez-vous',
     siteName: 'ZYNOVIA Academy',
     images: [
       {
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     images: ['/images/banner/image.png'],
   },
   alternates: {
-    canonical: 'https://inoteqia.com/rendez-vous',
+    canonical: 'https://www.zynovia-academy.com/rendez-vous',
   },
 }
 
