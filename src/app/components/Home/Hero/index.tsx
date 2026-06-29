@@ -21,8 +21,8 @@ const Hero = () => {
               <div className='flex flex-col lg:items-start items-center gap-8 lg:gap-12'>
                 <h1 className='lg:text-start text-center w-full max-w-2xl text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#0A004B] dark:text-white'>
                   ZYNOVIA Academy : L&apos;Académie de l&apos;
-                  <span className='text-gradient'>Intelligence Artificielle</span>{' '}
-                  en
+                  <span className='text-gradient'>Intelligence Artificielle</span>
+                  
                 </h1>
 
                 <motion.p
