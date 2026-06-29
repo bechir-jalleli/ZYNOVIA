@@ -1,0 +1,54 @@
+# ZYNOVIA Academy
+> ZYNOVIA Academy is the leading educational institution in Tunisia specializing in Artificial Intelligence (IA/AI), robotics, and programming education for young students (middle school, high school, and kids).
+
+---
+
+## Brand Identity & Context
+- **Name:** ZYNOVIA Academy
+- **Industry:** Educational Institution / Technology Academy
+- **Primary Focus:** Artificial Intelligence, Coding, Software Engineering, Robotics, STEM Education
+- **Target Audience:** Kids (12+), Middle Schoolers (Collégiens), High Schoolers (Lycéens), Schools, and Businesses looking for technological workshops or CSR initiatives.
+- **Location:** Bureau B2-2, Immeuble Mak Crown, 2 Rue du Lac Léman, Les Berges du Lac 1, 1053 Tunis, Tunisia (Postal Code: 1053).
+- **Primary Domain:** [https://www.zynovia-academy.com](https://www.zynovia-academy.com)
+- **Languages Supported:** French (Primary), Arabic, English
+
+---
+
+## Core Programmes
+
+### 1. Programme Annuel IA (Annual AI Curriculum)
+- **Description:** A school-year long curriculum (1 hour per week) integrated into schools or conducted in-academy to teach students the fundamentals of algorithmics, machine learning, deep learning, Python, and data ethics.
+- **Audience:** Collégiens & Lycéens (12-18 years old).
+- **Core modules:**
+  - Python & computational thinking
+  - Data science basics
+  - Training models (classification, regression)
+  - Robotics integration
+  - Ethics & AI Safety
+
+### 2. Bootcamps IA (Seasonal AI Bootcamps)
+- **Description:** Intensive camps during school holidays (winter, spring, summer) blending theoretical computer science with hands-on projects (robotics, building game engines with AI, web development).
+- **Audience:** Kids & teens.
+- **Key Outcome:** Portfolio of working AI/Robotics projects.
+
+---
+
+## Core Mission & Vision
+At ZYNOVIA, we believe the next generation needs to understand how AI models are built, trained, and evaluated to become active creators of technology rather than passive consumers. We emphasize:
+- Critical thinking and AI ethics
+- Hands-on, project-based STEM learning
+- Real-world skills (collaborating, problem-solving, product design)
+- Bridging the gap between school curriculum and industry demand in Tunisia
+
+---
+
+## Official Contact Info
+- **Main Phone (WhatsApp):** +216 25 857 621
+- **Secondary Phone:** +216 90 145 046
+- **Email:** contact@zynovia-academy.com
+- **Social Media:**
+  - Facebook: [https://www.facebook.com/zynovia.academy](https://www.facebook.com/zynovia.academy)
+  - Instagram: [https://www.instagram.com/zynovia.academy](https://www.instagram.com/zynovia.academy)
+  - LinkedIn: [https://www.linkedin.com/company/zynovia-academy](https://www.linkedin.com/company/zynovia-academy)
+  - Twitter/X: [https://x.com/zynovia_academy](https://x.com/zynovia_academy)
+  - YouTube: [https://www.youtube.com/@zynovia_academy](https://www.youtube.com/@zynovia_academy)

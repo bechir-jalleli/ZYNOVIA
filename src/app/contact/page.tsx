@@ -1,20 +1,21 @@
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import ContactContent from './ContactContent'
+import Breadcrumbs from '../components/Layout/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'Contact & rendez-vous – ZYNOVIA Academy',
+  title: 'Contact & Inscriptions',
   description:
-    'Contactez ZYNOVIA Academy pour prendre rendez-vous et découvrir le programme le plus adapté à votre enfant. Parents, établissements, Entreprises : notre équipe vous accompagne.',
+    'Contactez ZYNOVIA Academy pour inscrire votre enfant, planifier une présentation pour votre école ou demander une formation en entreprise. Contactez-nous !',
   keywords: [
     'contact ZYNOVIA',
     'rendez-vous IA',
     'inscription académie IA',
     'contact formation IA',
-    'devis formation IA Tunisie',
+    'devis formation IA ',
   ],
   openGraph: {
-    title: 'Contact & rendez-vous – ZYNOVIA Academy',
+    title: 'Contact & Inscriptions | ZYNOVIA Academy',
     description:
       'Contactez ZYNOVIA Academy pour prendre rendez-vous et découvrir le programme le plus adapté. Parents, établissements, Entreprises : notre équipe vous accompagne.',
     url: 'https://www.zynovia-academy.com/contact',
@@ -25,11 +26,19 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact & rendez-vous – ZYNOVIA Academy',
+    title: 'Contact & Inscriptions | ZYNOVIA Academy',
     description: 'Contactez ZYNOVIA Academy pour prendre rendez-vous et découvrir nos programmes.',
     images: ['/images/banner/image.png'],
   },
-  alternates: { canonical: 'https://www.zynovia-academy.com/contact' },
+  alternates: {
+    canonical: 'https://www.zynovia-academy.com/contact',
+    languages: {
+      'fr-TN': 'https://www.zynovia-academy.com/contact',
+      'ar-TN': 'https://www.zynovia-academy.com/contact?lang=ar',
+      'en': 'https://www.zynovia-academy.com/contact?lang=en',
+      'x-default': 'https://www.zynovia-academy.com/contact',
+    },
+  },
 }
 
 export default function ContactPage() {
@@ -63,12 +72,36 @@ export default function ContactPage() {
     }
   }
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Accueil',
+        'item': 'https://www.zynovia-academy.com'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Contact',
+        'item': 'https://www.zynovia-academy.com/contact'
+      }
+    ]
+  }
+
   return (
     <Suspense fallback={null}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <Breadcrumbs items={[{ name: 'Contact & Inscriptions' }]} />
       <ContactContent />
     </Suspense>
   )

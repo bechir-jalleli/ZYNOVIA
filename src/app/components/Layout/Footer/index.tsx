@@ -21,7 +21,7 @@ const Footer = () => {
               Zynovia Academy accompagne les jeunes, les familles et les partenaires dans la
               découverte et la maîtrise de l&apos;IA.
             </p>
-            <div className='flex gap-4'>
+            <div className='flex gap-4 flex-wrap'>
               <Link
                 href='https://www.facebook.com/profile.php?id=61590195886623' target='_blank'
                 rel='noopener noreferrer'
@@ -41,6 +41,32 @@ const Footer = () => {
                 aria-label='Instagram'>
                 <Icon
                   icon='tabler:brand-instagram'
+                  width={45}
+                  height={45}
+                  className='text-darkblue dark:text-white bg-darkmode/5 dark:bg-white/10 rounded-lg p-2 hover:text-primary dark:hover:text-primary duration-300'
+                />
+              </Link>
+
+              <Link
+                href='https://x.com/zynovia_academy'
+                target='_blank'
+                rel='noopener noreferrer'
+                aria-label='Twitter X'>
+                <Icon
+                  icon='ri:twitter-x-fill'
+                  width={45}
+                  height={45}
+                  className='text-darkblue dark:text-white bg-darkmode/5 dark:bg-white/10 rounded-lg p-2 hover:text-primary dark:hover:text-primary duration-300'
+                />
+              </Link>
+
+              <Link
+                href='https://www.youtube.com/@zynovia_academy'
+                target='_blank'
+                rel='noopener noreferrer'
+                aria-label='YouTube'>
+                <Icon
+                  icon='tabler:brand-youtube'
                   width={45}
                   height={45}
                   className='text-darkblue dark:text-white bg-darkmode/5 dark:bg-white/10 rounded-lg p-2 hover:text-primary dark:hover:text-primary duration-300'

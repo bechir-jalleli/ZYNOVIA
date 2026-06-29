@@ -1,0 +1,44 @@
+# ZYNOVIA Academy AI Crawling Directives
+# Reference resource: https://www.zynovia-academy.com/llms.txt
+
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Disallow: /admin/
+Disallow: /api/
+Disallow: /auth/
+
+User-agent: ChatGPT-User
+Allow: /
+Allow: /llms.txt
+Disallow: /admin/
+Disallow: /api/
+Disallow: /auth/
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Disallow: /admin/
+Disallow: /api/
+Disallow: /auth/
+
+User-agent: Google-Extended
+Allow: /
+Allow: /llms.txt
+Disallow: /admin/
+Disallow: /api/
+Disallow: /auth/
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+Disallow: /admin/
+Disallow: /api/
+Disallow: /auth/
+
+User-agent: *
+Allow: /
+Allow: /llms.txt
+Disallow: /admin/
+Disallow: /api/
+Disallow: /auth/

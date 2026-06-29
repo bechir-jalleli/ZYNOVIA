@@ -1,19 +1,20 @@
 import type { Metadata } from 'next'
 import RendezVousContent from './RendezVousContent'
+import Breadcrumbs from '../components/Layout/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'Prendre Rendez-vous – ZYNOVIA Academy',
+  title: 'Prendre Rendez-vous',
   description:
-    "Planifiez un rendez-vous (sur site à Tunis ou en visioconférence) avec ZYNOVIA Academy. Découvrez nos formations d'intelligence artificielle, robotique et programmation pour jeunes.",
+    "Planifiez un entretien gratuit en ligne ou sur notre site de Tunis pour découvrir nos programmes d'IA et de robotique pour enfants et adolescents.",
   keywords: [
     'rendez-vous ZYNOVIA',
     'prendre rendez-vous IA',
     'rendez-vous académie IA',
-    'consultation formation IA Tunisie',
+    'consultation formation IA ',
     'rendez-vous ZYNOVIA Academy',
   ],
   openGraph: {
-    title: 'Rendez-vous – ZYNOVIA Academy',
+    title: 'Prendre Rendez-vous | ZYNOVIA Academy',
     description:
       'Réservez un rendez-vous en visioconférence ou sur site pour découvrir nos programmes IA ou établir un partenariat.',
     url: 'https://www.zynovia-academy.com/rendez-vous',
@@ -31,15 +32,50 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Rendez-vous – ZYNOVIA Academy',
+    title: 'Prendre Rendez-vous | ZYNOVIA Academy',
     description: 'Réservez un créneau avec ZYNOVIA Academy pour découvrir nos programmes IA.',
     images: ['/images/banner/image.png'],
   },
   alternates: {
     canonical: 'https://www.zynovia-academy.com/rendez-vous',
+    languages: {
+      'fr-TN': 'https://www.zynovia-academy.com/rendez-vous',
+      'ar-TN': 'https://www.zynovia-academy.com/rendez-vous?lang=ar',
+      'en': 'https://www.zynovia-academy.com/rendez-vous?lang=en',
+      'x-default': 'https://www.zynovia-academy.com/rendez-vous',
+    },
   },
 }
 
 export default function RendezVousPage() {
-  return <RendezVousContent />
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Accueil',
+        'item': 'https://www.zynovia-academy.com'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Rendez-vous',
+        'item': 'https://www.zynovia-academy.com/rendez-vous'
+      }
+    ]
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <Breadcrumbs items={[{ name: 'Prendre Rendez-vous' }]} />
+      <RendezVousContent />
+    </>
+  )
 }
+

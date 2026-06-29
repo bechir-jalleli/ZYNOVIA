@@ -1,22 +1,23 @@
 import type { Metadata } from 'next'
 import NosFormateursContent from './NosFormateursContent'
+import Breadcrumbs from '../components/Layout/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'Nos Formateurs – ZYNOVIA Academy',
+  title: 'Nos Formateurs Experts',
   description:
-    "Découvrez l'équipe de formateurs de ZYNOVIA Academy : experts IA, développement, robotique et produit. Profitez d'un mentorat IA Tunisie de haut niveau pour les jeunes.",
+    'Découvrez nos formateurs experts en IA, robotique et codage en . Une équipe passionnée dédiée au mentorat et à la réussite des jeunes talents.',
   keywords: [
-    'formateurs IA Tunisie',
+    'formateurs IA ',
     'experts IA',
-    'mentorat IA Tunisie',
+    'mentorat IA ',
     'coaching IA',
     'formateurs robotique',
     'experts développement',
     'mentor IA',
-    'expert IA Tunisie',
+    'expert IA ',
   ],
   openGraph: {
-    title: 'Nos Formateurs – ZYNOVIA Academy',
+    title: 'Nos Formateurs Experts | ZYNOVIA Academy',
     description:
       "Une équipe de formateurs passionnés pour accompagner chaque apprenant vers la maîtrise de l'IA et du numérique.",
     url: 'https://www.zynovia-academy.com/nos-formateurs',
@@ -34,16 +35,51 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nos Formateurs – ZYNOVIA Academy',
+    title: 'Nos Formateurs Experts | ZYNOVIA Academy',
     description: 'Une équipe de formateurs passionnés pour accompagner chaque apprenant.',
     images: ['/images/review/daniel.webp'],
   },
   alternates: {
     canonical: 'https://www.zynovia-academy.com/nos-formateurs',
+    languages: {
+      'fr-TN': 'https://www.zynovia-academy.com/nos-formateurs',
+      'ar-TN': 'https://www.zynovia-academy.com/nos-formateurs?lang=ar',
+      'en': 'https://www.zynovia-academy.com/nos-formateurs?lang=en',
+      'x-default': 'https://www.zynovia-academy.com/nos-formateurs',
+    },
   },
 }
 
 export default function NosFormateursPage() {
-  return <NosFormateursContent />
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Accueil',
+        'item': 'https://www.zynovia-academy.com'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Nos Formateurs',
+        'item': 'https://www.zynovia-academy.com/nos-formateurs'
+      }
+    ]
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <Breadcrumbs items={[{ name: 'Nos Formateurs' }]} />
+      <NosFormateursContent />
+    </>
+  )
 }
+
 

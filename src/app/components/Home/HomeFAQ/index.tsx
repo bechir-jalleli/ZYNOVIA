@@ -11,7 +11,7 @@ interface FAQItem {
 const FAQ_ITEMS: FAQItem[] = [
   {
     question: "Qu'est-ce que ZYNOVIA Academy ?",
-    answer: "ZYNOVIA Academy est la première académie en Tunisie spécialisée dans l'initiation et la formation en Intelligence Artificielle (IA), robotique et programmation pour les jeunes (collégiens et lycéens). Notre mission est de préparer la prochaine génération aux métiers du futur."
+    answer: "ZYNOVIA Academy est la première académie en  spécialisée dans l'initiation et la formation en Intelligence Artificielle (IA), robotique et programmation pour les jeunes (collégiens et lycéens). Notre mission est de préparer la prochaine génération aux métiers du futur."
   },
   {
     question: "À qui s'adressent les formations de ZYNOVIA ?",
@@ -19,7 +19,7 @@ const FAQ_ITEMS: FAQItem[] = [
   },
   {
     question: "Où se situe l'académie ZYNOVIA ?",
-    answer: "Nos locaux sont situés au Bureau B2-2, Immeuble Mak Crown, 2 Rue du Lac Léman, Les Berges du Lac 1, 1053 Tunis, Tunisie. Nous y accueillons les élèves dans un cadre moderne et adapté à l'apprentissage technologique."
+    answer: "Nos locaux sont situés au Bureau B2-2, Immeuble Mak Crown, 2 Rue du Lac Léman, Les Berges du Lac 1, 1053 Tunis, . Nous y accueillons les élèves dans un cadre moderne et adapté à l'apprentissage technologique."
   },
   {
     question: "Quels sont les différents programmes proposés ?",
@@ -88,17 +88,15 @@ const HomeFAQ = () => {
                 >
                   <span>{item.question}</span>
                   <div
-                    className={`flex-shrink-0 ml-4 p-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 transition-transform duration-300 ${
-                      isOpen ? 'rotate-180 bg-sky-50 dark:bg-sky-950/50 text-sky-600 dark:text-[#3FA9DF]' : ''
-                    }`}
+                    className={`flex-shrink-0 ml-4 p-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 transition-transform duration-300 ${isOpen ? 'rotate-180 bg-sky-50 dark:bg-sky-950/50 text-sky-600 dark:text-[#3FA9DF]' : ''
+                      }`}
                   >
                     <Icon icon="fluent:chevron-down-24-filled" width={18} height={18} />
                   </div>
                 </button>
                 <div
-                  className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                    isOpen ? 'max-h-[300px] border-t border-slate-100 dark:border-slate-800/60' : 'max-h-0'
-                  }`}
+                  className={`transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? 'max-h-[300px] border-t border-slate-100 dark:border-slate-800/60' : 'max-h-0'
+                    }`}
                 >
                   <div className="p-5 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed bg-slate-50/50 dark:bg-slate-900/30">
                     {item.answer}
