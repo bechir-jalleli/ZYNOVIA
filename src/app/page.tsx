@@ -14,7 +14,7 @@ import FinalCTA from './components/Home/FinalCTA'
 export const metadata: Metadata = {
   title: 'ZYNOVIA Academy | Formation IA, Code & Robotique',
   description:
-    'Formations d\'excellence en intelligence artificielle, programmation et robotique pour collégiens et lycéens en . Boostez l\'avenir de vos enfants !',
+    'Formations d\'excellence en intelligence artificielle, programmation et robotique pour collégiens et lycéens  . Boostez l\'avenir de vos enfants !',
   keywords: [
     'zynovia',
     'zynovia academy',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'ZYNOVIA Academy | Formation IA, Code & Robotique',
     description:
-      'Formez vos enfants à l\'intelligence artificielle, la robotique et les technologies de demain avec ZYNOVIA Academy, l\'académie leader en .',
+      'Formez vos enfants à l\'intelligence artificielle, la robotique et les technologies de demain avec ZYNOVIA Academy, l\'académie leader  .',
     url: 'https://www.zynovia-academy.com',
     siteName: 'ZYNOVIA Academy',
     images: [
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
         url: '/images/banner/image.png',
         width: 1200,
         height: 630,
-        alt: 'ZYNOVIA Academy - Formation IA pour jeunes en ',
+        alt: 'ZYNOVIA Academy - Formation IA pour jeunes  ',
       },
     ],
     locale: 'fr_FR',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'ZYNOVIA Academy | Formation IA, Code & Robotique',
     description:
-      'Découvrez ZYNOVIA Academy : formations en Intelligence Artificielle (AI), robotique et programmation pour jeunes en .',
+      'Découvrez ZYNOVIA Academy : formations en Intelligence Artificielle (AI), robotique et programmation pour jeunes  .',
     images: ['/images/banner/image.png'],
   },
   alternates: {
@@ -72,7 +72,7 @@ export default function Home() {
     '@context': 'https://schema.org',
     '@type': 'Course',
     'name': 'Formations IA ZYNOVIA Academy',
-    'description': 'Formations en Intelligence Artificielle, robotique et programmation en  pour collégiens et lycéens. Programmes annuels et bootcamps intensifs.',
+    'description': 'Formations en Intelligence Artificielle, robotique et programmation   pour collégiens et lycéens. Programmes annuels et bootcamps intensifs.',
     'provider': {
       '@type': 'EducationalOrganization',
       'name': 'ZYNOVIA Academy',

@@ -138,7 +138,7 @@ Create a clear structure with dedicated pages instead of one very long homepage:
 
 - Define per-page `metadata` (title, description, open graph) in each new route.
 - Add structured data (JSON-LD) for:
-  - An educational organization and local business in Tunis.
+  - An educational organization and local business .
 - Optimize images with proper `priority`, `sizes`, and `alt` text.
 - Check keyboard navigation and ARIA attributes (forms, charts descriptions, accordions).
 
