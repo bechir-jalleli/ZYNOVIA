@@ -4,40 +4,21 @@ import ContactContent from './ContactContent'
 import Breadcrumbs from '../components/Layout/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'Contact & Inscriptions',
+  title: 'Contact & Inscriptions — Zynovia',
   description:
-    'Contactez ZYNOVIA Academy pour inscrire votre enfant, planifier une présentation pour votre école ou demander une formation en entreprise. Contactez-nous !',
-  keywords: [
-    'contact ZYNOVIA',
-    'rendez-vous IA',
-    'inscription académie IA',
-    'contact formation IA',
-    'devis formation IA ',
-  ],
+    'Contactez Zynovia pour inscrire votre enfant, planifier une présentation pour votre école ou demander une formation. Notre équipe vous accompagne.',
   openGraph: {
-    title: 'Contact & Inscriptions | ZYNOVIA Academy',
+    title: 'Contact & Inscriptions — Zynovia',
     description:
-      'Contactez ZYNOVIA Academy pour prendre rendez-vous et découvrir le programme le plus adapté. Parents, établissements, Entreprises : notre équipe vous accompagne.',
+      'Contactez Zynovia pour prendre rendez-vous et découvrir le programme le plus adapté. Parents, établissements, entreprises : notre équipe vous accompagne.',
     url: 'https://www.zynovia-academy.com/contact',
-    siteName: 'ZYNOVIA Academy',
-    images: [{ url: '/images/banner/image.png', width: 1200, height: 630, alt: 'Contact ZYNOVIA Academy' }],
+    siteName: 'Zynovia',
+    images: [{ url: '/images/contact/cnr.jpg', width: 1200, height: 630, alt: 'Contact Zynovia' }],
     locale: 'fr_FR',
     type: 'website',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Contact & Inscriptions | ZYNOVIA Academy',
-    description: 'Contactez ZYNOVIA Academy pour prendre rendez-vous et découvrir nos programmes.',
-    images: ['/images/banner/image.png'],
-  },
   alternates: {
     canonical: 'https://www.zynovia-academy.com/contact',
-    languages: {
-      'fr-TN': 'https://www.zynovia-academy.com/contact',
-      'ar-TN': 'https://www.zynovia-academy.com/contact?lang=ar',
-      'en': 'https://www.zynovia-academy.com/contact?lang=en',
-      'x-default': 'https://www.zynovia-academy.com/contact',
-    },
   },
 }
 
@@ -46,7 +27,7 @@ export default function ContactPage() {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     'name': 'ZYNOVIA Academy',
-    'image': 'https://www.zynovia-academy.com/images/banner/image.png',
+    'image': 'https://www.zynovia-academy.com/images/contact/cnr.jpg',
     'telephone': '+21625857621',
     'email': 'contact@zynovia-academy.com',
     'address': {

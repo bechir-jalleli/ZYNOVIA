@@ -10,16 +10,20 @@ interface FAQItem {
 
 const FAQ_ITEMS: FAQItem[] = [
   {
-    question: "Qu'est-ce que ZYNOVIA Academy ?",
-    answer: "ZYNOVIA Academy est la première académie en  spécialisée dans l'initiation et la formation en Intelligence Artificielle (IA), robotique et programmation pour les jeunes (collégiens et lycéens). Notre mission est de préparer la prochaine génération aux métiers du futur."
+    question: "Qu'est-ce que Zynovia ?",
+    answer: "Zynovia est une académie spécialisée dans la formation en Intelligence Artificielle pour les jeunes de 12 à 18 ans. Fondée en 2026, Zynovia propose des parcours annuels progressifs et des bootcamps intensifs, avec pour mission de préparer la prochaine génération à comprendre, maîtriser et créer avec l'Intelligence Artificielle."
   },
   {
-    question: "À qui s'adressent les formations de ZYNOVIA ?",
+    question: "Qu'est-ce que ZYNOVIA Academy ?",
+    answer: "ZYNOVIA Academy est la première académie spécialisée dans l'initiation et la formation en Intelligence Artificielle (IA) pour les collégiens et les lycéens. Notre mission est de préparer la prochaine génération à comprendre, maîtriser et créer avec l'Intelligence Artificielle."
+  },
+  {
+    question: "À qui s'adressent les formations de Zynovia ?",
     answer: "Nos cours et ateliers s'adressent principalement aux collégiens et lycéens (âgés de 12 à 18 ans). Les programmes sont adaptés à tous les niveaux, du débutant absolu à l'élève intermédiaire, sans aucun prérequis technique nécessaire."
   },
   {
-    question: "Où se situe l'académie ZYNOVIA ?",
-    answer: "Nos locaux sont situés au Bureau B2-2, Immeuble Mak Crown, 2 Rue du Lac Léman, Les Berges du Lac 1, 1053 Tunis, . Nous y accueillons les élèves dans un cadre moderne et adapté à l'apprentissage technologique."
+    question: "Où se situe l'académie ?",
+    answer: "Nos locaux sont situés au Bureau B2-2, Immeuble Mak Crown, 2 Rue du Lac Léman, Les Berges du Lac 1, 1053 Tunis. Nous y accueillons les élèves dans un cadre moderne et adapté à l'apprentissage technologique."
   },
   {
     question: "Quels sont les différents programmes proposés ?",
@@ -34,6 +38,7 @@ const FAQ_ITEMS: FAQItem[] = [
     answer: "Oui, tout à fait. Nous collaborons avec des établissements scolaires pour intégrer l'IA dans leur cursus et nous proposons également des bootcamps exclusifs pour les enfants des salariés des entreprises partenaires."
   }
 ]
+
 
 const HomeFAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null)

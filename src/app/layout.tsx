@@ -17,52 +17,19 @@ const DMSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.zynovia-academy.com'),
   title: {
-    default: 'ZYNOVIA Academy | Académie IA & Robotique ',
-    template: '%s | ZYNOVIA Academy',
+    default: 'Zynovia — Académie IA pour Jeunes',
+    template: '%s — Zynovia',
   },
   description:
-    'Formation IA, robotique et programmation pour jeunes . Bootcamps et cours d\'intelligence artificielle pour collégiens et lycéens.',
-  keywords: [
-    'zynovia',
-    'zynovia academy',
-    'academy',
-    'ai',
-    '',
-    'ai ',
-    'academy ai ',
-    'zynovia academy ',
-    'formation ia ',
-    'intelligence artificielle ',
-    'formation intelligence artificielle',
-    'formation IA enfants',
-    'robotique ',
-    'programmation enfants',
-    'bootcamp IA',
-    'AI courses',
-    'AI courses ',
-    'AI training for students',
-    'AI bootcamp',
-    'AI education',
-    'AI programs for schools',
-    'AI training in ',
-    'artificial intelligence academy',
-    'cours intelligence artificielle ',
-    'formation IA collégiens lycéens',
-    'académie IA ',
-    'apprendre intelligence artificielle',
-    'stage IA vacances scolaires',
-    'programme scolaire IA ',
-  ],
-  authors: [{ name: 'ZYNOVIA Academy' }],
-  creator: 'ZYNOVIA Academy',
-  publisher: 'ZYNOVIA Academy',
+    'Zynovia est une académie d\'Intelligence Artificielle spécialisée pour collégiens et lycéens. Découvrez nos parcours annuels et bootcamps intensifs en IA.',
+  authors: [{ name: 'Zynovia' }],
+  creator: 'Zynovia',
+  publisher: 'Zynovia',
   alternates: {
     canonical: 'https://www.zynovia-academy.com',
     languages: {
-      'fr-TN': 'https://www.zynovia-academy.com',
-      'ar-TN': 'https://www.zynovia-academy.com/?lang=ar',
-      'en': 'https://www.zynovia-academy.com/?lang=en',
       'x-default': 'https://www.zynovia-academy.com',
+      'fr': 'https://www.zynovia-academy.com',
     },
   },
   formatDetection: {
@@ -84,24 +51,18 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://www.zynovia-academy.com',
-    siteName: 'ZYNOVIA Academy',
-    title: 'ZYNOVIA Academy | Académie IA & Robotique ',
+    siteName: 'Zynovia',
+    title: 'Zynovia — Académie d\'Intelligence Artificielle pour Jeunes',
     description:
-      'Formez vos enfants à l\'intelligence artificielle, la robotique et les technologies de demain avec ZYNOVIA Academy, l\'académie leader .',
+      'Zynovia prépare les jeunes aux compétences de demain avec l\'intelligence artificielle. Découvrez nos formations.',
     images: [
       {
         url: '/images/banner/image.png',
         width: 1200,
         height: 630,
-        alt: 'ZYNOVIA Academy - AI Academy  - Formation Intelligence Artificielle',
+        alt: 'Zynovia — Académie Intelligence Artificielle pour Jeunes',
       },
     ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'ZYNOVIA Academy | Académie IA & Robotique ',
-    description: 'Formation IA, robotique et programmation pour collégiens, lycéens et jeunes . AI courses & bootcamps.',
-    images: ['/images/banner/image.png'],
   },
   robots: {
     index: true,
@@ -125,20 +86,27 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  // Primary brand entity schema — establishes Zynovia as a named organization
   const orgJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'EducationalOrganization',
-    'name': 'ZYNOVIA Academy',
-    'alternateName': 'Zynovia',
+    '@id': 'https://www.zynovia-academy.com/#organization',
+    'name': 'Zynovia',
+    'legalName': 'Zynovia Academy',
     'url': 'https://www.zynovia-academy.com',
-    'logo': 'https://www.zynovia-academy.com/images/logo/ZYNOVIAPNGG-removebg-preview.png',
-    'description': 'Académie d\'Intelligence Artificielle (AI) et des Technologies du Futur . Formation IA, robotique et programmation pour collégiens et lycéens.',
+    'logo': {
+      '@type': 'ImageObject',
+      'url': 'https://www.zynovia-academy.com/images/logo/ZYNOVIAPNGG-removebg-preview.png',
+      'caption': 'Zynovia'
+    },
+    'image': 'https://www.zynovia-academy.com/images/banner/image.png',
+    'description': 'Zynovia est une académie spécialisée dans la formation en Intelligence Artificielle pour les jeunes de 12 à 18 ans.',
+    'foundingDate': '2026',
     'telephone': '+21625857621',
     'email': 'contact@zynovia-academy.com',
-    'foundingDate': '2023',
-    'areaServed': {
-      '@type': 'AdministrativeArea',
-      'name': ''
+    'brand': {
+      '@type': 'Brand',
+      'name': 'Zynovia'
     },
     'address': {
       '@type': 'PostalAddress',
@@ -147,70 +115,32 @@ export default function RootLayout({
       'addressLocality': 'Tunis',
       'addressCountry': 'TN'
     },
-    'sameAs': [
-      'https://www.facebook.com/zynovia.academy',
-      'https://www.instagram.com/zynovia.academy',
-      'https://www.linkedin.com/company/zynovia-academy'
+    'knowsAbout': [
+      'Intelligence Artificielle',
+      'Machine Learning',
+      'Formation numérique'
     ],
-    'hasOfferCatalog': {
-      '@type': 'OfferCatalog',
-      'name': 'Programmes de Formation en IA',
-      'itemListElement': [
-        {
-          '@type': 'Offer',
-          'itemOffered': {
-            '@type': 'Course',
-            'name': 'Programme Annuel IA',
-            'description': 'Parcours annuel de formation en intelligence artificielle pour les jeunes.'
-          }
-        },
-        {
-          '@type': 'Offer',
-          'itemOffered': {
-            '@type': 'Course',
-            'name': 'Bootcamp IA',
-            'description': 'Sessions intensives de formation en IA et robotique pendant les vacances.'
-          }
-        }
-      ]
-    }
+    'sameAs': [
+      'https://www.facebook.com/profile.php?id=61590195886623',
+      'https://www.instagram.com/zynovia_academy/',
+      'https://wa.me/21625857621'
+    ]
   }
 
-  const businessJsonLd = {
+  const websiteJsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    'name': 'ZYNOVIA Academy',
-    'image': 'https://www.zynovia-academy.com/images/banner/image.png',
-    'telephone': '+21625857621',
-    'email': 'contact@zynovia-academy.com',
-    'address': {
-      '@type': 'PostalAddress',
-      'streetAddress': 'B2-2 Immeuble Mak Crown, rue du Lac Léman, Les Berges du Lac',
-      'postalCode': '1053',
-      'addressLocality': 'Tunis',
-      'addressCountry': 'TN'
-    },
-    'geo': {
-      '@type': 'GeoCoordinates',
-      'latitude': 36.8550972,
-      'longitude': 10.274117
-    },
+    '@type': 'WebSite',
+    '@id': 'https://www.zynovia-academy.com/#website',
+    'name': 'Zynovia',
     'url': 'https://www.zynovia-academy.com',
-    'priceRange': '$$',
-    'openingHoursSpecification': [
-      {
-        '@type': 'OpeningHoursSpecification',
-        'dayOfWeek': [
-          'Monday',
-          'Tuesday',
-          'Wednesday',
-          'Thursday',
-          'Friday'
-        ],
-        'opens': '08:00',
-        'closes': '19:00'
-      }
-    ]
+    'publisher': {
+      '@id': 'https://www.zynovia-academy.com/#organization'
+    },
+    'potentialAction': {
+      '@type': 'SearchAction',
+      'target': 'https://www.zynovia-academy.com/programmes?q={search_term_string}',
+      'query-input': 'required name=search_term_string'
+    }
   }
 
   return (
@@ -222,7 +152,7 @@ export default function RootLayout({
         />
         <script
           type='application/ld+json'
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         <script
           dangerouslySetInnerHTML={{

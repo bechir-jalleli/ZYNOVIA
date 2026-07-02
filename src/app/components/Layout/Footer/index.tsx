@@ -48,28 +48,15 @@ const Footer = () => {
               </Link>
 
               <Link
-                href='https://x.com/zynovia_academy'
+                href='https://wa.me/21625857621'
                 target='_blank'
                 rel='noopener noreferrer'
-                aria-label='Twitter X'>
+                aria-label='WhatsApp'>
                 <Icon
-                  icon='ri:twitter-x-fill'
+                  icon='tabler:brand-whatsapp'
                   width={45}
                   height={45}
-                  className='text-darkblue dark:text-white bg-darkmode/5 dark:bg-white/10 rounded-lg p-2 hover:text-primary dark:hover:text-primary duration-300'
-                />
-              </Link>
-
-              <Link
-                href='https://www.youtube.com/@zynovia_academy'
-                target='_blank'
-                rel='noopener noreferrer'
-                aria-label='YouTube'>
-                <Icon
-                  icon='tabler:brand-youtube'
-                  width={45}
-                  height={45}
-                  className='text-darkblue dark:text-white bg-darkmode/5 dark:bg-white/10 rounded-lg p-2 hover:text-primary dark:hover:text-primary duration-300'
+                  className='text-darkblue dark:text-white bg-darkmode/5 dark:bg-white/10 rounded-lg p-2 hover:text-[#25D366] dark:hover:text-[#25D366] duration-300'
                 />
               </Link>
             </div>
@@ -80,10 +67,15 @@ const Footer = () => {
             <h3 className='text-sm font-semibold uppercase tracking-[0.16em] text-darkblue dark:text-white mb-2'>
               Liens utiles
             </h3>
-            <ul className='flex flex-col gap-2.5'>
+          <ul className='flex flex-col gap-2.5'>
               <li>
                 <Link href='/' className='text-sm font-normal text-darkblue/60 hover:text-primary dark:text-white/60 dark:hover:text-primary transition-colors duration-200'>
                   Accueil
+                </Link>
+              </li>
+              <li>
+                <Link href='/a-propos' className='text-sm font-normal text-darkblue/60 hover:text-primary dark:text-white/60 dark:hover:text-primary transition-colors duration-200'>
+                  À propos de Zynovia
                 </Link>
               </li>
               <li>
@@ -112,6 +104,7 @@ const Footer = () => {
                 </Link>
               </li>
             </ul>
+
           </div>
 
           {/* THIRD COLUMN - Contact Information */}

@@ -191,8 +191,8 @@ const SourcesSection: React.FC = () => {
     {
       stat: '70% des Entreprises investiront massivement dans l’IA',
       organization: 'McKinsey & Company',
-      date: '2023',
-      title: "The State of AI in 2023: Generative AI's breakout year",
+      date: '2026',
+      title: "The State of AI in 2026: Generative AI's breakout year",
       url: 'https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai',
       type: 'Enquête mondiale',
       icon: 'mdi:chart-line',

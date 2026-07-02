@@ -3,51 +3,28 @@ import NotreVisionPage from '../components/Home/Vision/page'
 import Breadcrumbs from '../components/Layout/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'Notre Vision Pédagogique',
+  title: 'Notre Vision Pédagogique — Zynovia',
   description:
-    "Découvrez l'approche pédagogique et la vision de ZYNOVIA Academy pour préparer la jeunesse nne aux métiers de demain grâce à l'IA et au codage.",
-  keywords: [
-    'vision pédagogique IA',
-    'pédagogie IA enfants',
-    'objectifs formation IA',
-    'statistiques IA emploi',
-    'futur IA',
-    'compétences IA',
-    'pourquoi apprendre IA',
-    'avenir IA éducation',
-    'formation technologique ',
-  ],
+    "Découvrez l'approche pédagogique et la vision de Zynovia pour préparer la jeunesse aux métiers de demain grâce à l'IA.",
   openGraph: {
-    title: 'Notre Vision Pédagogique | ZYNOVIA Academy',
+    title: 'Notre Vision Pédagogique — Zynovia',
     description:
-      "Découvrez la vision pédagogique de ZYNOVIA Academy : préparer les collégiens et lycéens à un avenir transformé par l'IA.",
+      "Découvrez la vision de Zynovia : préparer les collégiens et lycéens à un avenir transformé par l'IA.",
     url: 'https://www.zynovia-academy.com/vision',
-    siteName: 'ZYNOVIA Academy',
+    siteName: 'Zynovia',
     images: [
       {
-        url: '/images/banner/image.png',
+        url: '/images/vision/vision.jpg',
         width: 1200,
         height: 630,
-        alt: 'Vision ZYNOVIA Academy',
+        alt: 'Vision pédagogique de Zynovia',
       },
     ],
     locale: 'fr_FR',
     type: 'website',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Notre Vision Pédagogique | ZYNOVIA Academy',
-    description: "Découvrez la vision pédagogique de ZYNOVIA Academy pour préparer les jeunes à l'IA.",
-    images: ['/images/banner/image.png'],
-  },
   alternates: {
     canonical: 'https://www.zynovia-academy.com/vision',
-    languages: {
-      'fr-TN': 'https://www.zynovia-academy.com/vision',
-      'ar-TN': 'https://www.zynovia-academy.com/vision?lang=ar',
-      'en': 'https://www.zynovia-academy.com/vision?lang=en',
-      'x-default': 'https://www.zynovia-academy.com/vision',
-    },
   },
 }
 
@@ -57,7 +34,7 @@ export default function VisionPage() {
     '@type': 'Article',
     'headline': "Notre vision : Préparer la jeunesse nne à l'ère de l'Intelligence Artificielle",
     'description': "La vision pédagogique de ZYNOVIA Academy pour armer les collégiens et lycéens ns face aux transformations majeures induites par l'IA.",
-    'image': 'https://www.zynovia-academy.com/images/banner/image.png',
+    'image': 'https://www.zynovia-academy.com/images/vision/vision.jpg',
     'author': {
       '@type': 'Organization',
       'name': 'ZYNOVIA Academy',

@@ -19,11 +19,13 @@ const FinalCTA = () => {
           className='text-center'
         >
           <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#0A004B] dark:text-white mb-6'>
-            Prêt à préparer l&apos;avenir avec l&apos;IA ?
+            Rejoignez Zynovia et préparez l&apos;avenir avec l&apos;IA
           </h2>
           <p className='text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed'>
-            Rejoignez ZYNOVIA Academy et offrez à votre enfant ou à vos élèves les compétences essentielles pour réussir dans un monde transformé par l&apos;intelligence artificielle.
+            Offrez à votre enfant ou à vos élèves les compétences essentielles pour réussir
+            dans un monde transformé par l&apos;intelligence artificielle.
           </p>
+
           
           <div className='flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6'>
             <Link

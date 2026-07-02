@@ -20,10 +20,9 @@ const Hero = () => {
             <div className='lg:col-span-7 col-span-1'>
               <div className='flex flex-col lg:items-start items-center gap-8 lg:gap-12'>
                 <h1 className='lg:text-start text-center w-full max-w-2xl text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#0A004B] dark:text-white'>
-                  ZYNOVIA Academy : L&apos;Académie de l&apos;
-                  <span className='text-gradient'>Intelligence Artificielle</span>
-                  
-                </h1>
+                Zynovia
+                <span className='text-gradient'> — L&apos;Académie de l&apos;Intelligence Artificielle</span>
+              </h1>
 
                 <motion.p
                   {...fadeInUp}
@@ -32,13 +31,12 @@ const Hero = () => {
                   Former une génération prête à affronter l&apos;avenir avec l&apos;IA
                 </motion.p>
 
-                <motion.p
-                  {...fadeInUp}
-                  transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
-                  className='lg:text-start text-center max-w-2xl -mt-10 text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed'>
-                  ZYNOVIA Academy prépare les jeunes aux compétences essentielles du futur : IA, pensée
-                  algorithmique, robotique, créativité et culture numérique.
-                </motion.p>
+            <motion.p
+  {...fadeInUp}
+  transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
+  className='lg:text-start text-center max-w-2xl -mt-10 text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed'>
+  Zynovia prépare les jeunes aux compétences essentielles du futur : Intelligence Artificielle, pensée critique, créativité, résolution de problèmes et culture numérique.
+</motion.p>
 
                 <div className='flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 w-full max-w-2xl'>
                   <Link href={'/contact?profil=Parent'}>
@@ -64,7 +62,7 @@ const Hero = () => {
             <div className='lg:col-span-5 col-span-1 lg:w-full sm:w-[80%] w-full mt-6 lg:mt-0'>
               <Image
                 src='/images/home/hero.jpeg'
-                alt='ZYNOVIA Academy - IA et Technologies du Futur'
+                alt='Zynovia — Formation Intelligence Artificielle pour Jeunes'
                 width={600}
                 height={620}
                 className='rounded-lg w-full h-[380px] sm:h-[450px] lg:h-[520px] object-cover' priority

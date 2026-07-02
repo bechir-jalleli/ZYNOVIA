@@ -3,50 +3,28 @@ import NosFormateursContent from './NosFormateursContent'
 import Breadcrumbs from '../components/Layout/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'Nos Formateurs Experts',
+  title: 'Nos Formateurs Experts — Zynovia',
   description:
-    'Découvrez nos formateurs experts en IA, robotique et codage en . Une équipe passionnée dédiée au mentorat et à la réussite des jeunes talents.',
-  keywords: [
-    'formateurs IA ',
-    'experts IA',
-    'mentorat IA ',
-    'coaching IA',
-    'formateurs robotique',
-    'experts développement',
-    'mentor IA',
-    'expert IA ',
-  ],
+    'Découvrez l\'équipe de formateurs experts de Zynovia en Intelligence Artificielle. Une équipe passionnée dédiée au mentorat et à la réussite des jeunes.',
   openGraph: {
-    title: 'Nos Formateurs Experts | ZYNOVIA Academy',
+    title: 'Nos Formateurs Experts — Zynovia',
     description:
-      "Une équipe de formateurs passionnés pour accompagner chaque apprenant vers la maîtrise de l'IA et du numérique.",
+      "Une équipe de formateurs passionnés pour accompagner chaque apprenant vers la maîtrise de l'IA.",
     url: 'https://www.zynovia-academy.com/nos-formateurs',
-    siteName: 'ZYNOVIA Academy',
+    siteName: 'Zynovia',
     images: [
       {
-        url: '/images/review/daniel.webp',
+        url: '/images/formateurs/nos-formateurs.jpg',
         width: 1200,
         height: 630,
-        alt: 'Formateurs ZYNOVIA Academy',
+        alt: 'Formateurs Zynovia',
       },
     ],
     locale: 'fr_FR',
     type: 'website',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Nos Formateurs Experts | ZYNOVIA Academy',
-    description: 'Une équipe de formateurs passionnés pour accompagner chaque apprenant.',
-    images: ['/images/review/daniel.webp'],
-  },
   alternates: {
     canonical: 'https://www.zynovia-academy.com/nos-formateurs',
-    languages: {
-      'fr-TN': 'https://www.zynovia-academy.com/nos-formateurs',
-      'ar-TN': 'https://www.zynovia-academy.com/nos-formateurs?lang=ar',
-      'en': 'https://www.zynovia-academy.com/nos-formateurs?lang=en',
-      'x-default': 'https://www.zynovia-academy.com/nos-formateurs',
-    },
   },
 }
 

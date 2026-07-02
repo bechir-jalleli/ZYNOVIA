@@ -169,11 +169,11 @@ export default function NosFormateursContent() {
                 }}>
                 Une équipe d&apos;experts passionnés
               </p>
-              <p className='max-w-3xl text-base sm:text-lg text-slate-700 dark:text-slate-200'>
-                Des spécialistes de l&apos;IA, du développement, de la robotique et du produit. Ils
-                conçoivent des parcours pratiques, coachent les apprenants et les aident à transformer
-                leurs idées en projets concrets.
-              </p>
+<p className='max-w-3xl text-base sm:text-lg text-slate-700 dark:text-slate-200'>
+  Des spécialistes de l&apos;Intelligence Artificielle, de la data et de l&apos;innovation. Ils
+  conçoivent des parcours pratiques, accompagnent les apprenants et les aident à transformer
+  leurs idées en projets concrets grâce à l&apos;IA.
+</p>
               <div className='flex flex-wrap gap-3'>
                 <span className='inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold text-slate-700 shadow-sm ring-1 ring-white/80 backdrop-blur dark:bg-slate-900/80 dark:text-slate-100 dark:ring-white/10'>
                   <Sparkles className='h-4 w-4' style={{ color: '#27397F' }} />

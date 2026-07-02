@@ -5,7 +5,7 @@ import Breadcrumbs from '../components/Layout/Breadcrumbs'
 export const metadata: Metadata = {
   title: 'Prendre Rendez-vous',
   description:
-    "Planifiez un entretien gratuit en ligne ou sur notre site de Tunis pour découvrir nos programmes d'IA et de robotique pour enfants et adolescents.",
+    "Planifiez un entretien gratuit en ligne ou sur notre site de Tunis pour découvrir nos programmes d'IA pour enfants et adolescents.",
   keywords: [
     'rendez-vous ZYNOVIA',
     'prendre rendez-vous IA',
@@ -29,12 +29,6 @@ export const metadata: Metadata = {
     ],
     locale: 'fr_FR',
     type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Prendre Rendez-vous | ZYNOVIA Academy',
-    description: 'Réservez un créneau avec ZYNOVIA Academy pour découvrir nos programmes IA.',
-    images: ['/images/banner/image.png'],
   },
   alternates: {
     canonical: 'https://www.zynovia-academy.com/rendez-vous',

@@ -3,50 +3,28 @@ import ProgrammesContent from './ProgrammesContent'
 import Breadcrumbs from '../components/Layout/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'Nos Programmes de Formation',
+  title: 'Nos Programmes de Formation — Zynovia',
   description:
-    'Découvrez nos formations en intelligence artificielle et robotique en  : programme annuel pour écoles et bootcamps intensifs pendant les vacances.',
-  keywords: [
-    'programme IA annuel',
-    'bootcamp IA vacances',
-    'formation IA collégiens',
-    'formation IA lycéens',
-    'programme scolaire IA',
-    'intégration IA établissement',
-    'cours intelligence artificielle ',
-    'formation robotique enfants',
-  ],
+    'Découvrez les formations Zynovia en Intelligence Artificielle : programme annuel pour écoles et bootcamps intensifs pendant les vacances.',
   openGraph: {
-    title: 'Programmes de Formation IA | ZYNOVIA Academy',
+    title: 'Programmes de Formation IA — Zynovia',
     description:
-      "Découvrez les programmes de ZYNOVIA Academy : programme annuel d'intégration IA et bootcamps IA pendant les vacances scolaires.",
+      "Découvrez les programmes de Zynovia : parcours annuel d'intégration IA et bootcamps intensifs pendant les vacances scolaires.",
     url: 'https://www.zynovia-academy.com/programmes',
-    siteName: 'ZYNOVIA Academy',
+    siteName: 'Zynovia',
     images: [
       {
-        url: '/images/banner/image.png',
+        url: '/images/programe/programe.jpg',
         width: 1200,
         height: 630,
-        alt: 'Programmes ZYNOVIA Academy',
+        alt: 'Programmes Zynovia — Formation IA',
       },
     ],
     locale: 'fr_FR',
     type: 'website',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Programmes de Formation IA | ZYNOVIA Academy',
-    description: 'Découvrez nos programmes de formation IA pour collégiens et lycéens en .',
-    images: ['/images/banner/image.png'],
-  },
   alternates: {
     canonical: 'https://www.zynovia-academy.com/programmes',
-    languages: {
-      'fr-TN': 'https://www.zynovia-academy.com/programmes',
-      'ar-TN': 'https://www.zynovia-academy.com/programmes?lang=ar',
-      'en': 'https://www.zynovia-academy.com/programmes?lang=en',
-      'x-default': 'https://www.zynovia-academy.com/programmes',
-    },
   },
 }
 
@@ -56,7 +34,7 @@ export default function ProgrammesPage() {
       '@context': 'https://schema.org',
       '@type': 'Course',
       'name': 'Programme Annuel IA',
-      'description': "Parcours annuel d'apprentissage de l'Intelligence Artificielle et de la robotique pour les collégiens et lycéens en .",
+      'description': "Parcours annuel d'apprentissage de l'Intelligence Artificielle pour les collégiens et lycéens.",
       'provider': {
         '@type': 'EducationalOrganization',
         'name': 'ZYNOVIA Academy',
@@ -67,7 +45,7 @@ export default function ProgrammesPage() {
       '@context': 'https://schema.org',
       '@type': 'Course',
       'name': 'Bootcamp IA',
-      'description': 'Sessions intensives de formation en Intelligence Artificielle et robotique pendant les vacances scolaires pour jeunes de 12 à 18 ans.',
+      'description': 'Sessions intensives de formation en Intelligence Artificielle pendant les vacances scolaires pour jeunes de 12 à 18 ans.',
       'provider': {
         '@type': 'EducationalOrganization',
         'name': 'ZYNOVIA Academy',
