@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Breadcrumbs from '../components/Layout/Breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'À propos de Zynovia | Académie IA pour Jeunes',
@@ -64,7 +63,6 @@ export default function AProposPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageJsonLd) }}
       />
-      <Breadcrumbs items={[{ name: 'À propos de Zynovia' }]} />
       <AboutZynoviaContent />
     </>
   )

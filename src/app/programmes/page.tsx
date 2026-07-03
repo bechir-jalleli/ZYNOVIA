@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import ProgrammesContent from './ProgrammesContent'
-import Breadcrumbs from '../components/Layout/Breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'Nos Programmes de Formation — Zynovia',
@@ -83,7 +82,6 @@ export default function ProgrammesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <Breadcrumbs items={[{ name: 'Nos Programmes de Formation' }]} />
       <ProgrammesContent />
     </>
   )

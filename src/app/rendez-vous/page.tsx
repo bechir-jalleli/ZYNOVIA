@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import RendezVousContent from './RendezVousContent'
-import Breadcrumbs from '../components/Layout/Breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'Prendre Rendez-vous',
@@ -67,7 +66,6 @@ export default function RendezVousPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <Breadcrumbs items={[{ name: 'Prendre Rendez-vous' }]} />
       <RendezVousContent />
     </>
   )

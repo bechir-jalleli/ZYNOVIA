@@ -85,27 +85,27 @@ const Header: React.FC = () => {
         <Logo variant='header' />
 
         <nav>
-          <ul className='hidden xl:flex flex-grow items-center justify-start gap-8 2xl:gap-12'>
+          <ul className='hidden xl:flex flex-grow items-center justify-start gap-6 2xl:gap-10'>
             {navlink.map((item, index) => (
               <HeaderLink key={index} item={item} />
             ))}
           </ul>
         </nav>
 
-        <div className='flex items-center gap-3 xl:gap-4'>
+        <div className='flex items-center gap-2 sm:gap-4'>
           {/* Theme toggle */}
           <button
             aria-label='Toggle theme'
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className='flex items-center justify-center text-body-color duration-300 hover:cursor-pointer hover:text-primary dark:text-white bg-neutral-50 rounded-full dark:bg-darklight p-2.5 outline-none'>
-            <Icon icon='solar:sun-2-bold' width='26' height='26' className='hidden dark:block' />
-            <Icon icon='solar:moon-bold' width='26' height='26' className='dark:hidden block' />
+            className='flex items-center justify-center text-body-color duration-300 hover:cursor-pointer hover:text-primary dark:text-white bg-neutral-50 rounded-full dark:bg-darklight p-2 sm:p-2.5 outline-none'>
+            <Icon icon='solar:sun-2-bold' width='22' height='22' className='hidden dark:block' />
+            <Icon icon='solar:moon-bold' width='22' height='22' className='dark:hidden block' />
           </button>
 
-          {/* Rendez-vous */}
+          {/* Rendez-vous Link (Always visible, responsive size) */}
           <Link
             href='/rendez-vous'
-            className='hidden xl:block px-7 py-2.5 btn-primary btn-hover rounded-[10px] text-base font-semibold tracking-wide transition-all'>
+            className='px-3 py-1.5 sm:px-6 sm:py-2.5 btn-primary btn-hover rounded-[8px] sm:rounded-[10px] text-[10px] sm:text-xs md:text-sm xl:text-base font-bold sm:font-semibold tracking-wide transition-all whitespace-nowrap shadow-md'>
             Rendez-vous
           </Link>
 
@@ -170,7 +170,7 @@ const Header: React.FC = () => {
       {/* Mobile drawer */}
       <div
         ref={mobileMenuRef}
-        className={`xl:hidden fixed top-0 right-0 h-full w-full bg-white dark:bg-darklight shadow-lg transform transition-transform duration-300 max-w-sm ${navbarOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`xl:hidden fixed top-0 right-0 h-full w-full bg-white dark:bg-darklight shadow-lg transform transition-transform duration-300 ${navbarOpen ? 'translate-x-0' : 'translate-x-full'
           } z-50`}>
         <div className='flex items-center justify-between p-5'>
           <Logo variant='header' />

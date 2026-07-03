@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import ContactContent from './ContactContent'
-import Breadcrumbs from '../components/Layout/Breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'Contact & Inscriptions — Zynovia',
@@ -82,7 +81,6 @@ export default function ContactPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <Breadcrumbs items={[{ name: 'Contact & Inscriptions' }]} />
       <ContactContent />
     </Suspense>
   )

@@ -15,7 +15,7 @@ const HeaderLink: React.FC<{ item: NavLinkType }> = ({ item }) => {
       onMouseLeave={() => setSubmenuOpen(false)}>
       <Link
         href={item.href}
-        className={`text-lg flex items-center font-medium transition-all duration-300 ${
+        className={`text-base xl:text-lg flex items-center font-medium transition-all duration-300 whitespace-nowrap ${
           item.href === path || path.startsWith(`/${item.label.toLowerCase()}`)
             ? 'text-gradient font-bold'
             : 'text-darkblue dark:text-white hover:text-gradient-hover'
