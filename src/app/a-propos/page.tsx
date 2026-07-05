@@ -208,7 +208,7 @@ function AboutZynoviaContent() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { value: '2026', label: 'Année de fondation' },
-              { value: '+200', label: 'Élèves accompagnés' },
+              { value: '+20000', label: 'Élèves accompagnés' },
               { value: '+6', label: 'Établissements partenaires' },
               { value: '12–18', label: 'Tranche d\'âge (ans)' },
             ].map((stat) => (

@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '', changeFrequency: 'daily' as const, priority: 1.0 },
     { path: '/a-propos', changeFrequency: 'monthly' as const, priority: 0.95 },
     { path: '/programmes', changeFrequency: 'weekly' as const, priority: 0.9 },
+    { path: '/inscription', changeFrequency: 'weekly' as const, priority: 0.9 },
     { path: '/vision', changeFrequency: 'monthly' as const, priority: 0.8 },
     { path: '/contact', changeFrequency: 'monthly' as const, priority: 0.8 },
     { path: '/nos-formateurs', changeFrequency: 'monthly' as const, priority: 0.7 },

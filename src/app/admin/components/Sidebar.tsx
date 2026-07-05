@@ -15,6 +15,7 @@ const menuItems = [
     { label: 'Témoignages Formateurs', href: '/admin/trainer-testimonials', icon: 'solar:chat-round-dots-bold' },
     { label: 'Contact', href: '/admin/contact', icon: 'solar:letter-bold' },
     { label: 'Rendez-vous', href: '/admin/rendez-vous', icon: 'solar:calendar-bold' },
+    { label: 'Inscriptions', href: '/admin/inscriptions', icon: 'solar:diploma-bold' },
     { label: 'Paramètres', href: '/admin/settings', icon: 'solar:settings-bold' },
 ];
 

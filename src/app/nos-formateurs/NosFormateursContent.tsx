@@ -328,17 +328,7 @@ export default function NosFormateursContent() {
                     </span>
                   ))}
                 </div>
-                {trainer.linkedin && (
-                  <Link
-                    href={trainer.linkedin}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='mt-4 inline-flex items-center gap-2 text-sm font-semibold transition hover:opacity-75'
-                    style={{ color: '#27397F' }}>
-                    <Linkedin className='h-4 w-4' />
-                    Voir le profil
-                  </Link>
-                )}
+
               </motion.div>
             ))}
           </motion.div>

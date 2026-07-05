@@ -24,7 +24,7 @@ const HeroData: HeroType[] = [
 const NavLinkData: NavLinkType[] = [
   { label: 'Accueil', href: '/' },
   { label: 'Vision', href: '/vision' },
- // { label: 'Nos Formations', href: '/nos-formations' },
+  { label: 'Inscription', href: '/inscription' },
   { label: 'Programmes', href: '/programmes' },
   { label: 'Formateurs', href: '/nos-formateurs' },
   { label: 'Contact', href: '/contact' },
@@ -404,7 +404,7 @@ export const GET = async () => {
       PlanData,
       CategoryData,
       FooterLinkData,
-      FormationData: formations.length > 0 ? formations : FormationData,
+      FormationData: formations,
       TrainerData: normalizeTrainers(trainers),
       TrainerTestimonialData: normalizeTestimonials(testimonials),
     }
@@ -436,7 +436,7 @@ export const GET = async () => {
         PlanData,
         CategoryData,
         FooterLinkData,
-        FormationData,
+        FormationData: [],
         TrainerData: TrainerStaticData,
         TrainerTestimonialData: TrainerTestimonialStaticData,
       },

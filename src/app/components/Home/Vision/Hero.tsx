@@ -94,7 +94,7 @@ const Hero = () => {
                 className='flex flex-wrap justify-center lg:justify-start gap-6 lg:gap-10'>
                 <div>
                   <div className='text-2xl font-bold text-[#27397F] dark:text-white'>
-                    +200
+                    +2000
                   </div>
                   <div className='text-sm text-slate-600 dark:text-slate-400'>
                     Élèves accompagnés

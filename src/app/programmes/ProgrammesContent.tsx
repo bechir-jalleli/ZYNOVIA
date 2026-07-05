@@ -298,7 +298,7 @@ export default function ProgrammesContent() {
                 </div>
               </motion.div>
 
-              {/* +2000 collégiens et lycéens formés */}
+              {/* +20000 collégiens et lycéens formés */}
               <motion.div
                 variants={cardVariant}
                 className='relative overflow-hidden rounded-3xl bg-white/95 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/95 dark:ring-slate-700/70'
@@ -312,7 +312,7 @@ export default function ProgrammesContent() {
                     <Users className='h-7 w-7' />
                   </div>
                   <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
-                    <AnimatedNumber value='+2000' duration={2000} />
+                    <AnimatedNumber value='+20000' duration={2000} />
                   </h3>
                   <p className='text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-200 mb-1'>
                     collégiens et lycéens déjà formés

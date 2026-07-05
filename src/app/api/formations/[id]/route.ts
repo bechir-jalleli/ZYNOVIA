@@ -5,6 +5,7 @@ import connectToDatabase from '@/lib/mongodb';
 import Formation from '@/models/Formation';
 import { isAdmin } from '@/lib/adminAuth';
 import { replaceStoredImage, deleteStoredImage } from '@/lib/imageService';
+import { replaceStoredPdf, deletePdfLocally } from '@/lib/pdfService';
 
 export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
     if (!(await isAdmin())) {
@@ -16,15 +17,19 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
         const data = await req.json();
         await connectToDatabase();
 
-        const oldFormation = await Formation.findById(id);
+        const old = await Formation.findById(id);
 
-        if (oldFormation) {
+        if (old) {
+            // Replace image on Cloudinary if changed
             await replaceStoredImage(
-                oldFormation.image,
-                oldFormation.imagePublicId,
+                old.image,
+                old.imagePublicId,
                 data.image,
                 data.imagePublicId
             );
+
+            // Delete old PDF from disk if changed
+            await replaceStoredPdf(old.programmePdfPath, data.programmePdfPath);
         }
 
         const updated = await Formation.findByIdAndUpdate(id, data, { returnDocument: 'after' });
@@ -45,7 +50,10 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
 
         const formation = await Formation.findById(id);
         if (formation) {
+            // Delete image from Cloudinary
             await deleteStoredImage(formation.image, formation.imagePublicId);
+            // Delete PDF from local disk
+            await deletePdfLocally(formation.programmePdfPath);
             await Formation.findByIdAndDelete(id);
         }
 

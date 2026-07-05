@@ -473,7 +473,7 @@ export default function NotreVisionPage() {
                     icon='solar:users-group-rounded-bold-duotone'
                     className='h-4 w-4 text-primary'
                   />
-                  <span>+200 élèves accompagnés</span>
+                  <span>+2000 élèves accompagnés</span>
                 </div>
                 <div className='inline-flex items-center gap-2 rounded-full bg-white/70 px-3 py-1 shadow-sm backdrop-blur dark:bg-slate-900/60'>
                   <Icon
@@ -1062,7 +1062,7 @@ export default function NotreVisionPage() {
               <div className='pt-4 flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm text-slate-600 dark:text-slate-400'>
                 <div className='inline-flex items-center gap-2'>
                   <Icon icon='solar:shield-check-bold-duotone' className='h-4 w-4 text-emerald-500' />
-                  <span>+200 élèves accompagnés</span>
+                  <span>+2000 élèves accompagnés</span>
                 </div>
                 <div className='inline-flex items-center gap-2'>
                   <Icon icon='solar:hand-stars-bold-duotone' className='h-4 w-4 text-primary' />
