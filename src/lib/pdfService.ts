@@ -1,10 +1,13 @@
-import { v2 as cloudinary } from 'cloudinary';
-import path from 'path';
-import { randomUUID } from 'crypto';
+import {
+    uploadPdfToDrive,
+    deletePdfFromDrive,
+    replaceStoredPdfOnDrive,
+    DriveServiceError,
+} from './googleDriveService';
 
 const MAX_PDF_SIZE_BYTES = 20 * 1024 * 1024; // 20 MB
-const CLOUDINARY_FOLDER = 'pixelize/programmes';
 
+// Re-export so callers can use PdfServiceError uniformly
 export class PdfServiceError extends Error {
     constructor(
         message: string,
@@ -15,22 +18,7 @@ export class PdfServiceError extends Error {
     }
 }
 
-function ensureCloudinaryConfig() {
-    const { CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET } = process.env;
-    if (!CLOUDINARY_CLOUD_NAME || !CLOUDINARY_API_KEY || !CLOUDINARY_API_SECRET) {
-        throw new PdfServiceError(
-            'Cloudinary is not configured. Set CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET.',
-            'SAVE_FAILED'
-        );
-    }
-    cloudinary.config({
-        cloud_name: CLOUDINARY_CLOUD_NAME,
-        api_key: CLOUDINARY_API_KEY,
-        api_secret: CLOUDINARY_API_SECRET,
-        secure: true,
-    });
-}
-
+/** Validates that the file is a PDF and within size limits. */
 export function validatePdfFile(file: { type: string; size: number }) {
     if (file.type !== 'application/pdf') {
         throw new PdfServiceError(
@@ -47,104 +35,54 @@ export function validatePdfFile(file: { type: string; size: number }) {
 }
 
 /**
- * Uploads a PDF buffer to Cloudinary under pixelize/programmes/<uuid>
- * Returns the Cloudinary secure URL.
+ * Uploads a PDF buffer to Google Drive (Mon Drive → zynovia → formation).
+ * Returns the public Drive view URL.
  */
-export async function uploadPdfToCloudinary(buffer: Buffer): Promise<string> {
-    ensureCloudinaryConfig();
+export async function uploadPdfToCloudinary(buffer: Buffer, originalName?: string): Promise<string> {
     try {
-        const publicId = `${CLOUDINARY_FOLDER}/${randomUUID()}`;
-        const dataUri = `data:application/pdf;base64,${buffer.toString('base64')}`;
-
-        const result = await cloudinary.uploader.upload(dataUri, {
-            folder: CLOUDINARY_FOLDER,
-            public_id: publicId,
-            resource_type: 'raw',
-            unique_filename: false,
-            overwrite: false,
-        });
-
-        if (!result.secure_url) {
-            throw new Error('Cloudinary upload returned no URL');
-        }
-
-        console.log('[PdfService] Uploaded to Cloudinary:', result.secure_url);
-        return result.secure_url;
+        return await uploadPdfToDrive(buffer, originalName);
     } catch (error) {
-        const message = error instanceof Error ? error.message : 'Failed to upload PDF to Cloudinary';
+        if (error instanceof DriveServiceError) {
+            throw new PdfServiceError(error.message, 'SAVE_FAILED');
+        }
+        const message = error instanceof Error ? error.message : 'Failed to upload PDF to Google Drive';
         throw new PdfServiceError(message, 'SAVE_FAILED');
     }
 }
 
 /**
- * Deletes a PDF from Cloudinary by its secure URL.
- * Silently ignores missing files or non-Cloudinary URLs.
+ * Deletes a PDF from Google Drive by its URL.
+ * Silently ignores non-Drive or missing files.
  */
 export async function deletePdfFromCloudinary(pdfUrl?: string | null): Promise<void> {
-    if (!pdfUrl?.includes('res.cloudinary.com')) return;
-
-    ensureCloudinaryConfig();
-
     try {
-        // Extract public_id from the Cloudinary URL
-        // URL format: https://res.cloudinary.com/<cloud>/raw/upload/v<ver>/<folder>/<filename>
-        const urlObj = new URL(pdfUrl);
-        const parts = urlObj.pathname.split('/');
-        // Find index after 'upload' to get everything after version
-        const uploadIdx = parts.indexOf('upload');
-        if (uploadIdx === -1) return;
-
-        // Skip the version segment (v12345)
-        const afterUpload = parts.slice(uploadIdx + 1);
-        if (afterUpload[0]?.match(/^v\d+$/)) afterUpload.shift();
-
-        // Remove file extension for public_id
-        const publicIdWithExt = afterUpload.join('/');
-        // Cloudinary raw public_id keeps the extension
-        const publicId = publicIdWithExt;
-
-        const result = await cloudinary.uploader.destroy(publicId, { resource_type: 'raw' });
-        if (result.result !== 'ok' && result.result !== 'not found') {
-            console.warn('[PdfService] Unexpected Cloudinary delete result:', result.result);
-        } else {
-            console.log('[PdfService] Deleted from Cloudinary:', publicId);
-        }
+        await deletePdfFromDrive(pdfUrl);
     } catch (error) {
-        console.error('[PdfService] Failed to delete PDF from Cloudinary:', pdfUrl, error);
+        console.error('[PdfService] Failed to delete PDF from Drive:', pdfUrl, error);
     }
 }
 
 /**
- * Deletes the old PDF from Cloudinary if the path has changed.
+ * Deletes the old PDF from Drive if the URL has changed.
  */
 export async function replaceStoredPdf(
     oldUrl?: string | null,
     newUrl?: string | null
 ): Promise<void> {
-    if (oldUrl && oldUrl !== newUrl) {
-        await deletePdfFromCloudinary(oldUrl);
-    }
+    await replaceStoredPdfOnDrive(oldUrl, newUrl);
 }
 
-// ── Legacy local-file helpers (kept for backward-compat, no-ops on Vercel) ──
+// ── Legacy aliases (kept for backward-compat) ────────────────────────────────
 
-/** @deprecated Use uploadPdfToCloudinary instead */
+/** @deprecated Use uploadPdfToCloudinary (now backed by Google Drive) */
 export async function savePdfLocally(_buffer: Buffer): Promise<string> {
     throw new PdfServiceError(
-        'Local PDF storage is not supported on Vercel. Use uploadPdfToCloudinary instead.',
+        'Local PDF storage is not supported. Use uploadPdfToCloudinary instead.',
         'SAVE_FAILED'
     );
 }
 
-/** @deprecated Use deletePdfFromCloudinary instead */
+/** @deprecated Use deletePdfFromCloudinary (now backed by Google Drive) */
 export async function deletePdfLocally(pdfUrl?: string | null): Promise<void> {
-    // If it's a Cloudinary URL (new format), delegate to the proper function
-    if (pdfUrl?.includes('res.cloudinary.com')) {
-        await deletePdfFromCloudinary(pdfUrl);
-        return;
-    }
-    // Old local paths: silently ignore on Vercel (file doesn't exist)
-    if (pdfUrl?.startsWith('/uploads/')) {
-        console.warn('[PdfService] Skipping local file delete (not supported on Vercel):', pdfUrl);
-    }
+    await deletePdfFromDrive(pdfUrl);
 }

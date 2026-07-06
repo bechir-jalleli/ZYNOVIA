@@ -105,7 +105,7 @@ export default function DownloadModal({
           email: email,
           phone: phone,
           role: 'Téléchargement Programme',
-          message: `Nom du parent: ${parentName}\nNom de l'enfant: ${childName}\nProgramme demandé: ${programmeName || 'Non spécifié'}\nDemande de téléchargement du programme.`,
+          message: `Nom du parent: ${parentName}\nNom de l'enfant: ${childName}\nProgramme demandé: ${programmeName || 'Non spécifié'}${showProgrammeSelector && selectedFormationId ? `\nFormation ID: ${selectedFormationId}` : ''}\nDemande de téléchargement du programme.`,
         }),
       })
 

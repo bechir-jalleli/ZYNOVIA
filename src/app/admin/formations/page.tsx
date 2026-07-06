@@ -531,13 +531,6 @@ export default function ManageFormations() {
                                 )}
                             </div>
 
-                            {/* ── 7. Lien inscription ── */}
-                            <div className={SECTION}>
-                                <p className={SECTION_TITLE}><Icon icon="solar:link-bold" width="13" />Lien d&apos;inscription</p>
-                                <input className={INPUT} placeholder="ex: /inscription  ou  https://forms.gle/…"
-                                    value={form.enrollmentLink} onChange={e => setForm(f => ({ ...f, enrollmentLink: e.target.value }))} />
-                            </div>
-
                             {/* ── Submit ── */}
                             <div className="flex gap-4 pt-2 sticky bottom-0 bg-white dark:bg-darklight py-5 border-t border-slate-200 dark:border-white/10 -mx-6 sm:-mx-8 px-6 sm:px-8">
                                 <button type="button" onClick={() => setIsModalOpen(false)}

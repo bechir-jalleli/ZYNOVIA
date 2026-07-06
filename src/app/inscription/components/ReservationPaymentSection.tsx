@@ -455,7 +455,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
       <DownloadModal
         isOpen={downloadModalOpen}
         onClose={() => setDownloadModalOpen(false)}
-        pdfUrl="/uploads/programmes/5c9f9a33-5820-4582-a189-e4d76b84dd55.pdf"
+        showProgrammeSelector
       />
     </section>
   )

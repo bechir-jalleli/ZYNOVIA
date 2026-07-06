@@ -1,39 +1,197 @@
+/**
+ * POST /api/upload-pdf
+ *
+ * Admin endpoint used by the formations page to upload programme PDFs.
+ *
+ * Cloudinary free plan limits: 10 MB per file.
+ * Strategy:
+ *   - File < 9 MB  → upload directly to Cloudinary, return the Cloudinary URL
+ *   - File >= 9 MB → split into page-based chunks (each < 9 MB),
+ *                    upload each chunk, save PdfFile + PdfPart records in DB,
+ *                    return a /api/pdf-download/<fileId> URL that merges on demand
+ *
+ * Contract (unchanged — admin page depends on this):
+ *   Request:  multipart/form-data, field "file" → application/pdf
+ *   Response: { path: "<url>" }
+ *
+ * The returned URL is stored in Formation.programmePdfPath and used as
+ * a direct link (small files) or merged download link (split files).
+ */
+
 import { NextResponse } from 'next/server';
 import { isAdmin } from '@/lib/adminAuth';
-import { validatePdfFile, uploadPdfToCloudinary, PdfServiceError } from '@/lib/pdfService';
+import { uploadRawToCloudinary, CloudinaryServiceError } from '@/services/cloudinary.service';
+import {
+    splitPdf,
+    getPdfPageCount,
+    PdfSplitError,
+    CLOUDINARY_MAX_BYTES,
+    SAFE_CHUNK_BYTES,
+} from '@/services/pdfSplit.service';
+import connectToDatabase from '@/lib/mongodb';
+import PdfFile from '@/models/PdfFile';
+import PdfPart from '@/models/PdfPart';
 
 export const runtime = 'nodejs';
-export const maxDuration = 30;
+export const maxDuration = 120;
 
-export async function POST(req: Request) {
+const MAX_PDF_SIZE_BYTES = 200 * 1024 * 1024; // 200 MB overall cap
+
+// ── Helpers ────────────────────────────────────────────────────────────────────
+
+function sanitiseFilename(name: string): string {
+    return (name ?? '')
+        .replace(/\.pdf$/i, '')          // strip extension
+        .replace(/[/\\:*?"<>|]/g, '_')   // strip forbidden chars
+        .replace(/\.{2,}/g, '_')
+        .trim() || 'upload';
+}
+
+// ── Handler ────────────────────────────────────────────────────────────────────
+
+export async function POST(req: Request): Promise<NextResponse> {
+    // 1. Admin-only
     if (!(await isAdmin())) {
         return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
     }
 
     try {
+        // 2. Parse form
         const formData = await req.formData();
         const file = formData.get('file') as File | null;
 
         if (!file) {
             return NextResponse.json({ message: 'No file uploaded' }, { status: 400 });
         }
+        if (file.type !== 'application/pdf') {
+            return NextResponse.json(
+                { message: `Invalid file type "${file.type}". Only PDF files are accepted.`, code: 'INVALID_FORMAT' },
+                { status: 400 }
+            );
+        }
+        if (file.size === 0) {
+            return NextResponse.json({ message: 'Uploaded file is empty.', code: 'INVALID_FORMAT' }, { status: 400 });
+        }
+        if (file.size > MAX_PDF_SIZE_BYTES) {
+            return NextResponse.json(
+                { message: `PDF exceeds the maximum allowed size of ${MAX_PDF_SIZE_BYTES / (1024 * 1024)} MB.`, code: 'FILE_TOO_LARGE' },
+                { status: 400 }
+            );
+        }
 
-        // Validate: PDF only, max 20 MB
-        validatePdfFile({ type: file.type, size: file.size });
+        // 3. Read buffer
+        const buffer = Buffer.from(await file.arrayBuffer());
+        const baseName = sanitiseFilename(file.name);
 
-        const bytes = await file.arrayBuffer();
-        const buffer = Buffer.from(bytes);
+        // ── Path A: small file — upload directly ─────────────────────────────
+        const needsSplit = buffer.length >= SAFE_CHUNK_BYTES;
+        if (!needsSplit) {
+            const filename = `${baseName}-${Date.now()}`;
+            const result = await uploadRawToCloudinary(buffer, 'pixelize/formations/pdfs', filename);
 
-        // Upload to Cloudinary (works on Vercel — no local filesystem needed)
-        const cloudinaryUrl = await uploadPdfToCloudinary(buffer);
+            console.log('[PdfUpload] Direct upload →', result.url, `(${(file.size / 1024).toFixed(1)} KB)`);
+            return NextResponse.json({ path: result.url });
+        }
 
-        console.log('[PdfUpload] Uploaded to Cloudinary:', cloudinaryUrl, `(${(file.size / 1024).toFixed(1)} KB)`);
+        // ── Path B: large file — split, upload parts, return download URL ────
 
-        // Return the Cloudinary URL as `path` to stay compatible with existing admin code
-        return NextResponse.json({ path: cloudinaryUrl });
+        // 4. Get page count for the parent record
+        let pageCount: number;
+        try {
+            pageCount = await getPdfPageCount(buffer);
+        } catch (err) {
+            const msg = err instanceof PdfSplitError ? err.message : 'Could not read PDF page count.';
+            return NextResponse.json({ message: msg, code: 'INVALID_FORMAT' }, { status: 422 });
+        }
+
+        // 5. Split into page-based chunks (each < 9 MB)
+        let chunks;
+        try {
+            chunks = await splitPdf(buffer);
+        } catch (err) {
+            const msg = err instanceof PdfSplitError ? err.message : 'PDF split failed.';
+            return NextResponse.json({ message: msg, code: 'SPLIT_FAILED' }, { status: 422 });
+        }
+
+        if (chunks.length === 1 && chunks[0].buffer.length >= SAFE_CHUNK_BYTES) {
+            return NextResponse.json(
+                {
+                    message: 'PDF could not be split into parts small enough for Cloudinary. Try compressing the file.',
+                    code: 'SPLIT_FAILED',
+                },
+                { status: 422 }
+            );
+        }
+
+        for (const chunk of chunks) {
+            if (chunk.buffer.length > CLOUDINARY_MAX_BYTES) {
+                return NextResponse.json(
+                    {
+                        message: `Split part ${chunk.partIndex + 1} is ${(chunk.buffer.length / (1024 * 1024)).toFixed(1)} MB, which exceeds Cloudinary's 10 MB limit.`,
+                        code: 'SPLIT_FAILED',
+                    },
+                    { status: 422 }
+                );
+            }
+        }
+
+        console.log(`[PdfUpload] File is ${(buffer.length / (1024 * 1024)).toFixed(1)} MB — split into ${chunks.length} parts`);
+
+        // 6. Create parent PdfFile record
+        await connectToDatabase();
+
+        const pdfFileDoc = await PdfFile.create({
+            originalName: file.name,
+            sizeBytes: file.size,
+            pageCount,
+            totalParts: 0,
+            status: 'pending',
+        });
+
+        const fileId = (pdfFileDoc._id as { toString(): string }).toString();
+        const folder = `pixelize/formations/pdfs/${fileId}`;
+
+        // 7. Upload each chunk to Cloudinary
+        const partDocs = [];
+        try {
+            for (const chunk of chunks) {
+                const partName = `${baseName}_part${chunk.partIndex + 1}of${chunks.length}-${Date.now()}`;
+                const uploadResult = await uploadRawToCloudinary(chunk.buffer, folder, partName);
+
+                partDocs.push({
+                    fileId: pdfFileDoc._id,
+                    cloudinaryUrl: uploadResult.url,
+                    cloudinaryPublicId: uploadResult.publicId,
+                    startPage: chunk.startPage,
+                    endPage: chunk.endPage,
+                    partIndex: chunk.partIndex,
+                    sizeBytes: uploadResult.bytes,
+                });
+
+                console.log(`[PdfUpload] Part ${chunk.partIndex + 1}/${chunks.length} uploaded → ${uploadResult.url} (${(chunk.buffer.length / (1024 * 1024)).toFixed(1)} MB)`);
+            }
+        } catch (err) {
+            // Mark record as error so it doesn't stay pending
+            await PdfFile.findByIdAndUpdate(fileId, {
+                status: 'error',
+                errorMessage: err instanceof Error ? err.message.slice(0, 500) : 'Upload failed',
+            }).catch(() => {});
+            throw err; // re-throw to outer catch
+        }
+
+        // 8. Save parts + mark parent as ready
+        await PdfPart.insertMany(partDocs);
+        await PdfFile.findByIdAndUpdate(fileId, { status: 'ready', totalParts: chunks.length });
+
+        // 9. Return a local merge-and-download URL
+        const downloadPath = `/api/pdf-download/${fileId}`;
+        console.log(`[PdfUpload] Split upload complete → ${downloadPath} (${chunks.length} parts)`);
+
+        return NextResponse.json({ path: downloadPath });
+
     } catch (error) {
-        if (error instanceof PdfServiceError) {
-            const status = error.code === 'INVALID_FORMAT' || error.code === 'FILE_TOO_LARGE' ? 400 : 500;
+        if (error instanceof CloudinaryServiceError) {
+            const status = error.code === 'CONFIG' ? 500 : 502;
             return NextResponse.json({ message: error.message, code: error.code }, { status });
         }
         const message = error instanceof Error ? error.message : 'PDF upload failed';
