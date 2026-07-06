@@ -192,6 +192,10 @@ export default function HeroSection() {
             {/* Buttons */}
             <div style={{ display: 'flex', gap: 16, marginTop: 16, flexWrap: 'wrap' }}>
               <button
+                onClick={() => {
+                  const el = document.getElementById('inscription-form');
+                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
                 style={{
                   padding: '14px 32px',
                   fontSize: 15,

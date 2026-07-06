@@ -1,16 +1,30 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Icon } from '@iconify/react'
+
+interface Formation {
+  _id: string
+  title: string
+  programmePdfPath?: string
+}
 
 interface DownloadModalProps {
   isOpen: boolean
   onClose: () => void
-  pdfUrl: string
+  /** Pass a specific PDF URL to skip the programme selector */
+  pdfUrl?: string
+  /** When true, shows a dropdown so the user picks which programme to download */
+  showProgrammeSelector?: boolean
 }
 
-export default function DownloadModal({ isOpen, onClose, pdfUrl }: DownloadModalProps) {
+export default function DownloadModal({
+  isOpen,
+  onClose,
+  pdfUrl,
+  showProgrammeSelector = false,
+}: DownloadModalProps) {
   const [parentName, setParentName] = useState('')
   const [childName, setChildName] = useState('')
   const [email, setEmail] = useState('')
@@ -18,9 +32,52 @@ export default function DownloadModal({ isOpen, onClose, pdfUrl }: DownloadModal
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
+  // Programme selector state
+  const [formations, setFormations] = useState<Formation[]>([])
+  const [loadingFormations, setLoadingFormations] = useState(false)
+  const [selectedFormationId, setSelectedFormationId] = useState('')
+
+  // Fetch formations with PDFs when selector mode is on
+  useEffect(() => {
+    if (!isOpen || !showProgrammeSelector) return
+    setLoadingFormations(true)
+    fetch('/api/formations')
+      .then((r) => r.json())
+      .then((data: Formation[]) => {
+        const withPdf = data.filter((f) => f.programmePdfPath)
+        setFormations(withPdf)
+        if (withPdf.length > 0) setSelectedFormationId(withPdf[0]._id)
+      })
+      .catch(() => setFormations([]))
+      .finally(() => setLoadingFormations(false))
+  }, [isOpen, showProgrammeSelector])
+
+  // Reset form when modal closes
+  useEffect(() => {
+    if (!isOpen) {
+      setParentName('')
+      setChildName('')
+      setEmail('')
+      setPhone('')
+      setError('')
+      setSelectedFormationId('')
+    }
+  }, [isOpen])
+
+  const resolvedPdfUrl = showProgrammeSelector
+    ? formations.find((f) => f._id === selectedFormationId)?.programmePdfPath ?? ''
+    : (pdfUrl ?? '')
+
+  const selectedTitle = formations.find((f) => f._id === selectedFormationId)?.title ?? ''
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
+
+    if (showProgrammeSelector && !resolvedPdfUrl) {
+      setError('Veuillez sélectionner un programme avec un PDF disponible.')
+      return
+    }
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -39,6 +96,7 @@ export default function DownloadModal({ isOpen, onClose, pdfUrl }: DownloadModal
     setLoading(true)
 
     try {
+      const programmeName = showProgrammeSelector ? selectedTitle : ''
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -47,14 +105,14 @@ export default function DownloadModal({ isOpen, onClose, pdfUrl }: DownloadModal
           email: email,
           phone: phone,
           role: 'Téléchargement Programme',
-          message: `Nom du parent: ${parentName}\nNom de l'enfant: ${childName}\nDemande de téléchargement du programme.`,
+          message: `Nom du parent: ${parentName}\nNom de l'enfant: ${childName}\nProgramme demandé: ${programmeName || 'Non spécifié'}\nDemande de téléchargement du programme.`,
         }),
       })
 
       if (res.ok) {
         // Trigger download
         const link = document.createElement('a')
-        link.href = pdfUrl || '/uploads/programmes/5c9f9a33-5820-4582-a189-e4d76b84dd55.pdf'
+        link.href = resolvedPdfUrl
         link.target = '_blank'
         link.rel = 'noopener noreferrer'
         document.body.appendChild(link)
@@ -130,6 +188,56 @@ export default function DownloadModal({ isOpen, onClose, pdfUrl }: DownloadModal
             )}
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+
+              {/* Programme selector — shown only when no specific pdfUrl is given */}
+              {showProgrammeSelector && (
+                <div>
+                  <label className="block text-xs font-bold uppercase text-white/40 ml-1 mb-1.5 font-mono">
+                    Programme souhaité
+                  </label>
+                  <div className="relative">
+                    <Icon
+                      icon="solar:book-bold-duotone"
+                      className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-white/35"
+                    />
+                    {loadingFormations ? (
+                      <div className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white/40 text-sm flex items-center gap-2">
+                        <Icon icon="svg-spinners:ring-resize" className="w-4 h-4" />
+                        Chargement…
+                      </div>
+                    ) : formations.length === 0 ? (
+                      <div className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white/40 text-sm">
+                        Aucun programme disponible pour le moment.
+                      </div>
+                    ) : (
+                      <select
+                        required
+                        value={selectedFormationId}
+                        onChange={(e) => setSelectedFormationId(e.target.value)}
+                        className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:ring-2 focus:ring-[#3FA9DF] outline-none transition-colors appearance-none cursor-pointer"
+                        style={{ backgroundImage: 'none' }}
+                      >
+                        {formations.map((f) => (
+                          <option
+                            key={f._id}
+                            value={f._id}
+                            className="bg-[#0A004B] text-white"
+                          >
+                            {f.title}
+                          </option>
+                        ))}
+                      </select>
+                    )}
+                    {formations.length > 0 && !loadingFormations && (
+                      <Icon
+                        icon="solar:alt-arrow-down-bold"
+                        className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35"
+                      />
+                    )}
+                  </div>
+                </div>
+              )}
+
               <div>
                 <label className="block text-xs font-bold uppercase text-white/40 ml-1 mb-1.5 font-mono">
                   Nom du parent
@@ -213,7 +321,7 @@ export default function DownloadModal({ isOpen, onClose, pdfUrl }: DownloadModal
 
               <button
                 type="submit"
-                disabled={loading}
+                disabled={loading || (showProgrammeSelector && (loadingFormations || formations.length === 0))}
                 className="w-full mt-2 px-6 py-3.5 text-sm font-semibold text-white bg-[#3FA9DF] hover:bg-[#3596c7] disabled:opacity-50 disabled:cursor-not-allowed rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-[#3FA9DF]/20"
               >
                 {loading ? (

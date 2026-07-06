@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { staticFormations } from './FormationsList'
 import { fadeInUp, scaleIn } from './SectionHeading'
@@ -181,7 +180,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
   }
 
   return (
-    <section id='inscription-form' className='py-16 lg:py-20'>
+    <section id='inscription-form' className='py-16 lg:py-20 scroll-mt-24'>
       <div className='container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
         <div className='grid lg:grid-cols-5 gap-6 lg:gap-8 items-start'>
           {/* Reservation form + payment */}
@@ -236,11 +235,9 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                         const stateKey = keyMap[field.placeholder]
                         return (
                           <div key={field.placeholder} className='relative'>
-                            <Icon
-                              icon={field.icon}
-                              className='pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-white/35'
-                            />
+                           
                             <input
+                              id={field.placeholder === 'Nom' ? 'parent-nom-input' : undefined}
                               placeholder={field.placeholder}
                               type={field.type || 'text'}
                               className='formation-input pl-10'
@@ -262,10 +259,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                   </legend>
                   <div className='flex flex-col gap-4'>
                     <div className='relative'>
-                      <Icon
-                        icon='solar:widget-5-bold-duotone'
-                        className='pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-white/35'
-                      />
+                      
                       <select 
                         className='formation-input pl-10 appearance-none text-slate-300' 
                         value={formData.selectedFormation}
@@ -438,11 +432,15 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
               Offrez à votre enfant une longueur d&apos;avance grâce à l&apos;Intelligence Artificielle.
             </p>
             <div className='flex flex-col gap-3 w-full mt-2'>
-              <Link href='/contact?profil=Parent' className='w-full'>
-                <button className='w-full px-6 py-3 text-sm font-semibold text-white bg-gradient-brand rounded-[12px] hover:shadow-lg duration-300'>
-                  Inscrire mon enfant
-                </button>
-              </Link>
+              <button
+                onClick={() => {
+                  const el = document.getElementById('inscription-form');
+                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+                className='w-full px-6 py-3 text-sm font-semibold text-white bg-gradient-brand rounded-[12px] hover:shadow-lg duration-300'
+              >
+                Inscrire mon enfant
+              </button>
               <button 
                 onClick={() => setDownloadModalOpen(true)}
                 className='w-full px-6 py-3 text-sm font-semibold text-slate-700 dark:text-white bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 rounded-[12px] hover:shadow-md duration-300 flex items-center justify-center gap-2'

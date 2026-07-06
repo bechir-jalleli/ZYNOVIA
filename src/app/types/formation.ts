@@ -14,6 +14,14 @@ export type FormationType = {
   ageRange?: string
   /** ex: "Lac 1 - Tunis" */
   location?: string
+  /** Short description shown on cards */
+  description?: string
+  /** Difficulty/audience level, e.g. "Collège & Lycée" */
+  level?: string
+  /** Highlighted label shown as a badge, e.g. "Populaire" or "Bootcamp 1" */
+  badge?: string
+  /** Feature/highlight bullet list shown on cards */
+  features?: string[]
   /** Current price in DT */
   price?: number
   /** Crossed-out original price (promo) */
@@ -23,7 +31,7 @@ export type FormationType = {
   /** Cloudinary image URL */
   image?: string
   imagePublicId?: string
-  /** Local path to uploaded PDF: /uploads/programmes/xxx.pdf */
+  /** Cloudinary URL of the uploaded PDF programme */
   programmePdfPath?: string
   /** Registration link */
   enrollmentLink?: string

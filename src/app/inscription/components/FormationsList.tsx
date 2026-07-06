@@ -269,7 +269,15 @@ export default function FormationsList({ onEnroll }: FormationsListProps) {
                     onClick={() => {
                       if (onEnroll) onEnroll(f.title)
                       const el = document.getElementById('inscription-form')
-                      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                      if (el) {
+                        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                        const firstInput = document.getElementById('parent-nom-input') as HTMLInputElement | null
+                        if (firstInput) {
+                          setTimeout(() => {
+                            firstInput.focus({ preventScroll: true })
+                          }, 100)
+                        }
+                      }
                     }}
                     className={`flex-1 px-6 py-3.5 text-sm sm:text-base font-semibold text-white rounded-[12px] transition-all duration-300 hover:shadow-lg hover:scale-[1.01] ${f.buttonClass}`}
                   >

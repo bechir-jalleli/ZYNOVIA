@@ -5,14 +5,14 @@ import { Icon } from '@iconify/react'
 import { fadeInUp } from './SectionHeading'
 
 const projectItems = [
-  { title: "Prédire le prix\nd'une maison", icon: 'solar:home-2-bold-duotone', color: 'text-[#0091E6]' },
-  { title: 'Détecter certaines\nmaladies', icon: 'solar:health-bold-duotone', color: 'text-[#E14B4B]' },
-  { title: 'Recommander\ndes produits', icon: 'solar:cart-large-2-bold-duotone', color: 'text-[#E19B3C]' },
-  { title: 'Reconnaître\ndes plantes', icon: 'solar:leaf-bold-duotone', color: 'text-[#3CA35A]' },
-  { title: 'Classer\ndes déchets', icon: 'solar:trash-bin-trash-bold-duotone', color: 'text-[#3CA35A]' },
-  { title: 'Prévoir\nle trafic', icon: 'solar:signpost-bold-duotone', color: 'text-[#4490C7]' },
-  { title: 'Créer un assistant\npédagogique', icon: 'solar:notebook-bold-duotone', color: 'text-[#27397F]' },
-  { title: 'Reconnaître\ndes émotions', icon: 'solar:emoji-funny-square-bold-duotone', color: 'text-[#E19B3C]' },
+  { title: "Prédire le prix\nd'une maison", icon: 'solar:home-2-bold-duotone', color: '#0091E6', bg: 'rgba(0, 145, 230, 0.08)' },
+  { title: 'Détecter certaines\nmaladies', icon: 'solar:pulse-bold-duotone', color: '#E14B4B', bg: 'rgba(225, 75, 75, 0.08)' },
+  { title: 'Recommander\ndes produits', icon: 'solar:bag-heart-bold-duotone', color: '#E19B3C', bg: 'rgba(225, 155, 60, 0.08)' },
+  { title: 'Reconnaître\ndes plantes', icon: 'solar:leaf-bold-duotone', color: '#3CA35A', bg: 'rgba(60, 163, 90, 0.08)' },
+  { title: 'Classer\ndes déchets', icon: 'solar:trash-bin-minimalistic-bold-duotone', color: '#3CA35A', bg: 'rgba(60, 163, 90, 0.08)' },
+  { title: 'Prévoir\nle trafic', icon: 'solar:routing-bold-duotone', color: '#4490C7', bg: 'rgba(68, 144, 199, 0.08)' },
+  { title: 'Créer un assistant\npédagogique', icon: 'solar:square-academic-cap-bold-duotone', color: '#27397F', bg: 'rgba(39, 57, 127, 0.08)' },
+  { title: 'Reconnaître\ndes émotions', icon: 'solar:emoji-funny-square-bold-duotone', color: '#E19B3C', bg: 'rgba(225, 155, 60, 0.08)' },
 ]
 
 const stats = [
@@ -26,28 +26,34 @@ export default function ProjectsExperienceSection() {
   return (
     <section className='py-16 lg:py-20'>
       <div className='container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-        <div className='grid lg:grid-cols-2 gap-6 lg:gap-8'>
+        <div className='grid lg:grid-cols-2 gap-8 lg:gap-10'>
           {/* Left: Projects */}
           <motion.div
             {...fadeInUp}
-            className='rounded-[24px] bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/10 shadow-sm p-6 sm:p-8'
+            className='rounded-[32px] bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/5 shadow-sm p-6 sm:p-10 flex flex-col justify-between'
           >
-            <h3 className='text-lg sm:text-xl font-extrabold text-[#0A004B] dark:text-white mb-6'>
-              Des projets inspirés du monde professionnel
-            </h3>
-            <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>
-              {projectItems.map((p, idx) => (
-                <div key={p.title ?? idx} className='flex flex-col items-center text-center gap-2'>
+            <div>
+              <h3 className='text-xl sm:text-2xl font-extrabold text-[#0A004B] dark:text-white mb-8 tracking-tight'>
+                Des projets inspirés du monde professionnel
+              </h3>
+              <div className='grid grid-cols-2 sm:grid-cols-4 gap-5'>
+                {projectItems.map((p, idx) => (
                   <div
-                    className={`flex items-center justify-center w-11 h-11 rounded-xl bg-slate-50 dark:bg-white/5 ${p.color}`}
+                    key={p.title ?? idx}
+                    className='group flex flex-col items-center text-center justify-between gap-4 p-5 rounded-2xl bg-slate-50/50 dark:bg-white/5 border border-slate-100/80 dark:border-white/5 hover:bg-white dark:hover:bg-slate-800 shadow-sm hover:shadow-[0_12px_30px_rgba(0,0,0,0.04)] hover:border-slate-200/80 dark:hover:border-white/10 transition-all duration-300'
                   >
-                    <Icon icon={p.icon} className='w-[22px] h-[22px]' />
+                    <div
+                      className='flex items-center justify-center w-14 h-14 rounded-2xl transition-transform duration-300 group-hover:scale-110 shadow-inner'
+                      style={{ backgroundColor: p.bg, color: p.color }}
+                    >
+                      <Icon icon={p.icon} className='w-7 h-7' />
+                    </div>
+                    <span className='text-[13px] sm:text-[14px] font-bold text-slate-700 dark:text-slate-300 whitespace-pre-line leading-snug flex-grow flex items-center justify-center'>
+                      {p.title}
+                    </span>
                   </div>
-                  <span className='text-xs font-semibold text-slate-700 dark:text-slate-300 whitespace-pre-line leading-snug'>
-                    {p.title}
-                  </span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </motion.div>
 

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { isAdmin } from '@/lib/adminAuth';
-import { validatePdfFile, savePdfLocally, PdfServiceError } from '@/lib/pdfService';
+import { validatePdfFile, uploadPdfToCloudinary, PdfServiceError } from '@/lib/pdfService';
 
 export const runtime = 'nodejs';
 export const maxDuration = 30;
@@ -23,11 +23,14 @@ export async function POST(req: Request) {
 
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
-        const publicPath = await savePdfLocally(buffer);
 
-        console.log('[PdfUpload] Saved PDF:', publicPath, `(${(file.size / 1024).toFixed(1)} KB)`);
+        // Upload to Cloudinary (works on Vercel — no local filesystem needed)
+        const cloudinaryUrl = await uploadPdfToCloudinary(buffer);
 
-        return NextResponse.json({ path: publicPath });
+        console.log('[PdfUpload] Uploaded to Cloudinary:', cloudinaryUrl, `(${(file.size / 1024).toFixed(1)} KB)`);
+
+        // Return the Cloudinary URL as `path` to stay compatible with existing admin code
+        return NextResponse.json({ path: cloudinaryUrl });
     } catch (error) {
         if (error instanceof PdfServiceError) {
             const status = error.code === 'INVALID_FORMAT' || error.code === 'FILE_TOO_LARGE' ? 400 : 500;
