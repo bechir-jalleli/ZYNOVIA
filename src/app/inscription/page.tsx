@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: 'Nos Formations en Intelligence Artificielle — Zynovia',
     description:
       'Inscrivez votre enfant à une formation IA avec Zynovia Academy. Ateliers pratiques, certification incluse, aucun prérequis, encadré par des ingénieurs IA.',
-    url: 'https://www.zynovia-academy.com/nos-formations',
+    url: 'https://www.zynovia-academy.com/inscription',
     siteName: 'Zynovia',
     images: [
       {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     type: 'website',
   },
   alternates: {
-    canonical: 'https://www.zynovia-academy.com/nos-formations',
+    canonical: 'https://www.zynovia-academy.com/inscription',
   },
 }
 
@@ -41,8 +41,8 @@ export default function NosFormationsPage() {
       {
         '@type': 'ListItem',
         'position': 2,
-        'name': 'Nos Formations',
-        'item': 'https://www.zynovia-academy.com/nos-formations',
+        'name': 'Inscription',
+        'item': 'https://www.zynovia-academy.com/inscription',
       },
     ],
   }

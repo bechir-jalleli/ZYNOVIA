@@ -91,6 +91,15 @@ const STAT_CONFIG: StatConfig[] = [
         endpoint: '/api/submissions?type=rendez-vous',
         section: 'inbound',
     },
+    {
+        label: 'Inscriptions',
+        icon: 'solar:diploma-bold',
+        color: 'text-teal-500',
+        iconBg: 'bg-teal-500/10 dark:bg-teal-500/15',
+        href: '/admin/inscriptions',
+        endpoint: '/api/inscriptions',
+        section: 'inbound',
+    },
 ];
 
 const QUICK_ACTIONS = [

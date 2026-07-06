@@ -219,14 +219,7 @@ export default function ManageTrainers() {
                                 ))}
                             </div>
                         </div>
-                        {t.linkedin && (
-                            <div className="px-6 py-4 border-t border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-black/5 flex items-center justify-between">
-                                <span className="text-[10px] text-slate-400 dark:text-lightgrey font-mono truncate">LinkedIn lié</span>
-                                <a href={t.linkedin} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-600 transition-colors">
-                                    <Icon icon="solar:link-round-angle-bold" width="18" />
-                                </a>
-                            </div>
-                        )}
+
                     </div>
                 ))}
             </div>
@@ -288,16 +281,7 @@ export default function ManageTrainers() {
                                 />
                             </div>
 
-                            <div>
-                                <label className="text-xs font-bold uppercase text-slate-500 dark:text-lightgrey ml-1 font-mono">Lien LinkedIn (Optionnel)</label>
-                                <input
-                                    type="url"
-                                    className="w-full mt-1 px-4 py-3 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl text-slate-900 dark:text-white focus:ring-2 focus:ring-primary outline-none transition-colors"
-                                    placeholder="https://linkedin.com/..."
-                                    value={formData.linkedin}
-                                    onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}
-                                />
-                            </div>
+
 
                             <div>
                                 <label className="text-xs font-bold uppercase text-slate-500 dark:text-lightgrey ml-1 font-mono">Photo du Formateur</label>

@@ -49,7 +49,7 @@ export default function ProgrammesStats() {
                 className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
               />
               <div className='relative flex flex-col items-center text-center'>
-<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                   <Building2 className='h-7 w-7' />
+                <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                   <Building2 className='h-7 w-7' />
                 </div>
                 <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
                   <AnimatedNumber value={6} duration={1500} />
@@ -63,7 +63,7 @@ export default function ProgrammesStats() {
               </div>
             </motion.div>
 
-            {/* +2000 collégiens et lycéens formés */}
+            {/* +20000 collégiens et lycéens formés */}
             <motion.div
               variants={cardVariant}
               className='relative overflow-hidden rounded-3xl bg-white/95 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/95 dark:ring-slate-700/70'
@@ -73,11 +73,11 @@ export default function ProgrammesStats() {
                 className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
               />
               <div className='relative flex flex-col items-center text-center'>
-<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                
+                <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>
                   <Users className='h-7 w-7' />
                 </div>
                 <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
-                  <AnimatedNumber value='+2000' duration={2000} />
+                  <AnimatedNumber value='+20000' duration={2000} />
                 </h3>
                 <p className='text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-200 mb-1'>
                   collégiens et lycéens déjà formés
@@ -95,7 +95,7 @@ export default function ProgrammesStats() {
                 className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
               />
               <div className='relative flex flex-col items-center text-center'>
-<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                
+                <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>
                   <Clock className='h-7 w-7' />
                 </div>
                 <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
@@ -117,7 +117,7 @@ export default function ProgrammesStats() {
                 className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
               />
               <div className='relative flex flex-col items-center text-center'>
-<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                
+                <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>
                   <Calendar className='h-7 w-7' />
                 </div>
                 <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
@@ -139,7 +139,7 @@ export default function ProgrammesStats() {
                 className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
               />
               <div className='relative flex flex-col items-center text-center'>
-<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                
+                <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>
                   <GraduationCap className='h-7 w-7' />
                 </div>
                 <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>
@@ -164,7 +164,7 @@ export default function ProgrammesStats() {
                 className='pointer-events-none absolute inset-x-6 -top-12 h-28 rounded-full bg-gradient-to-r from-[#00C3D9]/30 via-[#0091E6]/40 to-[#0067E0]/30 blur-3xl opacity-70 dark:opacity-80'
               />
               <div className='relative flex flex-col items-center text-center'>
-<div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>                
+                <div className='flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-md shadow-[#27397F]/40 mb-4'>
                   <FolderKanban className='h-7 w-7' />
                 </div>
                 <h3 className='text-3xl sm:text-4xl font-bold text-[#0A004B] dark:text-white mb-2'>

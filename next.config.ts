@@ -3,6 +3,15 @@ import type { NextConfig } from 'next'
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
+  async redirects() {
+    return [
+      {
+        source: '/nos-formations',
+        destination: '/inscription',
+        permanent: true,
+      },
+    ]
+  },
   images: {
     remotePatterns: [
       {

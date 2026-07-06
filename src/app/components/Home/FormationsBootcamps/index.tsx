@@ -1,11 +1,11 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import CloudImage from '@/app/components/Infrastructure/CloudImage'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Icon } from '@iconify/react'
 import { useEffect, useState } from 'react'
-import { FormationType } from '@/app/types/formation'
+import DownloadModal from '@/app/inscription/components/DownloadModal'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 28 },
@@ -22,29 +22,38 @@ const staggerContainer = {
   },
 }
 
-const normalizeFormationType = (
-  formation: FormationType & { _id?: string }
-): 'formation' | 'bootcamp' => {
-  const rawType = formation.type?.toLowerCase().trim()
-
-  if (rawType === 'bootcamp' || rawType === 'formation') {
-    return rawType
+const getModeStyles = (mode?: string) => {
+  const m = mode?.toUpperCase()
+  if (m === 'EN LIGNE') {
+    return {
+      modeColor: 'bg-[#0091E6]',
+      accentFrom: '#0091E6',
+      accentTo: '#0067E0',
+      buttonClass: 'bg-[#0091E6] hover:bg-[#0079C2]',
+    }
+  } else if (m === 'HYBRIDE') {
+    return {
+      modeColor: 'bg-[#FF9F0A]',
+      accentFrom: '#FF9F0A',
+      accentTo: '#FF3B30',
+      buttonClass: 'bg-[#FF9F0A] hover:bg-[#E08A07]',
+    }
+  } else {
+    // PRÉSENTIEL or default
+    return {
+      modeColor: 'bg-[#7C3AED]',
+      accentFrom: '#7C3AED',
+      accentTo: '#4C1D95',
+      buttonClass: 'bg-[#7C3AED] hover:bg-[#6D28D9]',
+    }
   }
-
-  const title = formation.title?.toLowerCase() ?? ''
-  const badge = formation.badge?.toLowerCase() ?? ''
-
-  if (title.includes('bootcamp') || badge.includes('bootcamp')) {
-    return 'bootcamp'
-  }
-
-  return 'formation'
 }
 
 const FormationsBootcamps = () => {
-  const [formations, setFormations] = useState<FormationType[]>([])
+  const [formations, setFormations] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
-  const [selectedFilter, setSelectedFilter] = useState<'all' | 'formation' | 'bootcamp'>('all')
+  const [downloadModalOpen, setDownloadModalOpen] = useState(false)
+  const [selectedPdfUrl, setSelectedPdfUrl] = useState('')
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,7 +61,57 @@ const FormationsBootcamps = () => {
         const res = await fetch('/api/data', { cache: 'no-store' })
         if (!res.ok) throw new Error('Failed to fetch')
         const data = await res.json()
-        setFormations(data.FormationData || [])
+        const rawFormations = data.FormationData || []
+        
+        const mapped = rawFormations.map((f: any) => {
+          const styles = getModeStyles(f.mode)
+          
+          const details: { icon: string; label: string }[] = []
+          if (f.startDate) {
+            details.push({
+              icon: 'solar:calendar-bold',
+              label: f.startDate.toLowerCase().startsWith('démarrage')
+                ? f.startDate
+                : `Démarrage : ${f.startDate}`,
+            })
+          }
+          if (f.schedule) {
+            details.push({ icon: 'solar:clock-circle-bold', label: f.schedule })
+          }
+          if (f.duration) {
+            details.push({ icon: 'solar:hourglass-bold', label: f.duration })
+          }
+          if (f.ageRange) {
+            details.push({ icon: 'solar:users-group-rounded-bold', label: f.ageRange })
+          }
+          if (f.location) {
+            const isOnline =
+              f.location.toLowerCase().includes('en ligne') ||
+              f.mode?.toUpperCase() === 'EN LIGNE'
+            details.push({
+              icon: isOnline ? 'solar:global-bold' : 'solar:map-point-bold',
+              label: f.location,
+            })
+          }
+
+          return {
+            title: f.title,
+            mode: f.mode || 'PRÉSENTIEL',
+            modeColor: styles.modeColor,
+            accentFrom: styles.accentFrom,
+            accentTo: styles.accentTo,
+            details,
+            program: f.programme || [],
+            priceNew: f.price ? `${f.price} DT` : '',
+            priceOld: f.originalPrice ? `${f.originalPrice} DT` : null,
+            priceNote: f.originalPrice ? 'au lieu de' : null,
+            image: f.image || '/images/parent/image.png',
+            buttonClass: styles.buttonClass,
+            programmePdfPath: f.programmePdfPath || '',
+            enrollmentLink: f.enrollmentLink || '',
+          }
+        })
+        setFormations(mapped)
       } catch (error) {
         console.error('Error fetching formations', error)
       } finally {
@@ -62,13 +121,8 @@ const FormationsBootcamps = () => {
     fetchData()
   }, [])
 
-  const filteredFormations = formations.filter((formation) => {
-    if (selectedFilter === 'all') return true
-    return normalizeFormationType(formation) === selectedFilter
-  })
-
   return (
-    <section className='py-24 lg:py-32 bg-gradient-to-b from-transParent via-secondary/5 to-secondary/10 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
+    <section className='py-24 lg:py-32 bg-gradient-to-b from-transparent via-secondary/5 to-secondary/10 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950'>
       <div className='container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
         <motion.div
           variants={staggerContainer}
@@ -79,216 +133,141 @@ const FormationsBootcamps = () => {
         >
           <motion.div variants={fadeInUp} className='text-center mb-16 max-w-3xl'>
             <h2 className='text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0A004B] dark:text-white mb-6 tracking-tight'>
-              Nos <span className='text-gradient'>Formations</span> Actuelles
+              Nos <span className='text-[#3FA9DF]'>formations</span>
             </h2>
             <p className='text-lg text-slate-600 dark:text-lightgrey font-medium leading-relaxed'>
               Découvrez nos programmes de formation en Intelligence Artificielle et technologies du futur
             </p>
           </motion.div>
 
-          {/* Filter Tabs */}
-          <motion.div
-            variants={fadeInUp}
-            className='flex p-1.5 bg-slate-100 dark:bg-white/5 rounded-2xl mb-16 backdrop-blur-md shadow-inner'
-          >
-            {[
-              { id: 'all', label: 'Tous', icon: 'solar:Users-group-rounded-bold' },
-              { id: 'formation', label: 'Formations', icon: 'solar:book-bookmark-bold' },
-              { id: 'bootcamp', label: 'Bootcamps', icon: 'solar:rocket-bold' },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setSelectedFilter(tab.id as any)}
-                className={`flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 ${selectedFilter === tab.id
-                  ? 'bg-gradient-brand text-white shadow-lg'
-                  : 'text-slate-500 dark:text-slate-400 hover:text-gradient-hover'
-                  }`}
-              >
-                <Icon icon={tab.icon} className='w-4 h-4' />
-                {tab.label}
-              </button>
-            ))}
-          </motion.div>
-
           {/* Grid Layout */}
           <div className='w-full'>
             {loading ? (
-              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8'>
-                {Array.from({ length: 3 }).map((_, index) => (
+              <div className='grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8'>
+                {Array.from({ length: 2 }).map((_, index) => (
                   <div
                     key={index}
-                    className='h-[520px] rounded-3xl bg-slate-200/60 dark:bg-slate-800/60 animate-pulse'
+                    className='h-[500px] rounded-3xl bg-slate-200/60 dark:bg-slate-800/60 animate-pulse'
                   />
                 ))}
               </div>
-            ) : filteredFormations.length === 0 ? (
+            ) : formations.length === 0 ? (
               <div className='rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 px-6 py-16 text-center'>
                 <p className='text-lg font-semibold text-slate-700 dark:text-slate-200 mb-2'>
                   Aucun programme trouvé
                 </p>
                 <p className='text-slate-500 dark:text-slate-400'>
-                  Essayez un autre filtre ou revenez plus tard.
+                  Revenez plus tard.
                 </p>
               </div>
             ) : (
               <AnimatePresence mode='wait'>
                 <motion.div
-                  key={selectedFilter}
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.3 }}
-                  className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8'
+                  className='grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8'
                 >
-                  {filteredFormations.map((formation: FormationType & { _id?: string }, index) => {
-                    const formationType = normalizeFormationType(formation)
-
+                  {formations.map((f, index) => {
                     return (
                       <motion.div
-                        key={formation.id || formation._id}
+                        key={f.title}
                         initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.35, delay: index * 0.06 }}
-                        className='group relative overflow-hidden rounded-3xl bg-white/95 dark:bg-slate-900/95 shadow-[0_18px_45px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 dark:ring-slate-700/70 backdrop-blur transition-all duration-500 hover:shadow-[0_24px_60px_rgba(15,23,42,0.18)] hover:-translate-y-2 flex flex-col h-full'
+                        className='relative flex flex-col rounded-[24px] bg-white dark:bg-slate-900 border-2 shadow-[0_10px_40px_rgba(15,23,42,0.06)] overflow-hidden'
+                        style={{ borderColor: f.accentFrom }}
                       >
-                        {/* Gradient Background Effect */}
-                        <div
-                          aria-hidden='true'
-                          className='pointer-events-none absolute inset-x-6 -top-12 h-32 rounded-full bg-gradient-to-r from-[#27397F]/30 to-[#3FA9DF]/30 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500'
-                        />
-
-                        {/* Badge */}
-                        {formation.badge && (
-                          <div className='absolute top-4 right-4 z-20'>
-                            <motion.span
-                              initial={{ scale: 0 }}
-                              animate={{ scale: 1 }}
-                              className='inline-flex items-center px-3 py-1.5 text-xs font-bold rounded-full bg-gradient-brand text-white shadow-lg shadow-[#27397F]/30 backdrop-blur-sm'
-                            >
-                              {formation.badge}
-                            </motion.span>
-                          </div>
-                        )}
-
-                        {/* Image */}
-                        <div className='relative h-56 sm:h-64 w-full overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900'>
-                          <CloudImage
-                            src={formation.image}
-                            alt={formation.title}
-                            fill
-                            optimizedWidth={640}
-                            className='object-cover transition-transform duration-700 group-hover:scale-110'
-                            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-                          />
-                          <div className='absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transParent' />
-
-                          {/* Type Badge on Image */}
-                          <div className='absolute bottom-4 left-4 right-4'>
+                        <div className='flex flex-col flex-1 p-6 sm:p-7'>
+                          {/* Title + mode badge on top */}
+                          <div className='flex items-center justify-between gap-3 mb-4 flex-wrap'>
+                            <h3 className='text-lg sm:text-xl font-extrabold text-[#0A004B] dark:text-white'>
+                              {f.title}
+                            </h3>
                             <span
-                              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold backdrop-blur-md shadow-lg ${formationType === 'bootcamp'
-                                ? 'bg-gradient-to-r from-orange-500/95 to-orange-600/95 text-white'
-                                : 'bg-gradient-brand text-white shadow-[#27397F]/20'
-                                }`}
+                              className={`text-white text-[11px] font-bold px-3 py-1.5 rounded-full whitespace-nowrap ${f.modeColor}`}
                             >
-                              {formationType === 'bootcamp' ? (
-                                <>
-                                  <Icon icon='material-symbols:rocket-launch' className='w-4 h-4' />
-                                  <span>Bootcamp</span>
-                                </>
-                              ) : (
-                                <>
-                                  <Icon icon='material-symbols:menu-book' className='w-4 h-4' />
-                                  <span>Formation</span>
-                                </>
-                              )}
+                              {f.mode}
                             </span>
                           </div>
-                        </div>
 
-                        {/* Content */}
-                        <div className='relative flex flex-col flex-grow p-6 sm:p-8'>
-                          <h3 className='text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100 mb-3 line-clamp-2 leading-tight group-hover:text-[#3FA9DF] transition-colors duration-300'>
-                            {formation.title}
-                          </h3>
-                          <p className='text-sm sm:text-base text-slate-600 dark:text-slate-300 mb-5 line-clamp-2 flex-grow leading-relaxed'>
-                            {formation.description}
-                          </p>
+                          {/* Image (left, wide) + details with price underneath (right) */}
+                          <div className='flex items-stretch gap-4 mb-5'>
+                            <div className='relative w-36 sm:w-48 h-28 sm:h-32 flex-shrink-0 rounded-2xl overflow-hidden'>
+                              <Image src={f.image} alt={f.title} fill className='object-cover' />
+                            </div>
 
-                          {/* Info Icons */}
-                          <div className='flex flex-wrap gap-3 sm:gap-4 mb-5 pb-5 border-b border-slate-200/60 dark:border-slate-700/60'>
-                            <div className='flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400'>
-                              <div className='flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-soft text-[#27397F] dark:text-[#3FA9DF]'>
-                                <Icon
-                                  icon='material-symbols:schedule'
-                                  className='w-4 h-4'
-                                />
+                            <div className='flex flex-1 flex-col justify-between'>
+                              <div className='flex flex-col gap-2'>
+                                {f.details.map((d: any) => (
+                                  <div key={d.label} className='flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300'>
+                                    <Icon icon={d.icon} className='w-4 h-4 flex-shrink-0' style={{ color: f.accentFrom }} />
+                                    <span>{d.label}</span>
+                                  </div>
+                                ))}
                               </div>
-                              <span className='font-medium'>{formation.duration}</span>
-                            </div>
-                            <div className='flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400'>
-                              <div className='flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-soft text-[#27397F] dark:text-[#3FA9DF]'>
-                                <Icon
-                                  icon='material-symbols:school'
-                                  className='w-4 h-4'
-                                />
-                              </div>
-                              <span className='font-medium'>{formation.level}</span>
-                            </div>
-                            {formation.startDate && (
-                              <div className='flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400'>
-                                <div className='flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-soft text-[#27397F] dark:text-[#3FA9DF]'>
-                                  <Icon
-                                    icon='material-symbols:calendar-today'
-                                    className='w-4 h-4'
-                                  />
+
+                              {f.priceNew && (
+                                <div
+                                  className='self-end mt-2 flex-shrink-0 flex flex-col items-center justify-center rounded-2xl px-4 py-3 text-white text-center'
+                                  style={{ background: `linear-gradient(135deg, ${f.accentFrom}, ${f.accentTo})` }}
+                                >
+                                  {f.priceOld && (
+                                    <span className='text-[11px] leading-tight opacity-80'>
+                                      {f.priceNote} <span className='line-through'>{f.priceOld}</span>
+                                    </span>
+                                  )}
+                                  <span className='text-xl font-extrabold leading-tight whitespace-nowrap'>{f.priceNew}</span>
                                 </div>
-                                <span className='font-medium'>{formation.startDate}</span>
-                              </div>
-                            )}
+                              )}
+                            </div>
                           </div>
 
-                          {/* Features */}
-                          {formation.features && formation.features.length > 0 && (
-                            <div className='mb-6 space-y-2.5'>
-                              {formation.features.slice(0, 3).map((feature: string, index: number) => (
-                                <motion.div
-                                  key={index}
-                                  initial={{ opacity: 0, x: -10 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{ delay: index * 0.1 }}
-                                  className='flex items-start gap-2.5'
-                                >
-                                  <div className='flex-shrink-0 mt-0.5'>
-                                    <Icon
-                                      icon='material-symbols:check-circle-rounded'
-                                      className='w-5 h-5 text-[#3FA9DF]'
-                                      style={{ color: '#3FA9DF' }}
-                                    />
-                                  </div>
-                                  <span className='text-sm text-slate-600 dark:text-slate-300 leading-relaxed'>
-                                    {feature}
-                                  </span>
-                                </motion.div>
-                              ))}
+                          {/* Au programme : two-column list */}
+                          {f.program && f.program.length > 0 && (
+                            <div className='mb-5'>
+                              <p className='text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-2'>
+                                Au programme :
+                              </p>
+                              <div
+                                className='grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5'
+                                style={{ gridAutoFlow: 'column', gridTemplateRows: `repeat(${Math.ceil(f.program.length / 2)}, auto)` }}
+                              >
+                                {f.program.map((p: string) => (
+                                  <li key={p} className='flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300 list-none'>
+                                    <Icon icon='solar:check-circle-bold' className='w-4 h-4 mt-0.5 flex-shrink-0' style={{ color: f.accentFrom }} />
+                                    <span>{p}</span>
+                                  </li>
+                                ))}
+                              </div>
                             </div>
                           )}
 
-                          {/* Price & CTA */}
-                          <div className='mt-auto pt-5 border-t border-slate-200/60 dark:border-slate-700/60'>
-                            <div className='flex items-center justify-between'>
-                            </div>
+                          <div className='mt-auto flex flex-col sm:flex-row gap-3'>
                             <Link
-                              href={formation.href || '/programmes'}
-                              className='group/btn block w-full px-6 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-center btn-primary btn-hover rounded-xl shadow-md'
+                              href={`/inscription?program=${encodeURIComponent(f.title)}`}
+                              className={`flex-1 text-center px-6 py-3.5 text-sm sm:text-base font-semibold text-white rounded-[12px] transition-all duration-300 hover:shadow-lg hover:scale-[1.01] ${f.buttonClass}`}
                             >
-                              <span className='relative z-10 flex items-center justify-center gap-2'>
-                                En savoir plus
-                                <Icon
-                                  icon='material-symbols:arrow-forward-rounded'
-                                  className='w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300'
-                                />
-                              </span>
+                              Inscrire mon enfant
                             </Link>
+                            <button
+                              onClick={() => {
+                                if (f.programmePdfPath) {
+                                  setSelectedPdfUrl(f.programmePdfPath)
+                                  setDownloadModalOpen(true)
+                                }
+                              }}
+                              disabled={!f.programmePdfPath}
+                              className={`flex-1 px-6 py-3.5 text-sm sm:text-base font-semibold rounded-[12px] border-2 bg-white dark:bg-transparent transition-all duration-300 ${
+                                f.programmePdfPath 
+                                  ? 'hover:shadow-lg hover:scale-[1.01] cursor-pointer' 
+                                  : 'opacity-50 cursor-not-allowed'
+                              }`}
+                              style={{ borderColor: f.accentFrom, color: f.accentFrom }}
+                            >
+                              Télécharger le programme
+                            </button>
                           </div>
                         </div>
                       </motion.div>
@@ -300,6 +279,11 @@ const FormationsBootcamps = () => {
           </div>
         </motion.div>
       </div>
+      <DownloadModal
+        isOpen={downloadModalOpen}
+        onClose={() => setDownloadModalOpen(false)}
+        pdfUrl={selectedPdfUrl}
+      />
     </section>
   )
 }
