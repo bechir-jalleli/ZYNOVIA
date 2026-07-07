@@ -5,6 +5,7 @@ import Header from './components/Layout/Header'
 import { ThemeProvider } from 'next-themes'
 import Footer from './components/Layout/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import FloatingSocialMenu from './components/Layout/FloatingSocialMenu'
 import { AuthProvider } from '@/context/AuthContext'
 import { Suspense } from 'react'
 import TrackingScripts from './components/Analytics/TrackingScripts'
@@ -80,13 +81,11 @@ export const metadata: Metadata = {
   },
 }
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  // Primary brand entity schema — establishes Zynovia as a named organization
   const orgJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'EducationalOrganization',
@@ -214,7 +213,7 @@ export default function RootLayout({
             <Header />
             {children}
             <Footer />
-            <ScrollToTop />
+            <FloatingSocialMenu />
           </AuthProvider>
         </ThemeProvider>
       </body>
