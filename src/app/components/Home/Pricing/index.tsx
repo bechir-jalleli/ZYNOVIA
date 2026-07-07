@@ -213,11 +213,14 @@ const Pricing = () => {
                             </li>
                           ))}
                         </ul>
-                        <Link href="/contact" className="mt-auto w-full">
-                          <button className='btn-primary btn-hover w-full rounded-xl py-3 text-sm font-semibold shadow-md'>
-                            {config.cta}
-                          </button>
-                        </Link>
+                       <Link
+  href={`/inscription?program=${encodeURIComponent(config.title)}`}
+  className="mt-auto w-full"
+>
+  <button className='btn-primary btn-hover w-full rounded-xl py-3 text-sm font-semibold shadow-md'>
+    {config.cta}
+  </button>
+</Link>
                       </div>
                     </div>
                   </div>
