@@ -31,6 +31,7 @@ import {
 import connectToDatabase from '@/lib/mongodb';
 import PdfFile from '@/models/PdfFile';
 import PdfPart from '@/models/PdfPart';
+import PdfUploadChunk from '@/models/PdfUploadChunk';
 
 export const runtime = 'nodejs';
 export const maxDuration = 120;
@@ -67,29 +68,77 @@ export async function POST(req: Request): Promise<NextResponse> {
         // 2. Parse form
         const formData = await req.formData();
         const file = formData.get('file') as File | null;
+        const uploadId = formData.get('uploadId') as string | null;
+        const chunkIndexRaw = formData.get('chunkIndex') as string | null;
+        const totalChunksRaw = formData.get('totalChunks') as string | null;
+        const fileNameRaw = formData.get('fileName') as string | null;
+        const fileSizeRaw = formData.get('fileSize') as string | null;
 
         if (!file) {
             return NextResponse.json({ message: 'No file uploaded' }, { status: 400 });
         }
-        if (file.type !== 'application/pdf') {
-            return NextResponse.json(
-                { message: `Invalid file type "${file.type}". Only PDF files are accepted.`, code: 'INVALID_FORMAT' },
-                { status: 400 }
-            );
-        }
-        if (file.size === 0) {
-            return NextResponse.json({ message: 'Uploaded file is empty.', code: 'INVALID_FORMAT' }, { status: 400 });
-        }
-        if (file.size > MAX_PDF_SIZE_BYTES) {
+
+        const chunkIndex = chunkIndexRaw ? parseInt(chunkIndexRaw, 10) : 0;
+        const totalChunks = totalChunksRaw ? parseInt(totalChunksRaw, 10) : 1;
+        const originalName = fileNameRaw || file.name || 'upload.pdf';
+        const fileSize = fileSizeRaw ? parseInt(fileSizeRaw, 10) : file.size;
+
+        if (fileSize > MAX_PDF_SIZE_BYTES) {
             return NextResponse.json(
                 { message: `PDF exceeds the maximum allowed size of ${MAX_PDF_SIZE_BYTES / (1024 * 1024)} MB.`, code: 'FILE_TOO_LARGE' },
                 { status: 400 }
             );
         }
 
-        // 3. Read buffer
-        const buffer = Buffer.from(await file.arrayBuffer());
-        const baseName = sanitiseFilename(file.name);
+        const isPdf = file.type === 'application/pdf' || originalName.toLowerCase().endsWith('.pdf');
+        if (!isPdf) {
+            return NextResponse.json(
+                { message: `Invalid file type. Only PDF files are accepted.`, code: 'INVALID_FORMAT' },
+                { status: 400 }
+            );
+        }
+
+        if (file.size === 0) {
+            return NextResponse.json({ message: 'Uploaded file is empty.', code: 'INVALID_FORMAT' }, { status: 400 });
+        }
+
+        // 3. Read chunk buffer
+        const chunkBuffer = Buffer.from(await file.arrayBuffer());
+
+        let buffer: Buffer;
+
+        if (totalChunks <= 1 || !uploadId) {
+            buffer = chunkBuffer;
+        } else {
+            // Save chunk to MongoDB
+            await connectToDatabase();
+            await PdfUploadChunk.updateOne(
+                { uploadId, chunkIndex },
+                { uploadId, chunkIndex, totalChunks, data: chunkBuffer },
+                { upsert: true }
+            );
+
+            const uploadedCount = await PdfUploadChunk.countDocuments({ uploadId });
+            if (uploadedCount < totalChunks) {
+                return NextResponse.json({ status: 'chunk_saved', chunkIndex, totalChunks });
+            }
+
+            // All chunks uploaded! Merge.
+            const chunkDocs = await PdfUploadChunk.find({ uploadId }).sort({ chunkIndex: 1 });
+            if (chunkDocs.length !== totalChunks) {
+                return NextResponse.json(
+                    { message: 'Upload count mismatch. Some chunks are missing. Please retry.', code: 'UPLOAD_FAILED' },
+                    { status: 400 }
+                );
+            }
+
+            buffer = Buffer.concat(chunkDocs.map(c => c.data));
+
+            // Clean up chunks
+            await PdfUploadChunk.deleteMany({ uploadId });
+        }
+
+        const baseName = sanitiseFilename(originalName);
 
         // ── Path A: small file — upload directly ─────────────────────────────
         const needsSplit = buffer.length >= SAFE_CHUNK_BYTES;

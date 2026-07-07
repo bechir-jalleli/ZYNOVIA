@@ -30,13 +30,51 @@ const SECTION = 'rounded-2xl border border-slate-100 dark:border-white/5 p-5 spa
 const SECTION_TITLE = 'text-[10px] font-black uppercase tracking-widest text-primary font-mono flex items-center gap-2 mb-3';
 
 /* ─── PDF Upload helpers ───────────────────────────────────────── */
-async function uploadPdfClient(file: File): Promise<string> {
-    const fd = new FormData();
-    fd.append('file', file);
-    const res = await fetch('/api/upload-pdf', { method: 'POST', body: fd });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.message || 'PDF upload failed');
-    return data.path as string;
+async function uploadPdfClient(file: File, onProgress?: (pct: number) => void): Promise<string> {
+    const CHUNK_SIZE = 3 * 1024 * 1024; // 3 MB chunks
+    const totalChunks = Math.ceil(file.size / CHUNK_SIZE) || 1;
+    const uploadId = `${Date.now()}-${Math.random().toString(36).substring(2, 15)}`;
+
+    let responsePath = '';
+
+    for (let chunkIndex = 0; chunkIndex < totalChunks; chunkIndex++) {
+        const start = chunkIndex * CHUNK_SIZE;
+        const end = Math.min(start + CHUNK_SIZE, file.size);
+        const chunkBlob = file.slice(start, end);
+
+        const fd = new FormData();
+        fd.append('file', chunkBlob, file.name);
+        fd.append('uploadId', uploadId);
+        fd.append('chunkIndex', String(chunkIndex));
+        fd.append('totalChunks', String(totalChunks));
+        fd.append('fileName', file.name);
+        fd.append('fileSize', String(file.size));
+
+        const res = await fetch('/api/upload-pdf', {
+            method: 'POST',
+            body: fd,
+        });
+
+        const data = await res.json();
+        if (!res.ok) {
+            throw new Error(data.message || `Failed to upload chunk ${chunkIndex + 1}/${totalChunks}`);
+        }
+
+        if (onProgress) {
+            const pct = Math.round(((chunkIndex + 1) / totalChunks) * 100);
+            onProgress(pct);
+        }
+
+        if (data.path) {
+            responsePath = data.path;
+        }
+    }
+
+    if (!responsePath) {
+        throw new Error('Upload completed but server did not return a file path');
+    }
+
+    return responsePath;
 }
 
 function formatBytes(bytes: number) {
@@ -59,6 +97,7 @@ export default function ManageFormations() {
 
     /* PDF upload state */
     const [pdfUploading, setPdfUploading] = useState(false);
+    const [pdfUploadProgress, setPdfUploadProgress] = useState<number | null>(null);
     const [pdfError, setPdfError] = useState<string | null>(null);
     const [pdfFileName, setPdfFileName] = useState<string | null>(null);
     const [pdfFileSize, setPdfFileSize] = useState<number | null>(null);
@@ -190,10 +229,13 @@ export default function ManageFormations() {
         if (!file) return;
         setPdfError(null);
         setPdfUploading(true);
+        setPdfUploadProgress(0);
         setPdfFileName(null);
         setPdfFileSize(null);
         try {
-            const path = await uploadPdfClient(file);
+            const path = await uploadPdfClient(file, (pct) => {
+                setPdfUploadProgress(pct);
+            });
             setForm(f => ({ ...f, programmePdfPath: path }));
             setPdfFileName(file.name);
             setPdfFileSize(file.size);
@@ -201,6 +243,7 @@ export default function ManageFormations() {
             setPdfError(err instanceof Error ? err.message : 'Upload PDF échoué');
         } finally {
             setPdfUploading(false);
+            setPdfUploadProgress(null);
             e.target.value = '';
         }
     };
@@ -497,7 +540,13 @@ export default function ManageFormations() {
                                         className={pdfUploading ? 'text-primary' : form.programmePdfPath ? 'text-emerald-500' : 'text-slate-400 group-hover:text-primary'}
                                         width="26" />
                                     <span className={`text-sm font-semibold ${form.programmePdfPath ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-500 group-hover:text-primary'}`}>
-                                        {pdfUploading ? 'Téléversement du PDF…' : form.programmePdfPath ? 'PDF chargé — cliquer pour remplacer' : 'Choisir un fichier PDF'}
+                                        {pdfUploading
+                                            ? pdfUploadProgress !== null
+                                                ? `Téléversement du PDF (${pdfUploadProgress}%)…`
+                                                : 'Téléversement du PDF…'
+                                            : form.programmePdfPath
+                                            ? 'PDF chargé — cliquer pour remplacer'
+                                            : 'Choisir un fichier PDF'}
                                     </span>
                                 </label>
 
