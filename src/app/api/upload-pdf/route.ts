@@ -39,12 +39,20 @@ const MAX_PDF_SIZE_BYTES = 200 * 1024 * 1024; // 200 MB overall cap
 
 // ── Helpers ────────────────────────────────────────────────────────────────────
 
+/**
+ * Strip the extension and every character that Cloudinary rejects in a
+ * public_id.  Cloudinary allows: letters, digits, underscore, hyphen, dot,
+ * forward-slash (for folder separators) and tilde.  We are even stricter:
+ * we only keep alphanumeric, underscores and hyphens so the resulting
+ * public_id is always URL-safe and shell-safe.
+ */
 function sanitiseFilename(name: string): string {
     return (name ?? '')
-        .replace(/\.pdf$/i, '')          // strip extension
-        .replace(/[/\\:*?"<>|]/g, '_')   // strip forbidden chars
-        .replace(/\.{2,}/g, '_')
-        .trim() || 'upload';
+        .replace(/\.pdf$/i, '')           // strip .pdf extension
+        .replace(/[^a-zA-Z0-9_-]/g, '_') // replace every other char with _
+        .replace(/_+/g, '_')              // collapse consecutive underscores
+        .replace(/^_|_$/g, '')            // trim leading/trailing underscores
+        || 'upload';
 }
 
 // ── Handler ────────────────────────────────────────────────────────────────────
@@ -141,7 +149,7 @@ export async function POST(req: Request): Promise<NextResponse> {
         await connectToDatabase();
 
         const pdfFileDoc = await PdfFile.create({
-            originalName: file.name,
+            originalName: baseName,  // already sanitised — safe for filenames & Cloudinary
             sizeBytes: file.size,
             pageCount,
             totalParts: 0,
