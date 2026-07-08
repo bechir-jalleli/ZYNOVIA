@@ -220,8 +220,8 @@ const Pricing = () => {
   <button className='btn-primary btn-hover w-full rounded-xl py-3 text-sm font-semibold shadow-md'>
     {config.cta}
   </button>
-</Link>
-                      </div>
+</Link> 
+                      </div> 
                     </div>
                   </div>
                 )

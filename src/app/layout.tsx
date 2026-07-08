@@ -5,7 +5,7 @@ import Header from './components/Layout/Header'
 import { ThemeProvider } from 'next-themes'
 import Footer from './components/Layout/Footer'
 import ScrollToTop from './components/ScrollToTop'
-import FloatingSocialMenu from './components/Layout/FloatingSocialMenu'
+import ConditionalFloatingSocialMenu from './components/Layout/ConditionalFloatingSocialMenu'
 import { AuthProvider } from '@/context/AuthContext'
 import { Suspense } from 'react'
 import TrackingScripts from './components/Analytics/TrackingScripts'
@@ -213,7 +213,7 @@ export default function RootLayout({
             <Header />
             {children}
             <Footer />
-            <FloatingSocialMenu />
+            <ConditionalFloatingSocialMenu />
           </AuthProvider>
         </ThemeProvider>
       </body>

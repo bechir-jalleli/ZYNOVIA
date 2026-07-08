@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Icon } from '@iconify/react'
 import { staticFormations } from './FormationsList'
+
+type Role = 'Parent' | 'Établissement scolaire' | 'Entreprise';
 import { fadeInUp, scaleIn } from './SectionHeading'
 import DownloadModal from './DownloadModal'
 
@@ -15,6 +17,9 @@ const paymentMethods: {
   description: string
   icon: string
 }[] = [
+
+// Define possible registration roles
+
   {
     value: 'especes',
     label: 'Espèces',
@@ -37,11 +42,10 @@ const paymentMethods: {
 
 const fieldGroups = [
   {
-    legend: 'Coordonnées du parent',
+    legend: "Coordonnées de l'entreprise / établissement scolaire",
     icon: 'solar:user-bold-duotone',
     fields: [
-      { placeholder: 'Nom', icon: 'solar:user-id-bold-duotone' },
-      { placeholder: 'Prénom', icon: 'solar:user-id-bold-duotone' },
+      { placeholder: "Nom", icon: 'solar:building-2-bold-duotone' },
       { placeholder: 'Téléphone', icon: 'solar:phone-bold-duotone', type: 'tel' },
       { placeholder: 'E-mail', icon: 'solar:letter-bold-duotone', type: 'email' },
     ],
@@ -54,16 +58,18 @@ const fieldGroups = [
       { placeholder: "Âge de l'enfant", icon: 'solar:cake-bold-duotone' },
     ],
   },
-]
+];
 
 export default function ReservationPaymentSection({ preselectedFormation = '' }: { preselectedFormation?: string }) {
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('')
+  const [selectedRole, setSelectedRole] = useState<Role>('Parent')
   const [formations, setFormations] = useState<any[]>([])
   const [downloadModalOpen, setDownloadModalOpen] = useState(false)
 
   const [formData, setFormData] = useState({
     parentNom: '',
     parentPrenom: '',
+    organizationName: '',
     parentPhone: '',
     parentEmail: '',
     childName: '',
@@ -102,17 +108,23 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
   }, [])
 
   const handleInputChange = (fieldPlaceholder: string, value: string) => {
-    const keyMap: Record<string, string> = {
-      'Nom': 'parentNom',
-      'Prénom': 'parentPrenom',
-      'Téléphone': 'parentPhone',
-      'E-mail': 'parentEmail',
-      "Nom de l'enfant": 'childName',
-      "Âge de l'enfant": 'childAge',
+    // Determine key based on placeholder and selected role
+    let key: string | undefined;
+    if (fieldPlaceholder === 'Nom') {
+      key = selectedRole === 'Parent' ? 'parentNom' : 'organizationName';
+    } else if (fieldPlaceholder === 'Prénom') {
+      key = 'parentPrenom';
+    } else if (fieldPlaceholder === 'Téléphone') {
+      key = 'parentPhone';
+    } else if (fieldPlaceholder === 'E-mail') {
+      key = 'parentEmail';
+    } else if (fieldPlaceholder === "Nom de l'enfant") {
+      key = 'childName';
+    } else if (fieldPlaceholder === "Âge de l'enfant") {
+      key = 'childAge';
     }
-    const key = keyMap[fieldPlaceholder]
     if (key) {
-      setFormData(prev => ({ ...prev, [key]: value }))
+      setFormData(prev => ({ ...prev, [key]: value }));
     }
   }
 
@@ -146,11 +158,10 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: `${formData.parentNom} ${formData.parentPrenom}`,
           email: formData.parentEmail,
           phone: formData.parentPhone,
-          role: 'Inscription',
-          message: `Nom de l'enfant: ${formData.childName}\nÂge de l'enfant: ${formData.childAge}\nFormation souhaitée: ${formData.selectedFormation}\nMode de paiement: ${paymentMethod}\nMessage: ${formData.message}`,
+          role: selectedRole,
+          message: `Formation souhaitée: ${formData.selectedFormation}\nMode de paiement: ${paymentMethod}\nMessage: ${formData.message}`,
         }),
       })
 
@@ -159,6 +170,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
         setFormData({
           parentNom: '',
           parentPrenom: '',
+          organizationName: '',
           parentPhone: '',
           parentEmail: '',
           childName: '',
@@ -216,41 +228,153 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
               )}
 
               <form className='flex flex-col gap-8' onSubmit={handleFormSubmit}>
-                {fieldGroups.map((group) => (
-                  <fieldset key={group.legend}>
+                {/* Role selection */}
+                <fieldset>
+                  <legend className='flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-white/40 mb-3'>
+                    <Icon icon='solar:user-bold-duotone' className='w-4 h-4 text-[#3FA9DF]' />
+                    Type d'inscription
+                  </legend>
+                  <div className='grid grid-cols-3 gap-4'>
+                    {['Parent', 'Établissement scolaire', 'Entreprise'].map(r => (
+                      <label key={r} className='flex items-center gap-2 cursor-pointer'>
+                        <input
+                          type='radio'
+                          name='roleSelection'
+                          value={r}
+                          checked={selectedRole === r}
+                          onChange={() => setSelectedRole(r as any)}
+                          className='sr-only'
+                        />
+                        <span className={`px-3 py-2 rounded text-[11px] ${selectedRole === r ? 'bg-[#3FA9DF]/20 text-[#3FA9DF]' : 'bg-white/5 text-white/60'}`}>{r}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                {/* Conditional fields based on role */}
+                {selectedRole !== 'Parent' && (
+                  <fieldset>
                     <legend className='flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-white/40 mb-3'>
-                      <Icon icon={group.icon} className='w-4 h-4 text-[#3FA9DF]' />
-                      {group.legend}
+                      <Icon icon='solar:user-bold-duotone' className='w-4 h-4 text-[#3FA9DF]' />
+                      Coordonnées de l'entreprise / établissement scolaire
                     </legend>
                     <div className='grid sm:grid-cols-2 gap-4'>
-                      {group.fields.map((field) => {
-                        const keyMap: Record<string, keyof typeof formData> = {
-                          'Nom': 'parentNom',
-                          'Prénom': 'parentPrenom',
-                          'Téléphone': 'parentPhone',
-                          'E-mail': 'parentEmail',
-                          "Nom de l'enfant": 'childName',
-                          "Âge de l'enfant": 'childAge',
-                        }
-                        const stateKey = keyMap[field.placeholder]
-                        return (
-                          <div key={field.placeholder} className='relative'>
-                           
-                            <input
-                              id={field.placeholder === 'Nom' ? 'parent-nom-input' : undefined}
-                              placeholder={field.placeholder}
-                              type={field.type || 'text'}
-                              className='formation-input pl-10'
-                              value={stateKey ? formData[stateKey] : ''}
-                              onChange={(e) => stateKey && handleInputChange(field.placeholder, e.target.value)}
-                              required
-                            />
-                          </div>
-                        )
-                      })}
+                      <div className='relative'>
+                        <input
+                          placeholder='Nom'
+                          type='text'
+                          className='formation-input pl-10'
+                          value={formData.organizationName}
+                          onChange={e => handleInputChange('Nom', e.target.value)}
+                          required
+                        />
+                      </div>
+                      <div className='relative'>
+                        <input
+                          placeholder='Téléphone'
+                          type='tel'
+                          className='formation-input pl-10'
+                          value={formData.parentPhone}
+                          onChange={e => handleInputChange('Téléphone', e.target.value)}
+                          required
+                        />
+                      </div>
+                      <div className='relative'>
+                        <input
+                          placeholder='E-mail'
+                          type='email'
+                          className='formation-input pl-10'
+                          value={formData.parentEmail}
+                          onChange={e => handleInputChange('E-mail', e.target.value)}
+                          required
+                        />
+                      </div>
                     </div>
                   </fieldset>
-                ))}
+                )}
+
+                {selectedRole === 'Parent' && (
+                  <fieldset>
+                    <legend className='flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-white/40 mb-3'>
+                      <Icon icon='solar:user-bold-duotone' className='w-4 h-4 text-[#3FA9DF]' />
+                      Coordonnées du parent
+                    </legend>
+                    <div className='grid sm:grid-cols-2 gap-4'>
+                      <div className='relative'>
+                        <input
+                          placeholder='Nom'
+                          type='text'
+                          className='formation-input pl-10'
+                          value={formData.parentNom}
+                          onChange={e => handleInputChange('Nom', e.target.value)}
+                          required
+                        />
+                      </div>
+                      <div className='relative'>
+                        <input
+                          placeholder='Prénom'
+                          type='text'
+                          className='formation-input pl-10'
+                          value={formData.parentPrenom}
+                          onChange={e => handleInputChange('Prénom', e.target.value)}
+                          required
+                        />
+                      </div>
+                      <div className='relative'>
+                        <input
+                          placeholder='Téléphone'
+                          type='tel'
+                          className='formation-input pl-10'
+                          value={formData.parentPhone}
+                          onChange={e => handleInputChange('Téléphone', e.target.value)}
+                          required
+                        />
+                      </div>
+                      <div className='relative'>
+                        <input
+                          placeholder='E-mail'
+                          type='email'
+                          className='formation-input pl-10'
+                          value={formData.parentEmail}
+                          onChange={e => handleInputChange('E-mail', e.target.value)}
+                          required
+                        />
+                      </div>
+                    </div>
+                  </fieldset>
+                )}
+
+                {/* Child information shown only for Parent */}
+                {selectedRole === 'Parent' && (
+                  <fieldset>
+                    <legend className='flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-white/40 mb-3'>
+                      <Icon icon='solar:smile-circle-bold-duotone' className='w-4 h-4 text-[#3FA9DF]' />
+                      Informations sur l'enfant
+                    </legend>
+                    <div className='grid sm:grid-cols-2 gap-4'>
+                      <div className='relative'>
+                        <input
+                          placeholder="Nom de l'enfant"
+                          type='text'
+                          className='formation-input pl-10'
+                          value={formData.childName}
+                          onChange={e => handleInputChange("Nom de l'enfant", e.target.value)}
+                          required
+                        />
+                      </div>
+                      <div className='relative'>
+                        <input
+                          placeholder="Âge de l'enfant"
+                          type='text'
+                          className='formation-input pl-10'
+                          value={formData.childAge}
+                          onChange={e => handleInputChange("Âge de l'enfant", e.target.value)}
+                          required
+                        />
+                      </div>
+                    </div>
+                  </fieldset>
+                )}
 
                 <fieldset>
                   <legend className='flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-white/40 mb-3'>

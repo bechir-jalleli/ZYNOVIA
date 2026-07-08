@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import NosFormationsContent from './NosFormationsContent'
-
+import PictureGallery from '../components/Home/PictureGallery';
 export const metadata: Metadata = {
   title: 'Nos Formations en Intelligence Artificielle — Zynovia',
   description:
@@ -54,6 +54,7 @@ export default function NosFormationsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <NosFormationsContent />
+
     </>
   )
 }

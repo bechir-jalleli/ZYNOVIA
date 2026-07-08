@@ -10,6 +10,7 @@ import TrainersSection from './components/TrainersSection'
 import TestimonialsSection from './components/TestimonialsSection'
 import FaqSection from './components/FaqSection'
 import ReservationPaymentSection from './components/ReservationPaymentSection'
+import PictureGallery from '../components/Home/PictureGallery';
 
 export default function NosFormationsContent() {
   const [preselectedFormation, setPreselectedFormation] = useState('')
@@ -58,6 +59,8 @@ export default function NosFormationsContent() {
           <TrainersSection />
           <TestimonialsSection />
           <ReservationPaymentSection preselectedFormation={preselectedFormation} />
+                      <PictureGallery />
+
           <FaqSection />
         </div>
       </div>

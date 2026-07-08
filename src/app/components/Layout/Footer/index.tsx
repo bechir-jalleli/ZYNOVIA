@@ -60,6 +60,12 @@ const Footer = () => {
                 />
               </Link>
             </div>
+            <Link
+                href="/inscription"
+                className="text-center px-4 py-2 text-sm sm:text-base font-semibold text-white rounded-[12px] bg-gradient-to-r from-[#0091E6] to-[#0063B1] hover:from-[#0079C2] hover:to-[#005A9C] shadow-md hover:shadow-lg transition-transform transform hover:scale-105 duration-300"
+              >
+                Inscrire
+            </Link>
           </div>
 
           {/* SECOND COLUMN - Navigation Links */}
