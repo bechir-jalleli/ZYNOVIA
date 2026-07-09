@@ -246,7 +246,7 @@ const FormationsBootcamps = () => {
 
                           <div className='mt-auto flex flex-col sm:flex-row gap-3'>
                             <Link
-                              href={`/inscription?program=${encodeURIComponent(f.title)}`}
+                              href={`/inscription?program=${encodeURIComponent(f.title)}&role=Parent`}
                               className={`flex-1 text-center px-6 py-3.5 text-sm sm:text-base font-semibold text-white rounded-[12px] transition-all duration-300 hover:shadow-lg hover:scale-[1.01] ${f.buttonClass}`}
                             >
                               Inscrire mon enfant

@@ -19,8 +19,11 @@ export default function NosFormationsContent() {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search)
       const prog = params.get('program')
-      if (prog) {
-        setPreselectedFormation(prog)
+      const role = params.get('role')
+      if (prog || role) {
+        if (prog) {
+          setPreselectedFormation(prog)
+        }
         
         // Scroll directly to the form and focus the first field after rendering.
         // We use multiple timeouts to handle layout shifts dynamically as content (e.g. reviews/images) loads.

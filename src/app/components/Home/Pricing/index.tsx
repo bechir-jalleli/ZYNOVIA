@@ -214,13 +214,19 @@ const Pricing = () => {
                           ))}
                         </ul>
                        <Link
-  href={`/inscription?program=${encodeURIComponent(config.title)}`}
-  className="mt-auto w-full"
->
-  <button className='btn-primary btn-hover w-full rounded-xl py-3 text-sm font-semibold shadow-md'>
-    {config.cta}
-  </button>
-</Link> 
+                         href={`/inscription?program=${encodeURIComponent(config.title)}${
+                           config.title === 'Programme IA — 1 heure par semaine' || config.title === 'Bootcamp IA — Vacances scolaires'
+                             ? '&role=etablissement'
+                             : config.title === 'Bootcamp IA — Enfants de salariés'
+                               ? '&role=Entreprise'
+                               : ''
+                         }`}
+                         className="mt-auto w-full"
+                       >
+                         <button className='btn-primary btn-hover w-full rounded-xl py-3 text-sm font-semibold shadow-md'>
+                           {config.cta}
+                         </button>
+                       </Link> 
                       </div> 
                     </div>
                   </div>

@@ -210,11 +210,11 @@ export default function ProgrammesContent() {
 
                   {/* CTA buttons – calquées sur celles de l'accueil */}
                   <div className='flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 w-full max-w-2xl'>
-                    <Link href='/contact?profil=Parent'>
+                    <Link href='/inscription?role=Parent'>
                       <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-white border rounded-[10px] border-transParent bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-md whitespace-nowrap'>                        👨‍👩‍👧 Parent
                       </button>
                     </Link>
-                    <Link href='/contact?profil=etablissement'>
+                    <Link href='/inscription?role=etablissement'>
                       <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-primary border rounded-[10px] border-primary bg-white dark:bg-transParent hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:cursor-pointer duration-300 shadow-sm whitespace-nowrap'>
                         🏫 Établissement scolaire
                       </button>
@@ -1037,7 +1037,7 @@ export default function ProgrammesContent() {
                     </div>
                   </div>
                   <Link
-                    href='/contact?profil=Parent'
+                    href='/inscription?role=Parent'
                     className='inline-flex items-center justify-center rounded-xl btn-gradient px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/40 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
                   >
                     S&apos;inscrire au prochain bootcamp

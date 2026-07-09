@@ -90,6 +90,29 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
     }
   }, [preselectedFormation])
 
+  // Auto-select the role from URL search parameters on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search)
+      const roleParam = params.get('role')
+      if (roleParam) {
+        const lower = roleParam.toLowerCase()
+        if (lower === 'parent') {
+          setSelectedRole('Parent')
+        } else if (
+          lower === 'etablissement' ||
+          lower === 'établissement' ||
+          lower === 'etablissement scolaire' ||
+          lower === 'établissement scolaire'
+        ) {
+          setSelectedRole('Établissement scolaire')
+        } else if (lower === 'entreprise') {
+          setSelectedRole('Entreprise')
+        }
+      }
+    }
+  }, [])
+
   useEffect(() => {
     async function loadFormations() {
       try {
@@ -558,6 +581,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
             <div className='flex flex-col gap-3 w-full mt-2'>
               <button
                 onClick={() => {
+                  setSelectedRole('Parent')
                   const el = document.getElementById('inscription-form');
                   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }}

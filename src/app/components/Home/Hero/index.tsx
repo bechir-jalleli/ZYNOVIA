@@ -39,17 +39,17 @@ const Hero = () => {
 </motion.p>
 
                 <div className='flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 w-full max-w-2xl'>
-                  <Link href={'/contact?profil=Parent'}>
+                  <Link href={'/inscription?role=Parent'}>
                     <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base btn-primary btn-hover rounded-[10px] shadow-md whitespace-nowrap'>
                       👨‍👩‍👧 Parent
                     </button>
                   </Link>
-                  <Link href={'/contact?profil=etablissement'}>
+                  <Link href={'/inscription?role=etablissement'}>
                     <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base btn-outline btn-hover rounded-[10px] font-semibold shadow-sm whitespace-nowrap'>
                       🏫 Établissement scolaire
                     </button>
                   </Link>
-                  <Link href={'/contact?profil=Entreprise'}>
+                  <Link href={'/inscription?role=Entreprise'}>
                     <button className='w-full sm:w-auto px-6 sm:px-8 py-3.5 text-sm sm:text-base btn-outline btn-hover rounded-[10px] font-semibold shadow-sm whitespace-nowrap'>
                       🏢 Entreprise
                     </button>
