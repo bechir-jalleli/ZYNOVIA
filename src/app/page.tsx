@@ -12,21 +12,34 @@ import HomeFAQ from './components/Home/HomeFAQ'
 import FinalCTA from './components/Home/FinalCTA'
 
 export const metadata: Metadata = {
-  title: 'Zynovia Academy | L\'académie de l\'intelligence Artificielle',
+  title: 'Zynovia Academy | L\'Académie de l\'Intelligence Artificielle pour Jeunes',
   description:
-    'Zynovia forme les collégiens et lycéens aux métiers de demain : intelligence artificielle. Découvrez nos programmes et bootcamps.',
+    'Rejoignez Zynovia Academy, l\'école d\'élite d\'Intelligence Artificielle (IA). Cours, ateliers et bootcamps en IA pour collégiens et lycéens avec Zynovia.',
+  keywords: [
+    'Zynovia',
+    'Zynovia Academy',
+    'Académie Zynovia',
+    'Zynovia IA',
+    'Zynovia Intelligence Artificielle',
+    'Zynovia Tunisie',
+    'Zynovia formation IA',
+    'Zynovia cours IA',
+    'Zynovia Academy formations',
+    'Apprendre l\'IA',
+    'Cours IA adolescents'
+  ],
   openGraph: {
-    title: 'Zynovia Academy | L\'académie de l\'intelligence Artificielle',
+    title: 'Zynovia Academy | L\'Académie de l\'Intelligence Artificielle pour Jeunes',
     description:
-      'Zynovia forme les collégiens et lycéens à l\'intelligence artificielle. Découvrez nos formations.',
+      'Rejoignez Zynovia Academy, l\'école d\'élite d\'Intelligence Artificielle (IA) pour collégiens et lycéens par Zynovia.',
     url: 'https://www.zynovia-academy.com',
-    siteName: 'Zynovia',
+    siteName: 'Zynovia Academy',
     images: [
       {
         url: '/images/logo/ZYNOVIAPNGG-removebg-preview.png',
         width: 1200,
         height: 630,
-        alt: 'Zynovia — Académie IA pour Jeunes',
+        alt: 'Zynovia Academy — Académie IA pour Jeunes',
       },
     ],
     locale: 'fr_FR',

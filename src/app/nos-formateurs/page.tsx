@@ -2,21 +2,29 @@ import type { Metadata } from 'next'
 import NosFormateursContent from './NosFormateursContent'
 
 export const metadata: Metadata = {
-  title: 'Nos Formateurs Experts — Zynovia',
+  title: 'Nos Formateurs Experts en IA — Zynovia Academy',
   description:
-    'Découvrez l\'équipe de formateurs experts de Zynovia en Intelligence Artificielle. Une équipe passionnée dédiée au mentorat et à la réussite des jeunes.',
+    'Faites connaissance avec les mentors et ingénieurs de Zynovia Academy. Une équipe de formateurs d\'élite chez Zynovia pour guider les jeunes en IA.',
+  keywords: [
+    'Zynovia',
+    'Zynovia Academy',
+    'Formateurs Zynovia',
+    'Mentors Zynovia Academy',
+    'Ingénieurs Zynovia',
+    'Professeurs Zynovia'
+  ],
   openGraph: {
-    title: 'Nos Formateurs Experts — Zynovia',
+    title: 'Nos Formateurs Experts en IA — Zynovia Academy',
     description:
-      "Une équipe de formateurs passionnés pour accompagner chaque apprenant vers la maîtrise de l'IA.",
+      'Rencontrez les ingénieurs et formateurs experts en Intelligence Artificielle de Zynovia Academy.',
     url: 'https://www.zynovia-academy.com/nos-formateurs',
-    siteName: 'Zynovia',
+    siteName: 'Zynovia Academy',
     images: [
       {
         url: '/images/formateurs/nos-formateurs.jpg',
         width: 1200,
         height: 630,
-        alt: 'Formateurs Zynovia',
+        alt: 'Formateurs Zynovia Academy',
       },
     ],
     locale: 'fr_FR',

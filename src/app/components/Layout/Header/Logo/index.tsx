@@ -15,7 +15,7 @@ const Logo = ({ variant = 'footer' }: LogoProps) => {
     <Link href='/' className={variant === 'header' ? 'inline-flex shrink-0' : undefined}>
       <Image
         src='/images/logo/ZYNOVIAPNGG-removebg-preview.png'
-        alt='ZYNOVIA'
+        alt="Zynovia Academy — Académie d'Intelligence Artificielle"
         width={221}
         height={207}
         className={`${sizeClass} block dark:hidden`}
@@ -23,7 +23,7 @@ const Logo = ({ variant = 'footer' }: LogoProps) => {
       />
       <Image
         src='/images/logo/ZYNOVIA VERSION NEGATIVE.png'
-        alt='ZYNOVIA'
+        alt="Zynovia Academy — Académie d'Intelligence Artificielle"
         width={333}
         height={309}
         className={`${sizeClass} hidden dark:block`}

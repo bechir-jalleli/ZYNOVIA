@@ -149,14 +149,16 @@ export default function AdminInscriptionsPage() {
     }), [submissions]);
 
     const filtered = useMemo(() => {
-        let result = submissions;
+        const q = search.trim().toLowerCase();
 
-        if (activeTab !== 'all') {
-            result = result.filter((s) => getRoleKind(s.role) === activeTab);
-        }
+        // When a search query is active, search across ALL submissions (ignore tab filter)
+        let result = q
+            ? submissions
+            : activeTab !== 'all'
+              ? submissions.filter((s) => getRoleKind(s.role) === activeTab)
+              : submissions;
 
-        if (search.trim()) {
-            const q = search.toLowerCase();
+        if (q) {
             result = result.filter(
                 (s) =>
                     s.name?.toLowerCase().includes(q) ||

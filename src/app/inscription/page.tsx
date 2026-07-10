@@ -2,15 +2,23 @@ import type { Metadata } from 'next'
 import NosFormationsContent from './NosFormationsContent'
 import PictureGallery from '../components/Home/PictureGallery';
 export const metadata: Metadata = {
-  title: 'Nos Formations en Intelligence Artificielle — Zynovia',
+  title: 'S\'inscrire aux Formations IA — Zynovia Academy',
   description:
-    'Inscrivez votre enfant à une formation IA avec Zynovia Academy. Découvrez nos ateliers pratiques, parcours et bootcamps encadrés par des ingénieurs IA.',
+    'Inscrivez votre enfant à Zynovia Academy. Accédez aux formulaires d\'inscription pour nos programmes d\'Intelligence Artificielle (IA) signés Zynovia.',
+  keywords: [
+    'Zynovia',
+    'Zynovia Academy',
+    'Inscription Zynovia',
+    'Rejoindre Zynovia Academy',
+    'Formulaire inscription Zynovia',
+    'Tarif Zynovia'
+  ],
   openGraph: {
-    title: 'Nos Formations en Intelligence Artificielle — Zynovia',
+    title: 'S\'inscrire aux Formations IA — Zynovia Academy',
     description:
-      'Inscrivez votre enfant à une formation IA avec Zynovia Academy. Ateliers pratiques, certification incluse, aucun prérequis, encadré par des ingénieurs IA.',
+      'Formulaire d\'inscription officiel pour les formations et bootcamps de Zynovia Academy.',
     url: 'https://www.zynovia-academy.com/inscription',
-    siteName: 'Zynovia',
+    siteName: 'Zynovia Academy',
     images: [
       {
         url: '/images/parent/image.png',

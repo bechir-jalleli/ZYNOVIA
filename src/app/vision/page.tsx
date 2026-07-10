@@ -2,21 +2,29 @@ import type { Metadata } from 'next'
 import NotreVisionPage from '../components/Home/Vision/page'
 
 export const metadata: Metadata = {
-  title: 'Notre Vision Pédagogique — Zynovia',
+  title: 'Notre Vision Pédagogique — Zynovia Academy',
   description:
-    "Découvrez l'approche pédagogique et la vision de Zynovia pour préparer la jeunesse aux métiers de demain grâce à l'IA.",
+    'La vision de Zynovia Academy : démocratiser l\'Intelligence Artificielle (IA) pour les collégiens et lycéens et façonner les futurs leaders avec Zynovia.',
+  keywords: [
+    'Zynovia',
+    'Zynovia Academy',
+    'Vision Zynovia',
+    'Pédagogie Zynovia Academy',
+    'Apprendre l\'IA Zynovia',
+    'Avenir IA Zynovia'
+  ],
   openGraph: {
-    title: 'Notre Vision Pédagogique — Zynovia',
+    title: 'Notre Vision Pédagogique — Zynovia Academy',
     description:
-      "Découvrez la vision de Zynovia : préparer les collégiens et lycéens à un avenir transformé par l'IA.",
+      'Découvrez la vision de Zynovia Academy : préparer les collégiens et lycéens à un avenir propulsé par l\'IA.',
     url: 'https://www.zynovia-academy.com/vision',
-    siteName: 'Zynovia',
+    siteName: 'Zynovia Academy',
     images: [
       {
         url: '/images/vision/vision.jpg',
         width: 1200,
         height: 630,
-        alt: 'Vision pédagogique de Zynovia',
+        alt: 'Vision pédagogique de Zynovia Academy',
       },
     ],
     locale: 'fr_FR',

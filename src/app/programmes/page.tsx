@@ -2,21 +2,30 @@ import type { Metadata } from 'next'
 import ProgrammesContent from './ProgrammesContent'
 
 export const metadata: Metadata = {
-  title: 'Nos Programmes de Formation — Zynovia',
+  title: 'Programmes de Formation IA — Zynovia Academy',
   description:
-    'Découvrez les formations Zynovia en Intelligence Artificielle : programme annuel pour écoles et bootcamps intensifs pendant les vacances.',
+    'Explorez les programmes exclusifs de Zynovia Academy : cours annuels d\'Intelligence Artificielle (IA), ateliers pratiques et bootcamps d\'été avec Zynovia.',
+  keywords: [
+    'Zynovia',
+    'Zynovia Academy',
+    'Programmes Zynovia',
+    'Formations Zynovia Academy',
+    'Cours IA Zynovia',
+    'Bootcamp Zynovia Academy',
+    'Zynovia cursus'
+  ],
   openGraph: {
-    title: 'Programmes de Formation IA — Zynovia',
+    title: 'Programmes de Formation IA — Zynovia Academy',
     description:
-      "Découvrez les programmes de Zynovia : parcours annuel d'intégration IA et bootcamps intensifs pendant les vacances scolaires.",
+      'Découvrez les programmes de Zynovia Academy : parcours annuel d\'intégration IA et bootcamps intensifs en IA.',
     url: 'https://www.zynovia-academy.com/programmes',
-    siteName: 'Zynovia',
+    siteName: 'Zynovia Academy',
     images: [
       {
         url: '/images/programe/programe.jpg',
         width: 1200,
         height: 630,
-        alt: 'Programmes Zynovia — Formation IA',
+        alt: 'Programmes Zynovia Academy — Formation IA',
       },
     ],
     locale: 'fr_FR',

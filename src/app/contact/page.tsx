@@ -3,16 +3,24 @@ import { Suspense } from 'react'
 import ContactContent from './ContactContent'
 
 export const metadata: Metadata = {
-  title: 'Contact & Inscriptions — Zynovia',
+  title: 'Contact & Localisation — Zynovia Academy',
   description:
-    'Contactez Zynovia pour Inscrire votre enfant, planifier une présentation pour votre école ou demander une formation. Notre équipe vous accompagne.',
+    'Contactez Zynovia Academy à Tunis ou en ligne. Posez vos questions sur nos formations et rejoignez la communauté Zynovia.',
+  keywords: [
+    'Zynovia',
+    'Zynovia Academy',
+    'Contact Zynovia',
+    'Zynovia adresse',
+    'Zynovia téléphone',
+    'Zynovia Tunis Lac'
+  ],
   openGraph: {
-    title: 'Contact & Inscriptions — Zynovia',
+    title: 'Contact & Localisation — Zynovia Academy',
     description:
-      'Contactez Zynovia pour prendre rendez-vous et découvrir le programme le plus adapté. Parents, établissements, entreprises : notre équipe vous accompagne.',
+      'Contactez Zynovia Academy : coordonnées, plan d\'accès et formulaires pour parents, écoles et entreprises.',
     url: 'https://www.zynovia-academy.com/contact',
-    siteName: 'Zynovia',
-    images: [{ url: '/images/contact/cnr.jpg', width: 1200, height: 630, alt: 'Contact Zynovia' }],
+    siteName: 'Zynovia Academy',
+    images: [{ url: '/images/contact/cnr.jpg', width: 1200, height: 630, alt: 'Contact Zynovia Academy' }],
     locale: 'fr_FR',
     type: 'website',
   },

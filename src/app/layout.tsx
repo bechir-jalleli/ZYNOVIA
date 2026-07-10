@@ -18,14 +18,27 @@ const DMSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.zynovia-academy.com'),
   title: {
-    default: 'Zynovia — Académie IA pour Jeunes',
-    template: '%s — Zynovia',
+    default: 'Zynovia Academy — L\'Académie de l\'Intelligence Artificielle (IA) pour Jeunes',
+    template: '%s | Zynovia Academy',
   },
   description:
-    'Zynovia est une académie d\'Intelligence Artificielle spécialisée pour collégiens et lycéens. Découvrez nos parcours annuels et bootcamps intensifs en IA.',
-  authors: [{ name: 'Zynovia' }],
-  creator: 'Zynovia',
-  publisher: 'Zynovia',
+    'Zynovia Academy est la première académie d\'Intelligence Artificielle (IA) dédiée aux collégiens et lycéens. Explorez nos parcours annuels et bootcamps intensifs en IA signés Zynovia.',
+  keywords: [
+    'Zynovia',
+    'Zynovia Academy',
+    'Académie Zynovia',
+    'Zynovia IA',
+    'Zynovia Intelligence Artificielle',
+    'Zynovia formations',
+    'Formation IA jeunes',
+    'Bootcamp IA collégiens',
+    'Zynovia Tunis',
+    'Zynovia France',
+    'Zynovia Academy Tunis'
+  ],
+  authors: [{ name: 'Zynovia Academy' }],
+  creator: 'Zynovia Academy',
+  publisher: 'Zynovia Academy',
   alternates: {
     canonical: 'https://www.zynovia-academy.com',
     languages: {
@@ -52,16 +65,16 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://www.zynovia-academy.com',
-    siteName: 'Zynovia',
-    title: 'Zynovia — Académie d\'Intelligence Artificielle pour Jeunes',
+    siteName: 'Zynovia Academy',
+    title: 'Zynovia Academy — Académie d\'Intelligence Artificielle pour Jeunes',
     description:
-      'Zynovia prépare les jeunes aux compétences de demain avec l\'intelligence artificielle. Découvrez nos formations.',
+      'Zynovia Academy prépare la jeunesse aux compétences essentielles du futur avec des formations d\'excellence en Intelligence Artificielle.',
     images: [
       {
         url: '/images/banner/image.png',
         width: 1200,
         height: 630,
-        alt: 'Zynovia — Académie Intelligence Artificielle pour Jeunes',
+        alt: 'Zynovia Academy — Académie Intelligence Artificielle pour Jeunes',
       },
     ],
   },
@@ -90,22 +103,22 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'EducationalOrganization',
     '@id': 'https://www.zynovia-academy.com/#organization',
-    'name': 'Zynovia',
+    'name': 'Zynovia Academy',
     'legalName': 'Zynovia Academy',
     'url': 'https://www.zynovia-academy.com',
     'logo': {
       '@type': 'ImageObject',
       'url': 'https://www.zynovia-academy.com/images/logo/ZYNOVIAPNGG-removebg-preview.png',
-      'caption': 'Zynovia'
+      'caption': 'Zynovia Academy'
     },
     'image': 'https://www.zynovia-academy.com/images/banner/image.png',
-    'description': 'Zynovia est une académie spécialisée dans la formation en Intelligence Artificielle pour les jeunes de 12 à 18 ans.',
+    'description': 'Zynovia Academy est une académie spécialisée dans la formation en Intelligence Artificielle (IA) pour les jeunes de 12 à 18 ans par Zynovia.',
     'foundingDate': '2026',
     'telephone': '+21625857621',
     'email': 'contact@zynovia-academy.com',
     'brand': {
       '@type': 'Brand',
-      'name': 'Zynovia'
+      'name': 'Zynovia Academy'
     },
     'address': {
       '@type': 'PostalAddress',
@@ -130,7 +143,7 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     '@id': 'https://www.zynovia-academy.com/#website',
-    'name': 'Zynovia',
+    'name': 'Zynovia Academy',
     'url': 'https://www.zynovia-academy.com',
     'publisher': {
       '@id': 'https://www.zynovia-academy.com/#organization'

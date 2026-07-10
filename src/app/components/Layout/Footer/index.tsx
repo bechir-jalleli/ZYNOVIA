@@ -77,7 +77,7 @@ const Footer = () => {
               }}
               className="text-center px-4 py-2 text-sm sm:text-base font-semibold text-white rounded-[12px] bg-gradient-to-r from-[#0091E6] to-[#0063B1] hover:from-[#0079C2] hover:to-[#005A9C] shadow-md hover:shadow-lg transition-transform transform hover:scale-105 duration-300"
             >
-              Inscrire
+              Inscrire mon enfant
             </Link>
           </div>
 
@@ -94,7 +94,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link href='/a-propos' className='text-sm font-normal text-darkblue/60 hover:text-primary dark:text-white/60 dark:hover:text-primary transition-colors duration-200'>
-                  À propos de Zynovia
+                  À propos de Zynovia Academy
                 </Link>
               </li>
               <li>
@@ -222,7 +222,7 @@ const Footer = () => {
       </div>
       <div className='py-3'>
         <p className='text-center text-sm text-darkblue/60 dark:text-white/60'>
-          © 2025 - All Rights Reserved by{' '}
+          © 2026 - All Rights Reserved by{' '}
           <Link
             href='/'
             className='hover:text-primary dark:hover:text-primary transition-colors duration-200'>

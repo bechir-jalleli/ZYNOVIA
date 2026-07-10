@@ -2,28 +2,32 @@ import type { Metadata } from 'next'
 import RendezVousContent from './RendezVousContent'
 
 export const metadata: Metadata = {
-  title: 'Prendre Rendez-vous',
+  title: 'Prendre Rendez-vous — Zynovia Academy',
   description:
-    "Planifiez un entretien gratuit en ligne ou sur notre site de Tunis pour découvrir nos programmes d'IA pour enfants et adolescents.",
+    'Planifiez un entretien gratuit avec les conseillers de Zynovia Academy. Discutez de l\'orientation en IA de votre enfant et découvrez Zynovia.',
   keywords: [
+    'Zynovia',
+    'Zynovia Academy',
+    'Rendez-vous Zynovia',
+    'Contact Zynovia Academy',
+    'Orientation Zynovia',
+    'Entretien Zynovia',
     'rendez-vous ZYNOVIA',
     'prendre rendez-vous IA',
-    'rendez-vous académie IA',
-    'consultation formation IA ',
-    'rendez-vous ZYNOVIA Academy',
+    'rendez-vous académie IA'
   ],
   openGraph: {
-    title: 'Prendre Rendez-vous | ZYNOVIA Academy',
+    title: 'Prendre Rendez-vous — Zynovia Academy',
     description:
-      'Réservez un rendez-vous en visioconférence ou sur site pour découvrir nos programmes IA ou établir un partenariat.',
+      'Planifiez un entretien gratuit en visioconférence ou en présentiel avec Zynovia Academy.',
     url: 'https://www.zynovia-academy.com/rendez-vous',
-    siteName: 'ZYNOVIA Academy',
+    siteName: 'Zynovia Academy',
     images: [
       {
         url: '/images/banner/image.png',
         width: 1200,
         height: 630,
-        alt: 'Rendez-vous ZYNOVIA Academy',
+        alt: 'Rendez-vous Zynovia Academy',
       },
     ],
     locale: 'fr_FR',

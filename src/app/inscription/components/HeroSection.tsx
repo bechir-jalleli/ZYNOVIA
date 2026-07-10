@@ -216,7 +216,7 @@ export default function HeroSection() {
                   e.currentTarget.style.boxShadow = 'none';
                 }}
               >
-                Inscrire
+                Inscrire mon enfant
               </button>
               <button
                 onClick={() => setDownloadModalOpen(true)}

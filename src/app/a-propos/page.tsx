@@ -2,21 +2,30 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'À propos de Zynovia | Académie IA pour Jeunes',
+  title: 'À propos de Zynovia Academy | Notre Mission',
   description:
-    'Zynovia est une académie spécialisée en Intelligence Artificielle pour les jeunes de 12 à 18 ans. Découvrez notre mission, nos valeurs et notre histoire.',
+    'Découvrez Zynovia Academy : l\'histoire de Zynovia, nos valeurs pédagogiques et notre équipe d\'experts passionnés par l\'Intelligence Artificielle (IA).',
+  keywords: [
+    'Zynovia',
+    'Zynovia Academy',
+    'À propos de Zynovia',
+    'Histoire Zynovia',
+    'Mission Zynovia Academy',
+    'Équipe Zynovia',
+    'Zynovia IA'
+  ],
   openGraph: {
-    title: 'À propos de Zynovia | Académie IA pour Jeunes',
+    title: 'À propos de Zynovia Academy | Notre Mission',
     description:
-      'Découvrez Zynovia : notre mission, nos valeurs et notre approche pédagogique pour préparer les jeunes aux compétences de demain.',
+      'Découvrez Zynovia Academy : notre mission, nos valeurs et notre approche pédagogique pour préparer les jeunes avec l\'IA.',
     url: 'https://www.zynovia-academy.com/a-propos',
-    siteName: 'Zynovia',
+    siteName: 'Zynovia Academy',
     images: [
       {
         url: '/images/banner/image.png',
         width: 1200,
         height: 630,
-        alt: 'Zynovia — Académie IA pour Jeunes',
+        alt: 'Zynovia Academy — Académie IA pour Jeunes',
       },
     ],
     locale: 'fr_FR',
