@@ -157,7 +157,7 @@ const RendezVousContent = () => {
               </p>
 
               <p className='max-w-2xl text-sm sm:text-base text-slate-700 dark:text-slate-300'>
-                Que vous souhaitiez inscrire votre enfant, mettre en place un programme dans votre établissement
+                Que vous souhaitiez Inscrire votre enfant, mettre en place un programme dans votre établissement
                 ou lancer un projet RSE, réservez un créneau en visioconférence ou sur site.
               </p>
 

@@ -61,10 +61,23 @@ const Footer = () => {
               </Link>
             </div>
             <Link
-                href="/inscription"
-                className="text-center px-4 py-2 text-sm sm:text-base font-semibold text-white rounded-[12px] bg-gradient-to-r from-[#0091E6] to-[#0063B1] hover:from-[#0079C2] hover:to-[#005A9C] shadow-md hover:shadow-lg transition-transform transform hover:scale-105 duration-300"
-              >
-                Inscrire
+              href="/inscription?role=Parent"
+              onClick={(e) => {
+                if (pathname === '/inscription') {
+                  e.preventDefault()
+                  const el = document.getElementById('inscription-form')
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                    const firstInput = document.getElementById('parent-nom-input') as HTMLInputElement | null
+                    if (firstInput) {
+                      firstInput.focus({ preventScroll: true })
+                    }
+                  }
+                }
+              }}
+              className="text-center px-4 py-2 text-sm sm:text-base font-semibold text-white rounded-[12px] bg-gradient-to-r from-[#0091E6] to-[#0063B1] hover:from-[#0079C2] hover:to-[#005A9C] shadow-md hover:shadow-lg transition-transform transform hover:scale-105 duration-300"
+            >
+              Inscrire
             </Link>
           </div>
 
@@ -73,7 +86,7 @@ const Footer = () => {
             <h3 className='text-sm font-semibold uppercase tracking-[0.16em] text-darkblue dark:text-white mb-2'>
               Liens utiles
             </h3>
-          <ul className='flex flex-col gap-2.5'>
+            <ul className='flex flex-col gap-2.5'>
               <li>
                 <Link href='/' className='text-sm font-normal text-darkblue/60 hover:text-primary dark:text-white/60 dark:hover:text-primary transition-colors duration-200'>
                   Accueil

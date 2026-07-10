@@ -1032,7 +1032,7 @@ export default function ProgrammesContent() {
                     </div>
                     <div>
                       <p className='text-xs font-semibold uppercase tracking-[0.22em] text-primary dark:text-cyan-300'>
-                        S’inscrire au prochain bootcamp
+                        S’Inscrire au prochain bootcamp
                       </p>
                     </div>
                   </div>
@@ -1040,7 +1040,7 @@ export default function ProgrammesContent() {
                     href='/inscription?role=Parent'
                     className='inline-flex items-center justify-center rounded-xl btn-gradient px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0091E6]/40 transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary dark:focus-visible:ring-offset-slate-950'
                   >
-                    S&apos;inscrire au prochain bootcamp
+                    S&apos;Inscrire au prochain bootcamp
                   </Link>
                 </div>
               </motion.div>

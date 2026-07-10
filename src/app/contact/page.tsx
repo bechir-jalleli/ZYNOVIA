@@ -5,7 +5,7 @@ import ContactContent from './ContactContent'
 export const metadata: Metadata = {
   title: 'Contact & Inscriptions — Zynovia',
   description:
-    'Contactez Zynovia pour inscrire votre enfant, planifier une présentation pour votre école ou demander une formation. Notre équipe vous accompagne.',
+    'Contactez Zynovia pour Inscrire votre enfant, planifier une présentation pour votre école ou demander une formation. Notre équipe vous accompagne.',
   openGraph: {
     title: 'Contact & Inscriptions — Zynovia',
     description:

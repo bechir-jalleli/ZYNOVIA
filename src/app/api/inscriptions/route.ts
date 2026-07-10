@@ -12,10 +12,18 @@ export async function GET() {
 
     try {
         await connectToDatabase();
-        // Fetch both inscription form submissions and programme download requests
+        // Fetch inscription submissions (all role types) and programme download requests
         const submissions = await FormSubmission.find({
             type: 'contact',
-            role: { $in: ['Inscription', 'Téléchargement Programme'] },
+            role: {
+                $in: [
+                    'Inscription',
+                    'Téléchargement Programme',
+                    'Parent',
+                    'Établissement scolaire',
+                    'Entreprise',
+                ],
+            },
         }).sort({ createdAt: -1 });
 
         return NextResponse.json(submissions);

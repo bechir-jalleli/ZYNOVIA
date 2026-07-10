@@ -133,7 +133,7 @@ const ContactContent = () => {
                 Un rendez-vous pour clarifier vos besoins
               </p>
               <p className='max-w-2xl text-sm sm:text-base text-slate-700 dark:text-slate-300'>
-                Que vous souhaitiez inscrire votre enfant, mettre en place un programme dans votre établissement ou lancer un projet RSE, nous prenons le temps d'étudier votre situation et de vous proposer un accompagnement adapté.
+                Que vous souhaitiez Inscrire votre enfant, mettre en place un programme dans votre établissement ou lancer un projet RSE, nous prenons le temps d'étudier votre situation et de vous proposer un accompagnement adapté.
               </p>
             </div>
 

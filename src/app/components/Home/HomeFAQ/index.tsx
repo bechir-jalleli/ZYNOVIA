@@ -30,7 +30,7 @@ const FAQ_ITEMS: FAQItem[] = [
     answer: "Nous proposons deux formules principales : le Programme Annuel IA (à raison d'une heure par semaine durant toute l'année scolaire) et les Bootcamps IA (des sessions d'apprentissage intensives durant les vacances scolaires)."
   },
   {
-    question: "Comment puis-je inscrire mon enfant ?",
+    question: "Comment puis-je Inscrire mon enfant ?",
     answer: "L'inscription peut se faire facilement en remplissant le formulaire sur notre page de contact, en nous appelant directement au +216 25 857 621, ou en planifiant un rendez-vous en ligne avec nos conseillers d'orientation."
   },
   {

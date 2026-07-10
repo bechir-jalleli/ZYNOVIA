@@ -71,12 +71,12 @@ export default function InscriptionFloatingButtons() {
         {/* Inscription Button */}
         <button
           onClick={handleScrollToForm}
-          aria-label="S'inscrire à la formation"
+          aria-label="S'Inscrire à la formation"
           className="inscription-btn flex h-14 items-center gap-2 rounded-full bg-gradient-to-r from-[#27397F] to-[#3FA9DF] px-4 text-white shadow-xl shadow-primary/10 transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 hover:shadow-primary/25 active:scale-95 group cursor-pointer"
         >
           <Icon icon="tabler:user-plus" width={24} height={24} className="shrink-0" />
           <span className="max-w-0 overflow-hidden font-semibold text-sm transition-all duration-300 ease-out group-hover:max-w-xs group-hover:pr-1 md:max-w-xs md:pr-1">
-            inscrire mon enfant
+            Inscrire mon enfant
           </span>
         </button>
       </div>

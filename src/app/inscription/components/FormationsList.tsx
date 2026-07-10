@@ -114,7 +114,7 @@ export default function FormationsList({ onEnroll }: FormationsListProps) {
           if (data && data.length > 0) {
             const mapped = data.map((f) => {
               const styles = getModeStyles(f.mode)
-              
+
               const details: { icon: string; label: string }[] = []
               if (f.startDate) {
                 details.push({
@@ -291,11 +291,10 @@ export default function FormationsList({ onEnroll }: FormationsListProps) {
                       }
                     }}
                     disabled={!f.programmePdfPath}
-                    className={`flex-1 px-6 py-3.5 text-sm sm:text-base font-semibold rounded-[12px] border-2 bg-white dark:bg-transparent transition-all duration-300 ${
-                      f.programmePdfPath 
-                        ? 'hover:shadow-lg hover:scale-[1.01] cursor-pointer' 
-                        : 'opacity-50 cursor-not-allowed'
-                    }`}
+                    className={`flex-1 px-6 py-3.5 text-sm sm:text-base font-semibold rounded-[12px] border-2 bg-white dark:bg-transparent transition-all duration-300 ${f.programmePdfPath
+                      ? 'hover:shadow-lg hover:scale-[1.01] cursor-pointer'
+                      : 'opacity-50 cursor-not-allowed'
+                      }`}
                     style={{ borderColor: f.accentFrom, color: f.accentFrom }}
                   >
                     Télécharger le programme

@@ -62,10 +62,10 @@ const FormationsBootcamps = () => {
         if (!res.ok) throw new Error('Failed to fetch')
         const data = await res.json()
         const rawFormations = data.FormationData || []
-        
+
         const mapped = rawFormations.map((f: any) => {
           const styles = getModeStyles(f.mode)
-          
+
           const details: { icon: string; label: string }[] = []
           if (f.startDate) {
             details.push({
@@ -259,11 +259,10 @@ const FormationsBootcamps = () => {
                                 }
                               }}
                               disabled={!f.programmePdfPath}
-                              className={`flex-1 px-6 py-3.5 text-sm sm:text-base font-semibold rounded-[12px] border-2 bg-white dark:bg-transparent transition-all duration-300 ${
-                                f.programmePdfPath 
-                                  ? 'hover:shadow-lg hover:scale-[1.01] cursor-pointer' 
-                                  : 'opacity-50 cursor-not-allowed'
-                              }`}
+                              className={`flex-1 px-6 py-3.5 text-sm sm:text-base font-semibold rounded-[12px] border-2 bg-white dark:bg-transparent transition-all duration-300 ${f.programmePdfPath
+                                ? 'hover:shadow-lg hover:scale-[1.01] cursor-pointer'
+                                : 'opacity-50 cursor-not-allowed'
+                                }`}
                               style={{ borderColor: f.accentFrom, color: f.accentFrom }}
                             >
                               Télécharger le programme
