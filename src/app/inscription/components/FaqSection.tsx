@@ -8,21 +8,33 @@ import SectionHeading from './SectionHeading'
 const faqs = [
   {
     q: 'Faut-il déjà savoir programmer ?',
-    a: 'Non, la formation est accessible à tous, débutants compris.',
+    a: 'Non. La formation est accessible aux débutants et ne nécessite aucune connaissance préalable en programmation ou en Intelligence Artificielle. Les notions sont expliquées progressivement, avec des exercices adaptés à l’âge et au niveau de chaque participant.',
   },
   {
     q: 'Mon enfant doit-il apporter un ordinateur ?',
-    a: 'Oui, un ordinateur portable est nécessaire pour suivre les ateliers pratiques.',
+    a: 'Oui. Chaque participant doit venir avec un ordinateur portable et son chargeur afin de réaliser les ateliers, les exercices de programmation et le projet final dans les meilleures conditions.',
   },
   {
     q: 'Une certification est-elle délivrée ?',
-    a: 'Oui, chaque participant reçoit un certificat et son projet final.',
+    a: 'Oui. Une certification de fin de formation Zynovia est remise à chaque participant. Elle atteste de sa participation au Bootcamp et des compétences abordées en Intelligence Artificielle, Python et création de projets.',
   },
   {
     q: 'Les groupes sont-ils limités ?',
-    a: 'Oui, nous limitons le nombre de participants pour garantir un suivi de qualité.',
+    a: 'Oui. Le nombre de participants est volontairement limité afin de garantir un accompagnement personnalisé, une meilleure interaction avec le formateur et davantage de temps consacré à chaque jeune.',
   },
-]
+  {
+    q: 'Que va réellement apprendre mon enfant ?',
+    a: 'Votre enfant découvrira les bases de l’Intelligence Artificielle et du Machine Learning, s’initiera à Python, utilisera des outils comme Google Colab et apprendra à créer un premier modèle d’IA. Il réalisera également un projet concret qu’il présentera à la fin du Bootcamp.',
+  },
+  {
+    q: 'La formation est-elle pratique ou théorique ?',
+    a: 'La formation est principalement orientée vers la pratique. Les jeunes apprennent en réalisant des exercices, des défis et des projets concrets. L’objectif n’est pas seulement de comprendre l’IA, mais de savoir l’utiliser pour créer.',
+  },
+  {
+    q: 'Mon enfant doit-il être fort en mathématiques ?',
+    a: 'Non. Un niveau avancé en mathématiques n’est pas nécessaire. Le programme privilégie la logique, la curiosité, la créativité et l’apprentissage progressif. Les notions techniques sont expliquées de manière simple et accessible.',
+  },
+];
 
 export default function FaqSection() {
   const [openFaq, setOpenFaq] = useState<number | null>(0)

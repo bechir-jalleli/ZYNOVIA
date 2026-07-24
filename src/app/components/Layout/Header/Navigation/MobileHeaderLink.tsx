@@ -20,11 +20,10 @@ const MobileHeaderLink: React.FC<{ item: NavLinkType; onItemClick: () => void }>
       <Link
         href={item.href}
         onClick={item.submenu ? handleToggle : onItemClick}
-        className={`flex items-center justify-between w-full py-3.5 text-lg font-medium text-darkblue dark:text-white focus:outline-none transition-all duration-300 ${
-          item.href === path || path.startsWith(`/${item.label.toLowerCase()}`)
+        className={`flex items-center justify-between w-full py-3.5 text-lg font-medium text-darkblue dark:text-white focus:outline-none transition-all duration-300 ${item.href === path || path.startsWith(`/${item.label.toLowerCase()}`)
             ? 'text-gradient font-bold'
             : 'hover:text-gradient-hover'
-        }`}>
+          }`}>
         {item.label}
         {item.submenu && (
           <svg xmlns='http://www.w3.org/2000/svg' width='1.6em' height='1.6em' viewBox='0 0 24 24'>

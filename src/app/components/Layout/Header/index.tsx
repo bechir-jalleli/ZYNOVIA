@@ -76,9 +76,10 @@ const Header: React.FC = () => {
   if (pathname?.startsWith('/admin')) return null
 
   return (
-    <header
-      className={`fixed top-0 z-50 w-full bg-transparent transition-all ${sticky ? 'shadow-lg dark:shadow-neutral-50/5 bg-white/95 dark:bg-darklight/95 backdrop-blur-sm' : 'shadow-none'
-        }`}>
+<header
+  className={`fixed top-0 z-50 w-full transition-all bg-white dark:bg-darklight ${
+    sticky ? 'shadow-lg dark:shadow-neutral-50/5' : 'shadow-none'
+  }`}>
       <div
         className={`container flex items-center justify-between gap-6 xl:gap-10 duration-300 ${sticky ? 'py-2' : 'py-3'
           }`}>
@@ -102,11 +103,11 @@ const Header: React.FC = () => {
             <Icon icon='solar:moon-bold' width='22' height='22' className='dark:hidden block' />
           </button>
 
-          {/* Rendez-vous Link (Always visible, responsive size) */}
+          {/* Inscription Link (Always visible, responsive size) */}
           <Link
-            href='/rendez-vous'
+            href='/inscription'
             className='px-3 py-1.5 sm:px-6 sm:py-2.5 btn-primary btn-hover rounded-[8px] sm:rounded-[10px] text-[10px] sm:text-xs md:text-sm xl:text-base font-bold sm:font-semibold tracking-wide transition-all whitespace-nowrap shadow-md'>
-            Rendez-vous
+            Inscrire mon enfant
           </Link>
 
           {/* User menu */}
@@ -153,7 +154,7 @@ const Header: React.FC = () => {
           {/* Hamburger */}
           <button
             onClick={() => setNavbarOpen(!navbarOpen)}
-            className='block xl:hidden p-2 rounded-lg hover:cursor-pointer'
+            className='block xl:hidden p-2 rounded-lg hover:cursor-pointer bg-neutral-100 dark:bg-darklight'
             aria-label='Toggle mobile menu'>
             <span className='block w-7 h-0.5 bg-darkblue dark:bg-white'></span>
             <span className='block w-7 h-0.5 bg-darkblue dark:bg-white mt-2'></span>
@@ -214,11 +215,11 @@ const Header: React.FC = () => {
             )}
 
             <Link
-              href='/rendez-vous'
+              href='/inscription'
               className='flex items-center justify-center gap-2 px-6 py-4 btn-primary btn-hover rounded-xl font-semibold text-base text-center w-full shadow-lg shadow-primary/20 transition-all active:scale-95'
               onClick={() => setNavbarOpen(false)}>
-              <Icon icon='solar:calendar-date-bold' width='22' />
-              Rendez-vous
+              <Icon icon='solar:user-plus-bold' width='22' />
+              Inscrire mon enfant
             </Link>
 
             {user ? (

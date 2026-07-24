@@ -115,29 +115,29 @@ export default function TestimonialsSection() {
             </Slider>
           </div>
         ) : review.length >= 3 ? (
-          <div className='relative px-12'>
+          <div className='relative px-8 sm:px-12'>
             {/* Left arrow */}
             <button
               onClick={() => sliderRef.current?.slickPrev()}
-              className='absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-110'
+              className='absolute left-0 top-1/2 -translate-y-1/2 z-10 flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-110'
               aria-label='Précédent'
             >
-              <ChevronLeft className='h-5 w-5' />
+              <ChevronLeft className='h-4 w-4 sm:h-5 sm:w-5' />
             </button>
 
             {/* Right arrow */}
             <button
               onClick={() => sliderRef.current?.slickNext()}
-              className='absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-110'
+              className='absolute right-0 top-1/2 -translate-y-1/2 z-10 flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-[linear-gradient(to_right,_#27397F,_#2E5391,_#4490C7,_#3FA9DF)] text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-110'
               aria-label='Suivant'
             >
-              <ChevronRight className='h-5 w-5' />
+              <ChevronRight className='h-4 w-4 sm:h-5 sm:w-5' />
             </button>
 
             <Slider ref={sliderRef} {...settings}>
               {review.map((item: any, i) => (
                 <div key={item._id || i}>
-                  <div className='m-3 rounded-3xl bg-white/95 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.10)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/95 dark:ring-slate-700/70 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(15,23,42,0.18)]'>
+                  <div className='m-2 sm:m-3 rounded-3xl bg-white/95 p-5 sm:p-6 shadow-[0_18px_45px_rgba(15,23,42,0.10)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/95 dark:ring-slate-700/70 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(15,23,42,0.18)]'>
                     <div className='mb-5 flex items-center gap-4'>
                       <div className='relative'>
                         <CloudImage

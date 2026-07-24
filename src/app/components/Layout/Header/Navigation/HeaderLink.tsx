@@ -15,11 +15,10 @@ const HeaderLink: React.FC<{ item: NavLinkType }> = ({ item }) => {
       onMouseLeave={() => setSubmenuOpen(false)}>
       <Link
         href={item.href}
-        className={`text-base xl:text-lg flex items-center font-medium transition-all duration-300 whitespace-nowrap ${
-          item.href === path || path.startsWith(`/${item.label.toLowerCase()}`)
+        className={`text-base xl:text-lg flex items-center font-medium transition-all duration-300 whitespace-nowrap ${item.href === path || path.startsWith(`/${item.label.toLowerCase()}`)
             ? 'text-gradient font-bold'
             : 'text-darkblue dark:text-white hover:text-gradient-hover'
-        }`}>
+          }`}>
         {item.label}
         {item.submenu && (
           <svg xmlns='http://www.w3.org/2000/svg' width='1.6em' height='1.6em' viewBox='0 0 24 24'>

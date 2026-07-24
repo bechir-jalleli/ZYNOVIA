@@ -18,13 +18,11 @@ export default function HeroSection() {
 
   return (
     <section
-      className="bg-transparent text-slate-900 dark:text-white"
+      className="bg-transparent text-slate-900 dark:text-white hero-section"
       style={{
         position: 'relative',
-        minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        padding: '128px 0 48px',
         overflow: 'hidden',
       }}
     >
@@ -190,12 +188,13 @@ export default function HeroSection() {
             </div>
 
             {/* Buttons */}
-            <div style={{ display: 'flex', gap: 16, marginTop: 16, flexWrap: 'wrap' }}>
+            <div className="hero-buttons" style={{ display: 'flex', gap: 16, marginTop: 16, flexWrap: 'wrap' }}>
               <button
                 onClick={() => {
                   const el = document.getElementById('inscription-form');
                   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }}
+                className="hero-btn-primary"
                 style={{
                   padding: '14px 32px',
                   fontSize: 15,
@@ -220,7 +219,7 @@ export default function HeroSection() {
               </button>
               <button
                 onClick={() => setDownloadModalOpen(true)}
-                className="text-[#334155] dark:text-slate-200 bg-white dark:bg-white/5 border border-[#e2e8f0] dark:border-white/10"
+                className="hero-btn-secondary text-[#334155] dark:text-slate-200 bg-white dark:bg-white/5 border border-[#e2e8f0] dark:border-white/10"
                 style={{
                   padding: '14px 32px',
                   fontSize: 15,
@@ -382,9 +381,29 @@ export default function HeroSection() {
           --fade-color-85: rgba(2, 5, 26, 0.85);
           --fade-color-30: rgba(2, 5, 26, 0.3);
         }
-        .hero-title {
-          font-size: clamp(24px, 3vw, 40px) !important;
+
+        /* Section padding: mobile first */
+        .hero-section {
+          padding: 88px 0 40px;
+          min-height: auto;
         }
+        @media (min-width: 640px) {
+          .hero-section { padding: 104px 0 48px; }
+        }
+        @media (min-width: 1024px) {
+          .hero-section { padding: 128px 0 64px; min-height: 100vh; }
+        }
+
+        .hero-title {
+          font-size: clamp(22px, 6vw, 40px) !important;
+        }
+        @media (min-width: 480px) {
+          .hero-title { font-size: clamp(26px, 5vw, 40px) !important; }
+        }
+        @media (min-width: 1024px) {
+          .hero-title { font-size: clamp(30px, 3vw, 44px) !important; }
+        }
+
         .hero-grid { grid-template-columns: 1fr; }
         @media (min-width: 1024px) {
           .hero-grid { grid-template-columns: 7fr 5fr; }
@@ -393,24 +412,48 @@ export default function HeroSection() {
         @media (min-width: 1024px) {
           .hero-grid > div:first-child { align-items: flex-start; text-align: left; }
         }
-        @media (max-width: 639px) {
-          .hero-badges { grid-template-columns: repeat(3, 1fr) !important; }
-          .hero-image-col {
-            width: 100%;
-            padding: 0 4px;
-          }
+
+        /* Badges: 3 cols on small screens, 6 on medium+ */
+        .hero-badges { grid-template-columns: repeat(3, 1fr) !important; }
+        @media (min-width: 480px) {
+          .hero-badges { grid-template-columns: repeat(6, 1fr) !important; }
+        }
+
+        /* Buttons: stack on mobile */
+        .hero-buttons {
+          flex-direction: column;
+        }
+        .hero-btn-primary, .hero-btn-secondary {
+          width: 100%;
+          text-align: center;
+        }
+        @media (min-width: 480px) {
+          .hero-buttons { flex-direction: row; }
+          .hero-btn-primary, .hero-btn-secondary { width: auto; }
+        }
+
+        /* Image column */
+        .hero-image-col {
+          width: 100%;
+          padding: 0 4px;
+        }
+        .hero-image-card {
+          max-width: 100% !important;
+          width: 100% !important;
+          aspect-ratio: 3 / 2 !important;
+          max-height: 260px !important;
+          border-radius: 20px !important;
+        }
+        @media (min-width: 480px) {
           .hero-image-card {
-            max-width: 100% !important;
-            width: 100% !important;
-            aspect-ratio: 3 / 2 !important;
-            max-height: 280px !important;
-            border-radius: 20px !important;
+            max-height: 300px !important;
           }
         }
         @media (min-width: 640px) and (max-width: 1023px) {
           .hero-image-card {
             max-width: 480px !important;
             aspect-ratio: 4 / 3 !important;
+            max-height: none !important;
           }
         }
 
@@ -427,10 +470,12 @@ export default function HeroSection() {
             justify-content: flex-end !important;
             margin-top: 40px;
             margin-right: 24px;
+            padding: 0;
           }
           .hero-image-card {
             max-width: none !important;
             width: calc(100% + 140px) !important;
+            max-height: none !important;
             margin-right: -96px;
             border-radius: 32px 0 0 32px !important;
             border-right: none !important;

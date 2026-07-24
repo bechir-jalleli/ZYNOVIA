@@ -24,7 +24,7 @@ const HeroData: HeroType[] = [
 const NavLinkData: NavLinkType[] = [
   { label: 'Accueil', href: '/' },
   { label: 'Vision', href: '/vision' },
-  { label: 'Inscription', href: '/inscription' },
+//  { label: 'Inscription', href: '/inscription' },
   { label: 'Programmes', href: '/programmes' },
   { label: 'Formateurs', href: '/nos-formateurs' },
   { label: 'Contact', href: '/contact' },

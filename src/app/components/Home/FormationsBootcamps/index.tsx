@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { Icon } from '@iconify/react'
 import { useEffect, useState } from 'react'
 import DownloadModal from '@/app/inscription/components/DownloadModal'
+import { staticFormations } from '@/app/inscription/components/FormationsList'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 28 },
@@ -111,9 +112,14 @@ const FormationsBootcamps = () => {
             enrollmentLink: f.enrollmentLink || '',
           }
         })
-        setFormations(mapped)
+        if (mapped.length > 0) {
+          setFormations(mapped)
+        } else {
+          setFormations(staticFormations)
+        }
       } catch (error) {
         console.error('Error fetching formations', error)
+        setFormations(staticFormations)
       } finally {
         setLoading(false)
       }
@@ -135,7 +141,7 @@ const FormationsBootcamps = () => {
             <h2 className='text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0A004B] dark:text-white mb-6 tracking-tight'>
               Nos <span className='text-[#3FA9DF]'>formations</span>
             </h2>
-            <p className='text-lg text-slate-600 dark:text-lightgrey font-medium leading-relaxed'>
+            <p className='text-base sm:text-lg text-slate-600 dark:text-lightgrey font-medium leading-relaxed'>
               Découvrez nos programmes de formation en Intelligence Artificielle et technologies du futur
             </p>
           </motion.div>
@@ -176,7 +182,7 @@ const FormationsBootcamps = () => {
                         initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.35, delay: index * 0.06 }}
-                        className='relative flex flex-col rounded-[24px] bg-white dark:bg-slate-900 border-2 shadow-[0_10px_40px_rgba(15,23,42,0.06)] overflow-hidden'
+                        className='relative flex flex-col rounded-[24px] bg-white dark:bg-slate-900 border-2 shadow-[0_10px_40px_rgba(15,23,42,0.06)] overflow-hidden w-full'
                         style={{ borderColor: f.accentFrom }}
                       >
                         <div className='flex flex-col flex-1 p-6 sm:p-7'>
@@ -193,8 +199,8 @@ const FormationsBootcamps = () => {
                           </div>
 
                           {/* Image (left, wide) + details with price underneath (right) */}
-                          <div className='flex items-stretch gap-4 mb-5'>
-                            <div className='relative w-36 sm:w-48 h-28 sm:h-32 flex-shrink-0 rounded-2xl overflow-hidden'>
+                          <div className='flex flex-col xs:flex-row items-start gap-4 mb-5'>
+                            <div className='relative w-full xs:w-36 sm:w-48 h-40 xs:h-28 sm:h-32 flex-shrink-0 rounded-2xl overflow-hidden'>
                               <Image src={f.image} alt={f.title} fill className='object-cover' />
                             </div>
 
@@ -244,7 +250,7 @@ const FormationsBootcamps = () => {
                             </div>
                           )}
 
-                          <div className='mt-auto flex flex-col sm:flex-row gap-3'>
+                          <div className='mt-auto flex flex-col gap-3 sm:flex-row'>
                             <Link
                               href={`/inscription?program=${encodeURIComponent(f.title)}&role=Parent`}
                               className={`flex-1 text-center px-6 py-3.5 text-sm sm:text-base font-semibold text-white rounded-[12px] transition-all duration-300 hover:shadow-lg hover:scale-[1.01] ${f.buttonClass}`}

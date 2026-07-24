@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { Icon } from '@iconify/react'
@@ -33,39 +33,12 @@ export const staticFormations = [
     priceNew: '349 DT',
     priceOld: '599 DT',
     priceNote: 'au lieu de',
-    image: '/images/parent/image.png',
+    image: '/images/nos-formation/ia-20h.webp',
+    video: '/videos/bootcamp-ia.mp4',
     buttonClass: 'bg-[#7C3AED] hover:bg-[#6D28D9]',
-    programmePdfPath: '',
+    programmePdfPath: '/formation/Prog_20h_Intelligence-Artificielle-and-Machine-Learning_pdf.pdf',
     enrollmentLink: '',
-  },
-  {
-    mode: 'EN LIGNE',
-    modeColor: 'bg-[#0091E6]',
-    title: 'IA Générative & Outils du Futur',
-    accentFrom: '#0091E6',
-    accentTo: '#0067E0',
-    details: [
-      { icon: 'solar:calendar-bold', label: 'Démarrage : 27 juillet' },
-      { icon: 'solar:clock-circle-bold', label: 'Lundi, Mardi, Mercredi' },
-      { icon: 'solar:hourglass-bold', label: '9 heures (3 jours)' },
-      { icon: 'solar:users-group-rounded-bold', label: '12 à 18 ans' },
-      { icon: 'solar:global-bold', label: '100% en ligne' },
-    ],
-    program: [
-      'Utiliser ChatGPT et Gemini',
-      'Créer des images et des vidéos',
-      'Rédiger des prompts efficaces',
-      'Créer des présentations',
-      'Comprendre les opportunités et les limites de l\u2019IA',
-    ],
-    priceNew: '110 DT',
-    priceOld: null,
-    priceNote: null,
-    image: '/images/parent/image.png',
-    buttonClass: 'bg-[#0091E6] hover:bg-[#0079C2]',
-    programmePdfPath: '',
-    enrollmentLink: '',
-  },
+  }
 ]
 
 const getModeStyles = (mode?: string) => {
@@ -99,6 +72,53 @@ interface FormationsListProps {
   onEnroll?: (formationTitle: string) => void
 }
 
+const AutoPlayVideo = ({ src }: { src: string }) => {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const playPromise = videoRef.current?.play()
+            if (playPromise !== undefined) {
+              playPromise.catch(() => {
+                // Autoplay with sound was blocked. Mute and try again.
+                if (videoRef.current) {
+                  videoRef.current.muted = true
+                  videoRef.current.play().catch(() => {})
+                }
+              })
+            }
+          } else {
+            videoRef.current?.pause()
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current)
+    }
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      loop
+      playsInline
+      controls
+      className='w-full h-full object-contain'
+    />
+  )
+}
+
 export default function FormationsList({ onEnroll }: FormationsListProps) {
   const [formationsList, setFormationsList] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
@@ -106,73 +126,9 @@ export default function FormationsList({ onEnroll }: FormationsListProps) {
   const [selectedPdfUrl, setSelectedPdfUrl] = useState('')
 
   useEffect(() => {
-    async function loadFormations() {
-      try {
-        const res = await fetch('/api/formations')
-        if (res.ok) {
-          const data: FormationType[] = await res.json()
-          if (data && data.length > 0) {
-            const mapped = data.map((f) => {
-              const styles = getModeStyles(f.mode)
-
-              const details: { icon: string; label: string }[] = []
-              if (f.startDate) {
-                details.push({
-                  icon: 'solar:calendar-bold',
-                  label: f.startDate.toLowerCase().startsWith('démarrage')
-                    ? f.startDate
-                    : `Démarrage : ${f.startDate}`,
-                })
-              }
-              if (f.schedule) {
-                details.push({ icon: 'solar:clock-circle-bold', label: f.schedule })
-              }
-              if (f.duration) {
-                details.push({ icon: 'solar:hourglass-bold', label: f.duration })
-              }
-              if (f.ageRange) {
-                details.push({ icon: 'solar:users-group-rounded-bold', label: f.ageRange })
-              }
-              if (f.location) {
-                const isOnline =
-                  f.location.toLowerCase().includes('en ligne') ||
-                  f.mode?.toUpperCase() === 'EN LIGNE'
-                details.push({
-                  icon: isOnline ? 'solar:global-bold' : 'solar:map-point-bold',
-                  label: f.location,
-                })
-              }
-
-              return {
-                title: f.title,
-                mode: f.mode || 'PRÉSENTIEL',
-                modeColor: styles.modeColor,
-                accentFrom: styles.accentFrom,
-                accentTo: styles.accentTo,
-                details,
-                program: f.programme || [],
-                priceNew: f.price ? `${f.price} DT` : '',
-                priceOld: f.originalPrice ? `${f.originalPrice} DT` : null,
-                priceNote: f.originalPrice ? 'au lieu de' : null,
-                image: f.image || '/images/parent/image.png',
-                buttonClass: styles.buttonClass,
-                programmePdfPath: f.programmePdfPath || '',
-                enrollmentLink: f.enrollmentLink || '',
-              }
-            })
-            setFormationsList(mapped)
-            return
-          }
-        }
-      } catch (err) {
-        console.error('Failed to fetch formations, falling back to static data:', err)
-      }
-      // Fallback
-      setFormationsList([])
-      setLoading(false)
-    }
-
-    loadFormations().finally(() => setLoading(false))
+    // Force static data for now
+    setFormationsList(staticFormations)
+    setLoading(false)
   }, [])
 
   if (loading) {
@@ -189,16 +145,21 @@ export default function FormationsList({ onEnroll }: FormationsListProps) {
     <section className='py-16 lg:py-24'>
       <div className='container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
         <SectionHeading label='Nos formations' />
+        <p className='text-center text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-4 mb-12 max-w-2xl mx-auto font-medium leading-relaxed'>
+          Découvrez nos programmes de formation en Intelligence Artificielle et technologies du futur
+        </p>
 
-        <div className='grid md:grid-cols-2 gap-6 lg:gap-8 mt-12'>
-          {formationsList.map((f, idx) => (
-            <motion.div
-              key={f.title}
-              {...fadeInUp}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className='relative flex flex-col rounded-[24px] bg-white dark:bg-slate-900 border-2 shadow-[0_10px_40px_rgba(15,23,42,0.06)] overflow-hidden'
-              style={{ borderColor: f.accentFrom }}
-            >
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8'>
+          {formationsList.map((f, idx) => {
+            const hasVideo = !!f.video;
+            return (
+            <div key={f.title} className={hasVideo ? 'col-span-1 lg:col-span-2 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-stretch' : 'col-span-1'}>
+              <motion.div
+                {...fadeInUp}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                className='relative flex flex-col rounded-[24px] bg-white dark:bg-slate-900 border-2 shadow-[0_10px_40px_rgba(15,23,42,0.06)] overflow-hidden w-full h-full'
+                style={{ borderColor: f.accentFrom }}
+              >
               <div className='flex flex-col flex-1 p-6 sm:p-7'>
                 {/* Title + mode badge on top */}
                 <div className='flex items-center justify-between gap-3 mb-4 flex-wrap'>
@@ -213,8 +174,8 @@ export default function FormationsList({ onEnroll }: FormationsListProps) {
                 </div>
 
                 {/* Image (left, wide) + details with price underneath (right) */}
-                <div className='flex items-stretch gap-4 mb-5'>
-                  <div className='relative w-36 sm:w-48 h-28 sm:h-32 flex-shrink-0 rounded-2xl overflow-hidden'>
+                <div className='flex flex-col xs:flex-row items-start gap-4 mb-5'>
+                  <div className='relative w-full xs:w-44 sm:w-48 h-48 xs:h-28 sm:h-32 flex-shrink-0 rounded-2xl overflow-hidden'>
                     <Image src={f.image} alt={f.title} fill className='object-cover' />
                   </div>
 
@@ -230,7 +191,7 @@ export default function FormationsList({ onEnroll }: FormationsListProps) {
 
                     {f.priceNew && (
                       <div
-                        className='self-end mt-2 flex-shrink-0 flex flex-col items-center justify-center rounded-2xl px-4 py-3 text-white text-center'
+                        className='self-start xs:self-end mt-3 xs:mt-2 flex-shrink-0 flex flex-row xs:flex-col items-center justify-center rounded-2xl px-4 py-2 xs:py-3 text-white text-center gap-2 xs:gap-0'
                         style={{ background: `linear-gradient(135deg, ${f.accentFrom}, ${f.accentTo})` }}
                       >
                         {f.priceOld && (
@@ -252,7 +213,6 @@ export default function FormationsList({ onEnroll }: FormationsListProps) {
                     </p>
                     <div
                       className='grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5'
-                      style={{ gridAutoFlow: 'column', gridTemplateRows: `repeat(${Math.ceil(f.program.length / 2)}, auto)` }}
                     >
                       {f.program.map((p: string) => (
                         <li key={p} className='flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300 list-none'>
@@ -264,7 +224,7 @@ export default function FormationsList({ onEnroll }: FormationsListProps) {
                   </div>
                 )}
 
-                <div className='mt-auto flex flex-col sm:flex-row gap-3'>
+                <div className='mt-auto flex flex-col gap-3 sm:flex-row'>
                   <button
                     onClick={() => {
                       if (onEnroll) onEnroll(f.title)
@@ -300,9 +260,20 @@ export default function FormationsList({ onEnroll }: FormationsListProps) {
                     Télécharger le programme
                   </button>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+                </div>
+              </motion.div>
+
+              {hasVideo && (
+                <motion.div
+                  {...fadeInUp}
+                  transition={{ duration: 0.6, delay: idx * 0.1 + 0.2 }}
+                  className='relative rounded-[24px] overflow-hidden shadow-xl bg-black flex items-center justify-center h-[80vh] lg:h-[90vh]'
+                >
+                  <AutoPlayVideo src={f.video} />
+                </motion.div>
+              )}
+            </div>
+          )})}
         </div>
       </div>
       <DownloadModal

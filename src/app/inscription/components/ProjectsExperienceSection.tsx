@@ -36,7 +36,7 @@ export default function ProjectsExperienceSection() {
               <h3 className='text-xl sm:text-2xl font-extrabold text-[#0A004B] dark:text-white mb-8 tracking-tight'>
                 Des projets inspirés du monde professionnel
               </h3>
-              <div className='grid grid-cols-2 sm:grid-cols-4 gap-5'>
+              <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5'>
                 {projectItems.map((p, idx) => (
                   <div
                     key={p.title ?? idx}
@@ -76,7 +76,7 @@ export default function ProjectsExperienceSection() {
               </p>
             </div>
 
-            <div className='grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8'>
+            <div className='grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-8'>
               {stats.map((s, idx) => (
                 <div key={s.label ?? idx} className='rounded-2xl bg-white p-4 text-center'>
                   <p className={`text-lg sm:text-2xl font-extrabold ${s.color}`}>{s.value}</p>
