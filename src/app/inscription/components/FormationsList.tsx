@@ -16,7 +16,7 @@ export const staticFormations = [
     accentFrom: '#7C3AED',
     accentTo: '#4C1D95',
     details: [
-      { icon: 'solar:calendar-bold', label: 'Démarrage : 27 juillet' },
+      { icon: 'solar:calendar-bold', label: 'Démarrage : 3 Août' },
       { icon: 'solar:clock-circle-bold', label: 'Du lundi au vendredi' },
       { icon: 'solar:hourglass-bold', label: '20 heures (5 jours)' },
       { icon: 'solar:users-group-rounded-bold', label: '12 à 18 ans' },
