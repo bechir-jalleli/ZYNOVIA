@@ -4,9 +4,86 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Icon } from '@iconify/react'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import DownloadModal from '@/app/inscription/components/DownloadModal'
 import { staticFormations } from '@/app/inscription/components/FormationsList'
+
+// Auto-playing video that starts (with sound) when scrolled into view.
+// Browsers usually block autoplay-with-sound until the user has interacted
+// with the page; if that happens we fall back to muted playback so the video
+// still runs, then unmute on the first user interaction.
+const AutoPlayVideo = ({ src }: { src: string }) => {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const tryPlay = () => {
+      const playPromise = video.play()
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Autoplay with sound was blocked. Mute and try again.
+          video.muted = true
+          video.play().catch(() => {})
+        })
+      }
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            tryPlay()
+          } else {
+            video.pause()
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+
+    observer.observe(video)
+
+    // As soon as the user interacts with the page, try to unmute so the
+    // sound is restored (browser allows sound after a user gesture).
+    const handleUserGesture = () => {
+      if (video.muted) {
+        video.muted = false
+        // Re-trigger play with sound now that a gesture happened.
+        const playPromise = video.play()
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // Still blocked — stay muted.
+            video.muted = true
+          })
+        }
+      }
+    }
+
+    const gestureEvents = ['click', 'touchstart', 'keydown', 'scroll']
+    gestureEvents.forEach((evt) =>
+      window.addEventListener(evt, handleUserGesture, { once: true, passive: true })
+    )
+
+    return () => {
+      observer.disconnect()
+      gestureEvents.forEach((evt) =>
+        window.removeEventListener(evt, handleUserGesture)
+      )
+    }
+  }, [])
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      loop
+      playsInline
+      className='w-full h-full object-contain'
+    />
+  )
+}
 
 const fadeInUp = {
   initial: { opacity: 0, y: 28 },
@@ -107,6 +184,7 @@ const FormationsBootcamps = () => {
             priceOld: f.originalPrice ? `${f.originalPrice} DT` : null,
             priceNote: f.originalPrice ? 'au lieu de' : null,
             image: f.image || '/images/parent/image.png',
+            video: f.video || '',
             buttonClass: styles.buttonClass,
             programmePdfPath: f.programmePdfPath || '',
             enrollmentLink: f.enrollmentLink || '',
@@ -176,13 +254,17 @@ const FormationsBootcamps = () => {
                   className='grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8'
                 >
                   {formations.map((f, index) => {
+                    const hasVideo = !!f.video
                     return (
-                      <motion.div
-                        key={f.title}
-                        initial={{ opacity: 0, y: 24 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.35, delay: index * 0.06 }}
-                        className='relative flex flex-col rounded-[24px] bg-white dark:bg-slate-900 border-2 shadow-[0_10px_40px_rgba(15,23,42,0.06)] overflow-hidden w-full'
+                    <motion.div
+                      key={f.title}
+                      initial={{ opacity: 0, y: 24 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.35, delay: index * 0.06 }}
+                      className={hasVideo ? 'col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch' : 'col-span-1'}
+                    >
+                      <div
+                        className='relative flex flex-col rounded-[24px] bg-white dark:bg-slate-900 border-2 shadow-[0_10px_40px_rgba(15,23,42,0.06)] overflow-hidden w-full h-full'
                         style={{ borderColor: f.accentFrom }}
                       >
                         <div className='flex flex-col flex-1 p-6 sm:p-7'>
@@ -275,7 +357,19 @@ const FormationsBootcamps = () => {
                             </button>
                           </div>
                         </div>
-                      </motion.div>
+                      </div>
+
+                      {hasVideo && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 24 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.35, delay: index * 0.06 + 0.2 }}
+                          className='relative rounded-[24px] overflow-hidden shadow-xl bg-black flex items-center justify-center h-[60vh] md:h-[80vh]'
+                        >
+                          <AutoPlayVideo src={f.video} />
+                        </motion.div>
+                      )}
+                    </motion.div>
                     )
                   })}
                 </motion.div>

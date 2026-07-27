@@ -34,39 +34,14 @@ export const staticFormations = [
     priceOld: '599 DT',
     priceNote: 'au lieu de',
     image: '/images/nos-formation/ia-20h.webp',
-    video: '/videos/bootcamp-ia.mp4',
+    video: '/videos/formation/1.mp4',
     buttonClass: 'bg-[#7C3AED] hover:bg-[#6D28D9]',
     programmePdfPath: '/formation/Prog_20h_Intelligence-Artificielle-and-Machine-Learning_pdf.pdf',
     enrollmentLink: '',
   }
 ]
 
-const getModeStyles = (mode?: string) => {
-  const m = mode?.toUpperCase()
-  if (m === 'EN LIGNE') {
-    return {
-      modeColor: 'bg-[#0091E6]',
-      accentFrom: '#0091E6',
-      accentTo: '#0067E0',
-      buttonClass: 'bg-[#0091E6] hover:bg-[#0079C2]',
-    }
-  } else if (m === 'HYBRIDE') {
-    return {
-      modeColor: 'bg-[#FF9F0A]',
-      accentFrom: '#FF9F0A',
-      accentTo: '#FF3B30',
-      buttonClass: 'bg-[#FF9F0A] hover:bg-[#E08A07]',
-    }
-  } else {
-    // PRÉSENTIEL or default
-    return {
-      modeColor: 'bg-[#7C3AED]',
-      accentFrom: '#7C3AED',
-      accentTo: '#4C1D95',
-      buttonClass: 'bg-[#7C3AED] hover:bg-[#6D28D9]',
-    }
-  }
-}
+
 
 interface FormationsListProps {
   onEnroll?: (formationTitle: string) => void
@@ -76,34 +51,59 @@ const AutoPlayVideo = ({ src }: { src: string }) => {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const tryPlay = () => {
+      const playPromise = video.play()
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Autoplay with sound was blocked. Mute and try again.
+          video.muted = true
+          video.play().catch(() => {})
+        })
+      }
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const playPromise = videoRef.current?.play()
-            if (playPromise !== undefined) {
-              playPromise.catch(() => {
-                // Autoplay with sound was blocked. Mute and try again.
-                if (videoRef.current) {
-                  videoRef.current.muted = true
-                  videoRef.current.play().catch(() => {})
-                }
-              })
-            }
+            tryPlay()
           } else {
-            videoRef.current?.pause()
+            video.pause()
           }
         })
       },
       { threshold: 0.5 }
     )
 
-    if (videoRef.current) {
-      observer.observe(videoRef.current)
+    observer.observe(video)
+
+    // As soon as the user interacts with the page, try to unmute so the
+    // sound is restored (browser allows sound after a user gesture).
+    const handleUserGesture = () => {
+      if (video.muted) {
+        video.muted = false
+        const playPromise = video.play()
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            video.muted = true
+          })
+        }
+      }
     }
+
+    const gestureEvents = ['click', 'touchstart', 'keydown', 'scroll']
+    gestureEvents.forEach((evt) =>
+      window.addEventListener(evt, handleUserGesture, { once: true, passive: true })
+    )
 
     return () => {
       observer.disconnect()
+      gestureEvents.forEach((evt) =>
+        window.removeEventListener(evt, handleUserGesture)
+      )
     }
   }, [])
 
@@ -113,12 +113,22 @@ const AutoPlayVideo = ({ src }: { src: string }) => {
       src={src}
       loop
       playsInline
-      controls
       className='w-full h-full object-contain'
     />
   )
 }
-
+const DriveVideo = ({ id }: { id: string }) => {
+  return (
+    <div className="w-full h-full relative overflow-hidden">
+      <iframe
+        src={id}
+        className="w-full h-full"
+        allow="autoplay"
+        allowFullScreen
+      />
+    </div>
+  )
+}
 export default function FormationsList({ onEnroll }: FormationsListProps) {
   const [formationsList, setFormationsList] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
@@ -263,15 +273,20 @@ export default function FormationsList({ onEnroll }: FormationsListProps) {
                 </div>
               </motion.div>
 
-              {hasVideo && (
-                <motion.div
-                  {...fadeInUp}
-                  transition={{ duration: 0.6, delay: idx * 0.1 + 0.2 }}
-                  className='relative rounded-[24px] overflow-hidden shadow-xl bg-black flex items-center justify-center h-[80vh] lg:h-[90vh]'
-                >
-                  <AutoPlayVideo src={f.video} />
-                </motion.div>
-              )}
+{hasVideo && (
+  <motion.div
+    {...fadeInUp}
+    transition={{ duration: 0.6, delay: idx * 0.1 + 0.2 }}
+    className='relative rounded-[24px] overflow-hidden shadow-xl bg-black flex items-center justify-center h-[80vh] lg:h-[90vh]'
+  >
+    {f.video.endsWith('.mp4') || f.video.startsWith('/') ? (
+      <AutoPlayVideo src={f.video} />
+    ) : (
+      <DriveVideo id={f.video} />
+    )}
+  </motion.div>
+)}
+
             </div>
           )})}
         </div>

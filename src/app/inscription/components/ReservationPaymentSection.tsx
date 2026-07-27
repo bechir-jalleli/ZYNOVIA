@@ -210,18 +210,18 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
           {/* ── Left: Reservation form ── */}
           <motion.div
             {...fadeInUp}
-            className='lg:col-span-3 relative overflow-hidden rounded-[28px] bg-[#0091e6] p-6 sm:p-10'
+            className='lg:col-span-3 relative overflow-hidden rounded-[28px] bg-white dark:bg-slate-900 border border-[#0091e6]/20 shadow-[0_0_40px_rgba(0,145,230,0.1)] dark:shadow-[0_0_40px_rgba(0,145,230,0.15)] group/form transition-all duration-500 hover:shadow-[0_0_60px_rgba(0,145,230,0.2)] dark:hover:shadow-[0_0_60px_rgba(0,145,230,0.3)] hover:border-[#0091e6]/50 p-6 sm:p-10'
           >
             {/* ambient glow accents */}
-            <div className='pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-[#3FA9DF]/20 blur-3xl' />
-            <div className='pointer-events-none absolute -bottom-28 -left-16 w-64 h-64 rounded-full bg-[#27397F]/30 blur-3xl' />
+            <div className='pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-[#0091e6]/10 blur-3xl transition-all duration-700 group-hover/form:bg-[#0091e6]/20 group-hover/form:scale-110' />
+            <div className='pointer-events-none absolute -bottom-28 -left-16 w-64 h-64 rounded-full bg-[#3FA9DF]/10 blur-3xl transition-all duration-700 group-hover/form:bg-[#3FA9DF]/20 group-hover/form:scale-110' />
 
             <div className='relative'>
               <form className='flex flex-col gap-8' onSubmit={handleFormSubmit}>
 
                 {/* Dynamic Title, Subtitle, and Badge based on selectedRole */}
                 <div>
-                  <span className='inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-white bg-white/10 border border-white/20 rounded-full px-3 py-1 mb-4'>
+                  <span className='inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-[#0091e6] bg-[#0091e6]/10 border border-[#0091e6]/20 rounded-full px-3 py-1 mb-4 shadow-[0_0_10px_rgba(0,145,230,0.1)]'>
                     <Icon icon='solar:calendar-add-bold-duotone' className='w-3.5 h-3.5' />
                     {selectedRole === 'Parent'
                       ? 'Places limitées'
@@ -229,14 +229,14 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                       ? 'Collaboration Éducative'
                       : 'Impact RSE & Innovation'}
                   </span>
-                  <h3 className='text-xl sm:text-2xl font-extrabold text-white mb-1'>
+                  <h3 className='text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-1'>
                     {selectedRole === 'Parent'
                       ? 'Réservez la place de votre enfant'
                       : selectedRole === 'Établissement scolaire'
                       ? 'Propulsez votre établissement dans l\'ère de l\'IA'
                       : 'Innovez avec un impact social concret'}
                   </h3>
-                  <p className='text-sm font-medium text-blue-50/90'>
+                  <p className='text-sm font-medium text-slate-500 dark:text-slate-400'>
                     {selectedRole === 'Parent'
                       ? 'Quelques informations suffisent pour assurer son avenir technologique avec Zynovia.'
                       : selectedRole === 'Établissement scolaire'
@@ -247,11 +247,12 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
 
                 {/* Formation pre-selected banner */}
                 {selectedFormation && (
-                  <div className='flex items-center gap-3 rounded-[12px] bg-white/10 border border-white/20 px-4 py-3'>
-                    <Icon icon='solar:diploma-bold-duotone' className='w-5 h-5 text-white shrink-0' />
-                    <div>
-                      <p className='text-[11px] font-bold uppercase tracking-wider text-blue-100'>Formation sélectionnée</p>
-                      <p className='text-sm font-semibold text-white'>{selectedFormation}</p>
+                  <div className='flex items-center gap-3 rounded-[12px] bg-white dark:bg-slate-800 border border-[#0091e6]/30 px-4 py-3 shadow-[0_0_15px_rgba(0,145,230,0.05)] transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,145,230,0.2)] hover:border-[#0091e6]/60 relative overflow-hidden group/banner'>
+                    <div className='absolute inset-0 bg-gradient-to-r from-[#0091e6]/0 via-[#0091e6]/5 to-[#0091e6]/0 translate-x-[-100%] group-hover/banner:translate-x-[100%] transition-transform duration-1000' />
+                    <Icon icon='solar:diploma-bold-duotone' className='w-5 h-5 text-[#0091e6] shrink-0 relative z-10' />
+                    <div className='relative z-10'>
+                      <p className='text-[11px] font-bold uppercase tracking-wider text-[#0091e6]/70'>Formation sélectionnée</p>
+                      <p className='text-sm font-semibold text-slate-900 dark:text-white'>{selectedFormation}</p>
                     </div>
                   </div>
                 )}
@@ -262,13 +263,13 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                 {selectedRole === 'Parent' && (
                   <>
                     <fieldset>
-                      <legend className='flex items-center gap-3 text-xs font-bold uppercase tracking-wide text-white/80 mb-3'>
-                        <Icon icon='solar:user-bold' className='w-4 h-4 text-white' />
+                      <legend className='flex items-center gap-3 text-xs font-bold uppercase tracking-wide text-[#0091e6] mb-3'>
+                        <Icon icon='solar:user-bold' className='w-4 h-4 text-[#0091e6]' />
                         Coordonnées du parent
                       </legend>
                       <div className='grid sm:grid-cols-2 gap-4'>
                         <div className='relative'>
-                          <Icon icon='solar:user-bold' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
+                          <Icon icon='solar:user-bold' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
                           <input
                             id='parent-nom-input'
                             placeholder='Nom'
@@ -280,7 +281,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                           />
                         </div>
                         <div className='relative'>
-                          <Icon icon='solar:user-bold' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
+                          <Icon icon='solar:user-bold' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
                           <input
                             placeholder='Prénom'
                             type='text'
@@ -291,7 +292,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                           />
                         </div>
                         <div className='relative'>
-                          <Icon icon='solar:phone-bold' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
+                          <Icon icon='solar:phone-bold' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
                           <input
                             placeholder='Téléphone'
                             type='tel'
@@ -302,7 +303,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                           />
                         </div>
                         <div className='relative'>
-                          <Icon icon='solar:letter-bold' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
+                          <Icon icon='solar:letter-bold' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
                           <input
                             placeholder='E-mail'
                             type='email'
@@ -316,13 +317,13 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                     </fieldset>
 
                     <fieldset>
-                      <legend className='flex items-center gap-3 text-xs font-bold uppercase tracking-wide text-white/80 mb-3'>
-                        <Icon icon='solar:smile-circle-bold' className='w-4 h-4 text-white' />
+                      <legend className='flex items-center gap-3 text-xs font-bold uppercase tracking-wide text-[#0091e6] mb-3'>
+                        <Icon icon='solar:smile-circle-bold' className='w-4 h-4 text-[#0091e6]' />
                         Informations sur l'enfant
                       </legend>
                       <div className='grid sm:grid-cols-2 gap-4'>
                         <div className='relative'>
-                          <Icon icon='solar:user-heart-bold' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
+                          <Icon icon='solar:user-heart-bold' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
                           <input
                             placeholder="Nom complet de l'enfant"
                             type='text'
@@ -333,7 +334,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                           />
                         </div>
                         <div className='relative'>
-                          <Icon icon='solar:cake-bold' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
+                          <Icon icon='solar:cake-bold' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
                           <input
                             placeholder="Âge de l'enfant"
                             type='number'
@@ -356,13 +357,13 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                 {selectedRole === 'Établissement scolaire' && (
                   <>
                     <fieldset>
-                      <legend className='flex items-center gap-3 text-xs font-bold uppercase tracking-wide text-white/80 mb-3'>
-                        <Icon icon='solar:buildings-bold-duotone' className='w-4 h-4 text-white' />
+                      <legend className='flex items-center gap-3 text-xs font-bold uppercase tracking-wide text-[#0091e6] mb-3'>
+                        <Icon icon='solar:buildings-bold-duotone' className='w-4 h-4 text-[#0091e6]' />
                         Coordonnées de l'établissement
                       </legend>
                       <div className='grid sm:grid-cols-2 gap-4'>
                         <div className='relative sm:col-span-2'>
-                          <Icon icon='solar:buildings-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
+                          <Icon icon='solar:buildings-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
                           <input
                             placeholder="Nom de l'établissement"
                             type='text'
@@ -373,7 +374,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                           />
                         </div>
                         <div className='relative'>
-                          <Icon icon='solar:user-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
+                          <Icon icon='solar:user-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
                           <input
                             placeholder='Nom du responsable'
                             type='text'
@@ -384,7 +385,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                           />
                         </div>
                         <div className='relative'>
-                          <Icon icon='solar:phone-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
+                          <Icon icon='solar:phone-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
                           <input
                             placeholder='Téléphone'
                             type='tel'
@@ -395,7 +396,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                           />
                         </div>
                         <div className='relative sm:col-span-2'>
-                          <Icon icon='solar:letter-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
+                          <Icon icon='solar:letter-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
                           <input
                             placeholder='E-mail'
                             type='email'
@@ -409,13 +410,13 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                     </fieldset>
 
                     <fieldset>
-                      <legend className='flex items-center gap-3 text-xs font-bold uppercase tracking-wide text-white/80 mb-3'>
-                        <Icon icon='solar:users-group-rounded-bold-duotone' className='w-4 h-4 text-white' />
+                      <legend className='flex items-center gap-3 text-xs font-bold uppercase tracking-wide text-[#0091e6] mb-3'>
+                        <Icon icon='solar:users-group-rounded-bold-duotone' className='w-4 h-4 text-[#0091e6]' />
                         Informations sur les participants
                       </legend>
                       <div className='grid sm:grid-cols-2 gap-4'>
                         <div className='relative'>
-                          <Icon icon='solar:users-group-rounded-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
+                          <Icon icon='solar:users-group-rounded-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
                           <input
                             placeholder="Nombre d'enfants"
                             type='number'
@@ -427,7 +428,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                           />
                         </div>
                         <div className='relative'>
-                          <Icon icon='solar:cake-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
+                          <Icon icon='solar:cake-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
                           <input
                             placeholder="Tranche d'âge (ex: 10–14 ans)"
                             type='text'
@@ -447,13 +448,13 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                 {selectedRole === 'Entreprise' && (
                   <>
                     <fieldset>
-                      <legend className='flex items-center gap-3 text-xs font-bold uppercase tracking-wide text-white/80 mb-3'>
-                        <Icon icon='solar:bag-bold-duotone' className='w-4 h-4 text-white' />
+                      <legend className='flex items-center gap-3 text-xs font-bold uppercase tracking-wide text-[#0091e6] mb-3'>
+                        <Icon icon='solar:bag-bold-duotone' className='w-4 h-4 text-[#0091e6]' />
                         Coordonnées de l'entreprise
                       </legend>
                       <div className='grid sm:grid-cols-2 gap-4'>
                         <div className='relative sm:col-span-2'>
-                          <Icon icon='solar:bag-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
+                          <Icon icon='solar:bag-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
                           <input
                             placeholder="Nom de l'entreprise"
                             type='text'
@@ -464,7 +465,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                           />
                         </div>
                         <div className='relative'>
-                          <Icon icon='solar:user-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
+                          <Icon icon='solar:user-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
                           <input
                             placeholder='Nom du responsable'
                             type='text'
@@ -475,7 +476,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                           />
                         </div>
                         <div className='relative'>
-                          <Icon icon='solar:diploma-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
+                          <Icon icon='solar:diploma-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
                           <input
                             placeholder='Poste / Fonction'
                             type='text'
@@ -485,7 +486,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                           />
                         </div>
                         <div className='relative'>
-                          <Icon icon='solar:phone-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
+                          <Icon icon='solar:phone-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
                           <input
                             placeholder='Téléphone'
                             type='tel'
@@ -496,7 +497,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                           />
                         </div>
                         <div className='relative'>
-                          <Icon icon='solar:letter-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
+                          <Icon icon='solar:letter-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
                           <input
                             placeholder='E-mail'
                             type='email'
@@ -515,7 +516,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                         Informations sur les participants
                       </legend>
                       <div className='relative'>
-                        <Icon icon='solar:users-group-rounded-bold-duotone' className='pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
+                        <Icon icon='solar:users-group-rounded-bold-duotone' className='pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
                         <input
                           placeholder='Nombre de participants'
                           type='number'
@@ -532,34 +533,34 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
 
                 {/* ── Formation souhaitée ── */}
                 <fieldset>
-                  <legend className='flex items-center gap-3 text-xs font-bold uppercase tracking-wide text-white/80 mb-3'>
-                    <Icon icon='solar:notebook-bold-duotone' className='w-4 h-4 text-white' />
+                  <legend className='flex items-center gap-3 text-xs font-bold uppercase tracking-wide text-[#0091e6] mb-3'>
+                    <Icon icon='solar:notebook-bold-duotone' className='w-4 h-4 text-[#0091e6]' />
                     Formation souhaitée
                   </legend>
                   <div className='flex flex-col gap-4'>
                     <div className='relative'>
                       {filteredFormations.length === 1 ? (
                         /* Single option — show locked badge, value already auto-selected */
-                        <div className='flex items-center gap-3 rounded-[10px] bg-[#3FA9DF]/10 border border-[#3FA9DF]/30 px-4 py-3'>
+                        <div className='flex items-center gap-3 rounded-[10px] bg-white dark:bg-slate-800 border border-[#3FA9DF]/30 px-4 py-3 shadow-sm'>
                           <Icon icon='solar:diploma-bold-duotone' className='w-4 h-4 text-[#3FA9DF] shrink-0' />
-                          <span className='text-sm font-semibold text-white flex-1'>{filteredFormations[0].title}</span>
+                          <span className='text-sm font-semibold text-slate-900 dark:text-white flex-1'>{filteredFormations[0].title}</span>
                           <Icon icon='solar:lock-bold-duotone' className='w-3.5 h-3.5 text-[#3FA9DF]/60 shrink-0' />
                         </div>
                       ) : (
                         <>
                           <select
-                            className='formation-input pl-14 appearance-none text-slate-300'
+                            className='formation-input pl-14 appearance-none'
                             value={selectedFormation}
                             onChange={e => setSelectedFormation(e.target.value)}
                             required
                           >
-                            <option value='' className='text-slate-900'>Sélectionnez une formation</option>
+                            <option value='' className='text-slate-900 dark:text-white'>Sélectionnez une formation</option>
                             {filteredFormations.map(f => (
-                              <option key={f.title} value={f.title} className='text-slate-900'>{f.title}</option>
+                              <option key={f.title} value={f.title} className='text-slate-900 dark:text-white'>{f.title}</option>
                             ))}
                           </select>
-                          <Icon icon='solar:alt-arrow-down-bold' className='pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
-                          <Icon icon='solar:notebook-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35' />
+                          <Icon icon='solar:alt-arrow-down-bold' className='pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
+                          <Icon icon='solar:notebook-bold-duotone' className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0091e6]/35' />
                         </>
                       )}
                     </div>
@@ -596,8 +597,9 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                 <button
                   type='submit'
                   disabled={loading}
-                  className='group w-full px-6 py-3.5 text-sm sm:text-base font-semibold text-[#0091e6] bg-white hover:bg-slate-50 hover:shadow-xl hover:scale-[1.01] duration-300 rounded-[12px] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none'
+                  className='group relative overflow-hidden w-full px-6 py-3.5 text-sm sm:text-base font-semibold text-white bg-[#0091e6] hover:shadow-[0_0_30px_rgba(0,145,230,0.4)] hover:scale-[1.01] duration-300 rounded-[12px] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none'
                 >
+                  <div className='absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out' />
                   {loading ? (
                     <>
                       <Icon icon='solar:spinner-bold' className='w-4 h-4 animate-spin' />
@@ -610,7 +612,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                     </>
                   )}
                 </button>
-                <p className='text-center text-xs text-white/40 -mt-4'>
+                <p className='text-center text-xs text-slate-400 -mt-4'>
                   Nous vous rappelons sous 24h pour finaliser votre inscription.
                 </p>
               </form>
@@ -621,21 +623,55 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                 width: 100%;
                 padding: 0.75rem 1rem 0.75rem 3.5rem;
                 border-radius: 10px;
-                background: rgba(255,255,255,0.06);
-                border: 1px solid rgba(255,255,255,0.12);
-                color: white;
+                background: #f8fafc;
+                border: 1px solid rgba(0, 145, 230, 0.2);
+                color: #0f172a;
                 font-size: 0.875rem;
-                transition: border-color 0.2s ease, background 0.2s ease;
+                transition: all 0.3s ease;
               }
-              .formation-input::placeholder { color: rgba(255,255,255,0.7); }
+              .formation-input::placeholder { color: #94a3b8; }
               .formation-input:focus {
                 outline: none;
-                border-color: #3FA9DF;
-                background: rgba(255,255,255,0.09);
+                border-color: #0091e6;
+                background: white;
+                box-shadow: 0 0 20px rgba(0, 145, 230, 0.2);
+              }
+              .formation-input:hover {
+                border-color: rgba(0, 145, 230, 0.4);
+                box-shadow: 0 0 15px rgba(0, 145, 230, 0.1);
+              }
+              .input-icon {
+                color: #0091e6;
+                opacity: 0.6;
+                transition: all 0.3s ease;
+              }
+              .relative:focus-within .input-icon, .relative:hover .input-icon {
+                opacity: 1;
+                filter: drop-shadow(0 0 5px rgba(0,145,230,0.5));
               }
               .formation-input option {
                 color: #0f172a;
                 background: white;
+              }
+              
+              /* Dark mode overrides */
+              .dark .formation-input {
+                background: rgba(15, 23, 42, 0.6);
+                border: 1px solid rgba(0, 145, 230, 0.3);
+                color: white;
+              }
+              .dark .formation-input::placeholder { color: #64748b; }
+              .dark .formation-input:focus {
+                background: rgba(30, 41, 59, 0.8);
+                border-color: #0091e6;
+                box-shadow: 0 0 20px rgba(0, 145, 230, 0.3);
+              }
+              .dark .formation-input:hover {
+                border-color: rgba(0, 145, 230, 0.6);
+              }
+              .dark .formation-input option {
+                color: white;
+                background: #0f172a;
               }
             `}</style>
           </motion.div>
@@ -643,31 +679,34 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
           {/* ── Right: CTA panel ── */}
           <motion.div
             {...scaleIn}
-            className='lg:col-span-2 h-full rounded-[28px] bg-[#0091e6] p-8 sm:p-10 flex flex-col items-center justify-center text-center gap-5'
+            className='lg:col-span-2 h-full rounded-[28px] bg-white dark:bg-slate-900    p-8 sm:p-10 flex flex-col items-center justify-center text-center gap-5 shadow-[0_0_40px_rgba(0,145,230,0.1)] dark:shadow-[0_0_40px_rgba(0,145,230,0.15)] group/cta transition-all duration-500 hover:shadow-[0_0_60px_rgba(0,145,230,0.2)] dark:hover:shadow-[0_0_60px_rgba(0,145,230,0.3)] hover:border-[#0091e6]/50 relative overflow-hidden'
           >
-            <span className='flex items-center justify-center w-14 h-14 rounded-2xl bg-white/20 text-white'>
+            {/* ambient glow */}
+            <div className='absolute inset-0 bg-gradient-to-b from-[#0091e6]/5 to-transparent opacity-0 group-hover/cta:opacity-100 transition-opacity duration-500' />
+
+            <span className='flex items-center justify-center w-14 h-14 rounded-2xl bg-[#0091e6]/10 text-[#0091e6] border border-[#0091e6]/20 shadow-[0_0_15px_rgba(0,145,230,0.1)] group-hover/cta:shadow-[0_0_25px_rgba(0,145,230,0.3)] transition-all duration-500 relative z-10'>
               <Icon icon='solar:cpu-bolt-bold-duotone' className='w-7 h-7' />
             </span>
-            <h3 className='text-lg sm:text-xl font-extrabold text-white leading-snug'>
+            <h3 className='text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white leading-snug relative z-10'>
               Les métiers évoluent. <br /> Les compétences aussi.
             </h3>
-            <p className='text-sm text-white/90 max-w-xs'>
+            <p className='text-sm text-slate-500 dark:text-slate-400 max-w-xs relative z-10'>
               Offrez à votre enfant une longueur d&apos;avance grâce à l&apos;Intelligence Artificielle.
             </p>
-            <div className='flex flex-col gap-3 w-full mt-2'>
+            <div className='flex flex-col gap-3 w-full mt-2 relative z-10'>
               <button
                 onClick={() => {
                   setSelectedRole('Parent')
                   const el = document.getElementById('inscription-form')
                   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
                 }}
-                className='w-full px-6 py-3 text-sm font-semibold text-[#0091e6] bg-white rounded-[12px] hover:shadow-lg hover:scale-[1.02] duration-300'
+                className='w-full px-6 py-3 text-sm font-semibold text-white bg-[#0091e6] rounded-[12px] hover:shadow-[0_0_25px_rgba(0,145,230,0.4)] hover:scale-[1.02] duration-300'
               >
                 Inscrire mon enfant
               </button>
               <button
                 onClick={() => setDownloadModalOpen(true)}
-                className='w-full px-6 py-3 text-sm font-semibold text-white bg-transparent border border-white/30 rounded-[12px] hover:bg-white/10 hover:border-white duration-300 flex items-center justify-center gap-2'
+                className='w-full px-6 py-3 text-sm font-semibold text-[#0091e6] bg-transparent border border-[#0091e6]/30 rounded-[12px] hover:bg-[#0091e6]/5 hover:border-[#0091e6] hover:shadow-[0_0_15px_rgba(0,145,230,0.2)] duration-300 flex items-center justify-center gap-2'
               >
                 <Icon icon='solar:file-download-bold-duotone' className='w-4 h-4' />
                 Télécharger le programme
