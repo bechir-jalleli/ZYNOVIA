@@ -284,7 +284,7 @@ export default function ManageFormations() {
                             <tr>
                                 <th className="px-6 py-4">Formation</th>
                                 <th className="px-6 py-4">Mode</th>
-                                <th className="px-6 py-4">Démarrage</th>
+                               {/*  <th className="px-6 py-4">Démarrage</th>*/}
                                 <th className="px-6 py-4">Prix</th>
                                 <th className="px-6 py-4">Lieu</th>
                                 <th className="px-6 py-4">PDF</th>

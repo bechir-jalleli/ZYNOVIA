@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Icon } from '@iconify/react'
 import { fadeInUp, scaleIn } from './SectionHeading'
-import DownloadModal from './DownloadModal'
+import PictureGallery from '../../components/Home/PictureGallery'
 
 type Role = 'Parent' | 'Établissement scolaire' | 'Entreprise'
 
@@ -21,16 +21,9 @@ const ROLE_FIXED_FORMATIONS: Partial<Record<Role, string[]>> = {
   ],
 }
 
-const roles: { value: Role; label: string; icon: string }[] = [
-  { value: 'Parent', label: 'Parent', icon: 'solar:user-bold-duotone' },
-  { value: 'Établissement scolaire', label: 'Établissement scolaire', icon: 'solar:buildings-bold-duotone' },
-  { value: 'Entreprise', label: 'Entreprise', icon: 'solar:bag-bold-duotone' },
-]
-
 export default function ReservationPaymentSection({ preselectedFormation = '' }: { preselectedFormation?: string }) {
   const [selectedRole, setSelectedRole] = useState<Role>('Parent')
   const [formations, setFormations] = useState<any[]>([])
-  const [downloadModalOpen, setDownloadModalOpen] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
@@ -231,14 +224,14 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                   </span>
                   <h3 className='text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-1'>
                     {selectedRole === 'Parent'
-                      ? 'Réservez la place de votre enfant'
+                      ? 'Remplissez ce formulaire pour réserver provisoirement la place de votre enfant. Notre équipe vous contactera sous 24 heures pour confirmer son inscription.'
                       : selectedRole === 'Établissement scolaire'
                       ? 'Propulsez votre établissement dans l\'ère de l\'IA'
                       : 'Innovez avec un impact social concret'}
                   </h3>
                   <p className='text-sm font-medium text-slate-500 dark:text-slate-400'>
                     {selectedRole === 'Parent'
-                      ? 'Quelques informations suffisent pour assurer son avenir technologique avec Zynovia.'
+                      ? ''
                       : selectedRole === 'Établissement scolaire'
                       ? 'Collaborez avec nos ingénieurs pour concevoir des ateliers et des programmes IA sur-mesure pour vos élèves.'
                       : 'Offrez à vos collaborateurs un projet d\'initiation technologique unique pour leurs enfants.'}
@@ -607,7 +600,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                     </>
                   ) : (
                     <>
-                      {selectedRole === 'Parent' ? 'Inscrire mon enfant' : 'Envoyer ma demande'}
+                      {selectedRole === 'Parent' ? 'Réservez la place de mon enfant' : 'Envoyer ma demande'}
                       <Icon icon='solar:arrow-right-bold' className='w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-disabled:translate-x-0' />
                     </>
                   )}
@@ -676,50 +669,15 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
             `}</style>
           </motion.div>
 
-          {/* ── Right: CTA panel ── */}
+          {/* ── Right: Picture gallery ── */}
           <motion.div
             {...scaleIn}
-            className='lg:col-span-2 h-full rounded-[28px] bg-white dark:bg-slate-900    p-8 sm:p-10 flex flex-col items-center justify-center text-center gap-5 shadow-[0_0_40px_rgba(0,145,230,0.1)] dark:shadow-[0_0_40px_rgba(0,145,230,0.15)] group/cta transition-all duration-500 hover:shadow-[0_0_60px_rgba(0,145,230,0.2)] dark:hover:shadow-[0_0_60px_rgba(0,145,230,0.3)] hover:border-[#0091e6]/50 relative overflow-hidden'
+            className='lg:col-span-2 lg:sticky lg:top-24 rounded-[28px] bg-white dark:bg-slate-900 border border-[#0091e6]/20 shadow-[0_0_40px_rgba(0,145,230,0.1)] dark:shadow-[0_0_40px_rgba(0,145,230,0.15)] overflow-hidden'
           >
-            {/* ambient glow */}
-            <div className='absolute inset-0 bg-gradient-to-b from-[#0091e6]/5 to-transparent opacity-0 group-hover/cta:opacity-100 transition-opacity duration-500' />
-
-            <span className='flex items-center justify-center w-14 h-14 rounded-2xl bg-[#0091e6]/10 text-[#0091e6] border border-[#0091e6]/20 shadow-[0_0_15px_rgba(0,145,230,0.1)] group-hover/cta:shadow-[0_0_25px_rgba(0,145,230,0.3)] transition-all duration-500 relative z-10'>
-              <Icon icon='solar:cpu-bolt-bold-duotone' className='w-7 h-7' />
-            </span>
-            <h3 className='text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white leading-snug relative z-10'>
-              Les métiers évoluent. <br /> Les compétences aussi.
-            </h3>
-            <p className='text-sm text-slate-500 dark:text-slate-400 max-w-xs relative z-10'>
-              Offrez à votre enfant une longueur d&apos;avance grâce à l&apos;Intelligence Artificielle.
-            </p>
-            <div className='flex flex-col gap-3 w-full mt-2 relative z-10'>
-              <button
-                onClick={() => {
-                  setSelectedRole('Parent')
-                  const el = document.getElementById('inscription-form')
-                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                }}
-                className='w-full px-6 py-3 text-sm font-semibold text-white bg-[#0091e6] rounded-[12px] hover:shadow-[0_0_25px_rgba(0,145,230,0.4)] hover:scale-[1.02] duration-300'
-              >
-                Inscrire mon enfant
-              </button>
-              <button
-                onClick={() => setDownloadModalOpen(true)}
-                className='w-full px-6 py-3 text-sm font-semibold text-[#0091e6] bg-transparent border border-[#0091e6]/30 rounded-[12px] hover:bg-[#0091e6]/5 hover:border-[#0091e6] hover:shadow-[0_0_15px_rgba(0,145,230,0.2)] duration-300 flex items-center justify-center gap-2'
-              >
-                <Icon icon='solar:file-download-bold-duotone' className='w-4 h-4' />
-                Télécharger le programme
-              </button>
-            </div>
+            <PictureGallery />
           </motion.div>
         </div>
       </div>
-      <DownloadModal
-        isOpen={downloadModalOpen}
-        onClose={() => setDownloadModalOpen(false)}
-        showProgrammeSelector
-      />
     </section>
   )
 }

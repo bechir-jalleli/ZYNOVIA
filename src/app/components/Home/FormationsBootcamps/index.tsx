@@ -145,14 +145,14 @@ const FormationsBootcamps = () => {
           const styles = getModeStyles(f.mode)
 
           const details: { icon: string; label: string }[] = []
-          if (f.startDate) {
+         {/*   if (f.startDate) {
             details.push({
               icon: 'solar:calendar-bold',
               label: f.startDate.toLowerCase().startsWith('démarrage')
                 ? f.startDate
                 : `Démarrage : ${f.startDate}`,
             })
-          }
+          } */}
           if (f.schedule) {
             details.push({ icon: 'solar:clock-circle-bold', label: f.schedule })
           }
@@ -337,7 +337,7 @@ const FormationsBootcamps = () => {
                               href={`/inscription?program=${encodeURIComponent(f.title)}&role=Parent`}
                               className={`flex-1 text-center px-6 py-3.5 text-sm sm:text-base font-semibold text-white rounded-[12px] transition-all duration-300 hover:shadow-lg hover:scale-[1.01] ${f.buttonClass}`}
                             >
-                              Inscrire mon enfant
+                              Réservez la place de mon enfant
                             </Link>
                             <button
                               onClick={() => {
