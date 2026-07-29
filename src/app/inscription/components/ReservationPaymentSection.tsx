@@ -219,22 +219,22 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                     {selectedRole === 'Parent'
                       ? 'Places limitées'
                       : selectedRole === 'Établissement scolaire'
-                      ? 'Collaboration Éducative'
-                      : 'Impact RSE & Innovation'}
+                        ? 'Collaboration Éducative'
+                        : 'Impact RSE & Innovation'}
                   </span>
                   <h3 className='text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-1'>
                     {selectedRole === 'Parent'
                       ? 'Remplissez ce formulaire pour réserver provisoirement la place de votre enfant. Notre équipe vous contactera sous 24 heures pour confirmer son inscription.'
                       : selectedRole === 'Établissement scolaire'
-                      ? 'Propulsez votre établissement dans l\'ère de l\'IA'
-                      : 'Innovez avec un impact social concret'}
+                        ? 'Propulsez votre établissement dans l\'ère de l\'IA'
+                        : 'Innovez avec un impact social concret'}
                   </h3>
                   <p className='text-sm font-medium text-slate-500 dark:text-slate-400'>
                     {selectedRole === 'Parent'
                       ? ''
                       : selectedRole === 'Établissement scolaire'
-                      ? 'Collaborez avec nos ingénieurs pour concevoir des ateliers et des programmes IA sur-mesure pour vos élèves.'
-                      : 'Offrez à vos collaborateurs un projet d\'initiation technologique unique pour leurs enfants.'}
+                        ? 'Collaborez avec nos ingénieurs pour concevoir des ateliers et des programmes IA sur-mesure pour vos élèves.'
+                        : 'Offrez à vos collaborateurs un projet d\'initiation technologique unique pour leurs enfants.'}
                   </p>
                 </div>
 
@@ -600,7 +600,7 @@ export default function ReservationPaymentSection({ preselectedFormation = '' }:
                     </>
                   ) : (
                     <>
-                      {selectedRole === 'Parent' ? 'Réservez la place de mon enfant' : 'Envoyer ma demande'}
+                      {selectedRole === 'Parent' ? 'Réserver la place de mon enfant' : 'Envoyer ma demande'}
                       <Icon icon='solar:arrow-right-bold' className='w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-disabled:translate-x-0' />
                     </>
                   )}

@@ -215,7 +215,7 @@ export default function HeroSection() {
                   e.currentTarget.style.boxShadow = 'none';
                 }}
               >
-                Réservez la place de mon enfant
+                Réserver la place de mon enfant
               </button>
               <button
                 onClick={() => setDownloadModalOpen(true)}

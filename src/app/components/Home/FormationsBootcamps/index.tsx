@@ -25,7 +25,7 @@ const AutoPlayVideo = ({ src }: { src: string }) => {
         playPromise.catch(() => {
           // Autoplay with sound was blocked. Mute and try again.
           video.muted = true
-          video.play().catch(() => {})
+          video.play().catch(() => { })
         })
       }
     }
@@ -145,7 +145,7 @@ const FormationsBootcamps = () => {
           const styles = getModeStyles(f.mode)
 
           const details: { icon: string; label: string }[] = []
-         {/*   if (f.startDate) {
+          {/*   if (f.startDate) {
             details.push({
               icon: 'solar:calendar-bold',
               label: f.startDate.toLowerCase().startsWith('démarrage')
@@ -256,120 +256,120 @@ const FormationsBootcamps = () => {
                   {formations.map((f, index) => {
                     const hasVideo = !!f.video
                     return (
-                    <motion.div
-                      key={f.title}
-                      initial={{ opacity: 0, y: 24 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.35, delay: index * 0.06 }}
-                      className={hasVideo ? 'col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch' : 'col-span-1'}
-                    >
-                      <div
-                        className='relative flex flex-col rounded-[24px] bg-white dark:bg-slate-900 border-2 shadow-[0_10px_40px_rgba(15,23,42,0.06)] overflow-hidden w-full h-full'
-                        style={{ borderColor: f.accentFrom }}
+                      <motion.div
+                        key={f.title}
+                        initial={{ opacity: 0, y: 24 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.35, delay: index * 0.06 }}
+                        className={hasVideo ? 'col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch' : 'col-span-1'}
                       >
-                        <div className='flex flex-col flex-1 p-6 sm:p-7'>
-                          {/* Title + mode badge on top */}
-                          <div className='flex items-center justify-between gap-3 mb-4 flex-wrap'>
-                            <h3 className='text-lg sm:text-xl font-extrabold text-[#0A004B] dark:text-white'>
-                              {f.title}
-                            </h3>
-                            <span
-                              className={`text-white text-[11px] font-bold px-3 py-1.5 rounded-full whitespace-nowrap ${f.modeColor}`}
-                            >
-                              {f.mode}
-                            </span>
-                          </div>
-
-                          {/* Image (left, wide) + details with price underneath (right) */}
-                          <div className='flex flex-col xs:flex-row items-start gap-4 mb-5'>
-                            <div className='relative w-full xs:w-36 sm:w-48 h-40 xs:h-28 sm:h-32 flex-shrink-0 rounded-2xl overflow-hidden'>
-                              <Image src={f.image} alt={f.title} fill className='object-cover' />
-                            </div>
-
-                            <div className='flex flex-1 flex-col justify-between'>
-                              <div className='flex flex-col gap-2'>
-                                {f.details.map((d: any) => (
-                                  <div key={d.label} className='flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300'>
-                                    <Icon icon={d.icon} className='w-4 h-4 flex-shrink-0' style={{ color: f.accentFrom }} />
-                                    <span>{d.label}</span>
-                                  </div>
-                                ))}
-                              </div>
-
-                              {f.priceNew && (
-                                <div
-                                  className='self-end mt-2 flex-shrink-0 flex flex-col items-center justify-center rounded-2xl px-4 py-3 text-white text-center'
-                                  style={{ background: `linear-gradient(135deg, ${f.accentFrom}, ${f.accentTo})` }}
-                                >
-                                  {f.priceOld && (
-                                    <span className='text-[11px] leading-tight opacity-80'>
-                                      {f.priceNote} <span className='line-through'>{f.priceOld}</span>
-                                    </span>
-                                  )}
-                                  <span className='text-xl font-extrabold leading-tight whitespace-nowrap'>{f.priceNew}</span>
-                                </div>
-                              )}
-                            </div>
-                          </div>
-
-                          {/* Au programme : two-column list */}
-                          {f.program && f.program.length > 0 && (
-                            <div className='mb-5'>
-                              <p className='text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-2'>
-                                Au programme :
-                              </p>
-                              <div
-                                className='grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5'
-                                style={{ gridAutoFlow: 'column', gridTemplateRows: `repeat(${Math.ceil(f.program.length / 2)}, auto)` }}
+                        <div
+                          className='relative flex flex-col rounded-[24px] bg-white dark:bg-slate-900 border-2 shadow-[0_10px_40px_rgba(15,23,42,0.06)] overflow-hidden w-full h-full'
+                          style={{ borderColor: f.accentFrom }}
+                        >
+                          <div className='flex flex-col flex-1 p-6 sm:p-7'>
+                            {/* Title + mode badge on top */}
+                            <div className='flex items-center justify-between gap-3 mb-4 flex-wrap'>
+                              <h3 className='text-lg sm:text-xl font-extrabold text-[#0A004B] dark:text-white'>
+                                {f.title}
+                              </h3>
+                              <span
+                                className={`text-white text-[11px] font-bold px-3 py-1.5 rounded-full whitespace-nowrap ${f.modeColor}`}
                               >
-                                {f.program.map((p: string) => (
-                                  <li key={p} className='flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300 list-none'>
-                                    <Icon icon='solar:check-circle-bold' className='w-4 h-4 mt-0.5 flex-shrink-0' style={{ color: f.accentFrom }} />
-                                    <span>{p}</span>
-                                  </li>
-                                ))}
+                                {f.mode}
+                              </span>
+                            </div>
+
+                            {/* Image (left, wide) + details with price underneath (right) */}
+                            <div className='flex flex-col xs:flex-row items-start gap-4 mb-5'>
+                              <div className='relative w-full xs:w-36 sm:w-48 h-40 xs:h-28 sm:h-32 flex-shrink-0 rounded-2xl overflow-hidden'>
+                                <Image src={f.image} alt={f.title} fill className='object-cover' />
+                              </div>
+
+                              <div className='flex flex-1 flex-col justify-between'>
+                                <div className='flex flex-col gap-2'>
+                                  {f.details.map((d: any) => (
+                                    <div key={d.label} className='flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300'>
+                                      <Icon icon={d.icon} className='w-4 h-4 flex-shrink-0' style={{ color: f.accentFrom }} />
+                                      <span>{d.label}</span>
+                                    </div>
+                                  ))}
+                                </div>
+
+                                {f.priceNew && (
+                                  <div
+                                    className='self-end mt-2 flex-shrink-0 flex flex-col items-center justify-center rounded-2xl px-4 py-3 text-white text-center'
+                                    style={{ background: `linear-gradient(135deg, ${f.accentFrom}, ${f.accentTo})` }}
+                                  >
+                                    {f.priceOld && (
+                                      <span className='text-[11px] leading-tight opacity-80'>
+                                        {f.priceNote} <span className='line-through'>{f.priceOld}</span>
+                                      </span>
+                                    )}
+                                    <span className='text-xl font-extrabold leading-tight whitespace-nowrap'>{f.priceNew}</span>
+                                  </div>
+                                )}
                               </div>
                             </div>
-                          )}
 
-                          <div className='mt-auto flex flex-col gap-3 sm:flex-row'>
-                            <Link
-                              href={`/inscription?program=${encodeURIComponent(f.title)}&role=Parent`}
-                              className={`flex-1 text-center px-6 py-3.5 text-sm sm:text-base font-semibold text-white rounded-[12px] transition-all duration-300 hover:shadow-lg hover:scale-[1.01] ${f.buttonClass}`}
-                            >
-                              Réservez la place de mon enfant
-                            </Link>
-                            <button
-                              onClick={() => {
-                                if (f.programmePdfPath) {
-                                  setSelectedPdfUrl(f.programmePdfPath)
-                                  setDownloadModalOpen(true)
-                                }
-                              }}
-                              disabled={!f.programmePdfPath}
-                              className={`flex-1 px-6 py-3.5 text-sm sm:text-base font-semibold rounded-[12px] border-2 bg-white dark:bg-transparent transition-all duration-300 ${f.programmePdfPath
-                                ? 'hover:shadow-lg hover:scale-[1.01] cursor-pointer'
-                                : 'opacity-50 cursor-not-allowed'
-                                }`}
-                              style={{ borderColor: f.accentFrom, color: f.accentFrom }}
-                            >
-                              Télécharger le programme
-                            </button>
+                            {/* Au programme : two-column list */}
+                            {f.program && f.program.length > 0 && (
+                              <div className='mb-5'>
+                                <p className='text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-2'>
+                                  Au programme :
+                                </p>
+                                <div
+                                  className='grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5'
+                                  style={{ gridAutoFlow: 'column', gridTemplateRows: `repeat(${Math.ceil(f.program.length / 2)}, auto)` }}
+                                >
+                                  {f.program.map((p: string) => (
+                                    <li key={p} className='flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300 list-none'>
+                                      <Icon icon='solar:check-circle-bold' className='w-4 h-4 mt-0.5 flex-shrink-0' style={{ color: f.accentFrom }} />
+                                      <span>{p}</span>
+                                    </li>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
+                            <div className='mt-auto flex flex-col gap-3 sm:flex-row'>
+                              <Link
+                                href={`/inscription?program=${encodeURIComponent(f.title)}&role=Parent`}
+                                className={`flex-1 text-center px-6 py-3.5 text-sm sm:text-base font-semibold text-white rounded-[12px] transition-all duration-300 hover:shadow-lg hover:scale-[1.01] ${f.buttonClass}`}
+                              >
+                                Réserver la place de mon enfant
+                              </Link>
+                              <button
+                                onClick={() => {
+                                  if (f.programmePdfPath) {
+                                    setSelectedPdfUrl(f.programmePdfPath)
+                                    setDownloadModalOpen(true)
+                                  }
+                                }}
+                                disabled={!f.programmePdfPath}
+                                className={`flex-1 px-6 py-3.5 text-sm sm:text-base font-semibold rounded-[12px] border-2 bg-white dark:bg-transparent transition-all duration-300 ${f.programmePdfPath
+                                  ? 'hover:shadow-lg hover:scale-[1.01] cursor-pointer'
+                                  : 'opacity-50 cursor-not-allowed'
+                                  }`}
+                                style={{ borderColor: f.accentFrom, color: f.accentFrom }}
+                              >
+                                Télécharger le programme
+                              </button>
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      {hasVideo && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 24 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.35, delay: index * 0.06 + 0.2 }}
-                          className='relative rounded-[24px] overflow-hidden shadow-xl bg-black flex items-center justify-center h-[60vh] md:h-[80vh]'
-                        >
-                          <AutoPlayVideo src={f.video} />
-                        </motion.div>
-                      )}
-                    </motion.div>
+                        {hasVideo && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 24 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.35, delay: index * 0.06 + 0.2 }}
+                            className='relative rounded-[24px] overflow-hidden shadow-xl bg-black flex items-center justify-center h-[60vh] md:h-[80vh]'
+                          >
+                            <AutoPlayVideo src={f.video} />
+                          </motion.div>
+                        )}
+                      </motion.div>
                     )
                   })}
                 </motion.div>

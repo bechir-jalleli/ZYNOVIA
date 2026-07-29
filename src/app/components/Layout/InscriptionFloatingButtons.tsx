@@ -76,7 +76,7 @@ export default function InscriptionFloatingButtons() {
         >
           <Icon icon="tabler:user-plus" width={24} height={24} className="shrink-0" />
           <span className="max-w-0 overflow-hidden font-semibold text-sm transition-all duration-300 ease-out group-hover:max-w-xs group-hover:pr-1 md:max-w-xs md:pr-1">
-            Réservez la place de mon enfant
+            Réserver la place de mon enfant
           </span>
         </button>
       </div>

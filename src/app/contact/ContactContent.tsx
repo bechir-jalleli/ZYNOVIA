@@ -211,16 +211,16 @@ const ContactContent = () => {
         </div>
       </section>
 
-      {/* Réservez un rendez-vous */}
+      {/* Réserver un rendez-vous */}
       <section id='appointment-form' className='py-20 lg:py-28 scroll-mt-24'>
         <div className='container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8'>
           <motion.div {...fadeInUp} transition={{ duration: 0.6, ease: 'easeOut' }} className='mx-auto max-w-3xl text-center mb-12'>
-            <p className='text-base sm:text-lg font-extrabold uppercase tracking-[0.22em]' style={{ background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Réservez un rendez-vous</p>
+            <p className='text-base sm:text-lg font-extrabold uppercase tracking-[0.22em]' style={{ background: 'linear-gradient(to right, #27397F, #2E5391, #4490C7, #3FA9DF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Réserver un rendez-vous</p>
           </motion.div>
           <motion.div {...fadeInUp} transition={{ duration: 0.6, ease: 'easeOut', delay: 0.05 }} className='rounded-3xl bg-white/95 p-8 shadow-[0_18px_45px_rgba(15,23,42,0.14)] ring-1 ring-slate-200/80 backdrop-blur dark:bg-slate-900/95 dark:ring-slate-700/80'>
             <div className='mb-8 space-y-3'>
               <h2 className='text-xl font-semibold text-[#0A004B] dark:text-white'>Rendez-vous &amp; démonstrations</h2>
-              <p className='text-sm leading-relaxed text-slate-600 dark:text-slate-300'>Réservez un rendez-vous en visioconférence ou sur site pour découvrir nos programmes ou établir un partenariat.</p>
+              <p className='text-sm leading-relaxed text-slate-600 dark:text-slate-300'>Réserver un rendez-vous en visioconférence ou sur site pour découvrir nos programmes ou établir un partenariat.</p>
             </div>
             <form onSubmit={handleAppointmentSubmit} className='space-y-6'>
               <div className='grid grid-cols-1 gap-6 sm:grid-cols-2'>

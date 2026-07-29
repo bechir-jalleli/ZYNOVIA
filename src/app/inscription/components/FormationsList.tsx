@@ -16,7 +16,7 @@ export const staticFormations = [
     accentFrom: '#7C3AED',
     accentTo: '#4C1D95',
     details: [
-      { icon: 'solar:calendar-bold', label: 'Démarrage : 3 Août' },
+      { icon: 'solar:calendar-bold', label: 'Démarrage : 10 Août' },
       { icon: 'solar:clock-circle-bold', label: 'Du lundi au vendredi' },
       { icon: 'solar:hourglass-bold', label: '20 heures (5 jours)' },
       { icon: 'solar:users-group-rounded-bold', label: '12 à 18 ans' },
@@ -251,7 +251,7 @@ export default function FormationsList({ onEnroll }: FormationsListProps) {
                     }}
                     className={`flex-1 px-6 py-3.5 text-sm sm:text-base font-semibold text-white rounded-[12px] transition-all duration-300 hover:shadow-lg hover:scale-[1.01] ${f.buttonClass}`}
                   >
-                    Réservez la place de mon enfant
+                    Réserver la place de mon enfant
                   </button>
                   <button
                     onClick={() => {

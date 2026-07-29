@@ -224,7 +224,7 @@ const RendezVousContent = () => {
             className='mx-auto max-w-3xl text-center md:text-left mb-12'
           >
             <p className='text-base sm:text-lg font-semibold uppercase tracking-[0.22em]' style={{ color: '#27397F' }}>
-              Réservez un créneau
+              Réserver un créneau
             </p>
           </motion.div>
 
@@ -238,7 +238,7 @@ const RendezVousContent = () => {
                 Rendez-vous &amp; démonstrations
               </h2>
               <p className='text-sm leading-relaxed text-slate-600 dark:text-slate-300'>
-                Réservez un rendez-vous en visioconférence ou sur site pour découvrir nos programmes ou établir un partenariat.
+                Réserver un rendez-vous en visioconférence ou sur site pour découvrir nos programmes ou établir un partenariat.
                 Notre équipe vous contactera pour confirmer la date et l&apos;heure.
               </p>
             </div>
